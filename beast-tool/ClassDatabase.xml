@@ -1,0 +1,94 @@
+<map>
+  <entry>
+    <string>carry puede llevar oro a casa</string>
+    <string>es.upm.dit.gsi.example.MarsWorldConMock.EvaluationMarsWorldConMock</string>
+  </entry>
+  <entry>
+    <string>bridge le manda un mensaje a repository</string>
+    <string>es.upm.dit.gsi.example.ProbandoMockRepository.SetupProbandoMockRepository</string>
+  </entry>
+  <entry>
+    <string>un agente carry, un productor y un sentry, todos acelerados</string>
+    <string>es.upm.dit.gsi.example.MarsWorldModificado.ScenarioMarsWorldModificado</string>
+  </entry>
+  <entry>
+    <string>un agente carry, un productor y un sentry</string>
+    <string>es.upm.dit.gsi.example.MarsWorldNormal.ScenarioMarsWorldNormal</string>
+  </entry>
+  <entry>
+    <string>tres agentes carry, dos productor y un sentry</string>
+    <string>es.upm.dit.gsi.example.MarsWorldSuperpoblado.ScenarioMarsWorldSuperpoblado</string>
+  </entry>
+  <entry>
+    <string>sentry encuentra una mina</string>
+    <string>es.upm.dit.gsi.example.MarsWorldConMock.SetupMarsWorldConMock</string>
+  </entry>
+  <entry>
+    <string>hay poco tiempo (90 segs)</string>
+    <string>es.upm.dit.gsi.example.MarsWorldNormal.SetupMarsWorldNormal</string>
+  </entry>
+  <entry>
+    <string>hay poco tiempo (1 min)</string>
+    <string>es.upm.dit.gsi.example.MarsWorldModificado.SetupMarsWorldModificado</string>
+  </entry>
+  <entry>
+    <string>no se recoge todo el oro</string>
+    <string>es.upm.dit.gsi.example.MarsWorldNormal.EvaluationMarsWorldNormal</string>
+  </entry>
+  <entry>
+    <string>un agente listener</string>
+    <string>es.upm.dit.gsi.example.ProbandoMockListener.ScenarioProbandoMockListener</string>
+  </entry>
+  <entry>
+    <string>se le mandan 10 mensajes</string>
+    <string>es.upm.dit.gsi.example.ProbandoMockListener.SetupProbandoMockListener</string>
+  </entry>
+  <entry>
+    <string>Setup1</string>
+    <string>es.upm.dit.gsi.example.MarsWorld.SetupMarsWorld</string>
+  </entry>
+  <entry>
+    <string>Evaluation 1</string>
+    <string>es.upm.dit.gsi.example.MarsWorld.EvaluationMarsWorld</string>
+  </entry>
+  <entry>
+    <string>un agente carry, un agente sentry y un mock que hace del agente productor</string>
+    <string>es.upm.dit.gsi.example.MarsWorldConMock.ScenarioMarsWorldConMock</string>
+  </entry>
+  <entry>
+    <string>Scenario1</string>
+    <string>es.upm.dit.gsi.example.MarsWorld.ScenarioMarsWorld</string>
+  </entry>
+  <entry>
+    <string>un agente bridge y un agente repository</string>
+    <string>es.upm.dit.gsi.example.ProbandoMockRepository.ScenarioProbandoMockRepository</string>
+  </entry>
+  <entry>
+    <string>hay mucho tiempo (5 min)</string>
+    <string>es.upm.dit.gsi.example.MarsWorldSuperpoblado.SetupMarsWorldSuperpoblado</string>
+  </entry>
+  <entry>
+    <string>el listener los recibe en orden</string>
+    <string>es.upm.dit.gsi.example.ProbandoMockListener.EvaluationProbandoMockListener</string>
+  </entry>
+  <entry>
+    <string>al agente bridge se le pide reenviar un mensaje al listener</string>
+    <string>es.upm.dit.gsi.example.ProbandoMockBridge.SetupProbandoMockBridge</string>
+  </entry>
+  <entry>
+    <string>se recoge todo el oro</string>
+    <string>es.upm.dit.gsi.example.MarsWorldModificado.EvaluationMarsWorldModificado</string>
+  </entry>
+  <entry>
+    <string>el listener recibe el mensaje</string>
+    <string>es.upm.dit.gsi.example.ProbandoMockBridge.EvaluationProbandoMockBridge</string>
+  </entry>
+  <entry>
+    <string>repository le contesta con el mensaje especifico</string>
+    <string>es.upm.dit.gsi.example.ProbandoMockRepository.EvaluationProbandoMockRepository</string>
+  </entry>
+  <entry>
+    <string>un agente bridge y un listener</string>
+    <string>es.upm.dit.gsi.example.ProbandoMockBridge.ScenarioProbandoMockBridge</string>
+  </entry>
+</map>
