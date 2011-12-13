@@ -5,6 +5,7 @@
 	<version>0.9.1</version>
 	<packaging>jar</packaging>
 	<name>Beast Tool</name>
+	<description>Behavioural Agents Simple Testing Tool</description>
 	<url>http://www.gsi.dit.upm.es</url>
 	<licenses>
 		<license>
@@ -171,9 +172,20 @@
 				</configuration>
 			</plugin>
 
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-gpg-plugin</artifactId> 
-				<version>1.4</version> <executions> <execution> <id>sign-artifacts</id> <phase>verify</phase> 
-				<goals> <goal>sign</goal> </goals> </execution> </executions> </plugin> -->
+			<!-- <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.4</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin> -->
 		</plugins>
 
 	</build>
