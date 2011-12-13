@@ -28,8 +28,6 @@
 					<include>**/*.xml</include>
 					<include>**/*.story</include>
 				</includes>
-				<!-- Por si acaso: Jesus -->
-				<!-- <excludes> <exclude>*</exclude> </excludes> -->
 			</resource>
 		</resources>
 		<testResources>
@@ -39,8 +37,6 @@
 					<include>**/*.xml</include>
 					<include>**/*.story</include>
 				</includes>
-				<!-- Por si acaso: Jesus -->
-				<!-- <excludes> <exclude>*</exclude> </excludes> -->
 			</testResource>
 		</testResources>
 		<plugins>
@@ -90,8 +86,7 @@
 				</configuration>
 			</plugin>
 
-			<!-- Make jar executable (cannot do this in standalone, because maven 
-				claims cyclic reference) -->
+			<!-- Make jar executable -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -140,14 +135,6 @@
 				</executions>
 			</plugin> -->
 
-
-
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-shade-plugin</artifactId> 
-				<executions> <execution> <phase>package</phase> <goals> <goal>shade</goal> 
-				</goals> <configuration> <shadedArtifactId>artifact-shaded</shadedArtifactId> 
-				<relocations> <relocation> <pattern>com.thoughtworks.paranamer</pattern> 
-				<shadedPattern>com.yourcompany.yourapp.paranamer</shadedPattern> </relocation> 
-				</relocations> </configuration> </execution> </executions> </plugin> -->
 		</plugins>
 		<pluginManagement>
 			<plugins>
