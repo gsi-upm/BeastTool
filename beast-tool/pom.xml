@@ -1,14 +1,38 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>es.upm.dit.gsi</groupId>
-	<version>0.9</version>
 	<artifactId>beast-tool</artifactId>
+	<version>0.9-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
 	<name>Beast Tool</name>
 	<url>http://www.gsi.dit.upm.es</url>
+	<licenses>
+		<license>
+			<name>GNU General Public License, version 2</name>
+			<url>http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt</url>
+		</license>
+	</licenses>
+	<scm>
+		<connection>scm:svn:http://beast-tool.googlecode.com/svn/trunk/</connection>
+		<developerConnection>scm:svn:https://beast-tool.googlecode.com/svn/trunk/</developerConnection>
+		<url>http://beast-tool.googlecode.com/svn/trunk/</url>
+	</scm>
+	<developers>
+
+		<developer>
+			<id>jjsolitario</id>
+			<name>Jorge Juan Solitario</name>
+			<email>jjsolitario@gmail.com</email>
+		</developer>
+
+		<developer>
+			<id>a.carrera</id>
+			<name>Álvaro Carrera Barroso</name>
+			<email>carrerabarroso@gmail.com</email>
+		</developer>
+
+	</developers>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
