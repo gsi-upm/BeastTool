@@ -92,15 +92,23 @@
 			<!-- <plugin> <groupId>org.jbehave</groupId> <artifactId>jbehave-maven-plugin</artifactId> 
 				<version>3.4.5</version> <configuration></configuration> </plugin> -->
 
-			<!-- <plugin>
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-scm-plugin</artifactId> 
+				<version>1.6</version> <configuration> <username>carrerabarroso@gmail.com</username> 
+				<password>qQ4Ef2Wg5tW3</password> </configuration> </plugin> -->
+
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-scm-plugin</artifactId>
-				<version>1.6</version>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.2.1</version>
 				<configuration>
+					<!-- This is a 2.0 beta 6 bug. By default the goals are 'clean verify', 
+						so the modules are not installed, so the dependencies between modules are 
+						not met. With this configuration we force the module installation. -->
+					<!-- <preparationGoals>clean install</preparationGoals> -->
 					<username>carrerabarroso@gmail.com</username>
 					<password>qQ4Ef2Wg5tW3</password>
 				</configuration>
-			</plugin> -->
+			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -164,20 +172,9 @@
 				</configuration>
 			</plugin>
 
-			<!-- <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>1.4</version>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>  -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-gpg-plugin</artifactId> 
+				<version>1.4</version> <executions> <execution> <id>sign-artifacts</id> <phase>verify</phase> 
+				<goals> <goal>sign</goal> </goals> </execution> </executions> </plugin> -->
 		</plugins>
 
 	</build>
