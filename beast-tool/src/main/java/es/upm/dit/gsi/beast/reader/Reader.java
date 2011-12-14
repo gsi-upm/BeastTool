@@ -291,6 +291,16 @@ public class Reader {
 	private void writeClassDatabase(String key, String value) {
 		XStream xstream = new XStream();
 		try {
+			File f = new File("ClassDatabase.xml");
+			if (!f.exists()){
+				try {
+					f.createNewFile();
+					logger.fine("ClassDatabase.xml created.");
+				} catch (IOException e) {
+					logger.severe("ClassDatabase.xml could not be created.");
+					e.printStackTrace();
+				}
+			}
 			HashMap<String, String> hm = (HashMap<String, String>) xstream
 					.fromXML(new FileInputStream("ClassDatabase.xml"));
 			if (!hm.containsKey(key)) {
