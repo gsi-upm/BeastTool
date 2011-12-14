@@ -113,7 +113,7 @@
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-scm-plugin</artifactId>
+				<artifactId>maven-release-plugin</artifactId>
 				<version>1.6</version>
 				<configuration>
 					<username>${svn.username}</username>
