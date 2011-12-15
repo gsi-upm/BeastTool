@@ -434,7 +434,7 @@ public class Reader {
 		try {
 		    properties.load(new FileInputStream(propertiesFile));
 		    new Reader(properties.getProperty("scenarioListPath"),
-		    		properties.getProperty("platform"),
+		    		"\""+properties.getProperty("platform")+"\"",
 					properties.getProperty("mainDirectory"),
 					properties.getProperty("testPath"),
 					properties.getProperty("caseManagerPath"));	    
