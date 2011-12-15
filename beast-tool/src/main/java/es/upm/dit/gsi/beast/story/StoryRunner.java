@@ -29,17 +29,17 @@ public class StoryRunner extends Embedder {
 	public Configuration configuration() {
 
 		Class<?> embedderClass = this.getClass();
-		URL codeLocation = CodeLocations.codeLocationFromClass(embedderClass);
+//		URL codeLocation = CodeLocations.codeLocationFromClass(embedderClass);
 
 		Configuration configuration = new MostUsefulConfiguration();
 		configuration.useStoryLoader(new LoadFromClasspath(embedderClass));
 
-		StoryReporterBuilder builder = new StoryReporterBuilder();
-		builder.withCodeLocation(codeLocation);
-		builder.withDefaultFormats();
-		builder.withFormats(Format.CONSOLE);
-
-		configuration.useStoryReporterBuilder(builder);
+//		StoryReporterBuilder builder = new StoryReporterBuilder();
+//		builder.withCodeLocation(codeLocation);
+//		builder.withDefaultFormats();
+//		builder.withFormats(Format.CONSOLE);
+//
+//		configuration.useStoryReporterBuilder(builder);
 
 		configuration.useStepMonitor(new SilentStepMonitor());
 		return configuration;
