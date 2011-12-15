@@ -182,7 +182,7 @@ public class Reader {
 			logger.severe("ERROR in Reader class");
 		}
 		CreateCaseManager.closeCaseManager(caseManager);
-		logger.info("Scenarios created");
+		logger.info("Plain text has been read and test files are ready");
 
 	}
 
