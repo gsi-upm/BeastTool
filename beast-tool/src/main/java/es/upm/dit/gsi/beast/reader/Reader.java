@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.StringTokenizer;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 import com.thoughtworks.xstream.XStream;
@@ -444,6 +445,15 @@ public class Reader {
 		} catch (Exception e) {
 			logger.severe("ERROR: "+e.toString());
 			throw e;
+		}
+		Properties preferences = new Properties();
+		try {
+			FileInputStream configFile = new FileInputStream(args[1]);
+			preferences.load(configFile);
+			LogManager.getLogManager().readConfiguration(configFile);
+		} catch (IOException ex) {
+			logger.severe("WARNING: Could not open configuration file");
+			logger.severe("WARNING: Logging not configured (console output only)");
 		}
 	}
 }
