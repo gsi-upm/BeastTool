@@ -9,7 +9,7 @@ import java.util.logging.Logger;
  * Main class that generates the CaseManager.java File to run all the test
  * given by our client.
  * 
- * @author Jorge solitario
+ * @author Jorge Solitario
  */
 public class CreateCaseManager {
 
@@ -21,7 +21,7 @@ public class CreateCaseManager {
 	 * @param package_path as es.upm.dit...
 	 * @param dest_dir as src/main/java
 	 * 
-	 * @return the File the its first part writen
+	 * @return the File the its first part written
 	 */
 	public static File startCaseManager(String package_path, String dest_dir){
 		
@@ -57,7 +57,7 @@ public class CreateCaseManager {
 	 * The second method to write caseManager. Its task is to write the Tests to run in our platform,
 	 * so this method is called once for each Test by Reader.java.
 	 * 
-	 * @param caseManager the file where the test must de writen
+	 * @param caseManager the file where the test must de written
 	 * @param test_name the name of its test
 	 * @param test_path the path where the test can be founded
 	 * @param scenario the name of the scenario of the test 

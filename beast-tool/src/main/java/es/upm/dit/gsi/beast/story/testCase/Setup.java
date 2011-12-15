@@ -15,7 +15,7 @@ import es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector;
  *  It is related with the WHEN part of BDD. 
  *  Generic information about plans and goals can be asked.
  * 
- * @author Jorge solitario
+ * @author Jorge Solitario
  */
 public abstract class Setup {
 

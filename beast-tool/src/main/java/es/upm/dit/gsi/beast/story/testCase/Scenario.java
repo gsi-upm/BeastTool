@@ -9,7 +9,7 @@ import es.upm.dit.gsi.beast.platform.jadex.JadexMessenger;
 
 
 /**
- * Lauches the platform and creates its agents.
+ * Launches the platform and creates its agents.
  * It is related with the GIVEN part of BDD. 
  * 
  * @author Jorge Solitario

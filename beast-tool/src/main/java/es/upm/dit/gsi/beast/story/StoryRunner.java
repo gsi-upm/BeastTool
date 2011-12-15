@@ -14,6 +14,7 @@ import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.SilentStepMonitor;
 
 /**
+ * Class to run tests using JBehave
  * 
  * @author Jorge Solitario
  */

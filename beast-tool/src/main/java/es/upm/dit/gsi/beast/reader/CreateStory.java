@@ -19,7 +19,7 @@ public class CreateStory {
 	/**
 	 * Method to create the java file that it's executed from caseManager.
 	 * Its name comes from the Scenario that it's testing.
-	 * Its behaviour is writen in the .story file allocated in the same folder,
+	 * Its behaviour is written in the .story file allocated in the same folder,
 	 * which is the plain text given by the client.
 	 * 
 	 * @param scenario_name the name of the Scenario

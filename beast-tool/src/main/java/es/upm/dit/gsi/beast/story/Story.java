@@ -20,7 +20,7 @@ import es.upm.dit.gsi.beast.story.testCase.Setup;
 
 /**
  * Main class to translate plain text into code, following the Given-When-Then
- * language In the GIVEN part it launchs the platform In the WHEN part it
+ * language In the GIVEN part it launches the platform In the WHEN part it
  * configures the state of its agents In the THEN part it checks the correct
  * behaviour The main purpose of it consists of knowing agents' state/properties
  * without changing its code.
@@ -64,7 +64,7 @@ public abstract class Story extends JUnitStory {
 	}
 
 	/**
-	 * This methos launches the setup, related with the WHEN part
+	 * This method launches the setup, related with the WHEN part
 	 * 
 	 * @param setupName
 	 */
@@ -105,12 +105,12 @@ public abstract class Story extends JUnitStory {
 	}
 
 	/**
-	 * It asigns one direction to each Scenario, Setup and Evaluation given by
+	 * It assigns one direction to each Scenario, Setup and Evaluation given by
 	 * the client in the plain text. This information is saved in
 	 * Classdatabase.xml, which is typically located in the root of our project.
 	 * 
 	 * @param stepName
-	 *            , the plain text writen by the client.
+	 *            , the plain text written by the client.
 	 * @return the path where the step is saved
 	 */
 	@SuppressWarnings("unchecked")

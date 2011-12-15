@@ -1,5 +1,7 @@
 package es.upm.dit.gsi.beast.platform.jadex;
 
+import java.util.logging.Logger;
+
 import jadex.bdi.runtime.IBDIInternalAccess;
 import jadex.bdi.runtime.IGoal;
 import jadex.bdi.runtime.IPlan;
@@ -17,7 +19,7 @@ import es.upm.dit.gsi.beast.platform.AgentIntrospector;
  */
 public class JadexAgentIntrospector extends AgentIntrospector{
 
-	
+	static Logger logger = Logger.getLogger("JadexAgentIntrospector");
 	private static Object belief_value;
 	private static IPlan[] plans;
 	private static IGoal[] goals;
@@ -85,10 +87,10 @@ public class JadexAgentIntrospector extends AgentIntrospector{
 			    	/*
 			    	 * The following code its an example of what can be retrieved using getAgentPlans
 			    	 */
-				    System.out.println("\nActived Plans : "+plan.getBody().toString());
-			    	System.out.println("Plan Life Cycle State: "+plan.getLifecycleState());
+			    	logger.info("\nActived Plans : "+plan.getBody().toString());
+			    	logger.info("Plan Life Cycle State: "+plan.getLifecycleState());
 //			    	System.out.println("Plan Reason: "+plan.getReason());
-				    System.out.println("Plan Waitqueue.isEmpty: "+plan.getWaitqueue().isEmpty());
+			    	logger.info("Plan Waitqueue.isEmpty: "+plan.getWaitqueue().isEmpty());
 //			    	System.out.println("Plan Body Class: " + plan.PLANLIFECYCLESTATE_BODY);
 			    }
 			    return null;
@@ -118,12 +120,12 @@ public class JadexAgentIntrospector extends AgentIntrospector{
 			    	/*
 			    	 * The following code its an example of what can be retrieved using getAgentGoals
 			    	 */
-			    	System.out.println("\nGoal Name: "+goal.getType());
-			    	System.out.println("Goal Life-Cycle State: "+goal.getLifecycleState());
-			    	System.out.println("Goal.isActive: "+goal.isActive());
-			    	System.out.println("Goal.isSucceeded: "+goal.isSucceeded());
-			    	System.out.println("Goal.isretry: "+goal.isRetry());
-			    	System.out.println("Goal.isFinished: "+goal.isFinished());
+			    	logger.info("\nGoal Name: "+goal.getType());
+			    	logger.info("Goal Life-Cycle State: "+goal.getLifecycleState());
+			    	logger.info("Goal.isActive: "+goal.isActive());
+			    	logger.info("Goal.isSucceeded: "+goal.isSucceeded());
+			    	logger.info("Goal.isretry: "+goal.isRetry());
+			    	logger.info("Goal.isFinished: "+goal.isFinished());
 			    }		    
 			    return null;
 			}

@@ -19,7 +19,7 @@ import com.thoughtworks.xstream.XStream;
  * Main class to transform the plain text given by the client to the necessary
  * classes to run each Test. These classes are the Scenario, Setup and
  * Evaluation, which emulate the GIVEN, WHEN and THEN parts of the plain text;
- * the .story file whith the plain text of the test and the its .java class with
+ * the .story file whit the plain text of the test and the its .java class with
  * the same name to interpret it. Furthermore, one casemanager must be created,
  * which will run all the tests.
  * 
