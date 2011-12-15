@@ -1,10 +1,5 @@
 package es.upm.dit.gsi.beast.platform;
 
-import es.upm.dit.gsi.beast.platform.jadex.JadexConnector;
-
-
-
-
 /**
  * Abstract Class that defines method
  * 
