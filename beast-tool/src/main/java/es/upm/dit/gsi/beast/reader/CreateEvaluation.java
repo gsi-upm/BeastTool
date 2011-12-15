@@ -49,7 +49,7 @@ public class CreateEvaluation {
 		
 		JavaMethod jm = js.newJavaMethod("checkStates","void","public");
 		jm.newComment();
-		JavaComment methodComment = js.getComment();
+		JavaComment methodComment = jm.getComment();
 		methodComment.addLine(" ");
 		methodComment.addLine("Here the description given by the client must be written,");
 		methodComment.addLine("which is: "+client_description.toUpperCase());
