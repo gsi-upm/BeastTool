@@ -432,6 +432,15 @@ public class Reader {
 		} else {
 			logger.severe("No properties file found. Set the path of properties file as argument.");
 		}
+		Properties preferences = new Properties();
+		try {
+			FileInputStream configFile = new FileInputStream(args[1]);
+			preferences.load(configFile);
+			LogManager.getLogManager().readConfiguration(configFile);
+		} catch (IOException ex) {
+			logger.severe("WARNING: Could not open configuration file");
+			logger.severe("WARNING: Logging not configured (console output only)");
+		}
 		try {
 		    properties.load(new FileInputStream(propertiesFile));
 		    new Reader(properties.getProperty("scenarioListPath"),
@@ -446,14 +455,6 @@ public class Reader {
 			logger.severe("ERROR: "+e.toString());
 			throw e;
 		}
-		Properties preferences = new Properties();
-		try {
-			FileInputStream configFile = new FileInputStream(args[1]);
-			preferences.load(configFile);
-			LogManager.getLogManager().readConfiguration(configFile);
-		} catch (IOException ex) {
-			logger.severe("WARNING: Could not open configuration file");
-			logger.severe("WARNING: Logging not configured (console output only)");
-		}
+		
 	}
 }
