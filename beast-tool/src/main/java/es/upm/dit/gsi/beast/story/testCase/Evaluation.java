@@ -41,7 +41,7 @@ public abstract class Evaluation {
 	 * 
 	 * @param agent_name
 	 * @param belief_name
-	 * @return
+	 * @return the value of the belief
 	 */
 	protected Object getBeliefValue(String agent_name, String belief_name) {
 		return setup.getBeliefValue(agent_name, belief_name);

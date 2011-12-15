@@ -18,8 +18,8 @@ public class CreateCaseManager {
 	 * This method creates CaseManager file and writes on it: the package,
 	 * the imports, its comments and the class name.
 	 * 
-	 * @param package_path, as es.upm.dit...
-	 * @param dest_dir, as src/main/java
+	 * @param package_path as es.upm.dit...
+	 * @param dest_dir as src/main/java
 	 * 
 	 * @return the File the its first part writen
 	 */
@@ -57,13 +57,13 @@ public class CreateCaseManager {
 	 * The second method to write caseManager. Its task is to write the Tests to run in our platform,
 	 * so this method is called once for each Test by Reader.java.
 	 * 
-	 * @param caseManager, the file where the test must de writen
-	 * @param test_name, the name of its test
-	 * @param test_path, the path where the test can be founded
-	 * @param scenario, the name of the scenario of the test 
-	 * @param given, the GIVEN part of the plain text given by the client
-	 * @param when, the WHEN part of the plain text given by the client
-	 * @param then, the THEN part of the plain text given by the client
+	 * @param caseManager the file where the test must de writen
+	 * @param test_name the name of its test
+	 * @param test_path the path where the test can be founded
+	 * @param scenario the name of the scenario of the test 
+	 * @param given the GIVEN part of the plain text given by the client
+	 * @param when the WHEN part of the plain text given by the client
+	 * @param then the THEN part of the plain text given by the client
 	 */
 	public static void createTest(File caseManager, String test_name, String test_path, String scenario, String given, String when, String then) {
 		FileWriter caseManagerWriter;

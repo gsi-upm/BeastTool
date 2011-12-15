@@ -33,7 +33,7 @@ public abstract class Scenario {
 	/**
 	 * Creates a real agent in the platform
 	 * 
-	 * @param name The name that the agent is gonna have in the platform
+	 * @param agent_name The name that the agent is gonna have in the platform
 	 * @param path The path of the description (xml) of the agent 
 	 */
 	protected void startAgent(String agent_name, String path) {
@@ -45,6 +45,7 @@ public abstract class Scenario {
 	 * It sends one message of requested type to an agent
 	 * 
 	 * @param agent_name The name of the agent that receives the message
+	 * @param msgtype The type of the message (SFipa.INFORM - SFipa.REQUEST)
 	 * @param message_content The content of the message
 	 */
 	public void sendMessageToAgent(String agent_name, String msgtype, Object message_content) {
@@ -60,8 +61,8 @@ public abstract class Scenario {
 	 * The same as above, but this method sends the same message to many agents.
 	 * 
 	 * @param agent_name The name of the agent that receives the message
+	 * @param msgtype The type of the message (SFipa.INFORM - SFipa.REQUEST)
 	 * @param message_content The content of the message
-	 * @return The content of sended message
 	 */
 	public void sendMessageToAgents(String[] agent_name, String msgtype, Object message_content) {
 		
@@ -73,10 +74,10 @@ public abstract class Scenario {
 	 * It sends one message of requested type to an agent, including some extra
 	 * parameters in the message event, such as ontology or language.
 	 * 
-	 * @param agent_name
-	 * @param msgtype
-	 * @param message_content
-	 * @param properties
+	 * @param agent_name  The name of the agent that receives the message
+	 * @param msgtype The type of the message (SFipa.INFORM - SFipa.REQUEST)
+	 * @param message_content The content of the message
+	 * @param properties to add to the message
 	 */
 	public void sendMessageToAgentsWithExtraProperties(String agent_name, String msgtype, Object message_content, ArrayList<Tuple> properties) {
 		

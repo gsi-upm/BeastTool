@@ -50,7 +50,7 @@ public class JadexAgentIntrospector extends AgentIntrospector{
 	 * @param agent_name The name of the agent to change a belief
 	 * @param belief_name The name of the belief to change
 	 * @param new_value The new value of the belief to be changed
-	 * @param jadexconnector The connector to get the external access
+	 * @param jadexConnector The connector to get the external access
 	 */
 	public static void setBeliefValue(String agent_name, final String belief_name,
 			final Object new_value, JadexConnector jadexConnector) {
@@ -70,8 +70,8 @@ public class JadexAgentIntrospector extends AgentIntrospector{
 	 * It can be used to check the correct behaviour of the agent.
 	 * 
 	 * @param agent_name The name of the agent
-	 * @param jadexconnector The connector to get the external access
-	 * @return plans, the IPlan[] with all the information, so the tester can look for information
+	 * @param jadexConnector The connector to get the external access
+	 * @return plans the IPlan[] with all the information, so the tester can look for information
 	 */
 	public static IPlan[] getAgentPlans (final String agent_name, JadexConnector jadexConnector) {
 
@@ -103,8 +103,8 @@ public class JadexAgentIntrospector extends AgentIntrospector{
 	 * It can be used to check the correct behaviour of the agent.
 	 * 
 	 * @param agent_name The name of the agent
-	 * @param jadexconnector The connector to get the external access
-	 * @return goals, the IGoal[] with all the information, so the tester can look for information
+	 * @param jadexConnector The connector to get the external access
+	 * @return goals the IGoal[] with all the information, so the tester can look for information
 	 */
 	public static IGoal[] getAgentGoals (final String agent_name, JadexConnector jadexConnector) {
 

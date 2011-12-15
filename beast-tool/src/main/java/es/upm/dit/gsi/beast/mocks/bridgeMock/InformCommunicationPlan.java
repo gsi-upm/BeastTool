@@ -1,18 +1,18 @@
 package es.upm.dit.gsi.beast.mocks.bridgeMock;
 
+import jadex.base.fipa.SFipa;
+import jadex.bdi.runtime.IMessageEvent;
+import jadex.bridge.IComponentIdentifier;
+
 import java.util.logging.Logger;
 
 import es.upm.dit.gsi.beast.mocks.common.AgentBehaviour;
 import es.upm.dit.gsi.beast.mocks.common.MockAgentPlan;
 
-import jadex.base.fipa.SFipa;
-import jadex.bdi.runtime.IMessageEvent;
-import jadex.bridge.IComponentIdentifier;
-
 /**
+ * Class to send a Inform message
  * 
  * @author Jorge Solitario
- *
  */
 public class InformCommunicationPlan extends MockAgentPlan{
 	

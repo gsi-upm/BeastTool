@@ -29,7 +29,7 @@ public class CreateScenario {
 	 * IT does not check if the file is already created, overwriting it.
 	 * 
 	 * @param scenario_name The name given by the client
-	 * @param path The package of the test
+	 * @param package_path The package of the test
 	 * @param client_description The plain text given by the client in the THEN part
 	 * @param dest_dir the working directory (typically src/main/java)
 	 */

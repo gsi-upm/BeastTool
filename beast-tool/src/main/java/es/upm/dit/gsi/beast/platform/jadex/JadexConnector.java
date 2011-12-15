@@ -28,8 +28,6 @@ public class JadexConnector extends Connector{
 	/**
 	 * Platform is launched and the external access of the message service and
 	 * the component management service (CMS) are saved
-	 * 
-	 * @return the external access of the platform
 	 */
 	public void launchPlatform() {
 
@@ -76,7 +74,7 @@ public class JadexConnector extends Connector{
 	/**
 	 * Creates a real agent in the platform
 	 * 
-	 * @param name The name that the agent is gonna have in the platform
+	 * @param agent_name The name that the agent is gonna have in the platform
 	 * @param path The path of the description (xml) of the agent 
 	 */
 	public void createAgent(String agent_name, String path) {

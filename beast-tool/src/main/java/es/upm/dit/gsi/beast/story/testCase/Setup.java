@@ -48,7 +48,7 @@ public abstract class Setup {
 	 * This method takes the value of an agent's belief through its external access
 	 * 
 	 * @param agent_name The name of the agent
-	 * @param belief_name The aame of the belief inside agent's adf
+	 * @param belief_name The name of the belief inside agent's adf
 	 * @return belief_value The value of the requested belief
 	 */
 	public Object getBeliefValue (String agent_name, final String belief_name) {
@@ -87,6 +87,7 @@ public abstract class Setup {
 	 * It can be used to check the correct behaviour of the agent.
 	 * 
 	 * @param agent_name The name of the agent
+	 * @return IPlan[] so the tester can get the plans information
 	 */
 	public IPlan[] getAgentPlans (final String agent_name) {
 
@@ -98,8 +99,8 @@ public abstract class Setup {
 	 * This method prints goal information of an agent through its external access.
 	 * It can be used to check the correct behaviour of the agent.
 	 * 
-	 * @param agent_name
-	 * @return
+	 * @param agent_name  The name of the agent
+	 * @return IGoal[] so the tester can get the goals information
 	 */
 	public IGoal[] getAgentGoals (final String agent_name) {
 		return JadexAgentIntrospector.getAgentGoals(agent_name,scenario.jadexConnector);
@@ -109,10 +110,10 @@ public abstract class Setup {
 	 * It sends one message of requested type to an agent, including some extra
 	 * parameters in the message event, such as ontology or language.
 	 * 
-	 * @param string
-	 * @param inform
-	 * @param ore_mine
-	 * @param properties
+	 * @param agent_name The name of the agent
+	 * @param msgtype The type of the message (SFipa.INFORM - SFipa.REQUEST)
+	 * @param message_content  The content of the message
+	 * @param properties to add to the message
 	 */
 	public void sendMessageToAgentWithExtraProperties(String agent_name,String msgtype, Object message_content, ArrayList<Tuple> properties) {
 		scenario.sendMessageToAgentsWithExtraProperties(agent_name, msgtype, message_content, properties);		

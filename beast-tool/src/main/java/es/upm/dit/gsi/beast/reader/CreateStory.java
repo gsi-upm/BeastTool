@@ -22,9 +22,9 @@ public class CreateStory {
 	 * Its behaviour is writen in the .story file allocated in the same folder,
 	 * which is the plain text given by the client.
 	 * 
-	 * @param scenario_name, the name of the Scenario
-	 * @param path, the package
-	 * @param dest_dir, the main folder main (typically src/main/java)
+	 * @param scenario_name the name of the Scenario
+	 * @param package_path the package
+	 * @param dest_dir the main folder main (typically src/main/java)
 	 */
 	public static void createStory(String scenario_name, String package_path, String dest_dir){
 
