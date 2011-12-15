@@ -32,6 +32,7 @@ public class CreateSetup {
 	 */
 	public static void createSetup(String scenario_name, String path, String client_description, String dest_dir){
 		
+		Logger logger = Logger.getLogger("CreateSetup.java");
 
 		JavaSourceFactory factory = new JavaSourceFactory();
 		
@@ -60,10 +61,10 @@ public class CreateSetup {
 		methodComment.addLine("which is: "+client_description.toUpperCase());
 		
 		js.addExtends(Setup.class);
+//		logger.info("Setup"+scenario_name+" has been created in "+dest_dir+Reader.createFolderPath(path));
 		try {
 			factory.write(new File(dest_dir));
 		} catch (IOException e) {
-			Logger logger = Logger.getLogger("CreateSetup.java");
 			logger.severe("ERROR writing the setup of "+scenario_name);;
 		}	
 	}

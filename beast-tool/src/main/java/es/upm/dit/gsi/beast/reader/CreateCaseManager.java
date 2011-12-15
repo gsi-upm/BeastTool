@@ -25,6 +25,8 @@ public class CreateCaseManager {
 	 */
 	public static File startCaseManager(String package_path, String dest_dir){
 		
+		Logger logger = Logger.getLogger("CreateCaseManager.startCaseManager");
+
 		File folder =Reader.createFolder(package_path,dest_dir);
 		File caseManager = new File(folder, "CaseManager.java");
 		FileWriter caseManagerWriter;
@@ -45,9 +47,9 @@ public class CreateCaseManager {
 			caseManagerWriter.write("\n");
 			caseManagerWriter.flush();
 			caseManagerWriter.close();
+//			logger.info("CaseManager has been created in "+dest_dir+Reader.createFolderPath(package_path));
 		} catch (IOException e) {
-			Logger logger = Logger.getLogger("CreateCaseManager.startCaseManager");
-			logger.info("ERROR writing the file");
+			logger.severe("ERROR writing the file");
 		}
 				
 		return caseManager;		

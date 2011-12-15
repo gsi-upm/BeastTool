@@ -29,6 +29,8 @@ public class CreateStory {
 	 */
 	public static void createStory(String scenario_name, String platform_name, String package_path, String dest_dir){
 
+		Logger logger = Logger.getLogger("CreateStory.java");
+		
 		File f = Reader.createFolder(package_path, dest_dir);
 
 		File javaFile = new File(f, scenario_name+".java");
@@ -85,8 +87,10 @@ public class CreateStory {
 			fw.flush();
 			fw.close();
 			
+//			logger.info(scenario_name+" has been created in "+dest_dir+" "+Reader.createFolderPath(package_path));
+			
 		} catch (IOException e) {
-			Logger logger = Logger.getLogger("CreateStory.java");
+			
 			logger.severe("ERROR: The file "+scenario_name+".java can not be writed");
 		}
 	}

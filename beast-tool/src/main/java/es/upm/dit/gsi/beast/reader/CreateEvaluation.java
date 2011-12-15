@@ -21,6 +21,7 @@ import es.upm.dit.gsi.beast.story.testCase.Evaluation;
  * @author Jorge Solitario
  */
 public class CreateEvaluation {
+	
 
 	/**
 	 * Method to create the evaluation of each test.
@@ -32,6 +33,8 @@ public class CreateEvaluation {
 	 * @param dest_dir the working directory (typically src/main/java)
 	 */
 	public static void createEvaluation(String scenario_name, String path, String client_description, String dest_dir){
+		Logger logger = Logger.getLogger("CreateEvaluation");
+
 		JavaSourceFactory factory = new JavaSourceFactory();
 		
 		JavaQName className = JavaQNameImpl.getInstance(path,"Evaluation"+scenario_name);
@@ -55,10 +58,10 @@ public class CreateEvaluation {
 		methodComment.addLine("which is: "+client_description.toUpperCase());
 		
 		js.addExtends(Evaluation.class);
+//		logger.info("Evaluation"+scenario_name+" has been created in "+dest_dir+Reader.createFolderPath(path));
 		try {
 			factory.write(new File(dest_dir));
 		} catch (IOException e) {
-			Logger logger = Logger.getLogger("CreateEvaluation");
 			logger.severe("ERROR writing the evaluation of "+scenario_name);
 		}		
 	}

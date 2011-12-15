@@ -35,6 +35,8 @@ public class CreateScenario {
 	 */
 	public static void createScenario(String scenario_name, String package_path, String client_description, String dest_dir){
 		
+		Logger logger = Logger.getLogger("CreateScenario.java");
+		
 		JavaSourceFactory factory = new JavaSourceFactory();
 		
 		JavaQName className = JavaQNameImpl.getInstance(package_path,"Scenario"+scenario_name);
@@ -78,10 +80,10 @@ public class CreateScenario {
 		methodComment2.addLine("@param mock_type The type of the mock, taken from mocks.common.Definitions.[bridge,listener,repository]");
 		methodComment2.addLine("@param mock_configuration The behaviour of the mock and its df_service_name");
 		
+//		logger.fine("Scenario"+scenario_name+" has been created in "+dest_dir+Reader.createFolderPath(package_path));
 		try {
 			factory.write(new File(dest_dir));
 		} catch (IOException e) {
-			Logger logger = Logger.getLogger("CreateScenario.java");
 			logger.severe("ERROR writing the scenario of "+scenario_name);
 		}	
 	}
