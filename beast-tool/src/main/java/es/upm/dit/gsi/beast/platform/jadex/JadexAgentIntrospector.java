@@ -7,10 +7,12 @@ import jadex.bdi.runtime.IGoal;
 import jadex.bdi.runtime.IPlan;
 import jadex.bdi.runtime.Plan;
 import jadex.bridge.IComponentStep;
+import jadex.bridge.IExternalAccess;
 import jadex.bridge.IInternalAccess;
 import jadex.commons.future.IFuture;
 import jadex.commons.future.ThreadSuspendable;
 import es.upm.dit.gsi.beast.platform.AgentIntrospector;
+import es.upm.dit.gsi.beast.platform.Connector;
 
 /**
  * To get information about our jadex agents.
@@ -24,18 +26,25 @@ public class JadexAgentIntrospector extends AgentIntrospector{
 	private static IPlan[] plans;
 	private static IGoal[] goals;
 	
+	private static JadexAgentIntrospector INSTANCE = new JadexAgentIntrospector();
+	
+    private JadexAgentIntrospector() {}
+ 
+    public static JadexAgentIntrospector getInstance() {
+        return INSTANCE;
+    }
 	
 	/**
 	 * This method takes the value of an agent's belief through its external access
 	 * 
 	 * @param agent_name The name of the agent
 	 * @param belief_name The name of the belief inside agent's adf
-	 * @param jadexconnector The connector to get the external access
+	 * @param connector The connector to get the external access
 	 * @return belief_value The value of the requested belief
 	 */
-	public static Object getBeliefValue(String agent_name, final String belief_name, JadexConnector jadexconnector) {
+	public Object getBeliefValue(String agent_name, final String belief_name, Connector connector) {
 		
-		jadexconnector.getAgentsExternalAccess(agent_name).scheduleStep(new IComponentStep<Integer>()		{
+		((IExternalAccess) connector.getAgentsExternalAccess(agent_name)).scheduleStep(new IComponentStep<Integer>()		{
 			
 			public IFuture<Integer> execute(IInternalAccess ia) {
 				IBDIInternalAccess bia = (IBDIInternalAccess)ia;
@@ -52,12 +61,12 @@ public class JadexAgentIntrospector extends AgentIntrospector{
 	 * @param agent_name The name of the agent to change a belief
 	 * @param belief_name The name of the belief to change
 	 * @param new_value The new value of the belief to be changed
-	 * @param jadexConnector The connector to get the external access
+	 * @param connector The connector to get the external access
 	 */
-	public static void setBeliefValue(String agent_name, final String belief_name,
-			final Object new_value, JadexConnector jadexConnector) {
+	public void setBeliefValue(String agent_name, final String belief_name,
+			final Object new_value, Connector connector) {
 		
-		jadexConnector.getAgentsExternalAccess(agent_name).scheduleStep(new IComponentStep<Integer>()		{
+		((IExternalAccess) connector.getAgentsExternalAccess(agent_name)).scheduleStep(new IComponentStep<Integer>()		{
 			
 			public IFuture<Integer> execute(IInternalAccess ia) {
 				IBDIInternalAccess bia = (IBDIInternalAccess)ia;
@@ -72,12 +81,12 @@ public class JadexAgentIntrospector extends AgentIntrospector{
 	 * It can be used to check the correct behaviour of the agent.
 	 * 
 	 * @param agent_name The name of the agent
-	 * @param jadexConnector The connector to get the external access
+	 * @param connector The connector to get the external access
 	 * @return plans the IPlan[] with all the information, so the tester can look for information
 	 */
-	public static IPlan[] getAgentPlans (final String agent_name, JadexConnector jadexConnector) {
+	public IPlan[] getAgentPlans (final String agent_name, Connector connector) {
 
-		jadexConnector.getAgentsExternalAccess(agent_name).scheduleStep(new IComponentStep<Plan>()		{
+		((IExternalAccess) connector.getAgentsExternalAccess(agent_name)).scheduleStep(new IComponentStep<Plan>()		{
 			
 			public IFuture<Plan> execute(IInternalAccess ia) {
 				
@@ -105,12 +114,12 @@ public class JadexAgentIntrospector extends AgentIntrospector{
 	 * It can be used to check the correct behaviour of the agent.
 	 * 
 	 * @param agent_name The name of the agent
-	 * @param jadexConnector The connector to get the external access
+	 * @param connector The connector to get the external access
 	 * @return goals the IGoal[] with all the information, so the tester can look for information
 	 */
-	public static IGoal[] getAgentGoals (final String agent_name, JadexConnector jadexConnector) {
+	public IGoal[] getAgentGoals (final String agent_name, Connector connector) {
 
-		jadexConnector.getAgentsExternalAccess(agent_name).scheduleStep(new IComponentStep<Plan>()		{
+		((IExternalAccess) connector.getAgentsExternalAccess(agent_name)).scheduleStep(new IComponentStep<Plan>()		{
 			
 			public IFuture<Plan> execute(IInternalAccess ia) {
 				IBDIInternalAccess bia = (IBDIInternalAccess)ia;

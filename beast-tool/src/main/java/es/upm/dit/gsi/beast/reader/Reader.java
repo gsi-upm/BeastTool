@@ -51,9 +51,9 @@ public class Reader {
 	 * @param casemanager_path
 	 *            , the path where casemanager must be created
 	 */
-	public Reader(String ScenariosList, String dest_dir,
+	public Reader(String ScenariosList, String platformName, String dest_dir,
 			String tests_package_path, String casemanager_path) {
-		this.generateJavaFiles(ScenariosList, dest_dir, tests_package_path,
+		this.generateJavaFiles(ScenariosList, platformName, dest_dir, tests_package_path,
 				casemanager_path);
 	}
 
@@ -63,6 +63,8 @@ public class Reader {
 	 * 
 	 * @param ScenariosList
 	 *            , it the plain text given by the client
+	 * @param platformName
+	 * 			  , to choose the platform
 	 * @param dest_dir
 	 *            , the folder where our classes are created
 	 * @param tests_package_path
@@ -70,7 +72,7 @@ public class Reader {
 	 * @param casemanager_path
 	 *            , the path where casemanager must be created
 	 */
-	private void generateJavaFiles(String ScenariosList, String dest_dir,
+	private void generateJavaFiles(String ScenariosList, String platformName, String dest_dir,
 			String tests_package_path, String casemanager_path) {
 
 		BufferedReader fileReader = createFileReader(ScenariosList);
@@ -104,7 +106,7 @@ public class Reader {
 						}
 						aux_package_path = tests_package_path + "."
 								+ scenarioJavaName;
-						CreateStory.createStory(scenarioJavaName,
+						CreateStory.createStory(scenarioJavaName, platformName,
 								aux_package_path, dest_dir);// Writes
 															// StoryExample.java
 						story_file_writer = createFileWriter(scenarioStoryName,
@@ -432,6 +434,7 @@ public class Reader {
 		try {
 		    properties.load(new FileInputStream(propertiesFile));
 		    new Reader(properties.getProperty("scenarioListPath"),
+		    		properties.getProperty("platform"),
 					properties.getProperty("mainDirectory"),
 					properties.getProperty("testPath"),
 					properties.getProperty("caseManagerPath"));	    

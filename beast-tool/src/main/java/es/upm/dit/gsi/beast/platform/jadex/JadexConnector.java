@@ -106,7 +106,7 @@ public class JadexConnector extends Connector {
 	 *            The name of the agent in the platform
 	 * @return The IComponentIdentifier of the agent in the platform
 	 */
-	protected IExternalAccess getAgentsExternalAccess(String agent_name) {
+	public IExternalAccess getAgentsExternalAccess(String agent_name) {
 
 		return cmsService.getExternalAccess(getAgentID(agent_name)).get(
 				new ThreadSuspendable());

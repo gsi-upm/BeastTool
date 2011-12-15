@@ -6,7 +6,8 @@ import jadex.commons.Tuple;
 
 import java.util.ArrayList;
 
-import es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector;
+import es.upm.dit.gsi.beast.platform.AgentIntrospector;
+import es.upm.dit.gsi.beast.platform.PlatformSelector;
 
 
 /**
@@ -20,6 +21,7 @@ import es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector;
 public abstract class Setup {
 
 	private Scenario scenario;
+	private AgentIntrospector introspector;
 	public abstract void setStates();
 	
 	/**
@@ -29,6 +31,7 @@ public abstract class Setup {
 	 */
 	public void setScenario(Scenario scenario2) {
 		this.scenario = scenario2;
+		introspector = PlatformSelector.getAgentIntrospector(scenario.platform);
 		setStates();		
 	}
 	
@@ -41,7 +44,7 @@ public abstract class Setup {
 	 */
 	public void setBeliefValue (String agent_name, final String belief_name, final Object new_value ) {
 
-		JadexAgentIntrospector.setBeliefValue (agent_name, belief_name, new_value, scenario.jadexConnector);	
+		introspector.setBeliefValue (agent_name, belief_name, new_value, scenario.connector);	
 	}
 	
 	/**
@@ -53,7 +56,7 @@ public abstract class Setup {
 	 */
 	public Object getBeliefValue (String agent_name, final String belief_name) {
 
-		return JadexAgentIntrospector.getBeliefValue (agent_name, belief_name, scenario.jadexConnector);
+		return introspector.getBeliefValue (agent_name, belief_name, scenario.connector);
 	}
 
 	
@@ -91,7 +94,7 @@ public abstract class Setup {
 	 */
 	public IPlan[] getAgentPlans (final String agent_name) {
 
-		return JadexAgentIntrospector.getAgentPlans(agent_name,scenario.jadexConnector);
+		return (IPlan[]) introspector.getAgentPlans(agent_name,scenario.connector);
 	}		
 	
 	
@@ -103,7 +106,7 @@ public abstract class Setup {
 	 * @return IGoal[] so the tester can get the goals information
 	 */
 	public IGoal[] getAgentGoals (final String agent_name) {
-		return JadexAgentIntrospector.getAgentGoals(agent_name,scenario.jadexConnector);
+		return (IGoal[]) introspector.getAgentGoals(agent_name,scenario.connector);
 	}
 
 	/**

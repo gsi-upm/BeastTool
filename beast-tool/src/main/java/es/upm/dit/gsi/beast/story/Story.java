@@ -33,13 +33,14 @@ public abstract class Story extends JUnitStory {
 	Scenario scenario;
 	Setup setup;
 	Evaluation evaluation;
+	String platform;
 
 	/**
 	 * This method creates the scenario, which is the GIVEN part
 	 * 
 	 * @param scenarioName
 	 */
-	public void createScenario(String scenarioName) {
+	public void createScenario(String scenarioName, String platform) {
 		String path = getPath(scenarioName);
 		ClassLoader loader = ClassLoader.getSystemClassLoader();
 
@@ -60,7 +61,7 @@ public abstract class Story extends JUnitStory {
 
 		logger.info("The platform is almost started...");
 
-		scenario.startPlatform();
+		scenario.startPlatform(platform);
 	}
 
 	/**

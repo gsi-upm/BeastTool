@@ -23,10 +23,11 @@ public class CreateStory {
 	 * which is the plain text given by the client.
 	 * 
 	 * @param scenario_name the name of the Scenario
+	 * @param platform_name 
 	 * @param package_path the package
 	 * @param dest_dir the main folder main (typically src/main/java)
 	 */
-	public static void createStory(String scenario_name, String package_path, String dest_dir){
+	public static void createStory(String scenario_name, String platform_name, String package_path, String dest_dir){
 
 		File f = Reader.createFolder(package_path, dest_dir);
 
@@ -58,7 +59,7 @@ public class CreateStory {
 	        fw.write("	@Given(\"$scenarioName\")\n");
 	        fw.write("	public void createScenario(String scenarioName) {\n");
 	        fw.write("\n");
-	        fw.write("		super.createScenario(scenarioName);\n");
+	        fw.write("		super.createScenario(scenarioName, " + platform_name + ");\n");
 	        fw.write("	}\n");
 	        fw.write("\n");
 			fw.write("  /**\n");

@@ -4,8 +4,9 @@ import jadex.commons.Tuple;
 
 import java.util.ArrayList;
 
-import es.upm.dit.gsi.beast.platform.jadex.JadexConnector;
-import es.upm.dit.gsi.beast.platform.jadex.JadexMessenger;
+import es.upm.dit.gsi.beast.platform.Connector;
+import es.upm.dit.gsi.beast.platform.Messenger;
+import es.upm.dit.gsi.beast.platform.PlatformSelector;
 
 
 /**
@@ -17,15 +18,18 @@ import es.upm.dit.gsi.beast.platform.jadex.JadexMessenger;
 public abstract class Scenario {
 	
 	abstract public void startAgents();
-	JadexConnector jadexConnector;
+	Connector connector;
+	String platform;
+	Messenger messenger;
 	
 	
 	/**
 	 *  Main constructor of the class, launches the platform
 	 */
-	public void startPlatform(){
-		jadexConnector = new JadexConnector();
-		jadexConnector.launchPlatform();
+	public void startPlatform(String platform){
+		connector = PlatformSelector.getConnector(platform);
+		connector.launchPlatform();
+		messenger = PlatformSelector.getMessenger(platform);
 		startAgents();
 	}
 	
@@ -37,7 +41,7 @@ public abstract class Scenario {
 	 * @param path The path of the description (xml) of the agent 
 	 */
 	protected void startAgent(String agent_name, String path) {
-		jadexConnector.createAgent(agent_name,path);
+		connector.createAgent(agent_name,path);
 	}
 
 	
@@ -52,7 +56,7 @@ public abstract class Scenario {
 				
 		String[] names = new String[1];
 		names[0] = agent_name;
-		JadexMessenger.sendMessageToAgents(names, msgtype, message_content, jadexConnector);
+		messenger.sendMessageToAgents(names, msgtype, message_content, connector);
 	}
 	
 
@@ -66,7 +70,7 @@ public abstract class Scenario {
 	 */
 	public void sendMessageToAgents(String[] agent_name, String msgtype, Object message_content) {
 		
-		JadexMessenger.sendMessageToAgents(agent_name, msgtype, message_content, jadexConnector);	
+		messenger.sendMessageToAgents(agent_name, msgtype, message_content, connector);	
 	}
 
 	
@@ -83,7 +87,7 @@ public abstract class Scenario {
 		
 		String[] names = new String[1];
 		names[0] = agent_name;
-		JadexMessenger.sendMessageToAgentsWithExtraProperties(names, msgtype, message_content, properties, jadexConnector);	
+		messenger.sendMessageToAgentsWithExtraProperties(names, msgtype, message_content, properties, connector);	
 	}
 	
 }
