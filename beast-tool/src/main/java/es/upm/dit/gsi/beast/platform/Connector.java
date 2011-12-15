@@ -5,16 +5,16 @@ package es.upm.dit.gsi.beast.platform;
  * 
  * @author Jorge Solitario
  */
-public abstract class Connector {
+public interface Connector {
 
-	public abstract void launchPlatform();
+	public void launchPlatform();
 
-	public abstract void createAgent(String agent_name, String path);
+	public void createAgent(String agent_name, String path);
 	
-	public abstract Object getAgentID(String agent_name);
+	public Object getAgentID(String agent_name);
 
-	public abstract Object getMessageService();
+	public Object getMessageService();
 
-	public abstract Object getAgentsExternalAccess(String agent_name);
+	public Object getAgentsExternalAccess(String agent_name);
 
 }

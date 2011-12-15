@@ -7,14 +7,14 @@ package es.upm.dit.gsi.beast.platform;
  * 
  * @author Jorge Solitario
  */
-public abstract class AgentIntrospector {
+public interface AgentIntrospector {
 
-	public abstract Object getBeliefValue(String agent_name, final String belief_name, Connector connector);
+	public Object getBeliefValue(String agent_name, final String belief_name, Connector connector);
 	
-	public abstract void setBeliefValue(String agent_name, final String belief_name, final Object new_value, Connector connector);
+	public void setBeliefValue(String agent_name, final String belief_name, final Object new_value, Connector connector);
 	
-	public abstract Object[] getAgentPlans (final String agent_name, Connector connector);
+	public Object[] getAgentPlans (final String agent_name, Connector connector);
 	
-	public abstract Object[] getAgentGoals (final String agent_name, Connector connector);
+	public Object[] getAgentGoals (final String agent_name, Connector connector);
 	
 }

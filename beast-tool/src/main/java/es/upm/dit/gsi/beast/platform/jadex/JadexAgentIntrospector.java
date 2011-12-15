@@ -19,7 +19,7 @@ import es.upm.dit.gsi.beast.platform.Connector;
  * 
  * @author Jorge Solitario
  */
-public class JadexAgentIntrospector extends AgentIntrospector{
+public class JadexAgentIntrospector implements AgentIntrospector{
 
 	static Logger logger = Logger.getLogger("JadexAgentIntrospector");
 	private static Object belief_value;

@@ -9,9 +9,9 @@ import java.util.ArrayList;
  * 
  * @author Jorge Solitario
  */
-public abstract class Messenger {
+public interface Messenger {
 
-	public abstract void sendMessageToAgents(String[] agent_name, String msgtype, Object message_content, Connector connector);
+	public void sendMessageToAgents(String[] agent_name, String msgtype, Object message_content, Connector connector);
 	
-	public abstract void sendMessageToAgentsWithExtraProperties(String[] agent_name, String msgtype, Object message_content, ArrayList<Tuple> properties, Connector connector);
+	public void sendMessageToAgentsWithExtraProperties(String[] agent_name, String msgtype, Object message_content, ArrayList<Tuple> properties, Connector connector);
 }

@@ -19,7 +19,7 @@ import es.upm.dit.gsi.beast.platform.Connector;
  * 
  * @author Jorge Solitario
  */
-public class JadexConnector extends Connector {
+public class JadexConnector implements Connector {
 
 	private IExternalAccess platform;
 	private IComponentManagementService cmsService = null;

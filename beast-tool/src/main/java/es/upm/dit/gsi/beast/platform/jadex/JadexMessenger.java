@@ -16,7 +16,7 @@ import es.upm.dit.gsi.beast.platform.Messenger;
  * 
  * @author Jorge Solitario
  */
-public class JadexMessenger extends Messenger {
+public class JadexMessenger implements Messenger {
 
 	private static JadexMessenger INSTANCE = new JadexMessenger();
 	
