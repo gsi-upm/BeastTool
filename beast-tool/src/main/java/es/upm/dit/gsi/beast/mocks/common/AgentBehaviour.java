@@ -1,8 +1,8 @@
 package es.upm.dit.gsi.beast.mocks.common;
 
 /**
- * Empty skeleton to be copyed by mocks, it will provide the actions to perform by mock agents.
- * Each time processMessage is called, the mock will retrive an String, which
+ * Empty skeleton to be copied by mocks, it will provide the actions to perform by mock agents.
+ * Each time processMessage is called, the mock will retrieve an String, which
  * will be used to know the receiver, type or content of answer message
  * 
  * @author Jorge Solitario

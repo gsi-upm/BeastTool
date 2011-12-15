@@ -25,18 +25,17 @@ public abstract class MockAgentPlan extends Plan
 	/** Serial version UID of the serializable class MockAgentPlan. */
 	private static final long serialVersionUID = 5211108972962782274L;
 
+	Logger logger = Logger.getLogger(this.getClass().toString());
 	//-------- methods --------
 	
 	
 	/**
 	 * Method to send Request messages to a specific df_service
 	 * @param df_service The name of the df_service
-	 * @param msgContent The content of the message to be sended
-	 * @return Message sended to + the name of the df_service
+	 * @param msgContent The content of the message to be sent
+	 * @return Message sent to + the name of the df_service
 	 */
 	protected String sendRequestToDF(String df_service, Object msgContent) {
-		
-		Logger logger = Logger.getLogger(this.getClass().toString());
 		
 		IDFComponentDescription[] receivers = getReceivers(df_service);
 		if(receivers.length>0){
@@ -54,14 +53,12 @@ public abstract class MockAgentPlan extends Plan
 	
 	
 	/**
-	 * Method to send Inform messages to a specifi df_service
+	 * Method to send Inform messages to a specific df_service
 	 * @param df_service The name of the df_service
-	 * @param msgContent The content of the message to be sended
-	 * @return Message sended to + the name of the df_service
+	 * @param msgContent The content of the message to be sent
+	 * @return Message sent to + the name of the df_service
 	 */
 	protected String sendInformToDF(String df_service, Object msgContent) {
-
-		Logger logger = Logger.getLogger(this.getClass().toString());
 
 		IDFComponentDescription[] receivers = getReceivers(df_service);
 		if(receivers.length>0){
