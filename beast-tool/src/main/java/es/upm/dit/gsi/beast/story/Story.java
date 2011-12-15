@@ -47,7 +47,6 @@ public abstract class Story extends JUnitStory {
 		try {
 			Class<?> c = loader.loadClass(path);
 			scenario = (Scenario) c.newInstance();
-			Assert.fail();
 		} catch (ClassNotFoundException e) {
 			logger.severe("Error loading " + path);
 			Assert.fail();
