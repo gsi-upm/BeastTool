@@ -27,7 +27,8 @@ public class JadexAgentIntrospector extends AgentIntrospector{
 	 * This method takes the value of an agent's belief through its external access
 	 * 
 	 * @param agent_name The name of the agent
-	 * @param belief_name The aame of the belief inside agent's adf
+	 * @param belief_name The name of the belief inside agent's adf
+	 * @param jadexconnector The connector to get the external access
 	 * @return belief_value The value of the requested belief
 	 */
 	public static Object getBeliefValue(String agent_name, final String belief_name, JadexConnector jadexconnector) {
@@ -49,6 +50,7 @@ public class JadexAgentIntrospector extends AgentIntrospector{
 	 * @param agent_name The name of the agent to change a belief
 	 * @param belief_name The name of the belief to change
 	 * @param new_value The new value of the belief to be changed
+	 * @param jadexconnector The connector to get the external access
 	 */
 	public static void setBeliefValue(String agent_name, final String belief_name,
 			final Object new_value, JadexConnector jadexConnector) {
@@ -62,12 +64,14 @@ public class JadexAgentIntrospector extends AgentIntrospector{
 			}
 		}).get(new ThreadSuspendable());
 	}
-
+	
 	/**
 	 * This method prints plan information of an agent through its external access.
 	 * It can be used to check the correct behaviour of the agent.
 	 * 
 	 * @param agent_name The name of the agent
+	 * @param jadexconnector The connector to get the external access
+	 * @return plans, the IPlan[] with all the information, so the tester can look for information
 	 */
 	public static IPlan[] getAgentPlans (final String agent_name, JadexConnector jadexConnector) {
 
@@ -98,8 +102,9 @@ public class JadexAgentIntrospector extends AgentIntrospector{
 	 * This method prints goal information of an agent through its external access.
 	 * It can be used to check the correct behaviour of the agent.
 	 * 
-	 * @param agent_name
-	 * @return
+	 * @param agent_name The name of the agent
+	 * @param jadexconnector The connector to get the external access
+	 * @return goals, the IGoal[] with all the information, so the tester can look for information
 	 */
 	public static IGoal[] getAgentGoals (final String agent_name, JadexConnector jadexConnector) {
 

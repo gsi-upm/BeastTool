@@ -17,10 +17,10 @@ public class JadexMessenger {
 	/**
 	 * This method sends the same message to many agents.
 	 * 
-	 * @param agents_id The id of the agents that receive the message
+	 * @param agent_name The id of the agents that receive the message
 	 * @param msgtype
 	 * @param message_content The content of the message
-	 * @param jadexConnector.getMessageService()
+	 * @param jadexConnector, jadexconnector The connector to get the external access
 	 */
 	public static void sendMessageToAgents(String[] agent_name, String msgtype, Object message_content, JadexConnector jadexConnector) {	
 		HashMap<String, Object> hm = new HashMap<String, Object>();
@@ -36,11 +36,11 @@ public class JadexMessenger {
 	/**
 	 * This method works as the one above, adding some properties to the message
 	 * 
-	 * @param agents_id The id of the agents that receive the message
+	 * @param agent_name The id of the agents that receive the message
 	 * @param msgtype
 	 * @param message_content The content of the message
 	 * @param properties to be added to the message
-	 * @param jadexConnector.getMessageService()
+	 * @param jadexConnector, jadexconnector The connector to get the external access
 	 */
 	public static void sendMessageToAgentsWithExtraProperties(String[] agent_name, String msgtype, Object message_content, ArrayList<Tuple> properties, JadexConnector jadexConnector) {	
 		HashMap<String, Object> hm = new HashMap<String, Object>();
