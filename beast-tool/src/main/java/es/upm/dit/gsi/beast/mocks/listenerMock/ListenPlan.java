@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 /**
  * Listener mock will not send any answer, it just print what it receives
- * Other optiones could be to ignore messages or to save them somewhere
+ * Other options could be to ignore messages or to save them somewhere
  * 
  * @author Jorge Solitario
  */
@@ -17,9 +17,10 @@ public class ListenPlan extends Plan{
 	/** Serial version UID of the serializable class BehaviourPlan. */
 	private static final long serialVersionUID = 4476473302410302L;
 	
+	Logger logger = Logger.getLogger(this.getClass().toString());
+
 	public void body()
 	{	
-		Logger logger = Logger.getLogger(this.getClass().toString());
 		IMessageEvent actReq = (IMessageEvent)getReason();
 		
 		int count = (Integer) getBeliefbase().getBelief("count").getFact();
