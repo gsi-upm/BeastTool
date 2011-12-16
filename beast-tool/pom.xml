@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>es.upm.dit.gsi</groupId>
 	<artifactId>beast-tool</artifactId>
-	<version>0.9.3</version>
+	<version>0.9.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Beast Tool</name>
 	<description>Behavioural Agents Simple Testing Tool</description>
@@ -14,9 +14,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<connection>scm:svn:http://beast-tool.googlecode.com/svn/tags/beast-tool-0.9.3</connection>
-		<developerConnection>scm:svn:https://beast-tool.googlecode.com/svn/tags/beast-tool-0.9.3</developerConnection>
-		<url>http://beast-tool.googlecode.com/svn/tags/beast-tool-0.9.3</url>
+		<connection>scm:svn:http://beast-tool.googlecode.com/svn/trunk/</connection>
+		<developerConnection>scm:svn:https://beast-tool.googlecode.com/svn/trunk/</developerConnection>
+		<url>http://beast-tool.googlecode.com/svn/trunk/</url>
 	</scm>
 	<developers>
 
