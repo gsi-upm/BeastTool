@@ -297,7 +297,11 @@ public class Reader {
 			File f = new File("ClassDatabase.xml");
 			if (!f.exists()){
 				try {
-					f.createNewFile();
+					FileWriter w = new FileWriter(f);
+					w.write("<map>");
+					w.write("</map>");
+					w.flush();
+					w.close();
 					logger.fine("ClassDatabase.xml created.");
 				} catch (IOException e) {
 					logger.severe("ClassDatabase.xml could not be created.");
