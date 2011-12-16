@@ -190,7 +190,7 @@
 			<artifactId>mockito-all</artifactId>
 			<version>1.8.5</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -198,7 +198,7 @@
 			<artifactId>junit</artifactId>
 			<version>4.8.2</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -206,7 +206,7 @@
 			<artifactId>maven-surefire-plugin</artifactId>
 			<version>2.8</version>
 			<type>maven-plugin</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -214,7 +214,7 @@
 			<artifactId>jbehave-web</artifactId>
 			<version>3.3.4</version>
 			<type>pom</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -222,7 +222,7 @@
 			<artifactId>jadex-kernel-bdibpmn</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -230,7 +230,7 @@
 			<artifactId>jadex-kernel-micro</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -238,7 +238,7 @@
 			<artifactId>jadex-platform-standalone</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -246,7 +246,7 @@
 			<artifactId>jadex-runtimetools</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -254,7 +254,7 @@
 			<artifactId>jadex-applications-micro</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -262,7 +262,7 @@
 			<artifactId>jadex-bridge</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -270,7 +270,7 @@
 			<artifactId>jadex-kernel-base</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -278,7 +278,7 @@
 			<artifactId>jadex-kernel-extension-agr</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -286,7 +286,7 @@
 			<artifactId>jadex-tools-bdi</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -294,7 +294,7 @@
 			<artifactId>jadex-applib-bdi</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -302,7 +302,7 @@
 			<artifactId>jadex-kernel-application</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -310,7 +310,7 @@
 			<artifactId>jadex-applications-bdibpmn</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -318,7 +318,7 @@
 			<artifactId>jadex-applications-bpmn</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -326,7 +326,7 @@
 			<artifactId>jadex-applications-gpmn</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -334,7 +334,7 @@
 			<artifactId>jadex-kernel-gpmn</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -342,7 +342,7 @@
 			<artifactId>jadex-nuggets</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -350,7 +350,7 @@
 			<artifactId>jadex-rules-applications</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -358,7 +358,7 @@
 			<artifactId>jadex-tools-bpmn</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -366,7 +366,7 @@
 			<artifactId>jadex-tools-comanalyzer</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -374,7 +374,7 @@
 			<artifactId>jaxme2</artifactId>
 			<version>0.5.2</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -382,7 +382,7 @@
 			<artifactId>jbehave-core</artifactId>
 			<version>3.5.3</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -392,6 +392,8 @@
 		</dependency>
 
 	</dependencies>
+	
+	
 	<profiles>
 		<profile>
 			<id>release-sign-artifacts</id>
