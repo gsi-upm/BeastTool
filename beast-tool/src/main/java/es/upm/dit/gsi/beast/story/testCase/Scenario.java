@@ -27,6 +27,7 @@ public abstract class Scenario {
 	 *  Main constructor of the class, launches the platform
 	 */
 	public void startPlatform(String platform){
+		this.platform = platform;
 		connector = PlatformSelector.getConnector(platform);
 		connector.launchPlatform();
 		messenger = PlatformSelector.getMessenger(platform);
