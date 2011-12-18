@@ -1,5 +1,7 @@
 package es.upm.dit.gsi.beast.mocks.common;
 
+import java.util.logging.Logger;
+
 import jadex.base.fipa.DFServiceDescription;
 import jadex.base.fipa.IDFComponentDescription;
 import jadex.base.fipa.SFipa;
@@ -42,6 +44,9 @@ public class SetupPlan extends Plan {
 		keep.getParameter("description").setValue(df_description);
 		keep.getParameter("leasetime").setValue(new Long(60000));
 		dispatchSubgoalAndWait(keep);
+		
+		Logger logger = Logger.getLogger(this.getClass().toString());
+		logger.info(configuration.getDFservice()+ " registered");
 	}
 
 }
