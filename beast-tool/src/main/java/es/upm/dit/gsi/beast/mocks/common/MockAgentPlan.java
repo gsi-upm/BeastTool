@@ -95,6 +95,7 @@ public abstract class MockAgentPlan extends Plan
 		IGoal ft = createGoal("dfcap.df_search");
 		ft.getParameter("description").setValue(dfadesc);
 		ft.getParameter("constraints").setValue(constraints);
+		ft.getParameter("leasetime").setValue(new Long(60000));
 
 		dispatchSubgoalAndWait(ft);
 		

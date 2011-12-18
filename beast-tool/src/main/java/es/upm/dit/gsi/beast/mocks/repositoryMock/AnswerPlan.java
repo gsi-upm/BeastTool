@@ -25,6 +25,10 @@ public class AnswerPlan extends Plan{
 	{	
 		IMessageEvent actReq = (IMessageEvent)getReason();
 		
+		int count = (Integer) getBeliefbase().getBelief("message_count").getFact();
+		count++;
+		getBeliefbase().getBelief("message_count").setFact(count);
+		
 		String type = (String) actReq.getParameter("performative").getValue(); 
 		Object content = actReq.getParameter(SFipa.CONTENT).getValue();
 		String agent_name = (String) ((IComponentIdentifier) actReq.getParameter(SFipa.SENDER).getValue()).getLocalName();	

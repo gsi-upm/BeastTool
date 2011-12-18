@@ -33,7 +33,7 @@ public class SetupPlan extends Plan {
 		DirectoryFacilitatorService idfservice = new DirectoryFacilitatorService(iserviceprovider);
 		DFServiceDescription dfaux = (DFServiceDescription)idfservice
 				.createDFServiceDescription(configuration.getDFservice(), configuration.getDFservice(),
-						"Universidad Polit�cnica de Madrid");
+						"Universidad Politécnica de Madrid");
 
 		IDFComponentDescription df_description= idfservice.createDFComponentDescription(null, dfaux);
 		waitFor(1000);

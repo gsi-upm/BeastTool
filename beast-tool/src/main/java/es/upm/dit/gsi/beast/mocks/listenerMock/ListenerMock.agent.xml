@@ -28,7 +28,7 @@
 
 	<beliefs>
 		<belief name="agent_behaviour" class="AgentBehaviour"/>
-		<belief name="count" class="int">
+		<belief name="message_count" class="int">
 			<fact>0</fact>
 		</belief>
 	</beliefs>

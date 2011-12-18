@@ -74,7 +74,7 @@ public abstract class Story extends JUnitStory {
 
 		ClassLoader loader = ClassLoader.getSystemClassLoader();
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			Class<?> c = loader.loadClass(path);
 			setup = (Setup) c.newInstance();
 		} catch (Exception e) {
