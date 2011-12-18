@@ -60,7 +60,9 @@ public class CreateScenario {
 		JavaComment methodComment = jm.getComment();
 		methodComment.addLine(" ");
 		methodComment.addLine("Here the description given by the client must be written,");
-		methodComment.addLine("which is: "+client_description.toUpperCase());
+		methodComment.addLine("which is: ");
+		methodComment.addLine(" ");
+		methodComment.addLine("TODO: "+client_description);
 				
 		JavaMethod jm2 = js.newJavaMethod("startMock","void","private");
 		jm2.addParam(String.class,"mock_name");

@@ -58,7 +58,9 @@ public class CreateSetup {
 		JavaComment methodComment = jm.getComment();
 		methodComment.addLine(" ");
 		methodComment.addLine("Here the description given by the client must be written,");
-		methodComment.addLine("which is: "+client_description.toUpperCase());
+		methodComment.addLine("which is: ");
+		methodComment.addLine(" ");
+		methodComment.addLine("TODO: "+client_description);
 		
 		js.addExtends(Setup.class);
 //		logger.info("Setup"+scenario_name+" has been created in "+dest_dir+Reader.createFolderPath(path));
