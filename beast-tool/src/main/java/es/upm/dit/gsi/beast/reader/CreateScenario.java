@@ -41,7 +41,7 @@ public class CreateScenario {
 		JavaQName className = JavaQNameImpl.getInstance(package_path,"Scenario"+scenario_name);
 		JavaSource js = factory.newJavaSource(className, "public");
 		js.addExtends(Scenario.class);
-		js.addImport(SFipa.class);
+//		js.addImport(SFipa.class);
 
 		js.newComment();
 		JavaComment classComment = js.getComment();
