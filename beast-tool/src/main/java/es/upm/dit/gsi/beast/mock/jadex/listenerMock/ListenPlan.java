@@ -17,7 +17,7 @@ public class ListenPlan extends Plan{
 	/** Serial version UID of the serializable class BehaviourPlan. */
 	private static final long serialVersionUID = 4476473302410302L;
 	
-	Logger logger = Logger.getLogger(this.getClass().toString());
+	private Logger logger = Logger.getLogger(ListenPlan.class.getName());
 
 	public void body()
 	{	

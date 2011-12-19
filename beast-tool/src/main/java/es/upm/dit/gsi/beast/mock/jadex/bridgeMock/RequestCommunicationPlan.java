@@ -17,7 +17,7 @@ public class RequestCommunicationPlan extends MockAgentPlan {
 
 	/** Serial version UID of the serializable class CommunicationPlan. */
 	private static final long serialVersionUID = 4476473302410302L;
-	private Logger logger = Logger.getLogger(this.getClass().toString());
+	private Logger logger = Logger.getLogger(RequestCommunicationPlan.class.getName());
 
 	public void body() {
 		IMessageEvent actReq = (IMessageEvent) getReason();

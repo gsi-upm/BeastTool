@@ -17,7 +17,7 @@ public class PlatformSelector {
 	 */
 	public static Connector getConnector(String platform) {
 
-		if (platform == "jadex") {
+		if (platform.equals("jadex")) {
 			return new JadexConnector();
 		}
 		return null;
@@ -29,7 +29,7 @@ public class PlatformSelector {
 	 */
 	public static Messenger getMessenger(String platform) {
 
-		if (platform == "jadex") {
+		if (platform.equals("jadex")) {
 			return JadexMessenger.getInstance();
 		}
 		return null;
@@ -41,7 +41,7 @@ public class PlatformSelector {
 	 */
 	public static AgentIntrospector getAgentIntrospector(String platform) {
 
-		if (platform == "jadex") {
+		if (platform.equals("jadex")) {
 			return JadexAgentIntrospector.getInstance();
 		}
 		return null;

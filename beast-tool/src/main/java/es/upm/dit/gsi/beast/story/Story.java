@@ -33,7 +33,6 @@ public abstract class Story extends JUnitStory {
 	Scenario scenario;
 	Setup setup;
 	Evaluation evaluation;
-	String platform;
 
 	/**
 	 * This method creates the scenario, which is the GIVEN part
