@@ -34,6 +34,13 @@ public abstract class Scenario {
 		startAgents();
 	}
 	
+	/**
+	 * 
+	 * @return the name of the used agent platform
+	 */
+	public String getPlatform() {
+		return this.platform;
+	}
 	
 	/**
 	 * Creates a real agent in the platform
