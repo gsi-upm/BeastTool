@@ -1,5 +1,7 @@
 package es.upm.dit.gsi.beast.story.testCase;
 
+import java.util.logging.Logger;
+
 import org.junit.Assert;
 
 import es.upm.dit.gsi.beast.story.testCase.Setup;
@@ -12,6 +14,7 @@ import es.upm.dit.gsi.beast.story.testCase.Setup;
  */
 public abstract class Evaluation {
 
+	protected Logger logger = Logger.getLogger(Evaluation.class.getName());
 	private Setup setup;
 	public abstract void checkStates();
 	

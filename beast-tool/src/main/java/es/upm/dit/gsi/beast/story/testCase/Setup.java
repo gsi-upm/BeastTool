@@ -5,6 +5,7 @@ import jadex.bdi.runtime.IPlan;
 import jadex.commons.Tuple;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import es.upm.dit.gsi.beast.platform.AgentIntrospector;
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
@@ -20,6 +21,7 @@ import es.upm.dit.gsi.beast.platform.PlatformSelector;
  */
 public abstract class Setup {
 
+	protected Logger logger = Logger.getLogger(Setup.class.getName());
 	private Scenario scenario;
 	private AgentIntrospector introspector;
 	public abstract void setStates();
@@ -27,11 +29,11 @@ public abstract class Setup {
 	/**
 	 * Once given the scenario, child's setSetup() will be run 
 	 * 
-	 * @param scenario2
+	 * @param scenario
 	 */
-	public void setScenario(Scenario scenario2) {
-		this.scenario = scenario2;
-		introspector = PlatformSelector.getAgentIntrospector(scenario.platform);
+	public void setScenario(Scenario scenario) {
+		this.scenario = scenario;
+		introspector = PlatformSelector.getAgentIntrospector(scenario.getPlatform());
 		setStates();		
 	}
 	

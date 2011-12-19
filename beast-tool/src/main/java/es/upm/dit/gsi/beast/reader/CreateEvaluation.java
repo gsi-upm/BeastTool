@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import junit.framework.Assert;
+
 import org.apache.ws.jaxme.js.JavaComment;
 import org.apache.ws.jaxme.js.JavaMethod;
 import org.apache.ws.jaxme.js.JavaQName;
@@ -39,6 +41,7 @@ public class CreateEvaluation {
 		
 		JavaQName className = JavaQNameImpl.getInstance(path,"Evaluation"+scenario_name);
 		JavaSource js = factory.newJavaSource(className, "public");
+		js.addImport(Assert.class);
 		
 		js.newComment();
 		JavaComment classComment = js.getComment();
@@ -52,6 +55,8 @@ public class CreateEvaluation {
 		
 		JavaMethod jm = js.newJavaMethod("checkStates","void","public");
 		jm.addLine("// TODO implement this method to represent the @Then part of the test in Java code.");
+		jm.addLine("logger.warning(\"Implement checkStates() method in " + path + ".Evaluation" + scenario_name  + ".java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");");
+		jm.addLine("Assert.fail(\"Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");");
 		jm.newComment();
 		JavaComment methodComment = jm.getComment();
 		methodComment.addLine(" ");

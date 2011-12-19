@@ -20,7 +20,7 @@ public class StoryRunner extends Embedder {
 	 */
 	public StoryRunner() {
 		this.embedderControls().doGenerateViewAfterStories(false)
-				.doIgnoreFailureInStories(true).doIgnoreFailureInView(true);
+				.doIgnoreFailureInStories(false).doIgnoreFailureInView(false);
 	}
 
 	/**

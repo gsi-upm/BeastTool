@@ -55,6 +55,7 @@ public class CreateSetup {
 		
 		JavaMethod jm = js.newJavaMethod("setStates","void","public");
 		jm.addLine("// TODO implement this method to represent the @When part of the test in Java code.");
+		jm.addLine("logger.warning(\"Implement setStates() method in " + path + ".Setup" + scenario_name  + ".java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");");
 		jm.newComment();
 		JavaComment methodComment = jm.getComment();
 		methodComment.addLine(" ");

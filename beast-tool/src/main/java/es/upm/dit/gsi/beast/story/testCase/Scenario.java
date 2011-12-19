@@ -3,6 +3,7 @@ package es.upm.dit.gsi.beast.story.testCase;
 import jadex.commons.Tuple;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import es.upm.dit.gsi.beast.platform.Connector;
 import es.upm.dit.gsi.beast.platform.Messenger;
@@ -16,7 +17,8 @@ import es.upm.dit.gsi.beast.platform.PlatformSelector;
  * @author Jorge Solitario
  */
 public abstract class Scenario {
-	
+
+	protected Logger logger = Logger.getLogger(Scenario.class.getName());	
 	abstract public void startAgents();
 	Connector connector;
 	String platform;

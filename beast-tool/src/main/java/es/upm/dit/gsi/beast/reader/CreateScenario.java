@@ -26,17 +26,17 @@ public class CreateScenario {
 	 * IT does not check if the file is already created, overwriting it.
 	 * 
 	 * @param scenario_name The name given by the client
-	 * @param package_path The package of the test
+	 * @param path The package of the test
 	 * @param client_description The plain text given by the client in the THEN part
 	 * @param dest_dir the working directory (typically src/main/java)
 	 */
-	public static void createScenario(String scenario_name, String package_path, String client_description, String dest_dir){
+	public static void createScenario(String scenario_name, String path, String client_description, String dest_dir){
 		
 		Logger logger = Logger.getLogger("CreateScenario.java");
 		
 		JavaSourceFactory factory = new JavaSourceFactory();
 		
-		JavaQName className = JavaQNameImpl.getInstance(package_path,"Scenario"+scenario_name);
+		JavaQName className = JavaQNameImpl.getInstance(path,"Scenario"+scenario_name);
 		JavaSource js = factory.newJavaSource(className, "public");
 		js.addExtends(Scenario.class);
 //		js.addImport(SFipa.class);
@@ -54,6 +54,7 @@ public class CreateScenario {
 		
 		JavaMethod jm = js.newJavaMethod("startAgents","void","public");
 		jm.addLine("// TODO implement this method to represent the @Given part of the test in Java code.");
+		jm.addLine("logger.warning(\"Implement startAgents() method in " + path + ".Scenario" + scenario_name  + ".java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");");
 		jm.newComment();
 		JavaComment methodComment = jm.getComment();
 		methodComment.addLine(" ");
