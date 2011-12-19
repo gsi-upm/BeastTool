@@ -1,4 +1,4 @@
-package es.upm.dit.gsi.beast.mocks.common;
+package es.upm.dit.gsi.beast.mock.common;
 
 
 /**

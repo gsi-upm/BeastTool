@@ -1,7 +1,7 @@
-package es.upm.dit.gsi.beast.mocks;
+package es.upm.dit.gsi.beast.mock;
 
 import jadex.base.fipa.SFipa;
-import es.upm.dit.gsi.beast.mocks.common.MockConfiguration;
+import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
 import es.upm.dit.gsi.beast.story.testCase.Scenario;
 
 public class MockManager {

@@ -1,8 +1,8 @@
-package es.upm.dit.gsi.beast.mocks.repositoryMock;
+package es.upm.dit.gsi.beast.mock.repositoryMock;
 
 import java.util.logging.Logger;
 
-import es.upm.dit.gsi.beast.mocks.common.AgentBehaviour;
+import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
 
 import jadex.base.fipa.SFipa;
 import jadex.bdi.runtime.IMessageEvent;

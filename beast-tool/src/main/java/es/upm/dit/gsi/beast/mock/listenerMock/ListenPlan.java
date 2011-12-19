@@ -1,4 +1,4 @@
-package es.upm.dit.gsi.beast.mocks.listenerMock;
+package es.upm.dit.gsi.beast.mock.listenerMock;
 
 import jadex.base.fipa.SFipa;
 import jadex.bdi.runtime.IMessageEvent;
