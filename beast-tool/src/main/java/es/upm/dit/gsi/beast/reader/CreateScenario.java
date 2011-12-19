@@ -13,7 +13,6 @@ import org.apache.ws.jaxme.js.JavaQNameImpl;
 import org.apache.ws.jaxme.js.JavaSource;
 import org.apache.ws.jaxme.js.JavaSourceFactory;
 
-import es.upm.dit.gsi.beast.mocks.common.MockConfiguration;
 import es.upm.dit.gsi.beast.story.testCase.Scenario;
 
 /**
@@ -56,31 +55,32 @@ public class CreateScenario {
 		classComment.addAuthor("Jorge Solitario");
 		
 		JavaMethod jm = js.newJavaMethod("startAgents","void","public");
+		jm.addLine("// TODO implement this method to represent the @Given part of the test in Java code.");
 		jm.newComment();
 		JavaComment methodComment = jm.getComment();
 		methodComment.addLine(" ");
 		methodComment.addLine("Here the description given by the client must be written,");
 		methodComment.addLine("which is: ");
 		methodComment.addLine(" ");
-		methodComment.addLine("TODO: "+client_description);
+		methodComment.addLine("  "+client_description);
 				
-		JavaMethod jm2 = js.newJavaMethod("startMock","void","private");
-		jm2.addParam(String.class,"mock_name");
-		jm2.addParam(String.class,"mock_type");
-		jm2.addParam(MockConfiguration.class,"mock_configuration");
-		jm2.addLine("startAgent(mock_name, mock_type);");
-		jm2.addLine("// The message to changes mock agent's df_service_name and its behaviour");
-		jm2.addLine("sendMessageToAgent(mock_name, SFipa.INFORM, mock_configuration);");
-		
-		jm2.newComment();
-		JavaComment methodComment2 = jm2.getComment();
-		methodComment2.addLine("This method is used to launch mock agents. First it creates them, with");
-		methodComment2.addLine("the generic df_service_name \"mock_agent\", and then the method sends to the");
-		methodComment2.addLine("agent a message with the new df_service_name and its behaviour.");
-		methodComment2.addLine(" ");
-		methodComment2.addLine("@param mock_name The name of the mock in the platform");
-		methodComment2.addLine("@param mock_type The type of the mock, taken from mocks.common.Definitions.[bridge,listener,repository]");
-		methodComment2.addLine("@param mock_configuration The behaviour of the mock and its df_service_name");
+//		JavaMethod jm2 = js.newJavaMethod("startMock","void","private");
+//		jm2.addParam(String.class,"mock_name");
+//		jm2.addParam(String.class,"mock_type");
+//		jm2.addParam(MockConfiguration.class,"mock_configuration");
+//		jm2.addLine("startAgent(mock_name, mock_type);");
+//		jm2.addLine("// The message to changes mock agent's df_service_name and its behaviour");
+//		jm2.addLine("sendMessageToAgent(mock_name, SFipa.INFORM, mock_configuration);");
+//		
+//		jm2.newComment();
+//		JavaComment methodComment2 = jm2.getComment();
+//		methodComment2.addLine("This method is used to launch mock agents. First it creates them, with");
+//		methodComment2.addLine("the generic df_service_name \"mock_agent\", and then the method sends to the");
+//		methodComment2.addLine("agent a message with the new df_service_name and its behaviour.");
+//		methodComment2.addLine(" ");
+//		methodComment2.addLine("@param mock_name The name of the mock in the platform");
+//		methodComment2.addLine("@param mock_type The type of the mock, taken from mocks.common.Definitions.[bridge,listener,repository]");
+//		methodComment2.addLine("@param mock_configuration The behaviour of the mock and its df_service_name");
 		
 //		logger.fine("Scenario"+scenario_name+" has been created in "+dest_dir+Reader.createFolderPath(package_path));
 		try {

@@ -51,13 +51,14 @@ public class CreateEvaluation {
 		classComment.addAuthor("Jorge Solitario");
 		
 		JavaMethod jm = js.newJavaMethod("checkStates","void","public");
+		jm.addLine("// TODO implement this method to represent the @Then part of the test in Java code.");
 		jm.newComment();
 		JavaComment methodComment = jm.getComment();
 		methodComment.addLine(" ");
 		methodComment.addLine("Here the description given by the client must be written,");
 		methodComment.addLine("which is: ");
 		methodComment.addLine(" ");
-		methodComment.addLine("TODO: "+client_description);
+		methodComment.addLine("  "+client_description);
 		
 		js.addExtends(Evaluation.class);
 //		logger.info("Evaluation"+scenario_name+" has been created in "+dest_dir+Reader.createFolderPath(path));
