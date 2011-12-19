@@ -17,7 +17,7 @@
 		<import>jadex.bridge.service.*</import>
 		<import>jadex.commons.future.*</import>
 		<import>java.util.*</import>
-		<import>es.upm.dit.gsi.beast.mocks.common.*</import>
+		<import>es.upm.dit.gsi.beast.mock.jadex.common.*</import>
 	</imports>
 
 	<capabilities>
