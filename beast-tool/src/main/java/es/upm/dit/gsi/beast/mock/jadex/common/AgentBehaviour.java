@@ -1,4 +1,4 @@
-package es.upm.dit.gsi.beast.mock.common;
+package es.upm.dit.gsi.beast.mock.jadex.common;
 
 /**
  * Empty skeleton to be copied by mocks, it will provide the actions to perform by mock agents.

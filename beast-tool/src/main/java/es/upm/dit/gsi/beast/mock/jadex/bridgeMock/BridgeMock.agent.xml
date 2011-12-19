@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-	<H3>Repository Mock.</H3>
-	This mock will answer each answer with a different content depending
-	on the sender, the type and the content of the arriving message.
-	It can be used when a real database its nit performed yet.
+	<H3>Bridge Mock.</H3>
+	The purpose of this mock is helping on the testing of other agents.
+	It must be configured with an AgentBehaviour and a df-serviceName
+	in the Scenario file using MockConfiguration.
+	It will send messages to other agents when receiving an order.
 -->
 <agent xmlns="http://jadex.sourceforge.net/jadex"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://jadex.sourceforge.net/jadex
 	                    http://jadex.sourceforge.net/jadex-bdi-2.0.xsd"
-	name="RepositoryMock"
-	package="es.upm.dit.gsi.beast.mock.repositoryMock">
+	name="BridgeMock"
+	package="es.upm.dit.gsi.beast.mock.jadex.bridgeMock">
 
 	<imports>
 		<import>jadex.base.fipa.*</import>
@@ -29,28 +30,42 @@
 
 	<beliefs>
 		<belief name="agent_behaviour" class="AgentBehaviour"/>
-		<belief name="message_count" class="int">
-			<fact>0</fact>
-		</belief>
 	</beliefs>
 
 	<plans>
+		<!-- Plan to configure the behaviour of the mock.-->
 		<plan name="renameDF">
 			<body class="SetupPlan"/>
 			<trigger>
 				<messageevent ref="renameDF"/>
 			</trigger>
 		</plan>
-		<!-- Main service plan that handles action requests. -->
-		<plan name="listen">
-			<body class="AnswerPlan"/>
+		
+		<!-- Plan to send messages to other agents when receiving the order.-->
+		<plan name="listen_inform">
+			<body class="InformCommunicationPlan"/>
 			<trigger>
-				<messageevent ref="request"/>
+				<messageevent ref="inform_activation_message"/>
 			</trigger>
 		</plan>
+		<plan name="listen_request">
+			<body class="RequestCommunicationPlan"/>
+			<trigger>
+				<messageevent ref="request_activation_message"/>
+			</trigger>
+		</plan>
+		
+		<!-- Plan to listen the answers of sended messages - ->
+		<plan name="receive_answer">
+			<body class="NewPlan"/>
+			<trigger>
+				<messageevent ref="receive_answer"/>
+			</trigger>
+		</plan>		 -->
 	</plans>
 
 	<events>
+		<!-- Event to configure the behaviour of the mock.-->
 		<messageevent name="renameDF" type="fipa" direction="receive">
 			<parameter name="performative" class="String" direction="fixed">
 				<value>SFipa.INFORM</value>
@@ -58,13 +73,34 @@
 			<match>$content instanceof MockConfiguration</match>
 		</messageevent>
 		
-		<messageevent name="request" type="fipa" direction="receive">
+		<!-- Events to listen the arriving orders.-->
+		<messageevent name="inform_activation_message" type="fipa" direction="receive">
+			<parameter name="performative" class="String" direction="fixed">
+				<value>SFipa.INFORM</value>
+			</parameter>
+			<match>$content instanceof String &amp;&amp; ((String)$content).startsWith("send")</match>
+		</messageevent>	
+		<messageevent name="request_activation_message" type="fipa" direction="receive">
+			<parameter name="performative" class="String" direction="fixed">
+				<value>SFipa.REQUEST</value>
+			</parameter>
+			<!-- <match>$content instanceof String &amp;&amp; ((String)$content).startsWith("reenvia")</match> -->
+		</messageevent>
+		
+		<!-- Events to start the sending of messages.-->
+		<messageevent name="send_inform" type="fipa" direction="send">
+			<parameter name="performative" class="String" direction="fixed">
+				<value>SFipa.INFORM</value>
+			</parameter>
+		</messageevent>
+		<messageevent name="send_request" type="fipa" direction="send">
 			<parameter name="performative" class="String" direction="fixed">
 				<value>SFipa.REQUEST</value>
 			</parameter>
 		</messageevent>
-
-		<messageevent name="send_inform" type="fipa" direction="send">
+		
+		<!-- Event to listen the answer of sended messages.-->
+		<messageevent name="receive_answer" type="fipa" direction="receive">
 			<parameter name="performative" class="String" direction="fixed">
 				<value>SFipa.INFORM</value>
 			</parameter>
@@ -72,8 +108,6 @@
 	</events>
 	
 	<properties>
-		<!--<property name="debugging">false</property>
-		<property name="logging.level">Level.INFO</property>-->
 		<property name="debugging">false</property>
 		<property name="dfservice" class="IFuture">SServiceProvider.getService($scope.getServiceProvider(), IDF.class, RequiredServiceInfo.SCOPE_PLATFORM)</property>
     </properties>
