@@ -1,7 +1,5 @@
 package es.upm.dit.gsi.beast.reader;
 
-import jadex.base.fipa.SFipa;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
