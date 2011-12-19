@@ -41,7 +41,7 @@ public abstract class Scenario {
 	 * @param agent_name The name that the agent is gonna have in the platform
 	 * @param path The path of the description (xml) of the agent 
 	 */
-	protected void startAgent(String agent_name, String path) {
+	public void startAgent(String agent_name, String path) {
 		connector.createAgent(agent_name,path);
 	}
 
