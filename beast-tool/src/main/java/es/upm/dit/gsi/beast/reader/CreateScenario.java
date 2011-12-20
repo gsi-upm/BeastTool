@@ -57,8 +57,6 @@ public class CreateScenario {
         classComment
                 .addLine("In startAgents method the following method must be used");
         classComment.addLine("   super.startAgent(agent_name,agent_path)");
-        classComment
-                .addLine("   startMock(mock_name,mock_type,mock_configuration)");
         classComment.addAuthor("Jorge Solitario");
 
         JavaMethod jm = js.newJavaMethod("startAgents", "void", "public");
@@ -68,6 +66,8 @@ public class CreateScenario {
                 + ".Scenario"
                 + scenario_name
                 + ".java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");");
+        jm.addLine("\n   //EXAMPLE: startAgent(\"Steve\", \"org.example.Steve.agent.xml\");");
+     
         jm.newComment();
         JavaComment methodComment = jm.getComment();
         methodComment.addLine(" ");
