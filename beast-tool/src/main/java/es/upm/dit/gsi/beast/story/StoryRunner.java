@@ -9,41 +9,43 @@ import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.steps.SilentStepMonitor;
 
 /**
- * Class to run tests using JBehave
- * 
+ * Class to run tests using JBehave.
+ *
  * @author Jorge Solitario
  */
 public class StoryRunner extends Embedder {
 
-	/**
-	 * Internal method of JBehave
-	 */
-	public StoryRunner() {
-		this.embedderControls().doGenerateViewAfterStories(false)
-				.doIgnoreFailureInStories(false).doIgnoreFailureInView(false);
-	}
+    /**
+     * Internal method of JBehave.
+     */
+    public StoryRunner() {
+        this.embedderControls().doGenerateViewAfterStories(false)
+                .doIgnoreFailureInStories(false).doIgnoreFailureInView(false);
+    }
 
-	/**
-	 * Internal method of JBehave
-	 */
-	@Override
-	public Configuration configuration() {
+    /**
+     * Internal method of JBehave.
+     *
+     * @return Configuration of this StoryRunner
+     */
+    @Override
+    public Configuration configuration() {
 
-		Class<?> embedderClass = this.getClass();
-		Configuration configuration = new MostUsefulConfiguration();
-		configuration.useStoryLoader(new LoadFromClasspath(embedderClass));
-		configuration.useStepMonitor(new SilentStepMonitor());
-		return configuration;
-	}
+        Class<?> embedderClass = this.getClass();
+        Configuration configuration = new MostUsefulConfiguration();
+        configuration.useStoryLoader(new LoadFromClasspath(embedderClass));
+        configuration.useStepMonitor(new SilentStepMonitor());
+        return configuration;
+    }
 
-	/**
-	 * Internal method of JBehave
-	 * 
-	 * @param className
-	 *            the name of the class, inside its path: es/upm/...
-	 */
-	public static void executeStory(String className) {
-		Embedder embedder = new StoryRunner();
-		embedder.runAsEmbeddables(asList(className));
-	}
+    /**
+     * Internal method of JBehave.
+     *
+     * @param className
+     *            the name of the class, inside its path: es/upm/...
+     */
+    public static void executeStory(String className) {
+        Embedder embedder = new StoryRunner();
+        embedder.runAsEmbeddables(asList(className));
+    }
 }
