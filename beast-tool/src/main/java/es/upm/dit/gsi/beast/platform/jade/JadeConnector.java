@@ -6,10 +6,14 @@ import jade.core.ContainerID;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
+import jade.core.event.MTPListener;
+import jade.core.event.PlatformListener;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import jade.wrapper.ControllerException;
 import jade.wrapper.PlatformController;
+import jade.wrapper.PlatformEvent;
+import jade.wrapper.PlatformController.Listener;
 import jade.wrapper.StaleProxyException;
 
 import java.util.HashMap;
@@ -23,7 +27,7 @@ import es.upm.dit.gsi.beast.platform.Connector;
  */
 public class JadeConnector implements Connector {
 
-    private Logger logger = Logger.getLogger(JadeConnector.class.getName());
+    private Logger logger;
 
     private PlatformController platform;
     private ContainerController mainContainer;
@@ -33,6 +37,10 @@ public class JadeConnector implements Connector {
     private HashMap<String, AgentController> createdAgents;
     private HashMap<String, AID> agentIDs;
 
+    public JadeConnector(Logger logger) {
+        this.logger = logger;
+    }
+    
     /*
      * (non-Javadoc)
      * 
@@ -60,6 +68,7 @@ public class JadeConnector implements Connector {
         logger.fine("Main container launched");
         try {
             platform = mainContainer.getPlatformController();
+            logger.fine("Platform contoller obtained");
         } catch (ControllerException e) {
             logger.warning("Exception getting the platform... " + e);
         }
@@ -68,8 +77,18 @@ public class JadeConnector implements Connector {
         this.agentIDs = new HashMap<String, AID>();
         this.remoteContainers = new HashMap<String, ContainerController>();
         this.containerIDs = new HashMap<String, ContainerID>();
-
-        ((AgentManager) this.platform).addListener(new AgentListener());
+        
+        logger.finer("Adding listener to the platform...");
+        
+        try {
+            Listener listener = new JadeListener();
+            logger.finest("Listener created");
+            this.platform.addPlatformListener(listener);
+            logger.finer("Added listener to the platform");
+        } catch (ControllerException e) {
+            logger.severe("Impossible to add listener to the platform: " + e);
+        }
+        
 
     }
 
@@ -151,76 +170,112 @@ public class JadeConnector implements Connector {
      * dummy implementation of all the methods of the
      * jade.core.AgentManager.Listener interface
      */
-    class AgentListener implements AgentManager.Listener {
+    class JadeListener implements PlatformController.Listener {
+        
+        public JadeListener() {
+            logger.fine(">> PlatformListener constructor");
+        }
+        
+//        public void addedContainer(jade.core.event.PlatformEvent ev) {
+//            ContainerID cid = ev.getContainer();
+//            containerIDs.put(cid.getName(),cid);
+//        }
+//
+//        public void removedContainer(jade.core.event.PlatformEvent ev) {
+//            ContainerID cid = ev.getContainer();
+//            containerIDs.remove(cid.getName());
+//            remoteContainers.remove(cid.getName());
+//            try {
+//                if (cid.getName().equals(mainContainer.getContainerName())) {
+//                    // The local main container is terminating -->
+//                    // The whole platform is terminating
+//                    logger.severe("Platform state: KILLED");
+//                }
+//            }
+//            catch (ControllerException ce) {
+//                // Should never happen
+//                ce.printStackTrace();
+//            }
+//        }
+//        
+//        public void bornAgent(jade.core.event.PlatformEvent ev) {
+//        }
+//
+//        public void deadAgent(jade.core.event.PlatformEvent ev) {
+//            AID agentID = ev.getAgent();
+//            String agentName = agentID.getLocalName();
+//            agentIDs.remove(agentName);
+//        }
+//
+//        public void movedAgent(jade.core.event.PlatformEvent ev) {
+//            //TODO
+//        }
+//
+//        public void suspendedAgent(jade.core.event.PlatformEvent ev) {
+//        }
+//        //TODO
+//
+//        public void resumedAgent(jade.core.event.PlatformEvent ev) {
+//            //TODO
+//        }
+//
+//        public void frozenAgent(jade.core.event.PlatformEvent ev) {
+//            //TODO
+//        }
+//
+//        public void thawedAgent(jade.core.event.PlatformEvent ev) {
+//            //TODO
+//        }
+//
+//        public void addedMTP(jade.core.event.MTPEvent ev) {
+//            //TODO
+//        }
+//
+//        public void removedMTP(jade.core.event.MTPEvent ev) {
+//            //TODO
+//        }
+//
+//        public void messageIn(jade.core.event.MTPEvent ev) {
+//            //TODO
+//        }
+//
+//        public void messageOut(jade.core.event.MTPEvent ev) {
+//            //TODO
+//        }
 
-        public void addedContainer(jade.core.event.PlatformEvent ev) {
-            ContainerID cid = ev.getContainer();
-            containerIDs.put(cid.getName(),cid);
+        @Override
+        public void bornAgent(PlatformEvent arg0) {
+            // TODO Auto-generated method stub
         }
 
-        public void removedContainer(jade.core.event.PlatformEvent ev) {
-            ContainerID cid = ev.getContainer();
-            containerIDs.remove(cid.getName());
-            remoteContainers.remove(cid.getName());
-            try {
-                if (cid.getName().equals(mainContainer.getContainerName())) {
-                    // The local main container is terminating -->
-                    // The whole platform is terminating
-                    logger.severe("Platform state: KILLED");
-                }
-            }
-            catch (ControllerException ce) {
-                // Should never happen
-                ce.printStackTrace();
-            }
+        @Override
+        public void deadAgent(PlatformEvent arg0) {
+            // TODO Auto-generated method stub
+            
         }
 
-        public void bornAgent(jade.core.event.PlatformEvent ev) {
-            AID agentID = ev.getAgent();
-            String agentName = agentID.getLocalName();
-            agentIDs.put(agentName, agentID);
+        @Override
+        public void killedPlatform(PlatformEvent arg0) {
+            // TODO Auto-generated method stub
+            
         }
 
-        public void deadAgent(jade.core.event.PlatformEvent ev) {
-            AID agentID = ev.getAgent();
-            String agentName = agentID.getLocalName();
-            agentIDs.remove(agentName);
+        @Override
+        public void resumedPlatform(PlatformEvent arg0) {
+            // TODO Auto-generated method stub
+            
         }
 
-        public void movedAgent(jade.core.event.PlatformEvent ev) {
-            //TODO
+        @Override
+        public void startedPlatform(PlatformEvent arg0) {
+            // TODO Auto-generated method stub
+            
         }
 
-        public void suspendedAgent(jade.core.event.PlatformEvent ev) {
-        }
-        //TODO
-
-        public void resumedAgent(jade.core.event.PlatformEvent ev) {
-            //TODO
-        }
-
-        public void frozenAgent(jade.core.event.PlatformEvent ev) {
-            //TODO
-        }
-
-        public void thawedAgent(jade.core.event.PlatformEvent ev) {
-            //TODO
-        }
-
-        public void addedMTP(jade.core.event.MTPEvent ev) {
-            //TODO
-        }
-
-        public void removedMTP(jade.core.event.MTPEvent ev) {
-            //TODO
-        }
-
-        public void messageIn(jade.core.event.MTPEvent ev) {
-            //TODO
-        }
-
-        public void messageOut(jade.core.event.MTPEvent ev) {
-            //TODO
+        @Override
+        public void suspendedPlatform(PlatformEvent arg0) {
+            // TODO Auto-generated method stub
+            
         }
     } // END of inner class AgentManagerListenerAdapter
 }

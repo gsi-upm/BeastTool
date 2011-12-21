@@ -1,5 +1,7 @@
 package es.upm.dit.gsi.beast.platform;
 
+import java.util.logging.Logger;
+
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.platform.jade.JadeConnector;
 import es.upm.dit.gsi.beast.platform.jade.JadeMessenger;
@@ -18,12 +20,12 @@ public class PlatformSelector {
      * @param platform
      * @return the connector to the platform
      */
-    public static Connector getConnector(String platform) {
+    public static Connector getConnector(String platform, Logger logger) {
 
         if (platform.equals("jadex")) {
-            return new JadexConnector();
+            return new JadexConnector(logger);
         } else if (platform.equals("jade")){
-            return new JadeConnector();
+            return new JadeConnector(logger);
         }
         return null;
     }

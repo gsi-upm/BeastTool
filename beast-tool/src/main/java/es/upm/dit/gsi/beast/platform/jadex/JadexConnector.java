@@ -22,20 +22,23 @@ import es.upm.dit.gsi.beast.platform.Connector;
  */
 public class JadexConnector implements Connector {
 
-    private Logger logger = Logger.getLogger(JadexConnector.class.getName());
-    
+    private Logger logger;
+
     private IExternalAccess platform;
     private IComponentManagementService cmsService = null;
     private IMessageService messageService = null;
 
     private HashMap<String, IComponentIdentifier> createdAgents;
 
+    public JadexConnector(Logger logger) {
+        this.logger = logger;
+    }
+
     /**
      * Platform is launched and the external access of the message service and
      * the component management service (CMS) are saved
      */
     public void launchPlatform() {
-        
         logger.info("Launching Jade Platform...");
         platform = (IExternalAccess) Starter.createPlatform(null).get(
                 new ThreadSuspendable());

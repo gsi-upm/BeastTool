@@ -32,7 +32,7 @@ public abstract class Scenario {
         this.logger = logger;
         logger.finest(">> startPlatform");
         this.platform = platform;
-        connector = PlatformSelector.getConnector(platform);
+        connector = PlatformSelector.getConnector(platform, logger);
         logger.info("Platform " + platform + " is not launched yet.");
         connector.launchPlatform();
         logger.info("Platform " + platform + " launched.");
