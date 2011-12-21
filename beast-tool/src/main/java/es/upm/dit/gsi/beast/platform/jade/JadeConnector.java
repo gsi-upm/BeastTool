@@ -1,19 +1,16 @@
 package es.upm.dit.gsi.beast.platform.jade;
 
 import jade.core.AID;
-import jade.core.AgentManager;
 import jade.core.ContainerID;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
-import jade.core.event.MTPListener;
-import jade.core.event.PlatformListener;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import jade.wrapper.ControllerException;
 import jade.wrapper.PlatformController;
-import jade.wrapper.PlatformEvent;
 import jade.wrapper.PlatformController.Listener;
+import jade.wrapper.PlatformEvent;
 import jade.wrapper.StaleProxyException;
 
 import java.util.HashMap;

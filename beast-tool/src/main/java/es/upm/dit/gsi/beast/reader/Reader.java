@@ -107,13 +107,18 @@ public class Reader {
                             }
                             aux_package_path = tests_package_path + "."
                                     + scenarioJavaName;
-                            CreateStory.createStory(scenarioJavaName,
-                                    platformName, aux_package_path, dest_dir);
-                            // Writes StoryExample.java
+                            Reader.createFolder(aux_package_path, dest_dir);
+                            if (fileDoesNotExist(scenarioJavaName + ".java",
+                                    aux_package_path, dest_dir)) {
+                                // Writes StoryExample.java
+                                CreateStory.createStory(scenarioJavaName,
+                                        platformName, aux_package_path,
+                                        dest_dir);
+                            }
+                            // Writes story_example.story
                             story_file_writer = createFileWriter(
                                     scenarioStoryName, aux_package_path,
                                     dest_dir);
-                            // Writes story_example.story
                             story_file_writer.write(nextLine + "\n");
 
                         } else if (next.matches("Given")) {
@@ -122,8 +127,8 @@ public class Reader {
                                 givenDescription = givenDescription + " "
                                         + line_words.nextToken();
                             }
-                            if (scenarioDoesNotExist(scenarioJavaName,
-                                    aux_package_path, dest_dir)) {
+                            if (fileDoesNotExist("Scenario" + scenarioJavaName
+                                    + ".java", aux_package_path, dest_dir)) {
                                 CreateScenario.createScenario(scenarioJavaName,
                                         aux_package_path, givenDescription,
                                         dest_dir);
@@ -139,8 +144,8 @@ public class Reader {
                                 whenDescription = whenDescription + " "
                                         + line_words.nextToken();
                             }
-                            if (setupDoesNotExist(scenarioJavaName,
-                                    aux_package_path, dest_dir)) {
+                            if (fileDoesNotExist("Setup" + scenarioJavaName
+                                    + ".java", aux_package_path, dest_dir)) {
                                 CreateSetup.createSetup(scenarioJavaName,
                                         aux_package_path, whenDescription,
                                         dest_dir);
@@ -156,7 +161,8 @@ public class Reader {
                                 thenDescription = thenDescription + " "
                                         + line_words.nextToken();
                             }
-                            if (evaluationDoesNotExist(scenarioJavaName,
+                            if (fileDoesNotExist("Evaluation"
+                                    + scenarioJavaName + ".java",
                                     aux_package_path, dest_dir)) {
                                 CreateEvaluation.createEvaluation(
                                         scenarioJavaName, aux_package_path,
@@ -204,34 +210,7 @@ public class Reader {
     }
 
     /**
-     * Method to know if already exists one scenario with the same name in the
-     * same folder
-     * 
-     * @param scenario_name
-     * @param path
-     * @param dest_dir
-     * @return true when the file does not exist
-     */
-    private boolean scenarioDoesNotExist(String scenario_name, String path,
-            String dest_dir) {
-
-        File f = new File(dest_dir);
-        if (!f.isDirectory())
-            return false;
-
-        String folderPath = createFolderPath(path);
-
-        f = new File(f, folderPath);
-        if (!f.isDirectory())
-            return false;
-
-        File javaFile = new File(f, "Scenario" + scenario_name + ".java");
-
-        return !javaFile.exists();
-    }
-
-    /**
-     * Method to know if already exists one setup with the same name in the same
+     * Method to know if already exists one file with the same name in the same
      * folder
      * 
      * @param scenario_name
@@ -239,8 +218,7 @@ public class Reader {
      * @param dest_dir
      * @return true when the file does not exist
      */
-    private boolean setupDoesNotExist(String scenario_name, String path,
-            String dest_dir) {
+    private boolean fileDoesNotExist(String file, String path, String dest_dir) {
 
         File f = new File(dest_dir);
         if (!f.isDirectory())
@@ -252,36 +230,10 @@ public class Reader {
         if (!f.isDirectory())
             return false;
 
-        File javaFile = new File(f, "Setup" + scenario_name + ".java");
+        File javaFile = new File(f, file);
+        boolean result = !javaFile.exists();
 
-        return !javaFile.exists();
-    }
-
-    /**
-     * Method to know if already exists one evaluation with the same name in the
-     * same folder
-     * 
-     * @param scenario_name
-     * @param path
-     * @param dest_dir
-     * @return true when the file does not exist
-     */
-    private boolean evaluationDoesNotExist(String scenario_name, String path,
-            String dest_dir) {
-
-        File f = new File(dest_dir);
-        if (!f.isDirectory())
-            return false;
-
-        String folderPath = createFolderPath(path);
-
-        f = new File(f, folderPath);
-        if (!f.isDirectory())
-            return false;
-
-        File javaFile = new File(f, "Evaluation" + scenario_name + ".java");
-
-        return !javaFile.exists();
+        return result;
     }
 
     /**
@@ -380,6 +332,7 @@ public class Reader {
                 path2 = path2 + File.separator + part;
             }
         }
+
         return path2;
     }
 

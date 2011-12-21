@@ -66,7 +66,9 @@ public class CreateScenario {
                 + ".Scenario"
                 + scenario_name
                 + ".java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");");
-        jm.addLine("\n   //EXAMPLE: startAgent(\"Steve\", \"org.example.Steve.agent.xml\");");
+        jm.addLine("\n");
+        jm.addLine("   //EXAMPLE for Jadex: startAgent(\"Steve\", \"org.example.Steve.agent.xml\"); // This xml file is the jadex agent description file (ADF)");
+        jm.addLine("   //EXAMPLE for Jade: startAgent(\"Steve\", \"org.example.Steve\"); // This string is the agent class Steve.java that extends Jade Agent class");
      
         jm.newComment();
         JavaComment methodComment = jm.getComment();
