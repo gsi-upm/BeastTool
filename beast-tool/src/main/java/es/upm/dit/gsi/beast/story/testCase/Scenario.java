@@ -1,7 +1,5 @@
 package es.upm.dit.gsi.beast.story.testCase;
 
-import jadex.commons.Tuple;
-
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
