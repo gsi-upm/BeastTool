@@ -39,7 +39,7 @@ public class PlatformSelector {
         if (platform.equals("jadex")) {
             return JadexMessenger.getInstance();
         } else if (platform.equals("jade")){
-            return new JadeMessenger();
+            return JadeMessenger.getInstance();
         }
         return null;
     }
@@ -53,7 +53,7 @@ public class PlatformSelector {
         if (platform.equals("jadex")) {
             return JadexAgentIntrospector.getInstance();
         } else if (platform.equals("jade")){
-            return new JadeAgentIntrospector();
+            return JadeAgentIntrospector.getInstance();
         }
         return null;
     }

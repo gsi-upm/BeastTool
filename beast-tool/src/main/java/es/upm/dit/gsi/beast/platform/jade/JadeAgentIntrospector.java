@@ -9,11 +9,12 @@ import es.upm.dit.gsi.beast.platform.Connector;
 
 public class JadeAgentIntrospector implements AgentIntrospector {
 
-    private static HashMap<String, HashMap<String, Object>> dataToTest = new HashMap<String, HashMap<String, Object>>();
+    private static HashMap<String, HashMap<String, Object>> dataToTest;
 
     private static JadeAgentIntrospector INSTANCE = new JadeAgentIntrospector();
 
     private JadeAgentIntrospector() {
+        dataToTest = new HashMap<String, HashMap<String, Object>>();
     }
 
     public static JadeAgentIntrospector getInstance() {
@@ -21,8 +22,13 @@ public class JadeAgentIntrospector implements AgentIntrospector {
     }
 
     public static JadeAgentIntrospector getMyInstance(Agent agent) {
-        dataToTest.put(agent.getName(), new HashMap<String, Object>());
+        HashMap<String, Object> believes = new HashMap<String, Object>();
+        JadeAgentIntrospector.getInstance().getDataToTest().put(agent.getName(), believes);
         return INSTANCE;
+    }
+    
+    public HashMap<String, HashMap<String, Object>> getDataToTest() {
+        return dataToTest;
     }
 
     @Override

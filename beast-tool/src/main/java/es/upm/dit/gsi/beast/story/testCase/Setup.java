@@ -35,6 +35,7 @@ public abstract class Setup {
         logger.fine("Getting agent introspector...");
         introspector = PlatformSelector.getAgentIntrospector(scenario
                 .getPlatform());
+        logger.fine("Agent Introspector retrieved sucessfully");
         setStates();
     }
 

@@ -1,6 +1,5 @@
 package es.upm.dit.gsi.beast.platform.jade;
 
-import jade.core.AID;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
@@ -87,9 +86,10 @@ public class JadeConnector implements Connector {
             AgentController agentController = mainContainer.createNewAgent(
                     agent_name, path, empty);
             this.createdAgents.put(agentController.getName(), agentController);
-            logger.fine("Agent " + agent_name + " created in Main Container");
+            logger.fine("Agent " + agentController.getName() + " created in Main Container");
+            agentController.start();
         } catch (StaleProxyException e) {
-            logger.warning("Exception creating agent in MainContainer... " + e);
+            logger.warning("Exception creating or starting agent in MainContainer... " + e);
         }
     }
 
@@ -120,11 +120,12 @@ public class JadeConnector implements Connector {
             AgentController agentController = containerController
                     .createNewAgent(agentName, path, arguments);
             this.createdAgents.put(agentName, agentController);
+            agentController.start();
             logger.fine("Agent " + agentName + " created in Container " + containerName);
         } catch (StaleProxyException e) {
-            logger.warning("Exception creating agent " + agentName + " in container " + containerName + "... Exception:" + e);
+            logger.warning("Exception creating or starting agent " + agentName + " in container " + containerName + "... Exception:" + e);
         } catch (Exception e) {
-            logger.warning("Exception creating agent " + agentName + " in container " + containerName + "... Exception:" + e);
+            logger.warning("Exception creating or starting agent " + agentName + " in container " + containerName + "... Exception:" + e);
         }
     }
 
@@ -166,9 +167,12 @@ public class JadeConnector implements Connector {
      * @see es.upm.dit.gsi.beast.platform.Connector#getAgentID(java.lang.String)
      */
     @Override
-    public AID getAgentID(String agent_name) {
-        //TODO no sé si se va a poder...
-        return null;
+    public AgentController getAgentID(String agent_name) {
+        return this.createdAgents.get(agent_name);
+    }
+    
+    public AgentController getAgentController(String agent_name) {
+        return this.createdAgents.get(agent_name);
     }
 
     /*
