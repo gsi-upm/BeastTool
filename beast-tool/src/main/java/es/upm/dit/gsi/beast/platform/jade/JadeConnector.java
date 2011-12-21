@@ -26,18 +26,24 @@ public class JadeConnector implements Connector {
 
     private Logger logger;
 
+    private Runtime runtime;
     private PlatformController platform;
     private ContainerController mainContainer;
-    private HashMap<String, ContainerController> remoteContainers;
-    private HashMap<String, ContainerID> containerIDs;
+    private HashMap<String, ContainerController> platformContainers;
 
     private HashMap<String, AgentController> createdAgents;
-    private HashMap<String, AID> agentIDs;
+
+    private final String TRUE = "true";
+    private final String PLATFORM_ID = "BEAST";
+    private final String MAIN_HOST = "localhost";
+    private final String MAIN_PORT = "2099";
+    private final String AGENTS = "rma:jade.tools.rma.rma;sniffer:jade.tools.sniffer.Sniffer";
+    private final String SERVICES = "jade.core.messaging.TopicManagementService;jade.core.mobility.AgentMobilityService;jade.core.event.NotificationService;jade.core.replication.MainReplicationService";
 
     public JadeConnector(Logger logger) {
         this.logger = logger;
     }
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -46,22 +52,20 @@ public class JadeConnector implements Connector {
     @Override
     public void launchPlatform() {
         logger.fine("Launching Jade Platform...");
-        
-        Runtime rt = Runtime.instance();
-        
-        Profile p = new ProfileImpl();
-        p.setParameter("gui", "true");
-        p.setParameter("nomtp", "true");
-        p.setParameter("platform-id", "beast");
-        p.setParameter("local-host", "localhost");
-        p.setParameter("local-port", "2099");
-        p.setParameter("agents",
-                "rma:jade.tools.rma.rma;sniffer:jade.tools.sniffer.Sniffer");
-        p.setParameter(
-                "services",
-                "jade.core.messaging.TopicManagementService;jade.core.mobility.AgentMobilityService;jade.core.event.NotificationService;jade.core.replication.MainReplicationService");
 
-        this.mainContainer = rt.createMainContainer(p);
+        this.runtime = Runtime.instance();
+
+        //TODO hacer que los profiles sean configurables
+        Profile p = new ProfileImpl();
+        p.setParameter(Profile.GUI, TRUE);
+        p.setParameter(Profile.NO_MTP, TRUE);
+        p.setParameter(Profile.PLATFORM_ID, PLATFORM_ID);
+        p.setParameter(Profile.LOCAL_HOST, MAIN_HOST);
+        p.setParameter(Profile.LOCAL_PORT, MAIN_PORT);
+        p.setParameter(Profile.AGENTS, AGENTS);
+        p.setParameter(Profile.SERVICES, SERVICES);
+
+        this.mainContainer = this.runtime.createMainContainer(p);
         logger.fine("Main container launched");
         try {
             platform = mainContainer.getPlatformController();
@@ -71,12 +75,11 @@ public class JadeConnector implements Connector {
         }
 
         this.createdAgents = new HashMap<String, AgentController>();
-        this.agentIDs = new HashMap<String, AID>();
-        this.remoteContainers = new HashMap<String, ContainerController>();
-        this.containerIDs = new HashMap<String, ContainerID>();
-        
+        this.platformContainers = new HashMap<String, ContainerController>();
+        this.platformContainers.put("Main-Container", mainContainer);
+
         logger.finer("Adding listener to the platform...");
-        
+
         try {
             Listener listener = new JadeListener();
             logger.finest("Listener created");
@@ -85,7 +88,6 @@ public class JadeConnector implements Connector {
         } catch (ControllerException e) {
             logger.severe("Impossible to add listener to the platform: " + e);
         }
-        
 
     }
 
@@ -111,22 +113,71 @@ public class JadeConnector implements Connector {
             logger.warning("Exception creating agent in MainContainer... " + e);
         }
     }
-    
+
     /**
      * @param agentName
      * @param path
      * @param containerName
      * @param arguments
      */
-    public void createAgent(String agentName, String path, String containerName, Object[] arguments) {
-        //TODO implementar
+    public void createAgent(String agentName, String path,
+            String containerName, Object[] arguments) {
+        
+        ContainerController containerController = this.platformContainers
+                .get(containerName);
+        if (containerController == null) {
+            this.createContainer(containerName);
+            containerController = this.platformContainers.get(containerName);
+        }
+        if (arguments==null) {
+            logger.finest("No arguments for agent " + agentName + " in container " + containerName);
+            Object reference = new Object();
+            arguments= new Object[1];
+            arguments[0] = reference;
+        }
+        try {
+            logger.fine("Creating agent " + agentName + " in container "
+                    + containerName);
+            AgentController agentController = containerController
+                    .createNewAgent(agentName, path, arguments);
+            this.createdAgents.put(agentName, agentController);
+            logger.fine("Agent " + agentName + " created in Container " + containerName);
+        } catch (StaleProxyException e) {
+            logger.warning("Exception creating agent " + agentName + " in container " + containerName + "... Exception:" + e);
+        } catch (Exception e) {
+            logger.warning("Exception creating agent " + agentName + " in container " + containerName + "... Exception:" + e);
+        }
     }
-    
+
     /**
+     * Create a container in the platform
+     * 
      * @param container
+     *            The name of the container
      */
     public void createContainer(String container) {
-        //TODO implementar
+
+        ContainerController controller = this.platformContainers.get(container);
+        if (controller == null) {
+
+            //TODO hacer que los profiles sean configurables
+            Profile p = new ProfileImpl();
+            p.setParameter(Profile.PLATFORM_ID, PLATFORM_ID);
+            p.setParameter(Profile.MAIN_HOST, MAIN_HOST);
+            p.setParameter(Profile.MAIN_PORT, MAIN_PORT);
+            p.setParameter(Profile.LOCAL_HOST, MAIN_HOST);
+            int port = Integer.parseInt(MAIN_PORT);
+            port = port + 1 + this.platformContainers.size();
+            p.setParameter(Profile.LOCAL_PORT, Integer.toString(port));
+            logger.fine("Creating container " + container + "...");
+            ContainerController agentContainer = this.runtime
+                    .createAgentContainer(p);
+            this.platformContainers.put(container, agentContainer);
+            logger.fine("Container " + container + " created successfully.");
+        } else {
+            logger.fine("Container " + container + " is already created.");
+        }
+
     }
 
     /*
@@ -136,7 +187,8 @@ public class JadeConnector implements Connector {
      */
     @Override
     public AID getAgentID(String agent_name) {
-        return this.agentIDs.get(agent_name);
+        //TODO no sé si se va a poder...
+        return null;
     }
 
     /*
@@ -168,77 +220,77 @@ public class JadeConnector implements Connector {
      * jade.core.AgentManager.Listener interface
      */
     class JadeListener implements PlatformController.Listener {
-        
+
         public JadeListener() {
             logger.fine(">> PlatformListener constructor");
         }
-        
-//        public void addedContainer(jade.core.event.PlatformEvent ev) {
-//            ContainerID cid = ev.getContainer();
-//            containerIDs.put(cid.getName(),cid);
-//        }
-//
-//        public void removedContainer(jade.core.event.PlatformEvent ev) {
-//            ContainerID cid = ev.getContainer();
-//            containerIDs.remove(cid.getName());
-//            remoteContainers.remove(cid.getName());
-//            try {
-//                if (cid.getName().equals(mainContainer.getContainerName())) {
-//                    // The local main container is terminating -->
-//                    // The whole platform is terminating
-//                    logger.severe("Platform state: KILLED");
-//                }
-//            }
-//            catch (ControllerException ce) {
-//                // Should never happen
-//                ce.printStackTrace();
-//            }
-//        }
-//        
-//        public void bornAgent(jade.core.event.PlatformEvent ev) {
-//        }
-//
-//        public void deadAgent(jade.core.event.PlatformEvent ev) {
-//            AID agentID = ev.getAgent();
-//            String agentName = agentID.getLocalName();
-//            agentIDs.remove(agentName);
-//        }
-//
-//        public void movedAgent(jade.core.event.PlatformEvent ev) {
-//            //TODO
-//        }
-//
-//        public void suspendedAgent(jade.core.event.PlatformEvent ev) {
-//        }
-//        //TODO
-//
-//        public void resumedAgent(jade.core.event.PlatformEvent ev) {
-//            //TODO
-//        }
-//
-//        public void frozenAgent(jade.core.event.PlatformEvent ev) {
-//            //TODO
-//        }
-//
-//        public void thawedAgent(jade.core.event.PlatformEvent ev) {
-//            //TODO
-//        }
-//
-//        public void addedMTP(jade.core.event.MTPEvent ev) {
-//            //TODO
-//        }
-//
-//        public void removedMTP(jade.core.event.MTPEvent ev) {
-//            //TODO
-//        }
-//
-//        public void messageIn(jade.core.event.MTPEvent ev) {
-//            //TODO
-//        }
-//
-//        public void messageOut(jade.core.event.MTPEvent ev) {
-//            //TODO
-//        }
+
+        // public void addedContainer(jade.core.event.PlatformEvent ev) {
+        // ContainerID cid = ev.getContainer();
+        // containerIDs.put(cid.getName(),cid);
+        // }
+        //
+        // public void removedContainer(jade.core.event.PlatformEvent ev) {
+        // ContainerID cid = ev.getContainer();
+        // containerIDs.remove(cid.getName());
+        // remoteContainers.remove(cid.getName());
+        // try {
+        // if (cid.getName().equals(mainContainer.getContainerName())) {
+        // // The local main container is terminating -->
+        // // The whole platform is terminating
+        // logger.severe("Platform state: KILLED");
+        // }
+        // }
+        // catch (ControllerException ce) {
+        // // Should never happen
+        // ce.printStackTrace();
+        // }
+        // }
+        //
+        // public void bornAgent(jade.core.event.PlatformEvent ev) {
+        // }
+        //
+        // public void deadAgent(jade.core.event.PlatformEvent ev) {
+        // AID agentID = ev.getAgent();
+        // String agentName = agentID.getLocalName();
+        // agentIDs.remove(agentName);
+        // }
+        //
+        // public void movedAgent(jade.core.event.PlatformEvent ev) {
+        // //TODO
+        // }
+        //
+        // public void suspendedAgent(jade.core.event.PlatformEvent ev) {
+        // }
+        // //TODO
+        //
+        // public void resumedAgent(jade.core.event.PlatformEvent ev) {
+        // //TODO
+        // }
+        //
+        // public void frozenAgent(jade.core.event.PlatformEvent ev) {
+        // //TODO
+        // }
+        //
+        // public void thawedAgent(jade.core.event.PlatformEvent ev) {
+        // //TODO
+        // }
+        //
+        // public void addedMTP(jade.core.event.MTPEvent ev) {
+        // //TODO
+        // }
+        //
+        // public void removedMTP(jade.core.event.MTPEvent ev) {
+        // //TODO
+        // }
+        //
+        // public void messageIn(jade.core.event.MTPEvent ev) {
+        // //TODO
+        // }
+        //
+        // public void messageOut(jade.core.event.MTPEvent ev) {
+        // //TODO
+        // }
 
         @Override
         public void bornAgent(PlatformEvent arg0) {
@@ -248,31 +300,31 @@ public class JadeConnector implements Connector {
         @Override
         public void deadAgent(PlatformEvent arg0) {
             // TODO Auto-generated method stub
-            
+
         }
 
         @Override
         public void killedPlatform(PlatformEvent arg0) {
             // TODO Auto-generated method stub
-            
+
         }
 
         @Override
         public void resumedPlatform(PlatformEvent arg0) {
             // TODO Auto-generated method stub
-            
+
         }
 
         @Override
         public void startedPlatform(PlatformEvent arg0) {
             // TODO Auto-generated method stub
-            
+
         }
 
         @Override
         public void suspendedPlatform(PlatformEvent arg0) {
             // TODO Auto-generated method stub
-            
+
         }
     } // END of inner class AgentManagerListenerAdapter
 }

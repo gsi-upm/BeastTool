@@ -118,4 +118,11 @@ public class JadexConnector implements Connector {
         return cmsService.getExternalAccess(getAgentID(agent_name)).get(
                 new ThreadSuspendable());
     }
+
+    @Override
+    public void createAgent(String agentName, String path,
+            String containerName, Object[] arguments) {
+        this.createAgent(agentName, path);
+        
+    }
 }

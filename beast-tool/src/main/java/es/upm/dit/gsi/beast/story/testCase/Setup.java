@@ -2,7 +2,6 @@ package es.upm.dit.gsi.beast.story.testCase;
 
 import jadex.bdi.runtime.IGoal;
 import jadex.bdi.runtime.IPlan;
-import jadex.commons.Tuple;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;

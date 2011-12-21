@@ -47,6 +47,13 @@ public abstract class Scenario {
     public String getPlatform() {
         return this.platform;
     }
+    
+    /**
+     * @return the platform connector
+     */
+    public Connector getConnector() {
+        return this.connector;
+    }
 
     /**
      * Creates a real agent in the platform
@@ -54,10 +61,24 @@ public abstract class Scenario {
      * @param agent_name
      *            The name that the agent is gonna have in the platform
      * @param path
-     *            The path of the description (xml) of the agent
+     *            The path of the description of the agent
      */
     public void startAgent(String agent_name, String path) {
         connector.createAgent(agent_name, path);
+    }
+    
+    
+    
+    /**
+     * Creates a real agent in the platform in a given container
+     * 
+     * @param agent_name The name of the agent
+     * @param path The path of the Agent
+     * @param containerName The name of the container, if it does not exist, beast-tool creates it.
+     * @param arguments For the agent
+     */
+    public void startAgent(String agent_name, String path, String containerName, Object[] arguments) {
+        connector.createAgent(agent_name, path, containerName, arguments);
     }
 
     /**
