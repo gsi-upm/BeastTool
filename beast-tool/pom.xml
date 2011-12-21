@@ -79,61 +79,61 @@
 		<plugins>
 
 <!-- 			<plugin> -->
-<!-- 				<groupId>org.codehaus.mojo</groupId> -->
-<!-- 				<artifactId>exec-maven-plugin</artifactId> -->
-<!-- 				<version>1.1.1</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<phase>generate-test-sources</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>java</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass> -->
-<!-- 							<arguments> -->
-<!-- 								<argument>beast.properties</argument> -->
-<!-- 								<argument>beastLog.properties</argument> -->
-<!-- 							</arguments> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
+<!-- 			<groupId>org.codehaus.mojo</groupId> -->
+<!-- 			<artifactId>exec-maven-plugin</artifactId> -->
+<!-- 			<version>1.1.1</version> -->
+<!-- 			<executions> -->
+<!-- 			<execution> -->
+<!-- 			<phase>generate-test-sources</phase> -->
+<!-- 			<goals> -->
+<!-- 			<goal>java</goal> -->
+<!-- 			</goals> -->
+<!-- 			<configuration> -->
+<!-- 			<mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass> -->
+<!-- 			<arguments> -->
+<!-- 			<argument>beast.properties</argument> -->
+<!-- 			<argument>beastLog.properties</argument> -->
+<!-- 			</arguments> -->
+<!-- 			</configuration> -->
+<!-- 			</execution> -->
+<!-- 			</executions> -->
 <!-- 			</plugin> -->
 
 <!-- 			<plugin> -->
-<!-- 				<artifactId>maven-resources-plugin</artifactId> -->
-<!-- 				<version>2.5</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>copy-resources</id> -->
-<!-- 						<phase>generate-test-resources</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>copy-resources</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<outputDirectory>${basedir}/target/test-classes</outputDirectory> -->
-<!-- 							<resources> -->
-<!-- 								<resource> -->
-<!-- 									<directory>${basedir}/src/test/java</directory> -->
-<!-- 									<includes> -->
-<!-- 										<include>**/*.story</include> -->
-<!-- 									</includes> -->
-<!-- 								</resource> -->
-<!-- 							</resources> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
+<!-- 			<artifactId>maven-resources-plugin</artifactId> -->
+<!-- 			<version>2.5</version> -->
+<!-- 			<executions> -->
+<!-- 			<execution> -->
+<!-- 			<id>copy-resources</id> -->
+<!-- 			<phase>generate-test-resources</phase> -->
+<!-- 			<goals> -->
+<!-- 			<goal>copy-resources</goal> -->
+<!-- 			</goals> -->
+<!-- 			<configuration> -->
+<!-- 			<outputDirectory>${basedir}/target/test-classes</outputDirectory> -->
+<!-- 			<resources> -->
+<!-- 			<resource> -->
+<!-- 			<directory>${basedir}/src/test/java</directory> -->
+<!-- 			<includes> -->
+<!-- 			<include>**/*.story</include> -->
+<!-- 			</includes> -->
+<!-- 			</resource> -->
+<!-- 			</resources> -->
+<!-- 			</configuration> -->
+<!-- 			</execution> -->
+<!-- 			</executions> -->
 <!-- 			</plugin> -->
 
 <!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-surefire-plugin</artifactId> -->
-<!-- 				<version>2.11</version> -->
-<!-- 				<configuration> -->
-<!-- 					<phase>test</phase> -->
-<!-- 					<includes> -->
-<!-- 						<include>**/CaseManager.java</include> -->
-<!-- 					</includes> -->
-<!-- 				</configuration> -->
+<!-- 			<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 			<artifactId>maven-surefire-plugin</artifactId> -->
+<!-- 			<version>2.11</version> -->
+<!-- 			<configuration> -->
+<!-- 			<phase>test</phase> -->
+<!-- 			<includes> -->
+<!-- 			<include>**/CaseManager.java</include> -->
+<!-- 			</includes> -->
+<!-- 			</configuration> -->
 <!-- 			</plugin> -->
 
 			<plugin>
@@ -414,6 +414,22 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.12</version>
 
+		</dependency>
+
+		<dependency>
+			<groupId>com.tilab</groupId>
+			<artifactId>wade</artifactId>
+			<version>2.6</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/wade2.6/lib/wade.jar</systemPath>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.tilab</groupId>
+			<artifactId>jade</artifactId>
+			<version>4.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/jade4.0/jade.jar</systemPath>
 		</dependency>
 
 	</dependencies>
