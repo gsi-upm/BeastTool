@@ -30,17 +30,20 @@ import es.upm.dit.gsi.beast.story.testCase.Setup;
 public abstract class Story extends JUnitStory {
 
     private static final int SLEEP_TIME = 2000;
-    Logger logger = Logger.getLogger(this.getClass().toString());
+    
+    private Logger logger;
     Scenario scenario;
     Setup setup;
     Evaluation evaluation;
-
+ 
     /**
      * This method creates the scenario, which is the GIVEN part
      * 
      * @param scenarioName
      */
-    public void createScenario(String scenarioName, String platform) {
+    public void createScenario(String scenarioName, String platform, Logger logger) {
+        this.logger = logger;
+        logger.fine("Creating Scenario... Given: " + scenarioName);
         String path = getPath(scenarioName);
         ClassLoader loader = ClassLoader.getSystemClassLoader();
 
@@ -60,7 +63,7 @@ public abstract class Story extends JUnitStory {
 
         logger.info("The platform is almost started...");
 
-        scenario.startPlatform(platform);
+        scenario.startPlatform(platform, logger);
     }
 
     /**
@@ -81,7 +84,7 @@ public abstract class Story extends JUnitStory {
             logger.severe("Error loading the setup " + path);
             Assert.fail();
         }
-        setup.setScenario(scenario);
+        setup.setScenario(this.scenario, this.logger);
     }
 
     /**
@@ -101,7 +104,7 @@ public abstract class Story extends JUnitStory {
             logger.severe("Error loading the evaluation " + path);
             Assert.fail();
         }
-        evaluation.setSetup(setup);
+        evaluation.setSetup(this.setup, this.logger);
     }
 
     /**

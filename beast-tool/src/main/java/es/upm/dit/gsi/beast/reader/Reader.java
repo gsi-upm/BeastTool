@@ -298,6 +298,7 @@ public class Reader {
         XStream xstream = new XStream();
         try {
             File f = new File("ClassDatabase.xml");
+            f.delete();
             if (!f.exists()) {
                 try {
                     FileWriter w = new FileWriter(f);

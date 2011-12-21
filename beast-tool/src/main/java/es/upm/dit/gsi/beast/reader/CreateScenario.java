@@ -57,7 +57,7 @@ public class CreateScenario {
         classComment
                 .addLine("In startAgents method the following method must be used");
         classComment.addLine("   super.startAgent(agent_name,agent_path)");
-        classComment.addAuthor("Jorge Solitario");
+        classComment.addAuthor("es.upm.dit.gsi.beast");
 
         JavaMethod jm = js.newJavaMethod("startAgents", "void", "public");
         jm.addLine("// TODO implement this method to represent the @Given part of the test in Java code.");

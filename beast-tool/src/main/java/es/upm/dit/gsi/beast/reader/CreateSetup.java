@@ -60,7 +60,7 @@ public class CreateSetup {
         classComment.addLine("   super.getAgentPlans(agent_name)");
         classComment.addLine("   super.getAgentGoals(agent_name )");
 
-        classComment.addAuthor("Jorge Solitario");
+        classComment.addAuthor("es.upm.dit.gsi.beast");
 
         JavaMethod jm = js.newJavaMethod("setStates", "void", "public");
         jm.addLine("// TODO implement this method to represent the @When part of the test in Java code.");

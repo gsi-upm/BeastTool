@@ -19,7 +19,7 @@ import es.upm.dit.gsi.beast.platform.PlatformSelector;
  */
 public abstract class Setup {
 
-    protected Logger logger = Logger.getLogger(Setup.class.getName());
+    protected Logger logger;
     private Scenario scenario;
     private AgentIntrospector introspector;
 
@@ -30,8 +30,10 @@ public abstract class Setup {
      * 
      * @param scenario
      */
-    public void setScenario(Scenario scenario) {
+    public void setScenario(Scenario scenario, Logger logger) {
+        this.logger = logger;
         this.scenario = scenario;
+        logger.fine("Getting agent introspector...");
         introspector = PlatformSelector.getAgentIntrospector(scenario
                 .getPlatform());
         setStates();
@@ -53,6 +55,7 @@ public abstract class Setup {
 
         introspector.setBeliefValue(agent_name, belief_name, new_value,
                 scenario.connector);
+        logger.fine("Belief configuration successful. Agent: " + agent_name + " Belief: " + belief_name + " Value: " + new_value);
     }
 
     /**

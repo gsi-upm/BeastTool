@@ -10,6 +10,7 @@ import jadex.bridge.service.SServiceProvider;
 import jadex.commons.future.ThreadSuspendable;
 
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 import es.upm.dit.gsi.beast.platform.Connector;
 
@@ -21,6 +22,8 @@ import es.upm.dit.gsi.beast.platform.Connector;
  */
 public class JadexConnector implements Connector {
 
+    private Logger logger = Logger.getLogger(JadexConnector.class.getName());
+    
     private IExternalAccess platform;
     private IComponentManagementService cmsService = null;
     private IMessageService messageService = null;
@@ -32,7 +35,8 @@ public class JadexConnector implements Connector {
      * the component management service (CMS) are saved
      */
     public void launchPlatform() {
-
+        
+        logger.info("Launching Jade Platform...");
         platform = (IExternalAccess) Starter.createPlatform(null).get(
                 new ThreadSuspendable());
         IServiceProvider container = (IServiceProvider) platform

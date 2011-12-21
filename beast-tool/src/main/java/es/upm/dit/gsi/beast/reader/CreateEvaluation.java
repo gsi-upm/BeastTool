@@ -58,7 +58,7 @@ public class CreateEvaluation {
                 .addLine("In checkStates method the following method must be used");
         classComment
                 .addLine("   super.checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)");
-        classComment.addAuthor("Jorge Solitario");
+        classComment.addAuthor("es.upm.dit.gsi.beast");
 
         JavaMethod jm = js.newJavaMethod("checkStates", "void", "public");
         jm.addLine("// TODO implement this method to represent the @Then part of the test in Java code.");

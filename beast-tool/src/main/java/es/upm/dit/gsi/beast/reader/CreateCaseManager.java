@@ -45,7 +45,7 @@ public class CreateCaseManager {
             caseManagerWriter
                     .write(" * Main class to launch all tests in a single run\n");
             caseManagerWriter.write(" *\n");
-            caseManagerWriter.write(" * @author Jorge Solitario\n");
+            caseManagerWriter.write(" * @author es.upm.dit.gsi.beast\n");
             caseManagerWriter.write(" */\n");
             caseManagerWriter.write("public class CaseManager {\n");
             caseManagerWriter.write("\n");

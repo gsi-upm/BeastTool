@@ -1,5 +1,8 @@
 package es.upm.dit.gsi.beast.platform;
 
+import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
+import es.upm.dit.gsi.beast.platform.jade.JadeConnector;
+import es.upm.dit.gsi.beast.platform.jade.JadeMessenger;
 import es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector;
 import es.upm.dit.gsi.beast.platform.jadex.JadexConnector;
 import es.upm.dit.gsi.beast.platform.jadex.JadexMessenger;
@@ -19,6 +22,8 @@ public class PlatformSelector {
 
         if (platform.equals("jadex")) {
             return new JadexConnector();
+        } else if (platform.equals("jade")){
+            return new JadeConnector();
         }
         return null;
     }
@@ -31,6 +36,8 @@ public class PlatformSelector {
 
         if (platform.equals("jadex")) {
             return JadexMessenger.getInstance();
+        } else if (platform.equals("jade")){
+            return new JadeMessenger();
         }
         return null;
     }
@@ -43,6 +50,8 @@ public class PlatformSelector {
 
         if (platform.equals("jadex")) {
             return JadexAgentIntrospector.getInstance();
+        } else if (platform.equals("jade")){
+            return new JadeAgentIntrospector();
         }
         return null;
     }

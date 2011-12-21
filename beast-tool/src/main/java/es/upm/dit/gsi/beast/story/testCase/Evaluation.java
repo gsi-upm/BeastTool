@@ -14,7 +14,7 @@ import es.upm.dit.gsi.beast.story.testCase.Setup;
  */
 public abstract class Evaluation {
 
-    protected Logger logger = Logger.getLogger(Evaluation.class.getName());
+    protected Logger logger;
     private Setup setup;
 
     public abstract void checkStates();
@@ -24,7 +24,8 @@ public abstract class Evaluation {
      * 
      * @param setup
      */
-    public void setSetup(Setup setup) {
+    public void setSetup(Setup setup, Logger logger) {
+        this.logger = logger;
         this.setup = setup;
         checkStates();
     }
@@ -38,6 +39,7 @@ public abstract class Evaluation {
      */
     protected void checkAgentsBeliefEquealsTo(String agent_name,
             String belief_name, Object belief_value) {
+        logger.finer("Asserting...");
         Assert.assertEquals(setup.getBeliefValue(agent_name, belief_name),
                 belief_value);
     }

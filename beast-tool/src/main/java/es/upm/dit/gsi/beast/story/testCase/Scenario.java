@@ -17,7 +17,7 @@ import es.upm.dit.gsi.beast.platform.PlatformSelector;
  */
 public abstract class Scenario {
 
-    protected Logger logger = Logger.getLogger(Scenario.class.getName());
+    protected Logger logger;
 
     abstract public void startAgents();
 
@@ -28,10 +28,14 @@ public abstract class Scenario {
     /**
      * Main constructor of the class, launches the platform
      */
-    public void startPlatform(String platform) {
+    public void startPlatform(String platform, Logger logger) {
+        this.logger = logger;
+        logger.finest(">> startPlatform");
         this.platform = platform;
         connector = PlatformSelector.getConnector(platform);
+        logger.info("Platform " + platform + " is not launched yet.");
         connector.launchPlatform();
+        logger.info("Platform " + platform + " launched.");
         messenger = PlatformSelector.getMessenger(platform);
         startAgents();
     }
