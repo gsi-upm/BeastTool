@@ -66,15 +66,15 @@ public class JadexMessenger implements Messenger {
      */
     public void sendMessageToAgentsWithExtraProperties(String[] agent_name,
             String msgtype, Object message_content,
-            ArrayList<Tuple> properties, Connector connector) {
+            ArrayList<Object> properties, Connector connector) {
         HashMap<String, Object> hm = new HashMap<String, Object>();
         hm.put("performative", msgtype);
         hm.put(SFipa.CONTENT, message_content);
 
-        for (Tuple property : properties) {
+        for (Object property : properties) {
             // Logger logger = Logger.getLogger("JadexMessenger");
             // logger.info("Sending message with extra property: "+property.get(0)+", with value "+property.get(1));
-            hm.put((String) property.get(0), property.get(1));
+            hm.put((String) ((Tuple) property).get(0), ((Tuple) property).get(1));
         }
 
         IComponentIdentifier[] ici = new IComponentIdentifier[agent_name.length];

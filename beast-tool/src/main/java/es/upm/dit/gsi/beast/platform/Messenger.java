@@ -1,6 +1,5 @@
 package es.upm.dit.gsi.beast.platform;
 
-import jadex.commons.Tuple;
 
 import java.util.ArrayList;
 
@@ -42,5 +41,5 @@ public interface Messenger {
      */
     public void sendMessageToAgentsWithExtraProperties(String[] agent_name,
             String msgtype, Object message_content,
-            ArrayList<Tuple> properties, Connector connector);
+            ArrayList<Object> properties, Connector connector);
 }

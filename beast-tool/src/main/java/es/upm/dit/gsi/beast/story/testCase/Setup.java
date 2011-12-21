@@ -145,7 +145,7 @@ public abstract class Setup {
      *            to add to the message
      */
     public void sendMessageToAgentWithExtraProperties(String agent_name,
-            String msgtype, Object message_content, ArrayList<Tuple> properties) {
+            String msgtype, Object message_content, ArrayList<Object> properties) {
         scenario.sendMessageToAgentsWithExtraProperties(agent_name, msgtype,
                 message_content, properties);
     }

@@ -19,7 +19,7 @@ public class JadeMessenger implements Messenger {
     @Override
     public void sendMessageToAgentsWithExtraProperties(String[] agent_name,
             String msgtype, Object message_content,
-            ArrayList<Tuple> properties, Connector connector) {
+            ArrayList<Object> properties, Connector connector) {
         // TODO Auto-generated method stub
 
     }

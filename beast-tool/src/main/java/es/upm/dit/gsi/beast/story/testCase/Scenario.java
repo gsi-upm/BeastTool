@@ -110,7 +110,7 @@ public abstract class Scenario {
      *            to add to the message
      */
     public void sendMessageToAgentsWithExtraProperties(String agent_name,
-            String msgtype, Object message_content, ArrayList<Tuple> properties) {
+            String msgtype, Object message_content, ArrayList<Object> properties) {
 
         String[] names = new String[1];
         names[0] = agent_name;
