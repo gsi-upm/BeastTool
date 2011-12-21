@@ -169,6 +169,7 @@ public class JadeConnector implements Connector {
             int port = Integer.parseInt(MAIN_PORT);
             port = port + 1 + this.platformContainers.size();
             p.setParameter(Profile.LOCAL_PORT, Integer.toString(port));
+            p.setParameter(Profile.CONTAINER_NAME, container);
             logger.fine("Creating container " + container + "...");
             ContainerController agentContainer = this.runtime
                     .createAgentContainer(p);
