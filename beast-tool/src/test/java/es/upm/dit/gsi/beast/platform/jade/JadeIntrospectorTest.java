@@ -59,9 +59,7 @@ public class JadeIntrospectorTest {
         Object value = introspector.getBeliefValue("myAgent", "test", connector);
         
         // Assert
-        Assert.assertEquals("true", value);
-        
-        //FIXME este test no tira
+        Assert.assertEquals(true, value);
     }
     
 }
