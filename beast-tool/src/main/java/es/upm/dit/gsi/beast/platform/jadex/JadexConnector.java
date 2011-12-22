@@ -125,4 +125,12 @@ public class JadexConnector implements Connector {
         this.createAgent(agentName, path);
         
     }
+
+    /* (non-Javadoc)
+     * @see es.upm.dit.gsi.beast.platform.Connector#getLogger()
+     */
+    @Override
+    public Logger getLogger() {
+        return this.logger;
+    }
 }

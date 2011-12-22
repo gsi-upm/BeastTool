@@ -50,11 +50,13 @@ public class Reader {
      *            , the name of the package
      * @param casemanager_path
      *            , the path where casemanager must be created
+     * @param loggingPropFile
+     *            , properties file
      */
     public Reader(String ScenariosList, String platformName, String dest_dir,
-            String tests_package_path, String casemanager_path) {
+            String tests_package_path, String casemanager_path, String loggingPropFile) {
         this.generateJavaFiles(ScenariosList, platformName, dest_dir,
-                tests_package_path, casemanager_path);
+                tests_package_path, casemanager_path, loggingPropFile);
     }
 
     /**
@@ -71,9 +73,11 @@ public class Reader {
      *            , the name of the package
      * @param casemanager_path
      *            , the path where casemanager must be created
+     * @param loggingPropFile
+     *            , properties file
      */
     private void generateJavaFiles(String ScenariosList, String platformName,
-            String dest_dir, String tests_package_path, String casemanager_path) {
+            String dest_dir, String tests_package_path, String casemanager_path, String loggingPropFile) {
 
         BufferedReader fileReader = createFileReader(ScenariosList);
         if (fileReader == null) {
@@ -113,7 +117,7 @@ public class Reader {
                                 // Writes StoryExample.java
                                 CreateStory.createStory(scenarioJavaName,
                                         platformName, aux_package_path,
-                                        dest_dir);
+                                        dest_dir, loggingPropFile);
                             }
                             // Writes story_example.story
                             story_file_writer = createFileWriter(
@@ -250,7 +254,8 @@ public class Reader {
         XStream xstream = new XStream();
         try {
             File f = new File("ClassDatabase.xml");
-            f.delete();
+            //TODO review this delete because the size of this file could be really large
+//            f.delete();
             if (!f.exists()) {
                 try {
                     FileWriter w = new FileWriter(f);
@@ -401,6 +406,7 @@ public class Reader {
         String propertiesFile = null;
         if (args.length > 0) {
             propertiesFile = args[0];
+            properties.load(new FileInputStream(propertiesFile));
             logger.info("Properties file selected -> " + propertiesFile);
         } else {
             logger.severe("No properties file found. Set the path of properties file as argument.");
@@ -411,26 +417,23 @@ public class Reader {
                 FileInputStream configFile = new FileInputStream(args[1]);
                 preferences.load(configFile);
                 LogManager.getLogManager().readConfiguration(configFile);
+
+                new Reader(properties.getProperty("scenarioListPath"), "\""
+                        + properties.getProperty("platform") + "\"",
+                        properties.getProperty("mainDirectory"),
+                        properties.getProperty("testPath"),
+                        properties.getProperty("caseManagerPath"),args[1]);
             } catch (IOException ex) {
                 logger.severe("WARNING: Could not open configuration file");
                 logger.severe("WARNING: Logging not configured (console output only)");
             }
         } else {
-            logger.severe("No logging properties file found. Set the path of properties file as argument.");
-        }
-        try {
-            properties.load(new FileInputStream(propertiesFile));
             new Reader(properties.getProperty("scenarioListPath"), "\""
                     + properties.getProperty("platform") + "\"",
                     properties.getProperty("mainDirectory"),
                     properties.getProperty("testPath"),
-                    properties.getProperty("caseManagerPath"));
-        } catch (IOException e) {
-            logger.severe("ERROR: " + e.toString());
-            throw e;
-        } catch (Exception e) {
-            logger.severe("ERROR: " + e.toString());
-            throw e;
+                    properties.getProperty("caseManagerPath"),null);
+            logger.warning("No logging properties file found. Set the path of properties file as argument.");
         }
 
     }

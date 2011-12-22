@@ -1,6 +1,9 @@
 package es.upm.dit.gsi.beast.platform.jade;
 
 import jade.core.Agent;
+import jade.util.Logger;
+import jade.wrapper.AgentController;
+import jade.wrapper.StaleProxyException;
 
 import java.util.HashMap;
 
@@ -23,7 +26,7 @@ public class JadeAgentIntrospector implements AgentIntrospector {
 
     public static JadeAgentIntrospector getMyInstance(Agent agent) {
         HashMap<String, Object> believes = new HashMap<String, Object>();
-        JadeAgentIntrospector.getInstance().getDataToTest().put(agent.getName(), believes);
+        JadeAgentIntrospector.getInstance().getDataToTest().put(agent.getLocalName(), believes);
         return INSTANCE;
     }
     
@@ -41,7 +44,6 @@ public class JadeAgentIntrospector implements AgentIntrospector {
     public void setBeliefValue(String agent_name, String belief_name,
             Object new_value, Connector connector) {
         JadeAgentIntrospector.dataToTest.get(agent_name).put(belief_name, new_value);
-
     }
 
     public HashMap<String, Object> retrieveBelievesValue(Agent agent) {
@@ -50,7 +52,7 @@ public class JadeAgentIntrospector implements AgentIntrospector {
 
     public void storeBeliefValue(Agent agent, String belief_name,
             Object new_value) {
-        JadeAgentIntrospector.dataToTest.get(agent.getName()).put(belief_name, new_value);
+        JadeAgentIntrospector.dataToTest.get(agent.getLocalName()).put(belief_name, new_value);
 
     }
 

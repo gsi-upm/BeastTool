@@ -26,12 +26,12 @@ public class JadeConnector implements Connector {
 
     private HashMap<String, AgentController> createdAgents;
 
-    private final String TRUE = "true";
-    private final String PLATFORM_ID = "BEAST";
-    private final String MAIN_HOST = "localhost";
-    private final String MAIN_PORT = "2099";
-    private final String AGENTS = "rma:jade.tools.rma.rma;sniffer:jade.tools.sniffer.Sniffer";
-    private final String SERVICES = "jade.core.messaging.TopicManagementService;jade.core.mobility.AgentMobilityService;jade.core.event.NotificationService;jade.core.replication.MainReplicationService";
+    public final String TRUE = "true";
+    public final String PLATFORM_ID = "BEAST";
+    public final String MAIN_HOST = "localhost";
+    public final String MAIN_PORT = "2099";
+    public final String AGENTS = "rma:jade.tools.rma.rma;sniffer:jade.tools.sniffer.Sniffer";
+    public final String SERVICES = "jade.core.messaging.TopicManagementService;jade.core.mobility.AgentMobilityService;jade.core.event.NotificationService;jade.core.replication.MainReplicationService";
 
     public JadeConnector(Logger logger) {
         this.logger = logger;
@@ -196,6 +196,14 @@ public class JadeConnector implements Connector {
     @Override
     public AgentController getAgentsExternalAccess(String agent_name) {
         return this.createdAgents.get(agent_name);
+    }
+
+    /* (non-Javadoc)
+     * @see es.upm.dit.gsi.beast.platform.Connector#getLogger()
+     */
+    @Override
+    public Logger getLogger() {
+        return this.logger;
     }
 
 }

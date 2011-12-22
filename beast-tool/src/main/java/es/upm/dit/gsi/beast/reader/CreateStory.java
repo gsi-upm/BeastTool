@@ -30,7 +30,7 @@ public class CreateStory {
      *            the main folder main (typically src/main/java)
      */
     public static void createStory(String scenario_name, String platform_name,
-            String package_path, String dest_dir) {
+            String package_path, String dest_dir, String loggingPropFile) {
 
         Logger logger = Logger.getLogger("CreateStory.java");
 
@@ -71,15 +71,19 @@ public class CreateStory {
             fw.write("   * Constructor to configure logging\n");
             fw.write("   */\n");
             fw.write("  public "+ scenario_name + "() {\n");
-            fw.write("     Properties preferences = new Properties();\n");
-            fw.write("     try {\n");
-            fw.write("         FileInputStream configFile = new FileInputStream(\"BeastLog.properties\");\n");
-            fw.write("         preferences.load(configFile);\n");
-            fw.write("         LogManager.getLogManager().readConfiguration(configFile);\n");
-            fw.write("         LogActivator.logToFile(logger, " + scenario_name + ".class.getName(), Level.ALL);\n");
-            fw.write("     } catch (IOException ex) {\n");
-            fw.write("         logger.severe(\"WARNING: Could not open configuration file\");\n");
-            fw.write("     }\n");
+            if (loggingPropFile==null) {
+                fw.write("         LogActivator.logToFile(logger, " + scenario_name + ".class.getName(), Level.ALL);\n");
+            } else {
+                fw.write("     Properties preferences = new Properties();\n");
+                fw.write("     try {\n");
+                fw.write("         FileInputStream configFile = new FileInputStream(\"" + loggingPropFile + "\");\n");
+                fw.write("         preferences.load(configFile);\n");
+                fw.write("         LogManager.getLogManager().readConfiguration(configFile);\n");
+                fw.write("         LogActivator.logToFile(logger, " + scenario_name + ".class.getName(), Level.ALL);\n");
+                fw.write("     } catch (IOException ex) {\n");
+                fw.write("         logger.severe(\"WARNING: Could not open configuration file\");\n");
+                fw.write("     }\n");                
+            }
             fw.write("  }\n");
             fw.write("\n");
             fw.write(" 	/**\n");

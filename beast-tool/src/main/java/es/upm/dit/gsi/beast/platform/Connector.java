@@ -1,5 +1,7 @@
 package es.upm.dit.gsi.beast.platform;
 
+import java.util.logging.Logger;
+
 /**
  * Abstract Class that defines method
  * 
@@ -58,5 +60,10 @@ public interface Connector {
      * @return The external access of an agent
      */
     public Object getAgentsExternalAccess(String agent_name);
+    
+    /**
+     * @return Connector Logger 
+     */
+    public Logger getLogger();
 
 }

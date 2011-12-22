@@ -118,6 +118,8 @@ public abstract class Story extends JUnitStory {
      */
     @SuppressWarnings("unchecked")
     private String getPath(String stepName) {
+        
+        //FIXME important!!! when there are two identical step names, there is conflict and it do not work properly. Return one of them... but not the correct one
         XStream xstream = new XStream();
         String answer = null;
         try {
@@ -125,8 +127,7 @@ public abstract class Story extends JUnitStory {
                     .fromXML(new FileInputStream("ClassDatabase.xml"));
             answer = (String) hm.get(stepName);
         } catch (FileNotFoundException e) {
-            logger.info("Error loading from ClassDatabase.xml");
-            ;
+            logger.severe("Error loading from ClassDatabase.xml");
         }
         return answer;
     }
