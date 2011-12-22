@@ -46,7 +46,7 @@ public class CreateStory {
             fw.write("import org.jbehave.core.annotations.Then;\n");
             fw.write("import org.jbehave.core.annotations.When;\n");
             fw.write("import es.upm.dit.gsi.beast.story.Story;\n");
-            fw.write("import es.upm.dit.gsi.beast.common.LogActivator;\n");
+            fw.write("import es.upm.dit.gsi.beast.story.logging.LogActivator;\n");
             fw.write("import java.io.FileInputStream;\n");
             fw.write("import java.io.IOException;\n");
             fw.write("import java.util.logging.Logger;\n");
