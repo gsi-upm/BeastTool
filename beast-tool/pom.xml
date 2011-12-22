@@ -78,63 +78,93 @@
 		</testResources>
 		<plugins>
 
-<!-- 			<plugin> -->
-<!-- 			<groupId>org.codehaus.mojo</groupId> -->
-<!-- 			<artifactId>exec-maven-plugin</artifactId> -->
-<!-- 			<version>1.1.1</version> -->
-<!-- 			<executions> -->
-<!-- 			<execution> -->
-<!-- 			<phase>generate-test-sources</phase> -->
-<!-- 			<goals> -->
-<!-- 			<goal>java</goal> -->
-<!-- 			</goals> -->
-<!-- 			<configuration> -->
-<!-- 			<mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass> -->
-<!-- 			<arguments> -->
-<!-- 			<argument>beast.properties</argument> -->
-<!-- 			<argument>beastLog.properties</argument> -->
-<!-- 			</arguments> -->
-<!-- 			</configuration> -->
-<!-- 			</execution> -->
-<!-- 			</executions> -->
-<!-- 			</plugin> -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.1.1</version>
+				<executions>
+					<!-- <execution> -->
+					<!-- <id>feos-test-sources</id> -->
+					<!-- <phase>generate-test-sources</phase> -->
+					<!-- <goals> -->
+					<!-- <goal>java</goal> -->
+					<!-- </goals> -->
+					<!-- <configuration> -->
+					<!-- <mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass> -->
+					<!-- <arguments> -->
+					<!-- <argument>beast.properties</argument> -->
+					<!-- <argument>BeastLog.properties</argument> -->
+					<!-- </arguments> -->
+					<!-- </configuration> -->
+					<!-- </execution> -->
+					<execution>
+						<id>jade-connector-test-sources</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass>
+							<arguments>
+								<argument>src/test/java/es/upm/dit/gsi/beast/platform/jade/jadeBeast.properties</argument>
+								<argument>src/test/java/es/upm/dit/gsi/beast/platform/jade/jadeBeastLog.properties</argument>
+							</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>jadex-connector-test-sources</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass>
+							<arguments>
+								<argument>src/test/java/es/upm/dit/gsi/beast/platform/jadex/jadexBeast.properties</argument>
+								<argument>src/test/java/es/upm/dit/gsi/beast/platform/jadex/jadexBeastLog.properties</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
-<!-- 			<plugin> -->
-<!-- 			<artifactId>maven-resources-plugin</artifactId> -->
-<!-- 			<version>2.5</version> -->
-<!-- 			<executions> -->
-<!-- 			<execution> -->
-<!-- 			<id>copy-resources</id> -->
-<!-- 			<phase>generate-test-resources</phase> -->
-<!-- 			<goals> -->
-<!-- 			<goal>copy-resources</goal> -->
-<!-- 			</goals> -->
-<!-- 			<configuration> -->
-<!-- 			<outputDirectory>${basedir}/target/test-classes</outputDirectory> -->
-<!-- 			<resources> -->
-<!-- 			<resource> -->
-<!-- 			<directory>${basedir}/src/test/java</directory> -->
-<!-- 			<includes> -->
-<!-- 			<include>**/*.story</include> -->
-<!-- 			</includes> -->
-<!-- 			</resource> -->
-<!-- 			</resources> -->
-<!-- 			</configuration> -->
-<!-- 			</execution> -->
-<!-- 			</executions> -->
-<!-- 			</plugin> -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>generate-test-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/test-classes</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/src/test/java</directory>
+									<includes>
+										<include>**/*.story</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
-<!-- 			<plugin> -->
-<!-- 			<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 			<artifactId>maven-surefire-plugin</artifactId> -->
-<!-- 			<version>2.11</version> -->
-<!-- 			<configuration> -->
-<!-- 			<phase>test</phase> -->
-<!-- 			<includes> -->
-<!-- 			<include>**/CaseManager.java</include> -->
-<!-- 			</includes> -->
-<!-- 			</configuration> -->
-<!-- 			</plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.11</version>
+				<configuration>
+					<phase>test</phase>
+					<includes>
+						<include>es/upm/dit/gsi/beast/platform/jade/CaseManager.java</include>
+						<!-- <include>es/upm/dit/gsi/beast/platform/jadex/CaseManager.java</include> -->
+					</includes>
+				</configuration>
+			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -416,14 +446,14 @@
 
 		</dependency>
 
-		<dependency>
-			<groupId>com.tilab</groupId>
-			<artifactId>wade</artifactId>
-			<version>2.6</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/wade2.6/lib/wade.jar</systemPath>
-		</dependency>
-		
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.tilab</groupId> -->
+<!-- 			<artifactId>wade</artifactId> -->
+<!-- 			<version>2.6</version> -->
+<!-- 			<scope>system</scope> -->
+<!-- 			<systemPath>${basedir}/lib/wade2.6/lib/wade.jar</systemPath> -->
+<!-- 		</dependency> -->
+
 		<dependency>
 			<groupId>com.tilab</groupId>
 			<artifactId>jade</artifactId>
