@@ -1,7 +1,6 @@
 package es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent;
 
 import es.upm.dit.gsi.beast.story.testCase.Evaluation;
-import junit.framework.Assert;
 
 
 /**  
@@ -23,11 +22,9 @@ public class EvaluationSetBelievesInAgent extends Evaluation {
    * 
    */
     public void checkStates() {
-    // TODO implement this method to represent the @Then part of the test in Java code.
-    logger.warning("Implement checkStates() method in es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent.EvaluationSetBelievesInAgent.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
-    Assert.fail("Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
-    
-    //EXAMPLE: checkAgentsBeliefEquealsTo("Steve", "age", 21);
+        
+        checkAgentsBeliefEquealsTo("myAgent", "status", "updated");
+        
   }
 
 }

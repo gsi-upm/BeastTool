@@ -25,10 +25,9 @@ public class SetupSetBelievesInAgent extends Setup {
    * 
    */
     public void setStates() {
-    // TODO implement this method to represent the @When part of the test in Java code.
-    logger.warning("Implement setStates() method in es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent.SetupSetBelievesInAgent.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
-    
-    //EXAMPLE: setBeliefValue("Steve", "age", 21);
+        
+        setBeliefValue("myAgent", "status", "updated");
+        
   }
 
 }

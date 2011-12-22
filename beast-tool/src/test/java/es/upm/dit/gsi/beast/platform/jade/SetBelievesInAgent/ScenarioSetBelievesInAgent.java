@@ -22,12 +22,9 @@ public class ScenarioSetBelievesInAgent extends Scenario {
    * 
    */
     public void startAgents() {
-    // TODO implement this method to represent the @Given part of the test in Java code.
-    logger.warning("Implement startAgents() method in es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent.ScenarioSetBelievesInAgent.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
-    
-
-       //EXAMPLE for Jadex: startAgent("Steve", "org.example.Steve.agent.xml"); // This xml file is the jadex agent description file (ADF)
-       //EXAMPLE for Jade: startAgent("Steve", "org.example.Steve"); // This string is the agent class Steve.java that extends Jade Agent class
+        
+        startAgent("myAgent", "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent");
+        
   }
 
 }
