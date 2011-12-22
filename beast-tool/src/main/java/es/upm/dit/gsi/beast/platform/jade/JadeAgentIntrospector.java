@@ -1,9 +1,6 @@
 package es.upm.dit.gsi.beast.platform.jade;
 
 import jade.core.Agent;
-import jade.util.Logger;
-import jade.wrapper.AgentController;
-import jade.wrapper.StaleProxyException;
 
 import java.util.HashMap;
 

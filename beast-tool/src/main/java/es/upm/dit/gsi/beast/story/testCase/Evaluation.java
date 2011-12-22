@@ -31,7 +31,7 @@ public abstract class Evaluation {
     }
 
     /**
-     * Checks the value of some agent's belief with the espected value
+     * Checks the value of some agent's belief with the expected value
      * 
      * @param agent_name
      * @param belief_name
@@ -39,9 +39,18 @@ public abstract class Evaluation {
      */
     protected void checkAgentsBeliefEquealsTo(String agent_name,
             String belief_name, Object belief_value) {
+        logger.finer("Getting belief...");
+        logger.finest("Agent name: " + agent_name);
+        logger.finest("Belief name: " + belief_name);
+        Object realbeliefValue = setup.getBeliefValue(agent_name, belief_name);
         logger.finer("Asserting...");
-        Assert.assertEquals(setup.getBeliefValue(agent_name, belief_name),
+        logger.finest("Agent name: " + agent_name);
+        logger.finest("Belief name: " + belief_name);
+        logger.finest("Real Belief value: " + realbeliefValue);
+        logger.finest("Expected Belief value: " + belief_value);
+        Assert.assertEquals(realbeliefValue,
                 belief_value);
+        logger.finer("Assert passed");
     }
 
     /**

@@ -23,7 +23,8 @@ public class EvaluationSetBelievesInAgent extends Evaluation {
    */
     public void checkStates() {
         
-        checkAgentsBeliefEquealsTo("myAgent", "status", "updated");
+        checkAgentsBeliefEquealsTo("myAgent", "receivedBelief", true);
+        //FIXME este test no tira :(
         
   }
 

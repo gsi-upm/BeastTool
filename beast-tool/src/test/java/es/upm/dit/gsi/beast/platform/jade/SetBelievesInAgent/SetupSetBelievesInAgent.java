@@ -28,6 +28,8 @@ public class SetupSetBelievesInAgent extends Setup {
         
         setBeliefValue("myAgent", "status", "updated");
         
+        setExecutionTime(1000);
+        
   }
 
 }

@@ -1,6 +1,5 @@
 package es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent;
 
-import junit.framework.Assert;
 import es.upm.dit.gsi.beast.story.testCase.Setup;
 
 

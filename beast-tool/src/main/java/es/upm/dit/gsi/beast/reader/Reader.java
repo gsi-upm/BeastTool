@@ -86,7 +86,8 @@ public class Reader {
             // start generation of CaseManager
             File caseManager = CreateCaseManager.startCaseManager(
                     casemanager_path, dest_dir);
-
+//FIXME no meter el nombre del escenario en los Scenario, Setup y Evaluation porque se ven muchas letras y no te enteras, con que este en el nombre del paquete vale...
+            //Meterlos en un paquete "testCase"
             try {
                 String nextLine = null;
                 while ((nextLine = fileReader.readLine()) != null) {
