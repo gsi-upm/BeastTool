@@ -1,4 +1,4 @@
-package es.upm.dit.gsi.beast.common;
+package es.upm.dit.gsi.beast.story.logging;
 
 /**
  * 
