@@ -149,4 +149,19 @@ public abstract class Setup {
         scenario.sendMessageToAgentsWithExtraProperties(agent_name, msgtype,
                 message_content, properties);
     }
+    
+    /**
+     * This method set the execution time of the test.
+     * 
+     * @param milis Time in milliseconds
+     */
+    public void setExecutionTime(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            logger.warning("Execution time aborted: " + e);
+            logger.severe("It was not possible to wait the execution time to perform the test. Exception: " + e);
+        }
+    }
+    
 }
