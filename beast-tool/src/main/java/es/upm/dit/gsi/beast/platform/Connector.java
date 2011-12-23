@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 /**
  * Abstract Class that defines method
  * 
+ * @author jjsolitario
  * @author a.carrera
  */
 public interface Connector {

@@ -18,21 +18,57 @@ import es.upm.dit.gsi.beast.platform.Connector;
  */
 public class JadeConnector implements Connector {
 
+    /**
+     * 
+     */
     private Logger logger;
 
+    /**
+     * 
+     */
     private Runtime runtime;
+    /**
+     * 
+     */
     private ContainerController mainContainer;
+    /**
+     * 
+     */
     private HashMap<String, ContainerController> platformContainers;
 
+    /**
+     * 
+     */
     private HashMap<String, AgentController> createdAgents;
 
+    /**
+     * 
+     */
     public final String TRUE = "true";
+    /**
+     * 
+     */
     public final String PLATFORM_ID = "BEAST";
+    /**
+     * 
+     */
     public final String MAIN_HOST = "localhost";
+    /**
+     * 
+     */
     public final String MAIN_PORT = "2099";
+    /**
+     * 
+     */
     public final String AGENTS = "rma:jade.tools.rma.rma;sniffer:jade.tools.sniffer.Sniffer";
+    /**
+     * 
+     */
     public final String SERVICES = "jade.core.messaging.TopicManagementService;jade.core.mobility.AgentMobilityService;jade.core.event.NotificationService;jade.core.replication.MainReplicationService";
 
+    /**
+     * @param logger
+     */
     public JadeConnector(Logger logger) {
         this.logger = logger;
     }
@@ -40,6 +76,9 @@ public class JadeConnector implements Connector {
     /*
      * (non-Javadoc)
      * 
+     * @see es.upm.dit.gsi.beast.platform.Connector#launchPlatform()
+     */
+    /* (non-Javadoc)
      * @see es.upm.dit.gsi.beast.platform.Connector#launchPlatform()
      */
     @Override
@@ -76,6 +115,9 @@ public class JadeConnector implements Connector {
      * es.upm.dit.gsi.beast.platform.Connector#createAgent(java.lang.String,
      * java.lang.String)
      */
+    /* (non-Javadoc)
+     * @see es.upm.dit.gsi.beast.platform.Connector#createAgent(java.lang.String, java.lang.String)
+     */
     @Override
     public void createAgent(String agent_name, String path) {
         logger.fine("Creating agent " + agent_name + " in Main Container");
@@ -98,6 +140,9 @@ public class JadeConnector implements Connector {
      * @param path
      * @param containerName
      * @param arguments
+     */
+    /* (non-Javadoc)
+     * @see es.upm.dit.gsi.beast.platform.Connector#createAgent(java.lang.String, java.lang.String, java.lang.String, java.lang.Object[])
      */
     public void createAgent(String agentName, String path,
             String containerName, Object[] arguments) {
@@ -135,6 +180,9 @@ public class JadeConnector implements Connector {
      * @param container
      *            The name of the container
      */
+    /**
+     * @param container
+     */
     public void createContainer(String container) {
 
         ContainerController controller = this.platformContainers.get(container);
@@ -166,11 +214,18 @@ public class JadeConnector implements Connector {
      * 
      * @see es.upm.dit.gsi.beast.platform.Connector#getAgentID(java.lang.String)
      */
+    /* (non-Javadoc)
+     * @see es.upm.dit.gsi.beast.platform.Connector#getAgentID(java.lang.String)
+     */
     @Override
     public AgentController getAgentID(String agent_name) {
         return this.createdAgents.get(agent_name);
     }
     
+    /**
+     * @param agent_name
+     * @return
+     */
     public AgentController getAgentController(String agent_name) {
         return this.createdAgents.get(agent_name);
     }
@@ -178,6 +233,9 @@ public class JadeConnector implements Connector {
     /*
      * (non-Javadoc)
      * 
+     * @see es.upm.dit.gsi.beast.platform.Connector#getMessageService()
+     */
+    /* (non-Javadoc)
      * @see es.upm.dit.gsi.beast.platform.Connector#getMessageService()
      */
     @Override
@@ -193,11 +251,17 @@ public class JadeConnector implements Connector {
      * es.upm.dit.gsi.beast.platform.Connector#getAgentsExternalAccess(java.
      * lang.String)
      */
+    /* (non-Javadoc)
+     * @see es.upm.dit.gsi.beast.platform.Connector#getAgentsExternalAccess(java.lang.String)
+     */
     @Override
     public AgentController getAgentsExternalAccess(String agent_name) {
         return this.createdAgents.get(agent_name);
     }
 
+    /* (non-Javadoc)
+     * @see es.upm.dit.gsi.beast.platform.Connector#getLogger()
+     */
     /* (non-Javadoc)
      * @see es.upm.dit.gsi.beast.platform.Connector#getLogger()
      */

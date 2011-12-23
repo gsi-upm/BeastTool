@@ -3,7 +3,8 @@ package es.upm.dit.gsi.beast.platform;
 /**
  * Abstract Class that defines method
  * 
- * @author Jorge Solitario
+ * @author jjsolitario
+ * @author a.carrera
  */
 public interface AgentIntrospector {
 

@@ -12,7 +12,7 @@ import es.upm.dit.gsi.beast.platform.jadex.JadexMessenger;
 /**
  * Class to select the type of platform our code is going to run
  * 
- * @author Álvaro Carrera Barroso
+ * @author a.carrera
  */
 public class PlatformSelector {
 

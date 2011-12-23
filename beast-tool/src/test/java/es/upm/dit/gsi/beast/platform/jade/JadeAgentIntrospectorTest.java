@@ -9,12 +9,19 @@ import org.junit.Test;
 
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
 
-public class JadeIntrospectorTest {
-
+/**
+ * Test class to test JadeAgentIntrospector
+ * 
+ * @author a.carrera
+ * @version 1.0
+ *
+ */
+public class JadeAgentIntrospectorTest {
+//TODO mirar porque no pilla esto maven surefire
     @Test
     public void setBeliefStringWithoutDownCasting() {
         //Setup
-        Logger logger = Logger.getLogger(JadeIntrospectorTest.class.getName());
+        Logger logger = Logger.getLogger(JadeAgentIntrospectorTest.class.getName());
         JadeConnector connector = (JadeConnector) PlatformSelector.getConnector("jade", logger);
         JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
         introspector.getDataToTest().put("myAgent", new HashMap<String, Object>());//The same that JadeAgentIntrospector.getMyInstance((Agent) this);
@@ -31,7 +38,7 @@ public class JadeIntrospectorTest {
     @Test
     public void setBeliefStringWithDownCasting() {
         //Setup
-        Logger logger = Logger.getLogger(JadeIntrospectorTest.class.getName());
+        Logger logger = Logger.getLogger(JadeAgentIntrospectorTest.class.getName());
         JadeConnector connector = (JadeConnector) PlatformSelector.getConnector("jade", logger);
         JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
         introspector.getDataToTest().put("myAgent", new HashMap<String, Object>());//The same that JadeAgentIntrospector.getMyInstance((Agent) this);
@@ -48,7 +55,7 @@ public class JadeIntrospectorTest {
     @Test
     public void setBeliefBooleanWithoutDownCasting() {
         //Setup
-        Logger logger = Logger.getLogger(JadeIntrospectorTest.class.getName());
+        Logger logger = Logger.getLogger(JadeAgentIntrospectorTest.class.getName());
         JadeConnector connector = (JadeConnector) PlatformSelector.getConnector("jade", logger);
         JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
         introspector.getDataToTest().put("myAgent", new HashMap<String, Object>());//The same that JadeAgentIntrospector.getMyInstance((Agent) this);
