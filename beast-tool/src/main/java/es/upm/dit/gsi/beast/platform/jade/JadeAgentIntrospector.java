@@ -13,20 +13,16 @@ import es.upm.dit.gsi.beast.platform.Connector;
  */
 public class JadeAgentIntrospector implements AgentIntrospector {
 
-    /**
-     * 
-     */
     private static HashMap<String, HashMap<String, Object>> dataToTest;
+    private static HashMap<String, Agent> agents;
 
-    /**
-     * 
-     */
     private static JadeAgentIntrospector INSTANCE = new JadeAgentIntrospector();
 
     /**
      * 
      */
     private JadeAgentIntrospector() {
+        agents = new HashMap<String, Agent>();
         dataToTest = new HashMap<String, HashMap<String, Object>>();
     }
 
@@ -87,8 +83,17 @@ public class JadeAgentIntrospector implements AgentIntrospector {
      */
     public void storeBeliefValue(Agent agent, String belief_name,
             Object new_value) {
+        JadeAgentIntrospector.agents.put(agent.getLocalName(), agent);
         JadeAgentIntrospector.dataToTest.get(agent.getLocalName()).put(belief_name, new_value);
 
+    }
+    
+    /**
+     * @param agentName
+     * @return
+     */
+    public Agent getAgent(String agentName) {
+        return JadeAgentIntrospector.agents.get(agentName);
     }
 
     /* (non-Javadoc)
