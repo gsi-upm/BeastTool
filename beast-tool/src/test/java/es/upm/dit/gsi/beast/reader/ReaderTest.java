@@ -11,6 +11,8 @@ public class ReaderTest {
     public void MainReaderTest() {
         //TODO implement this test
         Assert.fail();
+        
+        //TODO hay que hacer setup y clean up al terminar el test
 //        new Reader(properties.getProperty("scenarioListPath"), "\""
 //                + properties.getProperty("platform") + "\"",
 //                properties.getProperty("mainDirectory"),

@@ -18,12 +18,16 @@ public class ScenarioSetBelievesInAgent extends Scenario {
    * Here the description given by the client must be written,
    * which is: 
    *  
-   *   that one agent is started in Jade Platform in Main-Container
+   *   that TesterAgent is started in Jade Platform in Main-Container with Configuration 4
    * 
    */
     public void startAgents() {
         
-        startAgent("myAgent", "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent");
+        Object[] arguments = new Object[1];
+        arguments[0] = "configuration4";
+        startAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "My-Container", arguments);
         
   }
 

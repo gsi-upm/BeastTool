@@ -30,10 +30,10 @@ public class JadeConnector implements Connector {
     public final String PLATFORM_ID = "BEAST";
     public final String MAIN_HOST = "localhost";
     public final String MAIN_PORT = "2099";
-    public final String AGENTS = "rma:jade.tools.rma.rma;sniffer:jade.tools.sniffer.Sniffer";
+    public final String AGENTS = "rma:jade.tools.rma.rma";
     public final String SERVICES = "jade.core.messaging.TopicManagementService;jade.core.mobility.AgentMobilityService;jade.core.event.NotificationService;jade.core.replication.MainReplicationService";
 
-    private long MILLIS_TO_WAIT_FOR_AGENT_STARTING = 100;
+    private long MILLIS_TO_WAIT_FOR_AGENT_STARTING = 200;
 
     /**
      * @param logger

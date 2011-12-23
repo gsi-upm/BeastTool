@@ -1,6 +1,9 @@
 package es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent;
 
+import es.upm.dit.gsi.beast.platform.PlatformSelector;
+import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.story.testCase.Evaluation;
+import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
 
 
 /**  
@@ -22,9 +25,16 @@ public class EvaluationSetBelievesInAgent extends Evaluation {
    * 
    */
     public void checkStates() {
+
         
-        checkAgentsBeliefEquealsTo("myAgent", "receivedBelief", true);
-        //FIXME este test no tira :(
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
+        
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
+            // Wait...
+        }
+
+        checkAgentsBeliefEquealsTo("TestAgent", "setBelief", true);
+        //TODO este test tira a veces...
         
   }
 

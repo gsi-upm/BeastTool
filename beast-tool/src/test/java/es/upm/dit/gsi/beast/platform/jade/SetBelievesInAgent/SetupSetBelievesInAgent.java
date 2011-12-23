@@ -26,7 +26,7 @@ public class SetupSetBelievesInAgent extends Setup {
    */
     public void setStates() {
         
-        setBeliefValue("myAgent", "status", "updated");
+        setBeliefValue("TestAgent", "testStatus", "updated");
         
         setExecutionTime(1000);
         

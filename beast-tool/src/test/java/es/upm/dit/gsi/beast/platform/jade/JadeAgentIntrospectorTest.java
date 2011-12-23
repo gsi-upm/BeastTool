@@ -23,7 +23,8 @@ import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
  * 
  */
 public class JadeAgentIntrospectorTest {
-    // TODO mirar porque no pilla esto maven surefire
+    // FIXME si tira un agente una excepción, los tests no fallan :S deberían
+    // fallar
     /**
      * 
      */
@@ -389,6 +390,9 @@ public class JadeAgentIntrospectorTest {
 
     }
 
+    /**
+     * 
+     */
     @Test
     public void JadeAgentStoreBeliefInMainContainerNotNull() {
         // Setup
@@ -401,8 +405,11 @@ public class JadeAgentIntrospectorTest {
                 .getAgentIntrospector("jade");
 
         // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = "configuration1";
         connector.createAgent("TestAgent",
-                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent");
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "Main-Container", arguments);
 
         // Get
         TestObject value = (TestObject) introspector.getBeliefValue(
@@ -412,6 +419,9 @@ public class JadeAgentIntrospectorTest {
         Assert.assertNotNull(value);
     }
 
+    /**
+     * 
+     */
     @Test
     public void JadeAgentStoreBeliefInMainContainer() {
         // Setup
@@ -424,8 +434,11 @@ public class JadeAgentIntrospectorTest {
                 .getAgentIntrospector("jade");
 
         // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = "configuration1";
         connector.createAgent("TestAgent",
-                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent");
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "Main-Container", arguments);
 
         // Get
         TestObject value = (TestObject) introspector.getBeliefValue(
@@ -437,6 +450,9 @@ public class JadeAgentIntrospectorTest {
         Assert.assertEquals("test1", ((TestObject) value).getStringTest());
     }
 
+    /**
+     * 
+     */
     @Test
     public void JadeAgentStoreComplexBeliefByReferenceInMainContainer() {
         // Setup
@@ -449,17 +465,18 @@ public class JadeAgentIntrospectorTest {
                 .getAgentIntrospector("jade");
 
         // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = "configuration1";
         connector.createAgent("TestAgent",
-                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent");
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "Main-Container", arguments);
 
         // Get
         TestObject value = (TestObject) introspector.getBeliefValue(
                 "TestAgent", "testObject", connector);
 
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            Assert.fail("It was not possible to sleep the thead...");
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
+            // Wait...
         }
 
         // Assert
@@ -468,6 +485,9 @@ public class JadeAgentIntrospectorTest {
         Assert.assertEquals("test2", ((TestObject) value).getStringTest());
     }
 
+    /**
+     * 
+     */
     @Test
     public void JadeAgentStorePrimitiveBeliefByReferenceInMainContainer() {
         // Setup
@@ -480,8 +500,11 @@ public class JadeAgentIntrospectorTest {
                 .getAgentIntrospector("jade");
 
         // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = "configuration1";
         connector.createAgent("TestAgent",
-                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent");
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "Main-Container", arguments);
 
         // Get
         String value = (String) introspector.getBeliefValue("TestAgent",
@@ -489,16 +512,19 @@ public class JadeAgentIntrospectorTest {
 
         // Assert
         Assert.assertEquals("status1", value);
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            Assert.fail("It was not possible to sleep the thead...");
+
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
+            // Wait...
         }
-        value = (String) introspector.getBeliefValue("TestAgent",
-                "testStatus", connector);
+
+        value = (String) introspector.getBeliefValue("TestAgent", "testStatus",
+                connector);
         Assert.assertEquals("status2", value);
     }
-    
+
+    /**
+     * 
+     */
     @Test
     public void JadeAgentStorePrimitiveBeliefThroughGetByReferenceInMainContainer() {
         // Setup
@@ -511,19 +537,347 @@ public class JadeAgentIntrospectorTest {
                 .getAgentIntrospector("jade");
 
         // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = "configuration1";
         connector.createAgent("TestAgent",
-                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent");
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "Main-Container", arguments);
 
         // Get
 
         // Assert
-        Assert.assertEquals("status1", (String) ((TesterAgent) introspector.getAgent("TestAgent")).getStatus());
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            Assert.fail("It was not possible to sleep the thead...");
+        Assert.assertEquals("status1", (String) ((TesterAgent) introspector
+                .getAgent("TestAgent")).getStatus());
+
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
+            // Wait...
         }
-        Assert.assertEquals("status2", (String) ((TesterAgent) introspector.getAgent("TestAgent")).getStatus());
+
+        Assert.assertEquals("status2", (String) ((TesterAgent) introspector
+                .getAgent("TestAgent")).getStatus());
+    }
+
+    /**
+     * 
+     */
+    @Test
+    public void JadeAgentRetrieveComplexBeliefInMainContainer() {
+        // Setup
+        Logger logger = Logger.getLogger(JadeAgentIntrospectorTest.class
+                .getName());
+        JadeConnector connector = (JadeConnector) PlatformSelector
+                .getConnector("jade", logger);
+        connector.launchPlatform();
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector
+                .getAgentIntrospector("jade");
+
+        // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = "configuration2";
+        connector.createAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "Main-Container", arguments);
+
+        // Get
+        TestObject value = (TestObject) introspector.getBeliefValue(
+                "TestAgent", "testObject", connector);
+        
+        value.setDoubleTest(1.11);
+        value.setStringTest("OK");
+        
+        introspector.setBeliefValue("TestAgent", "testObject", value, connector);
+
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
+            // Wait...
+        }
+
+        // Assert
+        boolean retrieved = (boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
+                connector);
+        Assert.assertTrue(retrieved);
+    }
+
+    /**
+     * 
+     */
+    @Test
+    public void JadeAgentRetrieveComplexBeliefByReferenceInMainContainer() {
+        // Setup
+        Logger logger = Logger.getLogger(JadeAgentIntrospectorTest.class
+                .getName());
+        JadeConnector connector = (JadeConnector) PlatformSelector
+                .getConnector("jade", logger);
+        connector.launchPlatform();
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector
+                .getAgentIntrospector("jade");
+
+        // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = "configuration3";
+        connector.createAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "Main-Container", arguments);
+
+        // Get
+        TestObject value = (TestObject) introspector.getBeliefValue(
+                "TestAgent", "testObject", connector);
+        
+        value.setDoubleTest(1.11);
+        value.setStringTest("OK");
+
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
+            // Wait...
+        }
+
+        // Assert
+        boolean retrieved = (boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
+                connector);
+        Assert.assertTrue(retrieved);
+    }
+
+    /**
+     * 
+     */
+    @Test
+    public void JadeAgentStoreBeliefInRemoteContainerNotNull() {
+        // Setup
+        Logger logger = Logger.getLogger(JadeAgentIntrospectorTest.class
+                .getName());
+        JadeConnector connector = (JadeConnector) PlatformSelector
+                .getConnector("jade", logger);
+        connector.launchPlatform();
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector
+                .getAgentIntrospector("jade");
+
+        // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = "configuration1";
+        connector.createAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "MyContainer", arguments);
+
+        // Get
+        TestObject value = (TestObject) introspector.getBeliefValue(
+                "TestAgent", "testObject", connector);
+
+        // Assert
+        Assert.assertNotNull(value);
+    }
+
+    /**
+     * 
+     */
+    @Test
+    public void JadeAgentStoreBeliefInRemoteContainer() {
+        // Setup
+        Logger logger = Logger.getLogger(JadeAgentIntrospectorTest.class
+                .getName());
+        JadeConnector connector = (JadeConnector) PlatformSelector
+                .getConnector("jade", logger);
+        connector.launchPlatform();
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector
+                .getAgentIntrospector("jade");
+
+        // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = "configuration1";
+        connector.createAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "MyContainer", arguments);
+
+        // Get
+        TestObject value = (TestObject) introspector.getBeliefValue(
+                "TestAgent", "testObject", connector);
+
+        // Assert
+        Assert.assertEquals(10.5 * 3, ((TestObject) value).getDoubleTest());
+        Assert.assertEquals(true, ((TestObject) value).isBooleanTest());
+        Assert.assertEquals("test1", ((TestObject) value).getStringTest());
+    }
+
+    /**
+     * 
+     */
+    @Test
+    public void JadeAgentStoreComplexBeliefByReferenceInRemoteContainer() {
+        // Setup
+        Logger logger = Logger.getLogger(JadeAgentIntrospectorTest.class
+                .getName());
+        JadeConnector connector = (JadeConnector) PlatformSelector
+                .getConnector("jade", logger);
+        connector.launchPlatform();
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector
+                .getAgentIntrospector("jade");
+
+        // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = "configuration1";
+        connector.createAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "MyContainer", arguments);
+
+        // Get
+        TestObject value = (TestObject) introspector.getBeliefValue(
+                "TestAgent", "testObject", connector);
+
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
+            // Wait...
+        }
+
+        // Assert
+        Assert.assertEquals(100.1, ((TestObject) value).getDoubleTest());
+        Assert.assertEquals(false, ((TestObject) value).isBooleanTest());
+        Assert.assertEquals("test2", ((TestObject) value).getStringTest());
+    }
+
+    /**
+     * 
+     */
+    @Test
+    public void JadeAgentStorePrimitiveBeliefByReferenceInRemoteContainer() {
+        // Setup
+        Logger logger = Logger.getLogger(JadeAgentIntrospectorTest.class
+                .getName());
+        JadeConnector connector = (JadeConnector) PlatformSelector
+                .getConnector("jade", logger);
+        connector.launchPlatform();
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector
+                .getAgentIntrospector("jade");
+
+        // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = "configuration1";
+        connector.createAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "MyContainer", arguments);
+
+        // Get
+        String value = (String) introspector.getBeliefValue("TestAgent",
+                "testStatus", connector);
+
+        // Assert
+        Assert.assertEquals("status1", value);
+
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
+            // Wait...
+        }
+
+        value = (String) introspector.getBeliefValue("TestAgent", "testStatus",
+                connector);
+        Assert.assertEquals("status2", value);
+    }
+
+    /**
+     * 
+     */
+    @Test
+    public void JadeAgentStorePrimitiveBeliefThroughGetByReferenceInRemoteContainer() {
+        // Setup
+        Logger logger = Logger.getLogger(JadeAgentIntrospectorTest.class
+                .getName());
+        JadeConnector connector = (JadeConnector) PlatformSelector
+                .getConnector("jade", logger);
+        connector.launchPlatform();
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector
+                .getAgentIntrospector("jade");
+
+        // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = "configuration1";
+        connector.createAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "MyContainer", arguments);
+
+        // Get
+
+        // Assert
+        Assert.assertEquals("status1", (String) ((TesterAgent) introspector
+                .getAgent("TestAgent")).getStatus());
+
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
+            // Wait...
+        }
+
+        Assert.assertEquals("status2", (String) ((TesterAgent) introspector
+                .getAgent("TestAgent")).getStatus());
+    }
+
+    /**
+     * 
+     */
+    @Test
+    public void JadeAgentRetrieveComplexBeliefInRemoteContainer() {
+        // Setup
+        Logger logger = Logger.getLogger(JadeAgentIntrospectorTest.class
+                .getName());
+        JadeConnector connector = (JadeConnector) PlatformSelector
+                .getConnector("jade", logger);
+        connector.launchPlatform();
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector
+                .getAgentIntrospector("jade");
+
+        // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = "configuration2";
+        connector.createAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "MyContainer", arguments);
+
+        // Get
+        TestObject value = (TestObject) introspector.getBeliefValue(
+                "TestAgent", "testObject", connector);
+        
+        value.setDoubleTest(1.11);
+        value.setStringTest("OK");
+        
+        introspector.setBeliefValue("TestAgent", "testObject", value, connector);
+
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
+            // Wait...
+        }
+
+        // Assert
+        boolean retrieved = (boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
+                connector);
+        Assert.assertTrue(retrieved);
+    }
+
+    /**
+     * 
+     */
+    @Test
+    public void JadeAgentRetrieveComplexBeliefByReferenceInRemoteContainer() {
+        // Setup
+        Logger logger = Logger.getLogger(JadeAgentIntrospectorTest.class
+                .getName());
+        JadeConnector connector = (JadeConnector) PlatformSelector
+                .getConnector("jade", logger);
+        connector.launchPlatform();
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector
+                .getAgentIntrospector("jade");
+
+        // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = "configuration3";
+        connector.createAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "MyContainer", arguments);
+
+        // Get
+        TestObject value = (TestObject) introspector.getBeliefValue(
+                "TestAgent", "testObject", connector);
+        
+        value.setDoubleTest(1.11);
+        value.setStringTest("OK");
+
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
+            // Wait...
+        }
+
+        // Assert
+        boolean retrieved = (boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
+                connector);
+        Assert.assertTrue(retrieved);
     }
 
 }

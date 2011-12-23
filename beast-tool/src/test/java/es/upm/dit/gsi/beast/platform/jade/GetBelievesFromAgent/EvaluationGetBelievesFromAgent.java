@@ -1,6 +1,9 @@
 package es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent;
 
+import es.upm.dit.gsi.beast.platform.PlatformSelector;
+import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.story.testCase.Evaluation;
+import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
 
 
 /**  
@@ -23,7 +26,13 @@ public class EvaluationGetBelievesFromAgent extends Evaluation {
    */
     public void checkStates() {
         
-        checkAgentsBeliefEquealsTo("myAgent", "status", "started");
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
+        
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
+            // Wait...
+        }
+        
+        checkAgentsBeliefEquealsTo("TestAgent", "testStatus", "status2");
         
   }
 

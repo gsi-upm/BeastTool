@@ -20,6 +20,16 @@ public class TesterAgent extends Agent {
 
     JadeAgentIntrospector myIntrospector;
     private String status;
+    
+    private boolean readyToTest=false;
+
+    public boolean isReadyToTest() {
+        return readyToTest;
+    }
+
+    public void setReadyToTest(boolean readyToTest) {
+        this.readyToTest = readyToTest;
+    }
 
     public String getStatus() {
         return status;
@@ -42,6 +52,28 @@ public class TesterAgent extends Agent {
     protected void setup() {
         myIntrospector = JadeAgentIntrospector.getMyInstance((Agent) this);
         LogActivator.logToFile(logger, this.getName(), Level.ALL);
+        
+        Object[] arguments = getArguments();
+        String testConfiguration = (String) arguments[0];
+        logger.fine("Configuration: " + testConfiguration);
+        switch (testConfiguration) {
+        case "configuration1":
+            this.setupConfiguration1(arguments);
+            break;
+        case "configuration2":
+            this.setupConfiguration2(arguments);
+            break;
+        case "configuration3":
+            this.setupConfiguration3(arguments);
+            break;
+        case "configuration4":
+            this.setupConfiguration4(arguments);
+            break;
+        }
+        readyToTest=true;
+    }
+    
+    private void setupConfiguration1(Object[] arguments) {
         this.status = "status1";
         this.obj = new TestObject("test", 10.5, false);
         obj.multiplyDouble(3);
@@ -66,21 +98,87 @@ public class TesterAgent extends Agent {
         status = "status2";
         logger.info("Agent status: " + this.status);
         this.myIntrospector.storeBeliefValue(this, "testStatus", status);
+    }
+    
+    private void setupConfiguration2(Object[] arguments) {
+        this.status = "status1";
+        this.obj = new TestObject("test", 10.5, false);
+        obj.multiplyDouble(3);
+        obj.negateBoolean();
+        obj.concactString("1");
+        this.myIntrospector.storeBeliefValue(this, "testObject", obj);
+        logger.info("Stored believes in instrospector.");
 
-        // HashMap<String, Object> believes =
-        // this.myIntrospector.retrieveBelievesValue(this);
-        // this.status=(String) believes.get("status");
-        // logger.info("Belief status: " + this.status);
-        // if(status.equals("updated")) {
-        // this.received = true;
-        // this.myIntrospector.storeBeliefValue(this, "receivedBelief",
-        // this.received);
-        // } else {
-        // logger.severe("Belief not updated");
-        // }
+        long timeToWait = 200;
+        try {
+            Thread.sleep(timeToWait);
+        } catch (InterruptedException e) {
+            logger.severe(this.getName() + " could not wait " + timeToWait
+                    + " milliseconds. Exception: " + e);
+        }
+        this.obj = (TestObject) this.myIntrospector.retrieveBelievesValue(this).get("testObject");
+        logger.info("TestObject data ->");
+        logger.info("Double: " + obj.getDoubleTest());
+        logger.info("String: " + obj.getStringTest());
+        boolean retrieved = false;
+        if(obj.getDoubleTest()==1.11 && obj.getStringTest().equals("OK")) {
+            retrieved = true;
+        }
+        this.myIntrospector.storeBeliefValue(this, "testRetrieved", retrieved);
+    }
 
-        // FIXME no actualiza, hay que hacer el retrieve... porque los atributos
-        // simples se pasan por valor y no por referencia
+    
+    private void setupConfiguration3(Object[] arguments) {
+        this.status = "status1";
+        this.obj = new TestObject("test", 10.5, false);
+        obj.multiplyDouble(3);
+        obj.negateBoolean();
+        obj.concactString("1");
+        this.myIntrospector.storeBeliefValue(this, "testObject", obj);
+        logger.info("Stored believes in instrospector.");
+
+        long timeToWait = 200;
+        try {
+            Thread.sleep(timeToWait);
+        } catch (InterruptedException e) {
+            logger.severe(this.getName() + " could not wait " + timeToWait
+                    + " milliseconds. Exception: " + e);
+        }
+        logger.info("TestObject data ->");
+        logger.info("Double: " + obj.getDoubleTest());
+        logger.info("String: " + obj.getStringTest());
+        boolean retrieved = false;
+        if(obj.getDoubleTest()==1.11 && obj.getStringTest().equals("OK")) {
+            retrieved = true;
+        }
+        this.myIntrospector.storeBeliefValue(this, "testRetrieved", retrieved);
+    }
+
+    
+    private void setupConfiguration4(Object[] arguments) {
+        this.status = "status1";
+        this.myIntrospector.storeBeliefValue(this, "testStatus", status);
+        logger.info("Stored believes in instrospector.");
+
+        logger.fine("Belief testStatus: " + status);
+        
+        long timeToWait = 200;
+        try {
+            Thread.sleep(timeToWait);
+        } catch (InterruptedException e) {
+            logger.severe(this.getName() + " could not wait " + timeToWait
+                    + " milliseconds. Exception: " + e);
+        }
+        this.status = (String) this.myIntrospector.retrieveBelievesValue(this).get("testStatus");
+        logger.fine("Retrieved Belief testStatus: " + status);
+        boolean ok = false;
+        if (status.equals("updated")) {
+            logger.fine("Belief is updated");
+            ok = true;
+        }
+        this.myIntrospector.storeBeliefValue(this, "setBelief", ok);
+        
+        
     }
 
 }
