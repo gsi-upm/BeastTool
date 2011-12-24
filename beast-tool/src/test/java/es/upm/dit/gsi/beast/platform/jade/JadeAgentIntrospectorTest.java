@@ -1,5 +1,6 @@
 package es.upm.dit.gsi.beast.platform.jade;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
@@ -417,6 +418,7 @@ public class JadeAgentIntrospectorTest {
 
         // Assert
         Assert.assertNotNull(value);
+        this.cleanUp();
     }
 
     /**
@@ -448,6 +450,7 @@ public class JadeAgentIntrospectorTest {
         Assert.assertEquals(10.5 * 3, ((TestObject) value).getDoubleTest());
         Assert.assertEquals(true, ((TestObject) value).isBooleanTest());
         Assert.assertEquals("test1", ((TestObject) value).getStringTest());
+        this.cleanUp();
     }
 
     /**
@@ -483,6 +486,8 @@ public class JadeAgentIntrospectorTest {
         Assert.assertEquals(100.1, ((TestObject) value).getDoubleTest());
         Assert.assertEquals(false, ((TestObject) value).isBooleanTest());
         Assert.assertEquals("test2", ((TestObject) value).getStringTest());
+        
+        this.cleanUp();
     }
 
     /**
@@ -520,6 +525,8 @@ public class JadeAgentIntrospectorTest {
         value = (String) introspector.getBeliefValue("TestAgent", "testStatus",
                 connector);
         Assert.assertEquals("status2", value);
+        
+        this.cleanUp();
     }
 
     /**
@@ -555,6 +562,8 @@ public class JadeAgentIntrospectorTest {
 
         Assert.assertEquals("status2", (String) ((TesterAgent) introspector
                 .getAgent("TestAgent")).getStatus());
+        
+        this.cleanUp();
     }
 
     /**
@@ -595,6 +604,8 @@ public class JadeAgentIntrospectorTest {
         boolean retrieved = (boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
                 connector);
         Assert.assertTrue(retrieved);
+        
+        this.cleanUp();
     }
 
     /**
@@ -633,6 +644,8 @@ public class JadeAgentIntrospectorTest {
         boolean retrieved = (boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
                 connector);
         Assert.assertTrue(retrieved);
+        
+        this.cleanUp();
     }
 
     /**
@@ -662,6 +675,8 @@ public class JadeAgentIntrospectorTest {
 
         // Assert
         Assert.assertNotNull(value);
+        
+        this.cleanUp();
     }
 
     /**
@@ -693,6 +708,8 @@ public class JadeAgentIntrospectorTest {
         Assert.assertEquals(10.5 * 3, ((TestObject) value).getDoubleTest());
         Assert.assertEquals(true, ((TestObject) value).isBooleanTest());
         Assert.assertEquals("test1", ((TestObject) value).getStringTest());
+        
+        this.cleanUp();
     }
 
     /**
@@ -728,6 +745,8 @@ public class JadeAgentIntrospectorTest {
         Assert.assertEquals(100.1, ((TestObject) value).getDoubleTest());
         Assert.assertEquals(false, ((TestObject) value).isBooleanTest());
         Assert.assertEquals("test2", ((TestObject) value).getStringTest());
+        
+        this.cleanUp();
     }
 
     /**
@@ -765,6 +784,8 @@ public class JadeAgentIntrospectorTest {
         value = (String) introspector.getBeliefValue("TestAgent", "testStatus",
                 connector);
         Assert.assertEquals("status2", value);
+        
+        this.cleanUp();
     }
 
     /**
@@ -800,6 +821,8 @@ public class JadeAgentIntrospectorTest {
 
         Assert.assertEquals("status2", (String) ((TesterAgent) introspector
                 .getAgent("TestAgent")).getStatus());
+        
+        this.cleanUp();
     }
 
     /**
@@ -840,6 +863,8 @@ public class JadeAgentIntrospectorTest {
         boolean retrieved = (boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
                 connector);
         Assert.assertTrue(retrieved);
+        
+        this.cleanUp();
     }
 
     /**
@@ -878,6 +903,21 @@ public class JadeAgentIntrospectorTest {
         boolean retrieved = (boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
                 connector);
         Assert.assertTrue(retrieved);
+        
+        this.cleanUp();
     }
 
+    
+    private void cleanUp() {
+        this.deleteFile(new File ("APDescription.txt"));
+        this.deleteFile(new File ("MTPs-Main-Container.txt"));
+        this.deleteFile(new File ("MTPs-MyContainer.txt"));
+    }
+    
+    private void deleteFile(File f) {
+        if (f.exists()) {
+            f.delete();
+        }
+    }
+    
 }
