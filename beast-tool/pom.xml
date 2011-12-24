@@ -158,16 +158,15 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.11</version>
 <!-- 				<configuration> -->
-<!-- 					<skipTests>${skipTests}</skipTests> -->
+<!-- 					<skipTests>true</skipTests> -->
 <!-- 				</configuration> -->
 				<configuration>
 					<phase>test</phase>
 					<includes>
-						<!-- <include>es/upm/dit/gsi/beast/platform/jade/CaseManager.java</include> -->
-						<!-- <include>es/upm/dit/gsi/beast/platform/jadex/CaseManager.java</include> -->
+<!-- 						<include>es/upm/dit/gsi/beast/platform/jade/CaseManager.java</include> -->
+<!-- 						<include>es/upm/dit/gsi/beast/platform/jadex/CaseManager.java</include> -->
 					</includes>
 					<parallel>false</parallel>
-					<!-- FIXME mirar si se pueden ejecutar en secuencia -->
 				</configuration>
 			</plugin>
 
