@@ -19,6 +19,7 @@ public class TesterAgent extends Agent {
     protected final Logger logger = Logger.getMyLogger(getClass().getName());
 
     JadeAgentIntrospector myIntrospector;
+
     private String status;
     
     private boolean readyToTest=false;
@@ -84,7 +85,7 @@ public class TesterAgent extends Agent {
         this.myIntrospector.storeBeliefValue(this, "testObject", obj);
         logger.info("Stored believes in instrospector.");
 
-        long timeToWait = 200;
+        long timeToWait =200;
         try {
             Thread.sleep(timeToWait);
         } catch (InterruptedException e) {
@@ -162,21 +163,22 @@ public class TesterAgent extends Agent {
 
         logger.fine("Belief testStatus: " + status);
         
-        long timeToWait = 200;
+        long timeToWait = 5000;
         try {
             Thread.sleep(timeToWait);
         } catch (InterruptedException e) {
             logger.severe(this.getName() + " could not wait " + timeToWait
                     + " milliseconds. Exception: " + e);
         }
-        this.status = (String) this.myIntrospector.retrieveBelievesValue(this).get("testStatus");
-        logger.fine("Retrieved Belief testStatus: " + status);
-        boolean ok = false;
+        String aux = (String) this.myIntrospector.retrieveBelievesValue(this).get("testStatus");
+        this.status = aux;
+        logger.fine("Retrieved Belief testStatus: " + aux);
+        boolean retrieved = false;
         if (status.equals("updated")) {
             logger.fine("Belief is updated");
-            ok = true;
+            retrieved = true;
         }
-        this.myIntrospector.storeBeliefValue(this, "setBelief", ok);
+        this.myIntrospector.storeBeliefValue(this, "setBelief", retrieved);
         
         
     }

@@ -1,5 +1,6 @@
 package es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent;
 
+import junit.framework.Assert;
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.story.testCase.Evaluation;
@@ -34,7 +35,7 @@ public class EvaluationSetBelievesInAgent extends Evaluation {
         }
 
         checkAgentsBeliefEquealsTo("TestAgent", "setBelief", true);
-        //TODO este test tira a veces...
+        //FIXME este test tira a veces...
         
   }
 
