@@ -21,7 +21,7 @@ public class Scenario extends es.upm.dit.gsi.beast.story.phases.Scenario {
     public void startAgents() {
         
         Object[] arguments = new Object[1];
-        arguments[0] = "configuration4";
+        arguments[0] = (Integer) 4;
         startAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "My-Container", arguments);

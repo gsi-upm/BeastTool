@@ -55,19 +55,19 @@ public class TesterAgent extends Agent {
         LogActivator.logToFile(logger, this.getName(), Level.ALL);
         
         Object[] arguments = getArguments();
-        String testConfiguration = (String) arguments[0];
+        int testConfiguration = (Integer) arguments[0];
         logger.fine("Configuration: " + testConfiguration);
         switch (testConfiguration) {
-        case "configuration1":
+        case 1:
             this.setupConfiguration1(arguments);
             break;
-        case "configuration2":
+        case 2:
             this.setupConfiguration2(arguments);
             break;
-        case "configuration3":
+        case 3:
             this.setupConfiguration3(arguments);
             break;
-        case "configuration4":
+        case 4:
             this.setupConfiguration4(arguments);
             break;
         }

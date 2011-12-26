@@ -407,7 +407,7 @@ public class JadeAgentIntrospectorTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = "configuration1";
+        arguments[0] = (Integer) 1;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "Main-Container", arguments);
@@ -437,7 +437,7 @@ public class JadeAgentIntrospectorTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = "configuration1";
+        arguments[0] = (Integer) 1;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "Main-Container", arguments);
@@ -469,7 +469,7 @@ public class JadeAgentIntrospectorTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = "configuration1";
+        arguments[0] = (Integer) 1;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "Main-Container", arguments);
@@ -506,7 +506,7 @@ public class JadeAgentIntrospectorTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = "configuration1";
+        arguments[0] = (Integer) 1;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "Main-Container", arguments);
@@ -545,7 +545,7 @@ public class JadeAgentIntrospectorTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = "configuration1";
+        arguments[0] = (Integer) 1;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "Main-Container", arguments);
@@ -582,7 +582,7 @@ public class JadeAgentIntrospectorTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = "configuration2";
+        arguments[0] = (Integer) 2;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "Main-Container", arguments);
@@ -601,7 +601,7 @@ public class JadeAgentIntrospectorTest {
         }
 
         // Assert
-        boolean retrieved = (boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
+        boolean retrieved = (Boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
                 connector);
         Assert.assertTrue(retrieved);
         
@@ -624,7 +624,7 @@ public class JadeAgentIntrospectorTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = "configuration3";
+        arguments[0] = (Integer) 3;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "Main-Container", arguments);
@@ -641,7 +641,7 @@ public class JadeAgentIntrospectorTest {
         }
 
         // Assert
-        boolean retrieved = (boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
+        boolean retrieved = (Boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
                 connector);
         Assert.assertTrue(retrieved);
         
@@ -664,7 +664,7 @@ public class JadeAgentIntrospectorTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = "configuration1";
+        arguments[0] = (Integer) 1;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "MyContainer", arguments);
@@ -695,7 +695,7 @@ public class JadeAgentIntrospectorTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = "configuration1";
+        arguments[0] = (Integer) 1;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "MyContainer", arguments);
@@ -728,7 +728,7 @@ public class JadeAgentIntrospectorTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = "configuration1";
+        arguments[0] = (Integer) 1;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "MyContainer", arguments);
@@ -765,7 +765,7 @@ public class JadeAgentIntrospectorTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = "configuration1";
+        arguments[0] = (Integer) 1;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "MyContainer", arguments);
@@ -804,7 +804,7 @@ public class JadeAgentIntrospectorTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = "configuration1";
+        arguments[0] = (Integer) 1;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "MyContainer", arguments);
@@ -841,7 +841,7 @@ public class JadeAgentIntrospectorTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = "configuration2";
+        arguments[0] = (Integer) 2;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "MyContainer", arguments);
@@ -860,7 +860,7 @@ public class JadeAgentIntrospectorTest {
         }
 
         // Assert
-        boolean retrieved = (boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
+        boolean retrieved = (Boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
                 connector);
         Assert.assertTrue(retrieved);
         
@@ -883,7 +883,7 @@ public class JadeAgentIntrospectorTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = "configuration3";
+        arguments[0] = (Integer) 3;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "MyContainer", arguments);
@@ -900,7 +900,7 @@ public class JadeAgentIntrospectorTest {
         }
 
         // Assert
-        boolean retrieved = (boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
+        boolean retrieved = (Boolean) introspector.getBeliefValue("TestAgent", "testRetrieved",
                 connector);
         Assert.assertTrue(retrieved);
         
