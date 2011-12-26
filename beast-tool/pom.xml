@@ -155,7 +155,6 @@
 				<configuration>
 					<phase>test</phase>
 					<includes>
-						<include>es/upm/dit/gsi/beast/platform/jade/JadeAgentIntrospectorTest.java</include>
 						<!-- <include>es/upm/dit/gsi/beast/platform/jade/CaseManager.java</include> -->
 						<!-- <include>es/upm/dit/gsi/beast/platform/jadex/CaseManager.java</include> -->
 					</includes>
