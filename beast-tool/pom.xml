@@ -83,20 +83,6 @@
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.1.1</version>
 				<executions>
-					<!-- <execution> -->
-					<!-- <id>feos-test-sources</id> -->
-					<!-- <phase>generate-test-sources</phase> -->
-					<!-- <goals> -->
-					<!-- <goal>java</goal> -->
-					<!-- </goals> -->
-					<!-- <configuration> -->
-					<!-- <mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass> -->
-					<!-- <arguments> -->
-					<!-- <argument>beast.properties</argument> -->
-					<!-- <argument>BeastLog.properties</argument> -->
-					<!-- </arguments> -->
-					<!-- </configuration> -->
-					<!-- </execution> -->
 					<execution>
 						<id>jade-connector-test-sources</id>
 						<phase>generate-test-sources</phase>
