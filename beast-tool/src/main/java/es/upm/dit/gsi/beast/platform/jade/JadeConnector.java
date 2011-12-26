@@ -47,11 +47,6 @@ public class JadeConnector implements Connector {
      * 
      * @see es.upm.dit.gsi.beast.platform.Connector#launchPlatform()
      */
-    /*
-     * (non-Javadoc)
-     * 
-     * @see es.upm.dit.gsi.beast.platform.Connector#launchPlatform()
-     */
     @Override
     public void launchPlatform() {
         logger.fine("Launching Jade Platform...");
@@ -79,13 +74,6 @@ public class JadeConnector implements Connector {
 
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * es.upm.dit.gsi.beast.platform.Connector#createAgent(java.lang.String,
-     * java.lang.String)
-     */
     /*
      * (non-Javadoc)
      * 
@@ -122,13 +110,6 @@ public class JadeConnector implements Connector {
      * @param path
      * @param containerName
      * @param arguments
-     */
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * es.upm.dit.gsi.beast.platform.Connector#createAgent(java.lang.String,
-     * java.lang.String, java.lang.String, java.lang.Object[])
      */
     public void createAgent(String agentName, String path,
             String containerName, Object[] arguments) {
@@ -175,9 +156,6 @@ public class JadeConnector implements Connector {
      * @param container
      *            The name of the container
      */
-    /**
-     * @param container
-     */
     public void createContainer(String container) {
 
         ContainerController controller = this.platformContainers.get(container);
@@ -209,11 +187,6 @@ public class JadeConnector implements Connector {
      * 
      * @see es.upm.dit.gsi.beast.platform.Connector#getAgentID(java.lang.String)
      */
-    /*
-     * (non-Javadoc)
-     * 
-     * @see es.upm.dit.gsi.beast.platform.Connector#getAgentID(java.lang.String)
-     */
     @Override
     public AgentController getAgentID(String agent_name) {
         return this.createdAgents.get(agent_name);
@@ -232,11 +205,6 @@ public class JadeConnector implements Connector {
      * 
      * @see es.upm.dit.gsi.beast.platform.Connector#getMessageService()
      */
-    /*
-     * (non-Javadoc)
-     * 
-     * @see es.upm.dit.gsi.beast.platform.Connector#getMessageService()
-     */
     @Override
     public Object getMessageService() {
         // TODO Auto-generated method stub
@@ -250,23 +218,11 @@ public class JadeConnector implements Connector {
      * es.upm.dit.gsi.beast.platform.Connector#getAgentsExternalAccess(java.
      * lang.String)
      */
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * es.upm.dit.gsi.beast.platform.Connector#getAgentsExternalAccess(java.
-     * lang.String)
-     */
     @Override
     public AgentController getAgentsExternalAccess(String agent_name) {
         return this.createdAgents.get(agent_name);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see es.upm.dit.gsi.beast.platform.Connector#getLogger()
-     */
     /*
      * (non-Javadoc)
      * 

@@ -251,6 +251,7 @@ public class Reader {
         XStream xstream = new XStream();
         try {
             File f = new File("ClassDatabase.xml");
+            // TODO change the name to BeastDB or something like that
             //TODO review this delete because the size of this file could be really large
 //            f.delete();
             if (!f.exists()) {

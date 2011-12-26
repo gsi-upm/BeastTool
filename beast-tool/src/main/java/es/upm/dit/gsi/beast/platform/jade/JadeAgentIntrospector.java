@@ -101,7 +101,7 @@ public class JadeAgentIntrospector implements AgentIntrospector {
      */
     @Override
     public Object[] getAgentPlans(String agent_name, Connector connector) {
-        // TODO Auto-generated method stub
+        // Not supported in JADE
         return null;
     }
 
@@ -110,7 +110,7 @@ public class JadeAgentIntrospector implements AgentIntrospector {
      */
     @Override
     public Object[] getAgentGoals(String agent_name, Connector connector) {
-        // TODO Auto-generated method stub
+        // Not supported in JADE
         return null;
     }
 
