@@ -14,9 +14,9 @@ import org.jbehave.core.steps.InstanceStepsFactory;
 
 import com.thoughtworks.xstream.XStream;
 
-import es.upm.dit.gsi.beast.story.testCase.Evaluation;
-import es.upm.dit.gsi.beast.story.testCase.Scenario;
-import es.upm.dit.gsi.beast.story.testCase.Setup;
+import es.upm.dit.gsi.beast.story.phases.Evaluation;
+import es.upm.dit.gsi.beast.story.phases.Scenario;
+import es.upm.dit.gsi.beast.story.phases.Setup;
 
 /**
  * Main class to translate plain text into code, following the Given-When-Then

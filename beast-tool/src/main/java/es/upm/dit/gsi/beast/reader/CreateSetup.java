@@ -11,7 +11,7 @@ import org.apache.ws.jaxme.js.JavaQNameImpl;
 import org.apache.ws.jaxme.js.JavaSource;
 import org.apache.ws.jaxme.js.JavaSourceFactory;
 
-import es.upm.dit.gsi.beast.story.testCase.Setup;
+import es.upm.dit.gsi.beast.story.phases.Setup;
 
 /**
  * Main class to create the setup of each Test. The evaluation represents the

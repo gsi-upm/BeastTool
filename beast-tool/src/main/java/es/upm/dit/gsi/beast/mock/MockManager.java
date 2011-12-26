@@ -2,7 +2,7 @@ package es.upm.dit.gsi.beast.mock;
 
 import jadex.base.fipa.SFipa;
 import es.upm.dit.gsi.beast.mock.jadex.common.MockConfiguration;
-import es.upm.dit.gsi.beast.story.testCase.Scenario;
+import es.upm.dit.gsi.beast.story.phases.Scenario;
 
 /**
  * This class creates mock agents on the Scenario

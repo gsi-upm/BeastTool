@@ -1,4 +1,4 @@
-package es.upm.dit.gsi.beast.story.testCase;
+package es.upm.dit.gsi.beast.story.phases;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;

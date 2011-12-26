@@ -13,7 +13,7 @@ import org.apache.ws.jaxme.js.JavaQNameImpl;
 import org.apache.ws.jaxme.js.JavaSource;
 import org.apache.ws.jaxme.js.JavaSourceFactory;
 
-import es.upm.dit.gsi.beast.story.testCase.Evaluation;
+import es.upm.dit.gsi.beast.story.phases.Evaluation;
 
 /**
  * Main class to create the evaluation of each Test. The evaluation represents

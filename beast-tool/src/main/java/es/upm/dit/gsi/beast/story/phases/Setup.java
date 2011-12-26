@@ -1,4 +1,4 @@
-package es.upm.dit.gsi.beast.story.testCase;
+package es.upm.dit.gsi.beast.story.phases;
 
 import jadex.bdi.runtime.IGoal;
 import jadex.bdi.runtime.IPlan;

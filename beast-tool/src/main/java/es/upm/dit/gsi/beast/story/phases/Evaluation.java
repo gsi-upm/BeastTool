@@ -1,10 +1,10 @@
-package es.upm.dit.gsi.beast.story.testCase;
+package es.upm.dit.gsi.beast.story.phases;
 
 import java.util.logging.Logger;
 
 import org.junit.Assert;
 
-import es.upm.dit.gsi.beast.story.testCase.Setup;
+import es.upm.dit.gsi.beast.story.phases.Setup;
 
 /**
  * This class checks the final state of the agents we are testing. It is related
