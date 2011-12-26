@@ -33,7 +33,6 @@ public class Evaluation extends es.upm.dit.gsi.beast.story.phases.Evaluation {
         }
 
         checkAgentsBeliefEquealsTo("TestAgent", "setBelief", true);
-        //FIXME este test tira a veces...
         
   }
 
