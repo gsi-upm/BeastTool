@@ -1,9 +1,9 @@
-package es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent;
+package es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent.test;
 
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
-import es.upm.dit.gsi.beast.story.testCase.Evaluation;
 import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
+import junit.framework.Assert;
 
 
 /**  
@@ -16,12 +16,12 @@ import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
  * @author es.upm.dit.gsi.beast
  */
 
-public class EvaluationSetBelievesInAgent extends Evaluation {
+public class Evaluation extends es.upm.dit.gsi.beast.story.testCase.Evaluation {
 /**  
    * Here the description given by the client must be written,
    * which is: 
    *  
-   *   the belief is set
+   *   the Jade belief is set
    * 
    */
     public void checkStates() {

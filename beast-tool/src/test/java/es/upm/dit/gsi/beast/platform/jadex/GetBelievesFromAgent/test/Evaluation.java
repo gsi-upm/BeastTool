@@ -1,6 +1,5 @@
-package es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent;
+package es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.test;
 
-import es.upm.dit.gsi.beast.story.testCase.Evaluation;
 import junit.framework.Assert;
 
 
@@ -14,7 +13,7 @@ import junit.framework.Assert;
  * @author es.upm.dit.gsi.beast
  */
 
-public class EvaluationGetBelievesFromAgent extends Evaluation {
+public class Evaluation extends es.upm.dit.gsi.beast.story.testCase.Evaluation {
 /**  
    * Here the description given by the client must be written,
    * which is: 
@@ -24,7 +23,7 @@ public class EvaluationGetBelievesFromAgent extends Evaluation {
    */
     public void checkStates() {
     // TODO implement this method to represent the @Then part of the test in Java code.
-    logger.warning("Implement checkStates() method in es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.EvaluationGetBelievesFromAgent.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
+    logger.warning("Implement checkStates() method in es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.test.EvaluationGetBelievesFromAgent.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
     Assert.fail("Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
     
     //EXAMPLE: checkAgentsBeliefEquealsTo("Steve", "age", 21);

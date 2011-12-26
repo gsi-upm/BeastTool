@@ -1,9 +1,9 @@
-package es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent;
+package es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent.test;
 
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
-import es.upm.dit.gsi.beast.story.testCase.Evaluation;
 import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
+import junit.framework.Assert;
 
 
 /**  
@@ -16,12 +16,12 @@ import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
  * @author es.upm.dit.gsi.beast
  */
 
-public class EvaluationGetBelievesFromAgent extends Evaluation {
+public class Evaluation extends es.upm.dit.gsi.beast.story.testCase.Evaluation {
 /**  
    * Here the description given by the client must be written,
    * which is: 
    *  
-   *   the belief is retrieved
+   *   the Jade belief is retrieved
    * 
    */
     public void checkStates() {

@@ -1,7 +1,4 @@
-package es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent;
-
-import es.upm.dit.gsi.beast.story.testCase.Scenario;
-
+package es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.test;
 
 /**  
  * This is the class that must create the Scenario.
@@ -13,7 +10,7 @@ import es.upm.dit.gsi.beast.story.testCase.Scenario;
  * @author es.upm.dit.gsi.beast
  */
 
-public class ScenarioSetBelievesInAgent extends Scenario {
+public class Scenario extends es.upm.dit.gsi.beast.story.testCase.Scenario {
 /**  
    * Here the description given by the client must be written,
    * which is: 
@@ -23,7 +20,7 @@ public class ScenarioSetBelievesInAgent extends Scenario {
    */
     public void startAgents() {
     // TODO implement this method to represent the @Given part of the test in Java code.
-    logger.warning("Implement startAgents() method in es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent.ScenarioSetBelievesInAgent.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
+    logger.warning("Implement startAgents() method in es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.test.ScenarioGetBelievesFromAgent.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
     
 
        //EXAMPLE for Jadex: startAgent("Steve", "org.example.Steve.agent.xml"); // This xml file is the jadex agent description file (ADF)

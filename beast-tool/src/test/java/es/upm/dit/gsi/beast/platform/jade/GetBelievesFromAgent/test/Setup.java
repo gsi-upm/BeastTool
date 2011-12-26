@@ -1,7 +1,4 @@
-package es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent;
-
-import es.upm.dit.gsi.beast.story.testCase.Setup;
-
+package es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent.test;
 
 /**  
  * This is the class that must create the Setup.
@@ -16,7 +13,7 @@ import es.upm.dit.gsi.beast.story.testCase.Setup;
  * @author es.upm.dit.gsi.beast
  */
 
-public class SetupGetBelievesFromAgent extends Setup {
+public class Setup extends es.upm.dit.gsi.beast.story.testCase.Setup {
 /**  
    * Here the description given by the client must be written,
    * which is: 
