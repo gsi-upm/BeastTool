@@ -232,7 +232,9 @@
 						<fileset>
 							<directory>${basedir}</directory>
 							<includes>
-								<include>log/</include>						
+								<include>log/</include>
+								<include>MTP*.txt</include>
+								<include>AP*.txt</include>						
 							</includes>
 						</fileset>
 					</filesets>
