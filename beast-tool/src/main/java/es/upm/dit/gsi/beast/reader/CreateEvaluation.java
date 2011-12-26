@@ -42,8 +42,7 @@ public class CreateEvaluation {
 
         JavaSourceFactory factory = new JavaSourceFactory();
 
-        JavaQName className = JavaQNameImpl.getInstance(path, "Evaluation"
-                + scenario_name);
+        JavaQName className = JavaQNameImpl.getInstance(path, "Evaluation");
         JavaSource js = factory.newJavaSource(className, "public");
         js.addImport(Assert.class);
 

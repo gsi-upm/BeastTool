@@ -41,8 +41,7 @@ public class CreateSetup {
 
         JavaSourceFactory factory = new JavaSourceFactory();
 
-        JavaQName className = JavaQNameImpl.getInstance(path, "Setup"
-                + scenario_name);
+        JavaQName className = JavaQNameImpl.getInstance(path, "Setup");
         JavaSource js = factory.newJavaSource(className, "public");
 
         js.newComment();

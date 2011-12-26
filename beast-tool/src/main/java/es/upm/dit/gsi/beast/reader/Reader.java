@@ -35,6 +35,7 @@ public class Reader {
     private String whenDescription = null;
     private String thenDescription = null;
     private String aux_package_path = null;
+    private String testCase_package_path = null;
     private FileWriter story_file_writer = null;
 
     /**
@@ -113,6 +114,8 @@ public class Reader {
                             aux_package_path = tests_package_path + "."
                                     + scenarioJavaName;
                             Reader.createFolder(aux_package_path, dest_dir);
+                            this.testCase_package_path = aux_package_path + ".test";
+                            Reader.createFolder(testCase_package_path, dest_dir);
                             if (fileDoesNotExist(scenarioJavaName + ".java",
                                     aux_package_path, dest_dir)) {
                                 // Writes StoryExample.java
@@ -132,16 +135,14 @@ public class Reader {
                                 givenDescription = givenDescription + " "
                                         + line_words.nextToken();
                             }
-                            if (fileDoesNotExist("Scenario" + scenarioJavaName
-                                    + ".java", aux_package_path, dest_dir)) {
+                            if (fileDoesNotExist("Scenario.java", testCase_package_path, dest_dir)) {
                                 CreateScenario.createScenario(scenarioJavaName,
-                                        aux_package_path, givenDescription,
+                                        testCase_package_path, givenDescription,
                                         dest_dir);
                             }
                             story_file_writer.write(nextLine + "\n");
                             writeClassDatabase(givenDescription,
-                                    aux_package_path + ".Scenario"
-                                            + scenarioJavaName);
+                                    testCase_package_path + ".Scenario");
 
                         } else if (next.matches("When")) {
                             whenDescription = line_words.nextToken();
@@ -149,16 +150,14 @@ public class Reader {
                                 whenDescription = whenDescription + " "
                                         + line_words.nextToken();
                             }
-                            if (fileDoesNotExist("Setup" + scenarioJavaName
-                                    + ".java", aux_package_path, dest_dir)) {
+                            if (fileDoesNotExist("Setup.java", testCase_package_path, dest_dir)) {
                                 CreateSetup.createSetup(scenarioJavaName,
-                                        aux_package_path, whenDescription,
+                                        testCase_package_path, whenDescription,
                                         dest_dir);
                             }
                             story_file_writer.write(nextLine + "\n");
                             writeClassDatabase(whenDescription,
-                                    aux_package_path + ".Setup"
-                                            + scenarioJavaName);
+                                    testCase_package_path + ".Setup");
 
                         } else if (next.matches("Then")) {
                             thenDescription = line_words.nextToken();
@@ -166,14 +165,16 @@ public class Reader {
                                 thenDescription = thenDescription + " "
                                         + line_words.nextToken();
                             }
-                            if (fileDoesNotExist("Evaluation"
-                                    + scenarioJavaName + ".java",
-                                    aux_package_path, dest_dir)) {
+                            if (fileDoesNotExist("Evaluation.java",
+                                    testCase_package_path, dest_dir)) {
                                 CreateEvaluation.createEvaluation(
-                                        scenarioJavaName, aux_package_path,
+                                        scenarioJavaName, testCase_package_path,
                                         thenDescription, dest_dir);
                             }
                             story_file_writer.write(nextLine + "\n");
+                            writeClassDatabase(thenDescription,
+                                    testCase_package_path + ".Evaluation");
+                            
                             story_file_writer.flush();
                             story_file_writer.close();
                             String test_path = createTestPath(aux_package_path,
@@ -182,9 +183,6 @@ public class Reader {
                                     scenarioJavaName, test_path,
                                     scenarioJavaName, givenDescription,
                                     whenDescription, thenDescription);
-                            writeClassDatabase(thenDescription,
-                                    aux_package_path + ".Evaluation"
-                                            + scenarioJavaName);
 
                         } else {
                             logger.severe("ERROR: The test writen in the plain text can not be handed");
