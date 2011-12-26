@@ -1,4 +1,4 @@
-package es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent.test;
+package es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent.phases;
 
 /**  
  * This is the class that must create the Setup.
@@ -13,20 +13,19 @@ package es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent.test;
  * @author es.upm.dit.gsi.beast
  */
 
-public class Setup extends es.upm.dit.gsi.beast.story.testCase.Setup {
+public class Setup extends es.upm.dit.gsi.beast.story.phases.Setup {
 /**  
    * Here the description given by the client must be written,
    * which is: 
    *  
-   *   tester wants to set a belief inside a Jade agent
+   *   tester wants to set a belief inside a Jadex agent
    * 
    */
     public void setStates() {
-        
-        setBeliefValue("TestAgent", "testStatus", "updated");
-        
-        setExecutionTime(1000);
-        
+    // TODO implement this method to represent the @When part of the test in Java code.
+    logger.warning("Implement setStates() method in es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent.test.SetupSetBelievesInAgent.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
+    
+    //EXAMPLE: setBeliefValue("Steve", "age", 21);
   }
 
 }

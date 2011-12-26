@@ -1,4 +1,4 @@
-package es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.test;
+package es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.phases;
 
 /**  
  * This is the class that must create the Scenario.
@@ -10,7 +10,7 @@ package es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.test;
  * @author es.upm.dit.gsi.beast
  */
 
-public class Scenario extends es.upm.dit.gsi.beast.story.testCase.Scenario {
+public class Scenario extends es.upm.dit.gsi.beast.story.phases.Scenario {
 /**  
    * Here the description given by the client must be written,
    * which is: 

@@ -1,9 +1,8 @@
-package es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent.test;
+package es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent.phases;
 
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
-import junit.framework.Assert;
 
 
 /**  
@@ -16,7 +15,7 @@ import junit.framework.Assert;
  * @author es.upm.dit.gsi.beast
  */
 
-public class Evaluation extends es.upm.dit.gsi.beast.story.testCase.Evaluation {
+public class Evaluation extends es.upm.dit.gsi.beast.story.phases.Evaluation {
 /**  
    * Here the description given by the client must be written,
    * which is: 
