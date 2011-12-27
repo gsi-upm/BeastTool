@@ -27,15 +27,15 @@ public class JadeAgentIntrospector implements AgentIntrospector {
     }
 
     /**
-     * @return
+     * @return Return the agent introspector
      */
     public static JadeAgentIntrospector getInstance() {
         return INSTANCE;
     }
 
     /**
-     * @param agent
-     * @return
+     * @param agent Register this agent
+     * @return Return the agent introspector
      */
     public static JadeAgentIntrospector getMyInstance(Agent agent) {
         HashMap<String, Object> believes = new HashMap<String, Object>();
@@ -44,7 +44,7 @@ public class JadeAgentIntrospector implements AgentIntrospector {
     }
     
     /**
-     * @return
+     * @return Return the data to test
      */
     public HashMap<String, HashMap<String, Object>> getDataToTest() {
         return dataToTest;
@@ -69,8 +69,8 @@ public class JadeAgentIntrospector implements AgentIntrospector {
     }
 
     /**
-     * @param agent
-     * @return
+     * @param agent The agent
+     * @return Return the data to test for the agent
      */
     public HashMap<String, Object> retrieveBelievesValue(Agent agent) {
         return JadeAgentIntrospector.dataToTest.get(agent.getLocalName()); 
@@ -89,8 +89,8 @@ public class JadeAgentIntrospector implements AgentIntrospector {
     }
     
     /**
-     * @param agentName
-     * @return
+     * @param agentName The local name
+     * @return The agent
      */
     public Agent getAgent(String agentName) {
         return JadeAgentIntrospector.agents.get(agentName);

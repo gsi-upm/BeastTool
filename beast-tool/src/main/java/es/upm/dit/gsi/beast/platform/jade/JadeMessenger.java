@@ -23,7 +23,7 @@ public class JadeMessenger implements Messenger {
     }
 
     /**
-     * @return
+     * @return The messenger for Jade
      */
     public static JadeMessenger getInstance() {
         return INSTANCE;

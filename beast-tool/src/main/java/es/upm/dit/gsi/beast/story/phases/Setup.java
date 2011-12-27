@@ -153,7 +153,7 @@ public abstract class Setup {
     /**
      * This method set the execution time of the test.
      * 
-     * @param milis Time in milliseconds
+     * @param millis Time in milliseconds
      */
     public void setExecutionTime(long millis) {
         try {
