@@ -90,9 +90,9 @@ public class JadeConnector implements Connector {
         try {
             AgentController agentController = mainContainer.createNewAgent(
                     agent_name, path, empty);
-            this.createdAgents.put(agentController.getName(), agentController);
+            this.createdAgents.put(agent_name, agentController);
             agentController.start();
-            logger.fine("Agent " + agentController.getName()
+            logger.fine("Agent " + agent_name
                     + " created and started in Main Container");
             try {
                 Thread.sleep(MILLIS_TO_WAIT_FOR_AGENT_STARTING);
@@ -189,14 +189,6 @@ public class JadeConnector implements Connector {
      */
     @Override
     public AgentController getAgentID(String agent_name) {
-        return this.createdAgents.get(agent_name);
-    }
-
-    /**
-     * @param agent_name
-     * @return
-     */
-    public AgentController getAgentController(String agent_name) {
         return this.createdAgents.get(agent_name);
     }
 
