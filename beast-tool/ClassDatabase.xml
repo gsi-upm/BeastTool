@@ -1,19 +1,27 @@
 <map>
   <entry>
+    <string>that TesterAgent is started in Jade Platform in Main-Container with Configuration 1</string>
+    <string>es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent.phases.Scenario</string>
+  </entry>
+  <entry>
     <string>tester wants to set a belief inside a Jade agent</string>
-    <string>es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent.SetupSetBelievesInAgent</string>
+    <string>es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent.phases.Setup</string>
   </entry>
   <entry>
     <string>the Jadex belief is set</string>
-    <string>es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent.EvaluationSetBelievesInAgent</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent.phases.Evaluation</string>
   </entry>
   <entry>
     <string>the Jade belief is retrieved</string>
-    <string>es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent.EvaluationGetBelievesFromAgent</string>
+    <string>es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent.phases.Evaluation</string>
+  </entry>
+  <entry>
+    <string>that TesterAgent is started in Jade Platform in Main-Container with Configuration 4</string>
+    <string>es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent.phases.Scenario</string>
   </entry>
   <entry>
     <string>tester wants to get a belief from a Jadex agent</string>
-    <string>es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.SetupGetBelievesFromAgent</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.phases.Setup</string>
   </entry>
   <entry>
     <string>that one agent is started in Jade Platform in Main-Container</string>
@@ -21,22 +29,22 @@
   </entry>
   <entry>
     <string>the Jade belief is set</string>
-    <string>es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent.EvaluationSetBelievesInAgent</string>
+    <string>es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent.phases.Evaluation</string>
   </entry>
   <entry>
     <string>tester wants to get a belief from a Jade agent</string>
-    <string>es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent.SetupGetBelievesFromAgent</string>
+    <string>es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent.phases.Setup</string>
   </entry>
   <entry>
     <string>the Jadex belief is retrieved</string>
-    <string>es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.EvaluationGetBelievesFromAgent</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.phases.Evaluation</string>
   </entry>
   <entry>
     <string>that one agent is started in Jadex Platform</string>
-    <string>es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.ScenarioGetBelievesFromAgent</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.phases.Scenario</string>
   </entry>
   <entry>
     <string>tester wants to set a belief inside a Jadex agent</string>
-    <string>es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent.SetupSetBelievesInAgent</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent.phases.Setup</string>
   </entry>
 </map>
