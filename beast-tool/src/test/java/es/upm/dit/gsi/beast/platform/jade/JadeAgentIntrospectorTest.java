@@ -906,6 +906,86 @@ public class JadeAgentIntrospectorTest {
         
         this.cleanUp();
     }
+    
+    /**
+     * 
+     */
+    @Test
+    public void JadeAgentGetPlansInRemoteContainer() {
+        // Setup
+        Logger logger = Logger.getLogger(JadeAgentIntrospectorTest.class
+                .getName());
+        JadeConnector connector = (JadeConnector) PlatformSelector
+                .getConnector("jade", logger);
+        connector.launchPlatform();
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector
+                .getAgentIntrospector("jade");
+
+        // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = (Integer) 3;
+        connector.createAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "MyContainer", arguments);
+
+        // Get
+        TestObject value = (TestObject) introspector.getBeliefValue(
+                "TestAgent", "testObject", connector);
+        
+        value.setDoubleTest(1.11);
+        value.setStringTest("OK");
+
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
+            // Wait...
+        }
+
+        // Assert
+        Object retrieved = (Object) introspector.getAgentPlans("TestAgent", connector);
+        Assert.assertNull(retrieved);
+        
+        this.cleanUp();
+    }
+    
+
+    
+    /**
+     * 
+     */
+    @Test
+    public void JadeAgentGetGoalsInRemoteContainer() {
+        // Setup
+        Logger logger = Logger.getLogger(JadeAgentIntrospectorTest.class
+                .getName());
+        JadeConnector connector = (JadeConnector) PlatformSelector
+                .getConnector("jade", logger);
+        connector.launchPlatform();
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector
+                .getAgentIntrospector("jade");
+
+        // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = (Integer) 3;
+        connector.createAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "MyContainer", arguments);
+
+        // Get
+        TestObject value = (TestObject) introspector.getBeliefValue(
+                "TestAgent", "testObject", connector);
+        
+        value.setDoubleTest(1.11);
+        value.setStringTest("OK");
+
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
+            // Wait...
+        }
+
+        // Assert
+        Object retrieved = (Object) introspector.getAgentGoals("TestAgent", connector);
+        Assert.assertNull(retrieved);
+        
+        this.cleanUp();
+    }
 
     
     private void cleanUp() {
