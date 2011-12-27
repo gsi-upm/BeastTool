@@ -160,6 +160,7 @@
 						<include>es/upm/dit/gsi/beast/platform/jadex/CaseManager.java</include>
 					</includes>
 					<parallel>false</parallel>
+					<threadCount>1</threadCount>
 				</configuration>
 			</plugin>
 
