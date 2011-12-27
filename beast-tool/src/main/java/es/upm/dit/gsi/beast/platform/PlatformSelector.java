@@ -22,9 +22,9 @@ public class PlatformSelector {
      */
     public static Connector getConnector(String platform, Logger logger) {
 
-        if (platform.equals("jadex")) {
+        if (platform.equalsIgnoreCase("jadex")) {
             return new JadexConnector(logger);
-        } else if (platform.equals("jade")){
+        } else if (platform.equalsIgnoreCase("jade")){
             return new JadeConnector(logger);
         }
         return null;
@@ -36,9 +36,9 @@ public class PlatformSelector {
      */
     public static Messenger getMessenger(String platform) {
 
-        if (platform.equals("jadex")) {
+        if (platform.equalsIgnoreCase("jadex")) {
             return JadexMessenger.getInstance();
-        } else if (platform.equals("jade")){
+        } else if (platform.equalsIgnoreCase("jade")){
             return JadeMessenger.getInstance();
         }
         return null;
@@ -50,9 +50,9 @@ public class PlatformSelector {
      */
     public static AgentIntrospector getAgentIntrospector(String platform) {
 
-        if (platform.equals("jadex")) {
+        if (platform.equalsIgnoreCase("jadex")) {
             return JadexAgentIntrospector.getInstance();
-        } else if (platform.equals("jade")){
+        } else if (platform.equalsIgnoreCase("jade")){
             return JadeAgentIntrospector.getInstance();
         }
         return null;
