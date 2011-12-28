@@ -68,7 +68,6 @@ public class CreateEvaluation {
                 + ".java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");");
         jm.addLine("Assert.fail(\"Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");");
         jm.addLine("\n    //EXAMPLE: checkAgentsBeliefEquealsTo(\"Steve\", \"age\", 21);");
-        //TODO meter ejemplos para jade
         
         jm.newComment();
         JavaComment methodComment = jm.getComment();

@@ -69,7 +69,6 @@ public class CreateSetup {
                 + scenario_name
                 + ".java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");");
         jm.addLine("\n    //EXAMPLE: setBeliefValue(\"Steve\", \"age\", 21);");
-        //TODO meter ejemplos de para jade
 
         
         jm.newComment();
