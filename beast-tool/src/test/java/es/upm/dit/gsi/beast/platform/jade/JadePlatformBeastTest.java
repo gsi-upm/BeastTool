@@ -26,8 +26,7 @@ import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
  * 
  */
 public class JadePlatformBeastTest {
-    // FIXME si tira un agente una excepción, los tests no fallan :S deberían
-    // fallar
+    
     /**
      * 
      */
