@@ -161,6 +161,8 @@
 					</includes>
 					<parallel>false</parallel>
 					<threadCount>1</threadCount>
+					<perCoreThreadCount>false</perCoreThreadCount>
+					<useUnlimitedThreads>false</useUnlimitedThreads>
 				</configuration>
 			</plugin>
 
@@ -275,7 +277,7 @@
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.0</version>
 				<configuration>
-					<locales>en,es</locales>
+					<locales>en</locales>
 				</configuration>
 			</plugin>
 
@@ -373,23 +375,8 @@
 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>dashboard-maven-plugin</artifactId>
-				<version>1.0.0-beta-1</version>
-				<configuration>
-					<configLocation>dashboard-maven-config.xsd</configLocation>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
 				<version>2.3.3</version>
-			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jdepend-maven-plugin</artifactId>
-				<version>2.0-beta-2</version>
 			</plugin>
 
 			<plugin>
@@ -400,16 +387,26 @@
 					<tagListOptions>
 						<tagClasses>
 							<tagClass>
-								<displayName>Todo Work</displayName>
+								<displayName>To do Work</displayName>
 								<tags>
 									<tag>
 										<matchString>TODO</matchString>
 										<matchType>exact</matchType>
 									</tag>
+								</tags>
+							</tagClass>
+							<tagClass>
+								<displayName>To implement Work</displayName>
+								<tags>
 									<tag>
 										<matchString>TOIMP</matchString>
 										<matchType>exact</matchType>
 									</tag>
+								</tags>
+							</tagClass>
+							<tagClass>
+								<displayName>To fix Work</displayName>
+								<tags>
 									<tag>
 										<matchString>FIXME</matchString>
 										<matchType>exact</matchType>
@@ -437,6 +434,18 @@
 						</tagClasses>
 					</tagListOptions>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>dashboard-maven-plugin</artifactId>
+				<version>1.0.0-beta-1</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jdepend-maven-plugin</artifactId>
+				<version>2.0-beta-2</version>
 			</plugin>
 
 		</plugins>

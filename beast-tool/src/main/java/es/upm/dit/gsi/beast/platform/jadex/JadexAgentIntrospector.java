@@ -22,9 +22,9 @@ import es.upm.dit.gsi.beast.platform.Connector;
 public class JadexAgentIntrospector implements AgentIntrospector {
 
     static Logger logger = Logger.getLogger("JadexAgentIntrospector");
-    private static Object belief_value;
-    private static IPlan[] plans;
-    private static IGoal[] goals;
+    private Object belief_value;
+    private IPlan[] plans;
+    private IGoal[] goals;
 
     private static JadexAgentIntrospector INSTANCE = new JadexAgentIntrospector();
 
@@ -130,7 +130,7 @@ public class JadexAgentIntrospector implements AgentIntrospector {
                     }
                 }).get(new ThreadSuspendable());
 
-        return plans;
+        return JadexAgentIntrospector.getInstance().plans;
     }
 
     /**
@@ -171,7 +171,7 @@ public class JadexAgentIntrospector implements AgentIntrospector {
                     }
                 }).get(new ThreadSuspendable());
 
-        return goals;
+        return JadexAgentIntrospector.getInstance().goals;
     }
 
 }

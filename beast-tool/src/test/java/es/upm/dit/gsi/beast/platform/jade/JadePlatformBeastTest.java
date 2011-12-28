@@ -439,7 +439,7 @@ public class JadePlatformBeastTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = (Integer) 1;
+        arguments[0] = (Integer) 0;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "Main-Container", arguments);
@@ -555,9 +555,6 @@ public class JadePlatformBeastTest {
         // Get
 
         // Assert
-        Assert.assertEquals("status1", (String) ((TesterAgent) introspector
-                .getAgent("TestAgent")).getStatus());
-
         while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
             // Wait...
         }
@@ -697,7 +694,7 @@ public class JadePlatformBeastTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = (Integer) 1;
+        arguments[0] = (Integer) 0;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "MyContainer", arguments);

@@ -55,7 +55,8 @@ public class Reader {
      *            , properties file
      */
     public Reader(String ScenariosList, String platformName, String dest_dir,
-            String tests_package_path, String casemanager_path, String loggingPropFile) {
+            String tests_package_path, String casemanager_path,
+            String loggingPropFile) {
         this.generateJavaFiles(ScenariosList, platformName, dest_dir,
                 tests_package_path, casemanager_path, loggingPropFile);
     }
@@ -78,7 +79,8 @@ public class Reader {
      *            , properties file
      */
     private void generateJavaFiles(String ScenariosList, String platformName,
-            String dest_dir, String tests_package_path, String casemanager_path, String loggingPropFile) {
+            String dest_dir, String tests_package_path,
+            String casemanager_path, String loggingPropFile) {
 
         BufferedReader fileReader = createFileReader(ScenariosList);
         if (fileReader == null) {
@@ -112,7 +114,8 @@ public class Reader {
                             aux_package_path = tests_package_path + "."
                                     + scenarioJavaName;
                             Reader.createFolder(aux_package_path, dest_dir);
-                            testCase_package_path = aux_package_path + ".phases";
+                            testCase_package_path = aux_package_path
+                                    + ".phases";
                             Reader.createFolder(testCase_package_path, dest_dir);
                             if (fileDoesNotExist(scenarioJavaName + ".java",
                                     aux_package_path, dest_dir)) {
@@ -133,10 +136,11 @@ public class Reader {
                                 givenDescription = givenDescription + " "
                                         + line_words.nextToken();
                             }
-                            if (fileDoesNotExist("Scenario.java", testCase_package_path, dest_dir)) {
+                            if (fileDoesNotExist("Scenario.java",
+                                    testCase_package_path, dest_dir)) {
                                 CreateScenario.createScenario(scenarioJavaName,
-                                        testCase_package_path, givenDescription,
-                                        dest_dir);
+                                        testCase_package_path,
+                                        givenDescription, dest_dir);
                             }
                             story_file_writer.write(nextLine + "\n");
                             writeClassDatabase(givenDescription,
@@ -148,7 +152,8 @@ public class Reader {
                                 whenDescription = whenDescription + " "
                                         + line_words.nextToken();
                             }
-                            if (fileDoesNotExist("Setup.java", testCase_package_path, dest_dir)) {
+                            if (fileDoesNotExist("Setup.java",
+                                    testCase_package_path, dest_dir)) {
                                 CreateSetup.createSetup(scenarioJavaName,
                                         testCase_package_path, whenDescription,
                                         dest_dir);
@@ -166,13 +171,14 @@ public class Reader {
                             if (fileDoesNotExist("Evaluation.java",
                                     testCase_package_path, dest_dir)) {
                                 CreateEvaluation.createEvaluation(
-                                        scenarioJavaName, testCase_package_path,
-                                        thenDescription, dest_dir);
+                                        scenarioJavaName,
+                                        testCase_package_path, thenDescription,
+                                        dest_dir);
                             }
                             story_file_writer.write(nextLine + "\n");
                             writeClassDatabase(thenDescription,
                                     testCase_package_path + ".Evaluation");
-                            
+
                             story_file_writer.flush();
                             story_file_writer.close();
                             String test_path = createTestPath(aux_package_path,
@@ -252,18 +258,22 @@ public class Reader {
         try {
             File f = new File("ClassDatabase.xml");
             // TODO change the name to BeastDB or something like that
-            //TODO review this delete because the size of this file could be really large
-//            f.delete();
+            // TODO review this delete because the size of this file could be
+            // really large
+            // f.delete();
+
             if (!f.exists()) {
+                FileWriter w = null;
                 try {
-                    FileWriter w = new FileWriter(f);
+                    w = new FileWriter(f);
                     w.write("<map>");
                     w.write("</map>");
                     w.flush();
                     w.close();
                     logger.fine("ClassDatabase.xml created.");
                 } catch (IOException e) {
-                    logger.severe("ClassDatabase.xml could not be created.");
+                    logger.severe("ClassDatabase.xml could not be created. Exception: "
+                            + e);
                     e.printStackTrace();
                 }
             }
@@ -278,8 +288,9 @@ public class Reader {
             xstream.toXML(hm, new FileOutputStream("ClassDatabase.xml", false));
 
         } catch (FileNotFoundException e) {
-            Logger logger = Logger.getLogger(this.getClass().toString());
-            logger.info("ERROR: File ClassDatabase.xml can not be found");
+            logger.severe("ERROR: File ClassDatabase.xml can not be found. Exception: " + e);
+        } catch (Exception e) {
+            logger.severe("ERROR: writing ClassDataBase.xml -> Exception: " + e);
         }
     }
 
@@ -420,7 +431,7 @@ public class Reader {
                         + properties.getProperty("platform") + "\"",
                         properties.getProperty("mainDirectory"),
                         properties.getProperty("testPath"),
-                        properties.getProperty("caseManagerPath"),args[1]);
+                        properties.getProperty("caseManagerPath"), args[1]);
             } catch (IOException ex) {
                 logger.severe("WARNING: Could not open configuration file");
                 logger.severe("WARNING: Logging not configured (console output only)");
@@ -430,7 +441,7 @@ public class Reader {
                     + properties.getProperty("platform") + "\"",
                     properties.getProperty("mainDirectory"),
                     properties.getProperty("testPath"),
-                    properties.getProperty("caseManagerPath"),null);
+                    properties.getProperty("caseManagerPath"), null);
             logger.warning("No logging properties file found. Set the path of properties file as argument.");
         }
 

@@ -58,6 +58,8 @@ public class TesterAgent extends Agent {
         int testConfiguration = (Integer) arguments[0];
         logger.fine("Configuration: " + testConfiguration);
         switch (testConfiguration) {
+        case 0:
+            this.setupConfiguration0(arguments);
         case 1:
             this.setupConfiguration1(arguments);
             break;
@@ -74,7 +76,7 @@ public class TesterAgent extends Agent {
         readyToTest=true;
     }
     
-    private void setupConfiguration1(Object[] arguments) {
+    private void setupConfiguration0(Object[] arguments) {
         this.status = "status1";
         this.obj = new TestObject("test", 10.5, false);
         obj.multiplyDouble(3);
@@ -92,10 +94,28 @@ public class TesterAgent extends Agent {
             logger.severe(this.getName() + " could not wait " + timeToWait
                     + " milliseconds. Exception: " + e);
         }
+    }
+    
+    private void setupConfiguration1(Object[] arguments) {
+        this.status = "status1";
+        this.obj = new TestObject("test", 10.5, false);
+        logger.info("Agent status: " + this.status);
+        this.myIntrospector.storeBeliefValue(this, "testStatus", status);
+        this.myIntrospector.storeBeliefValue(this, "testObject", obj);
+        logger.info("Stored believes in instrospector.");
 
         obj.setDoubleTest(100.1);
         obj.setBooleanTest(false);
         obj.setStringTest("test2");
+
+        long timeToWait =200;
+        try {
+            Thread.sleep(timeToWait);
+        } catch (InterruptedException e) {
+            logger.severe(this.getName() + " could not wait " + timeToWait
+                    + " milliseconds. Exception: " + e);
+        }
+        
         status = "status2";
         logger.info("Agent status: " + this.status);
         this.myIntrospector.storeBeliefValue(this, "testStatus", status);

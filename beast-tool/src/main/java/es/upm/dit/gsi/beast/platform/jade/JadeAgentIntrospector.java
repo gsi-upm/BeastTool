@@ -13,8 +13,8 @@ import es.upm.dit.gsi.beast.platform.Connector;
  */
 public class JadeAgentIntrospector implements AgentIntrospector {
 
-    private static HashMap<String, HashMap<String, Object>> dataToTest;
-    private static HashMap<String, Agent> agents;
+    private HashMap<String, HashMap<String, Object>> dataToTest;
+    private HashMap<String, Agent> agents;
 
     private static JadeAgentIntrospector INSTANCE = new JadeAgentIntrospector();
 
@@ -56,7 +56,7 @@ public class JadeAgentIntrospector implements AgentIntrospector {
     @Override
     public Object getBeliefValue(String agent_name, String belief_name,
             Connector connector) {
-        return JadeAgentIntrospector.dataToTest.get(agent_name).get(belief_name);
+        return JadeAgentIntrospector.getInstance().dataToTest.get(agent_name).get(belief_name);
     }
 
     /* (non-Javadoc)
@@ -65,7 +65,7 @@ public class JadeAgentIntrospector implements AgentIntrospector {
     @Override
     public void setBeliefValue(String agent_name, String belief_name,
             Object new_value, Connector connector) {
-        JadeAgentIntrospector.dataToTest.get(agent_name).put(belief_name, new_value);
+        JadeAgentIntrospector.getInstance().dataToTest.get(agent_name).put(belief_name, new_value);
     }
 
     /**
@@ -73,7 +73,7 @@ public class JadeAgentIntrospector implements AgentIntrospector {
      * @return Return the data to test for the agent
      */
     public HashMap<String, Object> retrieveBelievesValue(Agent agent) {
-        return JadeAgentIntrospector.dataToTest.get(agent.getLocalName()); 
+        return JadeAgentIntrospector.getInstance().dataToTest.get(agent.getLocalName()); 
     }
 
     /**
@@ -83,8 +83,8 @@ public class JadeAgentIntrospector implements AgentIntrospector {
      */
     public void storeBeliefValue(Agent agent, String belief_name,
             Object new_value) {
-        JadeAgentIntrospector.agents.put(agent.getLocalName(), agent);
-        JadeAgentIntrospector.dataToTest.get(agent.getLocalName()).put(belief_name, new_value);
+        JadeAgentIntrospector.getInstance().agents.put(agent.getLocalName(), agent);
+        JadeAgentIntrospector.getInstance().dataToTest.get(agent.getLocalName()).put(belief_name, new_value);
 
     }
     
@@ -93,7 +93,7 @@ public class JadeAgentIntrospector implements AgentIntrospector {
      * @return The agent
      */
     public Agent getAgent(String agentName) {
-        return JadeAgentIntrospector.agents.get(agentName);
+        return JadeAgentIntrospector.getInstance().agents.get(agentName);
     }
 
     /* (non-Javadoc)
