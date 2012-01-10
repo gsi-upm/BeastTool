@@ -30,6 +30,9 @@
 
 	<beliefs>
 		<belief name="agent_behaviour" class="AgentBehaviour"/>
+		<belief name="message_count" class="int">
+			<fact>0</fact>
+		</belief>
 	</beliefs>
 
 	<plans>
@@ -84,7 +87,7 @@
 			<parameter name="performative" class="String" direction="fixed">
 				<value>SFipa.REQUEST</value>
 			</parameter>
-			<!-- <match>$content instanceof String &amp;&amp; ((String)$content).startsWith("reenvia")</match> -->
+			<match>$content instanceof String &amp;&amp; ((String)$content).startsWith("send")</match>
 		</messageevent>
 		
 		<!-- Events to start the sending of messages.-->
