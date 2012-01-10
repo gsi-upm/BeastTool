@@ -23,11 +23,11 @@ public class Scenario extends es.upm.dit.gsi.beast.story.phases.Scenario {
    * Here the description given by the client must be written,
    * which is: 
    *  
-   *   one bridge mock and one repository mock in Jadex Platform
+   *   one repository mock and one bridge mock in Jadex Platform
    * 
    */
     public void startAgents() {
-      //RepositoryAgent configuration
+        //RepositoryAgent configuration
         AgentBehaviour myMockedBehaviour =   mock(AgentBehaviour.class);
         when(myMockedBehaviour.processMessage(eq("request"), eq("BridgeAgent"),eq("hi")))
             .thenReturn("hello");        
