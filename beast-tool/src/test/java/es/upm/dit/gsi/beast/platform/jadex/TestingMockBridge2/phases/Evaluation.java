@@ -19,7 +19,6 @@ public class Evaluation extends es.upm.dit.gsi.beast.story.phases.Evaluation {
    * 
    */
     public void checkStates() {
-        System.out.println(getBeliefValue("RepositoryAgent", "message_count"));
         checkAgentsBeliefEquealsTo("RepositoryAgent", "message_count", 1);
   }
 
