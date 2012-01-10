@@ -36,7 +36,7 @@ public class CaseManager {
 
   /**
    * This is the scenario: TestingMockBridge1,
-   * where the GIVEN is described as: one listener mock and one repository mock in Jadex Platform,
+   * where the GIVEN is described as: one bridge mock and one listener mock in Jadex Platform,
    * the WHEN is described as: bridge mocks has to send a message to listener
    * and the THEN is described as: listener receives the message
    */

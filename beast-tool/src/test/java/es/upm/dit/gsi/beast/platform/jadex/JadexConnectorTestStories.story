@@ -9,7 +9,7 @@ When tester wants to get a belief from a Jadex agent
 Then the Jadex belief is retrieved
 
 Scenario: Testing mock bridge 1
-Given one listener mock and one repository mock in Jadex Platform
+Given one bridge mock and one listener mock in Jadex Platform
 When bridge mocks has to send a message to listener
 Then listener receives the message
 
