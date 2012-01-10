@@ -11,7 +11,7 @@ import es.upm.dit.gsi.beast.mock.jadex.common.MockConfiguration;
  * It is related with the GIVEN part.
  *  
  * In startAgents method the following method must be used
- *    super.startAgent(agent_name,agent_path)
+ *    startAgent(agent_name,agent_path)
  * 
  * @author es.upm.dit.gsi.beast
  */

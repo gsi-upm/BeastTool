@@ -6,7 +6,7 @@ package es.upm.dit.gsi.beast.platform.jadex.TestingMockListener.phases;
  * It is related with the THEN part.
  *  
  * In checkStates method the following method must be used
- *    super.checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)
+ *    checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)
  * 
  * @author es.upm.dit.gsi.beast
  */
