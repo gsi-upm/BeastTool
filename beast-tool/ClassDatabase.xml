@@ -13,15 +13,15 @@
   </entry>
   <entry>
     <string>bridge mocks has to send a message to listener</string>
-    <string>es.upm.dit.gsi.beast.platform.jadex.TestingMockBridge.phases.Setup</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.TestingMockBridge1.phases.Setup</string>
   </entry>
   <entry>
     <string>one bridge mock and one listener mock in Jadex Platform</string>
-    <string>es.upm.dit.gsi.beast.platform.jadex.TestingMockBridge.phases.Scenario</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.TestingMockBridge1.phases.Scenario</string>
   </entry>
   <entry>
-    <string>tester wants to get a belief from a Jadex agent</string>
-    <string>es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.phases.Setup</string>
+    <string>the message is received by TesterAgent</string>
+    <string>es.upm.dit.gsi.beast.platform.jade.SendAMessage.phases.Evaluation</string>
   </entry>
   <entry>
     <string>one listener mock in Jadex Platform</string>
@@ -32,40 +32,16 @@
     <string>es.upm.dit.gsi.beast.reader.test.GetBelievesFromAgent.phases.Setup</string>
   </entry>
   <entry>
-    <string>listener receives all messages</string>
-    <string>es.upm.dit.gsi.beast.platform.jadex.TestingMockListener.phases.Evaluation</string>
-  </entry>
-  <entry>
     <string>the Jadex belief is retrieved</string>
     <string>es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.phases.Evaluation</string>
-  </entry>
-  <entry>
-    <string>that TesterAgent is started in Jade Platform in Main-Container with Configuration 1</string>
-    <string>es.upm.dit.gsi.beast.reader.test.GetBelievesFromAgent.phases.Scenario</string>
-  </entry>
-  <entry>
-    <string>the Jadex belief is set</string>
-    <string>es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent.phases.Evaluation</string>
   </entry>
   <entry>
     <string>repository answers with the correct message</string>
     <string>es.upm.dit.gsi.beast.platform.jadex.TestingMockRepository.phases.Evaluation</string>
   </entry>
   <entry>
-    <string>10 messages are sended to listener</string>
-    <string>es.upm.dit.gsi.beast.platform.jadex.TestingMockListener.phases.Setup</string>
-  </entry>
-  <entry>
     <string>This is other When</string>
     <string>es.upm.dit.gsi.beast.reader.test.ThisIsOtherScenario.phases.Setup</string>
-  </entry>
-  <entry>
-    <string>listener receives the message</string>
-    <string>es.upm.dit.gsi.beast.platform.jadex.TestingMockBridge.phases.Evaluation</string>
-  </entry>
-  <entry>
-    <string>that TesterAgent is started in Jade Platform in Main-Container with Configuration 4</string>
-    <string>es.upm.dit.gsi.beast.reader.test.SetBelievesInAgent.phases.Scenario</string>
   </entry>
   <entry>
     <string>one bridge mock and one repository mock in Jadex Platform</string>
@@ -76,8 +52,68 @@
     <string>es.upm.dit.gsi.beast.platform.jadex.TestingMockRepository.phases.Setup</string>
   </entry>
   <entry>
-    <string>that one agent is started in Jade Platform in Main-Container</string>
-    <string>es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent.ScenarioGetBelievesFromAgent</string>
+    <string>that one agent is started in Jadex Platform</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.phases.Scenario</string>
+  </entry>
+  <entry>
+    <string>tester wants to set a belief inside a Jadex agent</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent.phases.Setup</string>
+  </entry>
+  <entry>
+    <string>tester wants to send a message with MessageService to TesterAgent and to receive a response</string>
+    <string>es.upm.dit.gsi.beast.platform.jade.MessengerAgentReceiveAResponse.phases.Setup</string>
+  </entry>
+  <entry>
+    <string>bridge receives the answer from repository</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.TestingMockBridge2.phases.Evaluation</string>
+  </entry>
+  <entry>
+    <string>tester wants to get a belief from a Jadex agent</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.phases.Setup</string>
+  </entry>
+  <entry>
+    <string>listener receives all messages</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.TestingMockListener.phases.Evaluation</string>
+  </entry>
+  <entry>
+    <string>that TesterAgent is started in Jade Platform in Main-Container with Configuration 1</string>
+    <string>es.upm.dit.gsi.beast.reader.test.GetBelievesFromAgent.phases.Scenario</string>
+  </entry>
+  <entry>
+    <string>the Jadex belief is set</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent.phases.Evaluation</string>
+  </entry>
+  <entry>
+    <string>bridge mocks has to send a message to repository</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.TestingMockBridge2.phases.Setup</string>
+  </entry>
+  <entry>
+    <string>tester wants to send a message with MessageService to TesterAgent</string>
+    <string>es.upm.dit.gsi.beast.platform.jade.SendAMessage.phases.Setup</string>
+  </entry>
+  <entry>
+    <string>10 messages are sended to listener</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.TestingMockListener.phases.Setup</string>
+  </entry>
+  <entry>
+    <string>listener receives the message</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.TestingMockBridge1.phases.Evaluation</string>
+  </entry>
+  <entry>
+    <string>that TesterAgent is started in Jade Platform in Main-Container with Configuration 5</string>
+    <string>es.upm.dit.gsi.beast.platform.jade.SendAMessage.phases.Scenario</string>
+  </entry>
+  <entry>
+    <string>that TesterAgent is started in Jade Platform in Main-Container with Configuration 4</string>
+    <string>es.upm.dit.gsi.beast.reader.test.SetBelievesInAgent.phases.Scenario</string>
+  </entry>
+  <entry>
+    <string>the message is received by the tester through MessengerAgent</string>
+    <string>es.upm.dit.gsi.beast.platform.jade.MessengerAgentReceiveAResponse.phases.Evaluation</string>
+  </entry>
+  <entry>
+    <string>that TesterAgent is started in Jade Platform in Main-Container with Configuration 6</string>
+    <string>es.upm.dit.gsi.beast.platform.jade.MessengerAgentReceiveAResponse.phases.Scenario</string>
   </entry>
   <entry>
     <string>the Jade belief is set</string>
@@ -88,11 +124,7 @@
     <string>es.upm.dit.gsi.beast.reader.test.ThisIsOtherScenario.phases.Evaluation</string>
   </entry>
   <entry>
-    <string>that one agent is started in Jadex Platform</string>
-    <string>es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.phases.Scenario</string>
-  </entry>
-  <entry>
-    <string>tester wants to set a belief inside a Jadex agent</string>
-    <string>es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent.phases.Setup</string>
+    <string>one repository mock and one bridge mock in Jadex Platform</string>
+    <string>es.upm.dit.gsi.beast.platform.jadex.TestingMockBridge2.phases.Scenario</string>
   </entry>
 </map>
