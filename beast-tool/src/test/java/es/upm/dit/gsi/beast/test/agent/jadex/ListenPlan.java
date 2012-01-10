@@ -28,5 +28,6 @@ public class ListenPlan extends Plan {
 
         String type = (String) actReq.getParameter("performative").getValue();
         Object content = actReq.getParameter(SFipa.CONTENT).getValue();
+        logger.info(type+content);
     }
 }
