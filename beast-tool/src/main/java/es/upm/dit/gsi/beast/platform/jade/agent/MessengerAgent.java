@@ -87,12 +87,4 @@ public class MessengerAgent extends Agent {
             }
         }
     }
-
-    protected void sendError(ACLMessage msg) {
-        ACLMessage reply = msg.createReply();
-        reply.setPerformative(ACLMessage.FAILURE);
-        logger.log(Logger.INFO, "sending error");
-        send(reply);
-
-    }
 }
