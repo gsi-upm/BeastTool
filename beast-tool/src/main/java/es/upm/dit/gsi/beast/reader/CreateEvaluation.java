@@ -56,7 +56,7 @@ public class CreateEvaluation {
         classComment
                 .addLine("In checkStates method the following method must be used");
         classComment
-                .addLine("   super.checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)");
+                .addLine("   checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)");
         classComment.addAuthor("es.upm.dit.gsi.beast");
 
         JavaMethod jm = js.newJavaMethod("checkStates", "void", "public");
