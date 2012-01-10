@@ -120,6 +120,9 @@ public class Reader {
                             if (fileDoesNotExist(scenarioJavaName + ".java",
                                     aux_package_path, dest_dir)) {
                                 // Writes StoryExample.java
+                                // TODO if there is a complex word in the name
+                                // like MyAgent or MessengerAgent -> this is the cause of a
+                                // failure in the name of .story file and the test fails
                                 CreateStory.createStory(scenarioJavaName,
                                         platformName, aux_package_path,
                                         dest_dir, loggingPropFile);
@@ -288,7 +291,8 @@ public class Reader {
             xstream.toXML(hm, new FileOutputStream("ClassDatabase.xml", false));
 
         } catch (FileNotFoundException e) {
-            logger.severe("ERROR: File ClassDatabase.xml can not be found. Exception: " + e);
+            logger.severe("ERROR: File ClassDatabase.xml can not be found. Exception: "
+                    + e);
         } catch (Exception e) {
             logger.severe("ERROR: writing ClassDataBase.xml -> Exception: " + e);
         }

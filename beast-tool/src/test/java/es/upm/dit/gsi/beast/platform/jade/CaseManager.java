@@ -34,4 +34,28 @@ public class CaseManager {
 	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent.GetBelievesFromAgent");
   }
 
+  /**
+   * This is the scenario: SendAMessage,
+   * where the GIVEN is described as: that TesterAgent is started in Jade Platform in Main-Container with Configuration 5,
+   * the WHEN is described as: tester wants to send a message with MessageService to TesterAgent
+   * and the THEN is described as: the message is received by TesterAgent
+   */
+  @Test
+  public void ScenarioSendAMessage() {
+  
+	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jade.SendAMessage.SendAMessage");
+  }
+
+  /**
+   * This is the scenario: MessengerAgentReceiveAResponse,
+   * where the GIVEN is described as: that TesterAgent is started in Jade Platform in Main-Container with Configuration 6,
+   * the WHEN is described as: tester wants to send a message with MessageService to TesterAgent and to receive a response
+   * and the THEN is described as: the message is received by the tester through MessengerAgent
+   */
+  @Test
+  public void ScenarioMessengerAgentReceiveAResponse() {
+  
+	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jade.MessengerAgentReceiveAResponse.MessengerAgentReceiveAResponse");
+  }
+
 }

@@ -1,6 +1,9 @@
 package es.upm.dit.gsi.beast.test.agent.jade;
 
 import jade.core.Agent;
+import jade.core.behaviours.CyclicBehaviour;
+import jade.lang.acl.ACLMessage;
+import jade.lang.acl.MessageTemplate;
 import jade.util.Logger;
 
 import java.util.logging.Level;
@@ -22,7 +25,12 @@ public class TesterAgent extends Agent {
 
     private String status;
     
-    private boolean readyToTest=false;
+    private boolean readyToTest = false;
+    private boolean isMessageReceived = false;
+
+    private TestObject obj;
+    private ACLMessage receivedMessage;
+
 
     public boolean isReadyToTest() {
         return readyToTest;
@@ -47,9 +55,24 @@ public class TesterAgent extends Agent {
     public void setObj(TestObject obj) {
         this.obj = obj;
     }
+    
+    
+    public boolean isMessageReceived() {
+        return isMessageReceived;
+    }
 
-    private TestObject obj;
+    public void setMessageReceived(boolean isMessageReceived) {
+        this.isMessageReceived = isMessageReceived;
+    }
 
+    public ACLMessage getReceivedMessage() {
+        return receivedMessage;
+    }
+
+    public void setReceivedMessage(ACLMessage receivedMessage) {
+        this.receivedMessage = receivedMessage;
+    }
+    
     protected void setup() {
         myIntrospector = JadeAgentIntrospector.getMyInstance((Agent) this);
         LogActivator.logToFile(logger, this.getName(), Level.ALL);
@@ -71,6 +94,12 @@ public class TesterAgent extends Agent {
             break;
         case 4:
             this.setupConfiguration4(arguments);
+            break;
+        case 5:
+            this.setupConfiguration5(arguments);
+            break;
+        case 6:
+            this.setupConfiguration6(arguments);
             break;
         }
         readyToTest=true;
@@ -201,6 +230,78 @@ public class TesterAgent extends Agent {
         this.myIntrospector.storeBeliefValue(this, "setBelief", retrieved);
         
         
+    }
+
+    
+    private void setupConfiguration5(Object[] arguments) {
+        MessageTemplate template = MessageTemplate.MatchPerformative(ACLMessage.INFORM);
+        addBehaviour(new RequestServer(template, 0));
+        logger.fine("RequestServer behaviour added");
+
+        setMessageReceived(false);
+        long timeToWait = 200;
+        try {
+            Thread.sleep(timeToWait);
+        } catch (InterruptedException e) {
+            logger.severe(this.getName() + " could not wait " + timeToWait
+                    + " milliseconds. Exception: " + e);
+        }      
+        
+    }
+
+    
+    private void setupConfiguration6(Object[] arguments) {
+        MessageTemplate template = MessageTemplate.MatchPerformative(ACLMessage.REQUEST);
+        addBehaviour(new RequestServer(template, 1));
+        logger.fine("RequestServer behaviour added");
+        
+        long timeToWait = 200;
+        try {
+            Thread.sleep(timeToWait);
+        } catch (InterruptedException e) {
+            logger.severe(this.getName() + " could not wait " + timeToWait
+                    + " milliseconds. Exception: " + e);
+        }
+        
+    }
+
+
+    /**
+     * Inner class RequestServer This behaviour serves the requests for
+     * observations
+     */
+    private class RequestServer extends CyclicBehaviour {
+        
+        private static final long serialVersionUID = 286992171997750565L;
+
+        private MessageTemplate template;
+        private int configuration;
+        
+        public RequestServer(MessageTemplate template, int configuration) {
+            super(TesterAgent.this);
+            this.template=template;
+            this.configuration = configuration;
+        }
+
+        public void action() {
+            ACLMessage msg = myAgent.receive(template);
+            if (msg != null) {
+                setReceivedMessage(msg);
+                setMessageReceived(true);
+                myIntrospector.storeBeliefValue(TesterAgent.this, "ReceivedMessage", isMessageReceived());
+                switch (configuration) {
+                case 0:
+                    logger.fine("Messege received");
+                    break;
+                case 1:
+                    send(msg.createReply());
+                    logger.fine("Reply sent");
+                    break;
+                }
+            } else {
+                block();
+            }
+        }
     }
 
 }

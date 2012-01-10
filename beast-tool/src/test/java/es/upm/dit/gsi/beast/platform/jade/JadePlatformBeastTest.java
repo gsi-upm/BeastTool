@@ -1,5 +1,6 @@
 package es.upm.dit.gsi.beast.platform.jade;
 
+import jade.lang.acl.ACLMessage;
 import jade.wrapper.AgentController;
 
 import java.io.File;
@@ -11,6 +12,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
+import es.upm.dit.gsi.beast.platform.jade.agent.MessengerAgent;
 import es.upm.dit.gsi.beast.test.TestObject;
 import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
 
@@ -938,8 +940,12 @@ public class JadePlatformBeastTest {
         }
 
         // Assert
-        Object retrieved = (Object) introspector.getAgentPlans("TestAgent", connector);
-        Assert.assertNull(retrieved);
+        try {
+            introspector.getAgentPlans("TestAgent", connector);
+            Assert.fail("A UnsupportedOperationException should be thrown.");  
+        } catch (UnsupportedOperationException e) {
+            logger.info("A UnsupportedOperationException was thrown as expected.");
+        }
         
         this.cleanUp();
     }
@@ -978,9 +984,13 @@ public class JadePlatformBeastTest {
             // Wait...
         }
 
-        // Assert
-        Object retrieved = (Object) introspector.getAgentGoals("TestAgent", connector);
-        Assert.assertNull(retrieved);
+     // Assert
+        try {
+            introspector.getAgentGoals("TestAgent", connector);
+            Assert.fail("A UnsupportedOperationException should be thrown.");  
+        } catch (UnsupportedOperationException e) {
+            logger.info("A UnsupportedOperationException was thrown as expected.");
+        }
         
         this.cleanUp();
     }
@@ -1030,6 +1040,74 @@ public class JadePlatformBeastTest {
         // Assert
         AgentController controller = connector.getAgentID("TestAgent");
         Assert.assertNotNull(controller);
+        
+        this.cleanUp();
+    }
+    
+    /**
+     * 
+     */
+    @Test
+    public void JadeMessengerStandardSendAMessage() {
+        // Setup
+        Logger logger = Logger.getLogger(JadePlatformBeastTest.class
+                .getName());
+        JadeConnector connector = (JadeConnector) PlatformSelector
+                .getConnector("jade", logger);
+        connector.launchPlatform();
+
+        // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = (Integer) 5;
+        connector.createAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "MyContainer", arguments);
+
+        ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+        msg.setContent("Hello My Friend!");
+        String[] agents = {"TestAgent"};
+        JadeMessenger.getInstance().sendMessageToAgents(agents, "INFORM", msg, connector);
+        // Assert
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
+        
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isMessageReceived()==false) {
+            // Wait...
+        }
+        Assert.assertTrue(((TesterAgent)introspector.getAgent("TestAgent")).isMessageReceived());
+        
+        this.cleanUp();
+    }
+    
+    /**
+     * 
+     */
+    @Test
+    public void JadeMessengerStandardReceiveAResponse() {
+     // Setup
+        Logger logger = Logger.getLogger(JadePlatformBeastTest.class
+                .getName());
+        JadeConnector connector = (JadeConnector) PlatformSelector
+                .getConnector("jade", logger);
+        connector.launchPlatform();
+
+        // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = (Integer) 6;
+        connector.createAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "MyContainer", arguments);
+
+        ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
+        msg.setContent("Do you want to be my friend?");
+        String[] agents = {"TestAgent"};
+        JadeMessenger.getInstance().sendMessageToAgents(agents, "REQUEST", msg, connector);
+        // Assert
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
+        
+        while (((MessengerAgent)introspector.getAgent(connector.BEAST_MESSENGER)).isReceived()==false) {
+            // Wait...
+        }
+        Assert.assertTrue(((MessengerAgent)introspector.getAgent(connector.BEAST_MESSENGER)).isReceived());
         
         this.cleanUp();
     }
