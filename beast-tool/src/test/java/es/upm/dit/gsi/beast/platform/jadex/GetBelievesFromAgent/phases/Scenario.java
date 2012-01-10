@@ -1,11 +1,5 @@
 package es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.phases;
 
-import static org.mockito.Mockito.mock;
-import es.upm.dit.gsi.beast.mock.MockManager;
-import es.upm.dit.gsi.beast.mock.jadex.common.AgentBehaviour;
-import es.upm.dit.gsi.beast.mock.jadex.common.Definitions;
-import es.upm.dit.gsi.beast.mock.jadex.common.MockConfiguration;
-
 /**  
  * This is the class that must create the Scenario.
  * It is related with the GIVEN part.
@@ -27,8 +21,6 @@ public class Scenario extends es.upm.dit.gsi.beast.story.phases.Scenario {
     public void startAgents() {
            
         startAgent("Tester", "es/upm/dit/gsi/beast/test/agent/jadex/TesterAgent.agent.xml");
-
-   
   }
 
 }
