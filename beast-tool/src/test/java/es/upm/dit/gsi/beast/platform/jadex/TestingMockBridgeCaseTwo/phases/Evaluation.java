@@ -1,5 +1,4 @@
-package es.upm.dit.gsi.beast.platform.jadex.TestingMockBridge1.phases;
-
+package es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseTwo.phases;
 
 /**  
  * This is the class that must create the Evaluation.
@@ -16,11 +15,11 @@ public class Evaluation extends es.upm.dit.gsi.beast.story.phases.Evaluation {
    * Here the description given by the client must be written,
    * which is: 
    *  
-   *   listener receives the message
+   *   bridge receives the answer from repository
    * 
    */
     public void checkStates() {
-        checkAgentsBeliefEquealsTo("ListenerAgent", "message_count", 1);
+        checkAgentsBeliefEquealsTo("RepositoryAgent", "message_count", 1);
   }
 
 }

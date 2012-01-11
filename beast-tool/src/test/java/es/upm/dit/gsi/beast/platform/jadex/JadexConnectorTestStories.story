@@ -8,12 +8,12 @@ Given that one agent is started in Jadex Platform
 When tester wants to get a belief from a Jadex agent
 Then the Jadex belief is retrieved
 
-Scenario: Testing mock bridge 1
+Scenario: Testing mock bridge case one
 Given one bridge mock and one listener mock in Jadex Platform
 When bridge mocks has to send a message to listener
 Then listener receives the message
 
-Scenario: Testing mock bridge 2
+Scenario: Testing mock bridge case two
 Given one repository mock and one bridge mock in Jadex Platform
 When bridge mocks has to send a message to repository
 Then bridge receives the answer from repository

@@ -1,4 +1,4 @@
-package es.upm.dit.gsi.beast.platform.jadex.TestingMockBridge1.phases;
+package es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseOne.phases;
 
 import jadex.base.fipa.SFipa;
 

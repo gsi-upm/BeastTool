@@ -1,4 +1,4 @@
-package es.upm.dit.gsi.beast.platform.jadex.TestingMockBridge1;
+package es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseTwo;
 
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -21,19 +21,19 @@ import java.util.Properties;
  * 
  * @author es.upm.dit.gsi.beast
  */
-  public class TestingMockBridge1 extends Story {
+  public class TestingMockBridgeCaseTwo extends Story {
 
-     public Logger logger = Logger.getLogger(TestingMockBridge1.class.getName());
+     public Logger logger = Logger.getLogger(TestingMockBridgeCaseTwo.class.getName());
   /**
    * Constructor to configure logging
    */
-  public TestingMockBridge1() {
+  public TestingMockBridgeCaseTwo() {
      Properties preferences = new Properties();
      try {
          FileInputStream configFile = new FileInputStream("src/test/java/es/upm/dit/gsi/beast/platform/jadex/jadexBeastLog.properties");
          preferences.load(configFile);
          LogManager.getLogManager().readConfiguration(configFile);
-         LogActivator.logToFile(logger, TestingMockBridge1.class.getName(), Level.ALL);
+         LogActivator.logToFile(logger, TestingMockBridgeCaseTwo.class.getName(), Level.ALL);
      } catch (IOException ex) {
          logger.severe("WARNING: Could not open configuration file");
      }

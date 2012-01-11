@@ -1,4 +1,4 @@
-package es.upm.dit.gsi.beast.platform.jadex.TestingMockBridge2.phases;
+package es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseOne.phases;
 
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
@@ -23,27 +23,25 @@ public class Scenario extends es.upm.dit.gsi.beast.story.phases.Scenario {
    * Here the description given by the client must be written,
    * which is: 
    *  
-   *   one repository mock and one bridge mock in Jadex Platform
+   *   one bridge mock and one listener mock in Jadex Platform
    * 
    */
     public void startAgents() {
-        //RepositoryAgent configuration
-        AgentBehaviour myMockedBehaviour =   mock(AgentBehaviour.class);
-        when(myMockedBehaviour.processMessage(eq("request"), eq("BridgeAgent"),eq("hi")))
-            .thenReturn("hello");        
+       //ListenerAgent configuration
         MockConfiguration mock_configuration = new MockConfiguration();
-        mock_configuration.setDFServiceName("repository_service");
-        mock_configuration.setBehaviour(myMockedBehaviour);      
-        MockManager.startMockJadexAgent("RepositoryAgent",Definitions.repositoryMockPath,mock_configuration,this);
-        
+        mock_configuration.setDFServiceName("listen_service");
+        AgentBehaviour myMockedBehaviour =   mock(AgentBehaviour.class);
+        mock_configuration.setBehaviour(myMockedBehaviour);
+        MockManager.startMockJadexAgent("ListenerAgent",Definitions.listenerMockPath,mock_configuration,this);
+
         
         //BridgeAgent configuration
         AgentBehaviour myMockedBehaviour2 =  mock(AgentBehaviour.class);
-        when(myMockedBehaviour2.processMessage(eq("request"), eq("send")))
-            .thenReturn("repository_service", "SFipa.REQUEST", "hi");   
+        when(myMockedBehaviour2.processMessage(eq("inform"), eq("send")))
+            .thenReturn("listen_service", "SFipa.INFORM", "Message to the listener agent");   
         MockConfiguration mock_configuration2 = new MockConfiguration();
         mock_configuration2.setDFServiceName("bridge_service");
-        mock_configuration2.setBehaviour(myMockedBehaviour2);
+        mock_configuration2.setBehaviour(myMockedBehaviour2);        
         MockManager.startMockJadexAgent("BridgeAgent",Definitions.bridgeMockPath,mock_configuration2,this);
   }
 

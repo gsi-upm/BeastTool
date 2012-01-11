@@ -35,27 +35,27 @@ public class CaseManager {
   }
 
   /**
-   * This is the scenario: TestingMockBridge1,
+   * This is the scenario: TestingMockBridgeCaseOne,
    * where the GIVEN is described as: one bridge mock and one listener mock in Jadex Platform,
    * the WHEN is described as: bridge mocks has to send a message to listener
    * and the THEN is described as: listener receives the message
    */
   @Test
-  public void ScenarioTestingMockBridge1() {
+  public void ScenarioTestingMockBridgeCaseOne() {
   
-	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridge1.TestingMockBridge1");
+	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseOne.TestingMockBridgeCaseOne");
   }
 
   /**
-   * This is the scenario: TestingMockBridge2,
+   * This is the scenario: TestingMockBridgeCaseTwo,
    * where the GIVEN is described as: one repository mock and one bridge mock in Jadex Platform,
    * the WHEN is described as: bridge mocks has to send a message to repository
    * and the THEN is described as: bridge receives the answer from repository
    */
   @Test
-  public void ScenarioTestingMockBridge2() {
+  public void ScenarioTestingMockBridgeCaseTwo() {
   
-	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridge2.TestingMockBridge2");
+	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseTwo.TestingMockBridgeCaseTwo");
   }
 
   /**
