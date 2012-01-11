@@ -65,6 +65,15 @@ public abstract class Evaluation {
         return setup.getBeliefValue(agent_name, belief_name);
     }
 
+    
+    protected Object getGoals(String agent_name){
+        return setup.getAgentGoals(agent_name);
+    }
+    
+    protected Object getPlans(String agent_name){
+        return setup.getAgentPlans(agent_name);
+    }
+    
     // /**
     // * Checks the value of some agent's goal with the espected value.
     // * Many states can be checked:
