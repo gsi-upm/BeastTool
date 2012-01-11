@@ -27,7 +27,16 @@ public class JadexPlatformBeastTest {
         connector.launchPlatform();
         connector.createAgent("Tester", "es/upm/dit/gsi/beast/test/agent/jadex/TesterAgent.agent.xml");
 
-        IGoal[] value = introspector.getAgentGoals("Tester", connector);
+        boolean finish = false;
+        IGoal[]  value = null;
+        while (!finish) {
+            value = introspector.getAgentGoals("Tester", connector);
+             if (value.length>0) {
+                 finish = true;
+             }
+        }
+        Assert.assertTrue(value instanceof IGoal[]);
+        Assert.assertNotNull(value[0]);
         Assert.assertEquals(value[0].getType(), "live");
     }
     
@@ -41,7 +50,16 @@ public class JadexPlatformBeastTest {
         connector.launchPlatform();
         connector.createAgent("Tester", "es/upm/dit/gsi/beast/test/agent/jadex/TesterAgent.agent.xml");
 
-        IPlan[] value = introspector.getAgentPlans("Tester", connector);
+        boolean finish = false;
+        IPlan[] value = null;
+        while (!finish) {
+             value = introspector.getAgentPlans("Tester", connector);
+             if (value.length>0) {
+                 finish = true;
+             }
+        }
+        Assert.assertTrue(value instanceof IPlan[]);
+        Assert.assertTrue(value.length>0);
         Assert.assertEquals(value[0].getType(), "survive");
     }
 
