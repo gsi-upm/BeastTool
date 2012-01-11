@@ -58,7 +58,7 @@ import java.util.Properties;
   @When("$setupName")
   public void configureScenario(String setupName) {
 
-      if (setupName.equals("10 messages are sended to listener")){
+      if (setupName.equals("10 messages are sent to listener")){
           super.setup("es.upm.dit.gsi.beast.platform.jadex.TestingMockListener.phases.Setup");
       } else {
           logger.severe("WARNING: "+setupName+" does not coincide with 10 messages are sended to listener");
