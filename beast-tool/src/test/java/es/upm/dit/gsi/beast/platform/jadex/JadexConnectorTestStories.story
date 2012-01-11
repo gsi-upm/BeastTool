@@ -20,7 +20,7 @@ Then bridge receives the answer from repository
 
 Scenario: Testing mock listener
 Given one listener mock in Jadex Platform
-When 10 messages are sended to listener
+When 10 messages are sent to listener
 Then listener receives all messages
 
 Scenario: Testing mock repository
