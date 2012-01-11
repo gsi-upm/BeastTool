@@ -61,7 +61,7 @@ public class CaseManager {
   /**
    * This is the scenario: TestingMockListener,
    * where the GIVEN is described as: one listener mock in Jadex Platform,
-   * the WHEN is described as: 10 messages are sended to listener
+   * the WHEN is described as: 10 messages are sent to listener
    * and the THEN is described as: listener receives all messages
    */
   @Test
