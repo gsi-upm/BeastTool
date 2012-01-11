@@ -45,7 +45,11 @@ import java.util.Properties;
 	@Given("$scenarioName")
 	public void createScenario(String scenarioName) {
 
-		super.createScenario(scenarioName, "jade", logger);
+      if (scenarioName.equals("that TesterAgent is started in Jade Platform in Main-Container with Configuration 6")){
+		    super.createScenario("es.upm.dit.gsi.beast.platform.jade.MessengerAgentReceiveAResponse.phases.Scenario", "jade", logger);
+      } else {
+          logger.severe("WARNING: "+scenarioName+" does not coincide with that TesterAgent is started in Jade Platform in Main-Container with Configuration 6" );
+      }
 	}
 
   /**
@@ -54,7 +58,11 @@ import java.util.Properties;
   @When("$setupName")
   public void configureScenario(String setupName) {
 
-  super.setup(setupName);
+      if (setupName.equals("tester wants to send a message with MessageService to TesterAgent and to receive a response")){
+          super.setup("es.upm.dit.gsi.beast.platform.jade.MessengerAgentReceiveAResponse.phases.Setup");
+      } else {
+          logger.severe("WARNING: "+setupName+" does not coincide with tester wants to send a message with MessageService to TesterAgent and to receive a response");
+      }
   }
 
   /**
@@ -63,7 +71,11 @@ import java.util.Properties;
   @Then("$evaluationName")
   public void checkScenario(String evaluationName) {
 
-    super.executeEvaluation(evaluationName);
+      if (evaluationName.equals("the message is received by the tester through MessengerAgent")){
+          super.executeEvaluation("es.upm.dit.gsi.beast.platform.jade.MessengerAgentReceiveAResponse.phases.Evaluation");
+      } else {
+          logger.severe("WARNING: "+evaluationName+" does not coincide with the message is received by the tester through MessengerAgent");
+      }
   }
 
 }

@@ -45,7 +45,11 @@ import java.util.Properties;
 	@Given("$scenarioName")
 	public void createScenario(String scenarioName) {
 
-		super.createScenario(scenarioName, "jadex", logger);
+      if (scenarioName.equals("one bridge mock and one listener mock in Jadex Platform")){
+		    super.createScenario("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseOne.phases.Scenario", "jadex", logger);
+      } else {
+          logger.severe("WARNING: "+scenarioName+" does not coincide with one bridge mock and one listener mock in Jadex Platform" );
+      }
 	}
 
   /**
@@ -54,7 +58,11 @@ import java.util.Properties;
   @When("$setupName")
   public void configureScenario(String setupName) {
 
-  super.setup(setupName);
+      if (setupName.equals("bridge mocks has to send a message to listener")){
+          super.setup("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseOne.phases.Setup");
+      } else {
+          logger.severe("WARNING: "+setupName+" does not coincide with bridge mocks has to send a message to listener");
+      }
   }
 
   /**
@@ -63,7 +71,11 @@ import java.util.Properties;
   @Then("$evaluationName")
   public void checkScenario(String evaluationName) {
 
-    super.executeEvaluation(evaluationName);
+      if (evaluationName.equals("listener receives the message")){
+          super.executeEvaluation("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseOne.phases.Evaluation");
+      } else {
+          logger.severe("WARNING: "+evaluationName+" does not coincide with listener receives the message");
+      }
   }
 
 }

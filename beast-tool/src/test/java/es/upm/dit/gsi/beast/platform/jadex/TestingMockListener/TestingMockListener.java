@@ -45,7 +45,11 @@ import java.util.Properties;
 	@Given("$scenarioName")
 	public void createScenario(String scenarioName) {
 
-		super.createScenario(scenarioName, "jadex", logger);
+      if (scenarioName.equals("one listener mock in Jadex Platform")){
+		    super.createScenario("es.upm.dit.gsi.beast.platform.jadex.TestingMockListener.phases.Scenario", "jadex", logger);
+      } else {
+          logger.severe("WARNING: "+scenarioName+" does not coincide with one listener mock in Jadex Platform" );
+      }
 	}
 
   /**
@@ -54,7 +58,11 @@ import java.util.Properties;
   @When("$setupName")
   public void configureScenario(String setupName) {
 
-  super.setup(setupName);
+      if (setupName.equals("10 messages are sended to listener")){
+          super.setup("es.upm.dit.gsi.beast.platform.jadex.TestingMockListener.phases.Setup");
+      } else {
+          logger.severe("WARNING: "+setupName+" does not coincide with 10 messages are sended to listener");
+      }
   }
 
   /**
@@ -63,7 +71,11 @@ import java.util.Properties;
   @Then("$evaluationName")
   public void checkScenario(String evaluationName) {
 
-    super.executeEvaluation(evaluationName);
+      if (evaluationName.equals("listener receives all messages")){
+          super.executeEvaluation("es.upm.dit.gsi.beast.platform.jadex.TestingMockListener.phases.Evaluation");
+      } else {
+          logger.severe("WARNING: "+evaluationName+" does not coincide with listener receives all messages");
+      }
   }
 
 }

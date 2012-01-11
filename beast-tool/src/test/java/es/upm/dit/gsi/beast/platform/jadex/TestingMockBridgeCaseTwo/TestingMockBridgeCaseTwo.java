@@ -45,7 +45,11 @@ import java.util.Properties;
 	@Given("$scenarioName")
 	public void createScenario(String scenarioName) {
 
-		super.createScenario(scenarioName, "jadex", logger);
+      if (scenarioName.equals("one repository mock and one bridge mock in Jadex Platform")){
+		    super.createScenario("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseTwo.phases.Scenario", "jadex", logger);
+      } else {
+          logger.severe("WARNING: "+scenarioName+" does not coincide with one repository mock and one bridge mock in Jadex Platform" );
+      }
 	}
 
   /**
@@ -54,7 +58,11 @@ import java.util.Properties;
   @When("$setupName")
   public void configureScenario(String setupName) {
 
-  super.setup(setupName);
+      if (setupName.equals("bridge mocks has to send a message to repository")){
+          super.setup("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseTwo.phases.Setup");
+      } else {
+          logger.severe("WARNING: "+setupName+" does not coincide with bridge mocks has to send a message to repository");
+      }
   }
 
   /**
@@ -63,7 +71,11 @@ import java.util.Properties;
   @Then("$evaluationName")
   public void checkScenario(String evaluationName) {
 
-    super.executeEvaluation(evaluationName);
+      if (evaluationName.equals("bridge receives the answer from repository")){
+          super.executeEvaluation("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseTwo.phases.Evaluation");
+      } else {
+          logger.severe("WARNING: "+evaluationName+" does not coincide with bridge receives the answer from repository");
+      }
   }
 
 }

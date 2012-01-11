@@ -45,7 +45,11 @@ import java.util.Properties;
 	@Given("$scenarioName")
 	public void createScenario(String scenarioName) {
 
-		super.createScenario(scenarioName, "jadex", logger);
+      if (scenarioName.equals("that one agent is started in Jadex Platform")){
+		    super.createScenario("es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.phases.Scenario", "jadex", logger);
+      } else {
+          logger.severe("WARNING: "+scenarioName+" does not coincide with that one agent is started in Jadex Platform" );
+      }
 	}
 
   /**
@@ -54,7 +58,11 @@ import java.util.Properties;
   @When("$setupName")
   public void configureScenario(String setupName) {
 
-  super.setup(setupName);
+      if (setupName.equals("tester wants to get a belief from a Jadex agent")){
+          super.setup("es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.phases.Setup");
+      } else {
+          logger.severe("WARNING: "+setupName+" does not coincide with tester wants to get a belief from a Jadex agent");
+      }
   }
 
   /**
@@ -63,7 +71,11 @@ import java.util.Properties;
   @Then("$evaluationName")
   public void checkScenario(String evaluationName) {
 
-    super.executeEvaluation(evaluationName);
+      if (evaluationName.equals("the Jadex belief is retrieved")){
+          super.executeEvaluation("es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.phases.Evaluation");
+      } else {
+          logger.severe("WARNING: "+evaluationName+" does not coincide with the Jadex belief is retrieved");
+      }
   }
 
 }

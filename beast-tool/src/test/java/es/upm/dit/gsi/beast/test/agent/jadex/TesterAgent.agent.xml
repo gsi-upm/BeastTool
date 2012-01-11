@@ -15,11 +15,12 @@
 		<import>jadex.bridge.service.*</import>
 		<import>jadex.commons.future.*</import>
 		<import>java.util.*</import>
+		<import>java.util.logging.*</import>
 	</imports>
 
-<!-- 	<capabilities> -->
-<!-- 		<capability name="dfcap" file="jadex.bdi.planlib.df.DF"/> -->
-<!-- 	</capabilities> -->
+	<capabilities>
+		<capability name="dfcap" file="jadex.bdi.planlib.df.DF"/>
+	</capabilities>
 
 	<beliefs>
 		<belief name="message_count" class="int">
@@ -27,14 +28,18 @@
 		</belief>
 	</beliefs>
 
-<!-- 	<plans> -->
-<!-- 		<plan name="listen"> -->
-<!-- 			<body class="ListenPlan"/> -->
-<!-- 			<trigger> -->
-<!-- 				<messageevent ref="request"/> -->
-<!-- 			</trigger> -->
-<!-- 		</plan> -->
-<!-- 	</plans> -->
+	<goals>
+		<achievegoal name="live"/>
+	</goals>
+	
+	<plans>
+		<plan name="survive">
+			<body class="ListenPlan"/>
+			<trigger>
+				<goal ref="live"/>
+			</trigger>
+		</plan>
+	</plans>
 
 <!-- 	<events> -->
 <!-- 		<messageevent name="request" type="fipa" direction="receive"> -->
@@ -44,9 +49,29 @@
 <!-- 		</messageevent> -->
 <!-- 	</events> -->
 
-<!-- 	<configurations> -->
-<!-- 		<configuration name="default"> -->
-<!-- 		</configuration> -->
-<!-- 	</configurations> -->
+
+	<properties>
+		<!--<property name="logging.level">java.util.logging.Level.FINE</property>-->
+		<property name="debugging">false</property>
+	 	<property name="dfservice" class="IFuture">SServiceProvider.getService($scope.getServiceProvider(), IDF.class, RequiredServiceInfo.SCOPE_PLATFORM)</property>
+	</properties>
+
+	<configurations>
+		<configuration name="default">
+			<goals>
+				<!-- Create initial goals. -->
+				<initialgoal cref="dfcap.df_register">
+					<parameter ref="description">
+						<value>
+							$properties.dfservice.createDFComponentDescription(null, 
+								$properties.dfservice.createDFServiceDescription("tester_agent", "tester_agent", "Universidad Politécnica de Madrid"))
+						</value>
+					</parameter>
+				</initialgoal>
+				<initialgoal ref="live"/>
+				<endgoal cref="dfcap.df_deregister"/>
+			</goals>
+		</configuration>
+	</configurations>
 
 </agent>
