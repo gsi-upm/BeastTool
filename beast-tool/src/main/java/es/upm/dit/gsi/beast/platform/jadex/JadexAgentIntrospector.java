@@ -21,7 +21,7 @@ import es.upm.dit.gsi.beast.platform.Connector;
  */
 public class JadexAgentIntrospector implements AgentIntrospector {
 
-    static Logger logger = Logger.getLogger("JadexAgentIntrospector");
+
     private Object belief_value;
     private IPlan[] plans;
     private IGoal[] goals;
@@ -104,6 +104,7 @@ public class JadexAgentIntrospector implements AgentIntrospector {
      */
     public IPlan[] getAgentPlans(final String agent_name, Connector connector) {
 
+        final Logger logger = connector.getLogger();
         ((IExternalAccess) connector.getAgentsExternalAccess(agent_name))
                 .scheduleStep(new IComponentStep<Plan>() {
 
@@ -130,7 +131,7 @@ public class JadexAgentIntrospector implements AgentIntrospector {
                     }
                 }).get(new ThreadSuspendable());
 
-        return JadexAgentIntrospector.getInstance().plans;
+        return plans;
     }
 
     /**
@@ -146,6 +147,7 @@ public class JadexAgentIntrospector implements AgentIntrospector {
      */
     public IGoal[] getAgentGoals(final String agent_name, Connector connector) {
 
+        final Logger logger = connector.getLogger();
         ((IExternalAccess) connector.getAgentsExternalAccess(agent_name))
                 .scheduleStep(new IComponentStep<Plan>() {
 
@@ -171,7 +173,7 @@ public class JadexAgentIntrospector implements AgentIntrospector {
                     }
                 }).get(new ThreadSuspendable());
 
-        return JadexAgentIntrospector.getInstance().goals;
+        return goals;
     }
 
 }
