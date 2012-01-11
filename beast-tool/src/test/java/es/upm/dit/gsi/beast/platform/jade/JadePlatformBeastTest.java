@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 import junit.framework.Assert;
 
+import org.junit.After;
 import org.junit.Test;
 
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
@@ -28,6 +29,9 @@ import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
  * 
  */
 public class JadePlatformBeastTest {
+    
+    //TODO include all the setups in a @Before/@BeforeTest method
+    //TODO delete all the //this.cleanUp();
     
     /**
      * 
@@ -421,7 +425,7 @@ public class JadePlatformBeastTest {
 
         // Assert
         Assert.assertNotNull(value);
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -453,7 +457,7 @@ public class JadePlatformBeastTest {
         Assert.assertEquals(10.5 * 3, ((TestObject) value).getDoubleTest());
         Assert.assertEquals(true, ((TestObject) value).isBooleanTest());
         Assert.assertEquals("test1", ((TestObject) value).getStringTest());
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -490,7 +494,7 @@ public class JadePlatformBeastTest {
         Assert.assertEquals(false, ((TestObject) value).isBooleanTest());
         Assert.assertEquals("test2", ((TestObject) value).getStringTest());
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -529,7 +533,7 @@ public class JadePlatformBeastTest {
                 connector);
         Assert.assertEquals("status2", value);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -563,7 +567,7 @@ public class JadePlatformBeastTest {
         Assert.assertEquals("status2", (String) ((TesterAgent) introspector
                 .getAgent("TestAgent")).getStatus());
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -605,7 +609,7 @@ public class JadePlatformBeastTest {
                 connector);
         Assert.assertTrue(retrieved);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -645,7 +649,7 @@ public class JadePlatformBeastTest {
                 connector);
         Assert.assertTrue(retrieved);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -676,7 +680,7 @@ public class JadePlatformBeastTest {
         // Assert
         Assert.assertNotNull(value);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -709,7 +713,7 @@ public class JadePlatformBeastTest {
         Assert.assertEquals(true, ((TestObject) value).isBooleanTest());
         Assert.assertEquals("test1", ((TestObject) value).getStringTest());
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -746,7 +750,7 @@ public class JadePlatformBeastTest {
         Assert.assertEquals(false, ((TestObject) value).isBooleanTest());
         Assert.assertEquals("test2", ((TestObject) value).getStringTest());
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -785,7 +789,7 @@ public class JadePlatformBeastTest {
                 connector);
         Assert.assertEquals("status2", value);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -822,7 +826,7 @@ public class JadePlatformBeastTest {
         Assert.assertEquals("status2", (String) ((TesterAgent) introspector
                 .getAgent("TestAgent")).getStatus());
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -864,7 +868,7 @@ public class JadePlatformBeastTest {
                 connector);
         Assert.assertTrue(retrieved);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -904,7 +908,7 @@ public class JadePlatformBeastTest {
                 connector);
         Assert.assertTrue(retrieved);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
     
     /**
@@ -947,7 +951,7 @@ public class JadePlatformBeastTest {
             logger.info("A UnsupportedOperationException was thrown as expected.");
         }
         
-        this.cleanUp();
+//        this.cleanUp();
     }
     
 
@@ -992,7 +996,7 @@ public class JadePlatformBeastTest {
             logger.info("A UnsupportedOperationException was thrown as expected.");
         }
         
-        this.cleanUp();
+//        this.cleanUp();
     }
     
     /**
@@ -1016,7 +1020,7 @@ public class JadePlatformBeastTest {
         AgentController controller = connector.getAgentsExternalAccess("TestAgent");
         Assert.assertNotNull(controller);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
     
     /**
@@ -1041,7 +1045,7 @@ public class JadePlatformBeastTest {
         AgentController controller = connector.getAgentID("TestAgent");
         Assert.assertNotNull(controller);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
     
     /**
@@ -1075,7 +1079,7 @@ public class JadePlatformBeastTest {
         }
         Assert.assertTrue(((TesterAgent)introspector.getAgent("TestAgent")).isMessageReceived());
         
-        this.cleanUp();
+//        this.cleanUp();
     }
     
     /**
@@ -1109,11 +1113,11 @@ public class JadePlatformBeastTest {
         }
         Assert.assertTrue(((MessengerAgent)introspector.getAgent(connector.BEAST_MESSENGER)).isReceived());
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
-    
-    private void cleanUp() {
+    @After
+    public void cleanUp() {
         this.deleteFile(new File ("APDescription.txt"));
         this.deleteFile(new File ("MTPs-Main-Container.txt"));
         this.deleteFile(new File ("MTPs-MyContainer.txt"));
