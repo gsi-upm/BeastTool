@@ -4,17 +4,13 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Properties;
 import java.util.StringTokenizer;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
-
-import com.thoughtworks.xstream.XStream;
 
 /**
  * Main class to transform the plain text given by the client to the necessary
@@ -117,16 +113,7 @@ public class Reader {
                             testCase_package_path = aux_package_path
                                     + ".phases";
                             Reader.createFolder(testCase_package_path, dest_dir);
-                            if (fileDoesNotExist(scenarioJavaName + ".java",
-                                    aux_package_path, dest_dir)) {
-                                // Writes StoryExample.java
-                                // TODO if there is a complex word in the name
-                                // like MyAgent or MessengerAgent -> this is the cause of a
-                                // failure in the name of .story file and the test fails
-                                CreateStory.createStory(scenarioJavaName,
-                                        platformName, aux_package_path,
-                                        dest_dir, loggingPropFile);
-                            }
+                            
                             // Writes story_example.story
                             story_file_writer = createFileWriter(
                                     scenarioStoryName, aux_package_path,
@@ -146,8 +133,8 @@ public class Reader {
                                         givenDescription, dest_dir);
                             }
                             story_file_writer.write(nextLine + "\n");
-                            writeClassDatabase(givenDescription,
-                                    testCase_package_path + ".Scenario");
+//                            writeClassDatabase(givenDescription,
+//                                    testCase_package_path + ".Scenario");
 
                         } else if (next.matches("When")) {
                             whenDescription = line_words.nextToken();
@@ -162,8 +149,8 @@ public class Reader {
                                         dest_dir);
                             }
                             story_file_writer.write(nextLine + "\n");
-                            writeClassDatabase(whenDescription,
-                                    testCase_package_path + ".Setup");
+//                            writeClassDatabase(whenDescription,
+//                                    testCase_package_path + ".Setup");
 
                         } else if (next.matches("Then")) {
                             thenDescription = line_words.nextToken();
@@ -179,8 +166,8 @@ public class Reader {
                                         dest_dir);
                             }
                             story_file_writer.write(nextLine + "\n");
-                            writeClassDatabase(thenDescription,
-                                    testCase_package_path + ".Evaluation");
+//                            writeClassDatabase(thenDescription,
+//                                    testCase_package_path + ".Evaluation");
 
                             story_file_writer.flush();
                             story_file_writer.close();
@@ -190,6 +177,18 @@ public class Reader {
                                     scenarioJavaName, test_path,
                                     scenarioJavaName, givenDescription,
                                     whenDescription, thenDescription);
+                            
+                            if (fileDoesNotExist(scenarioJavaName + ".java",
+                                    aux_package_path, dest_dir)) {
+                                // Writes StoryExample.java
+                                // TODO if there is a complex word in the name
+                                // like MyAgent or MessengerAgent -> this is the cause of a
+                                // failure in the name of .story file and the test fails
+                                CreateStory.createStory(scenarioJavaName,
+                                        platformName, aux_package_path,
+                                        dest_dir, loggingPropFile,givenDescription,
+                                        whenDescription, thenDescription);
+                            }
 
                         } else {
                             logger.severe("ERROR: The test writen in the plain text can not be handed");
@@ -246,57 +245,57 @@ public class Reader {
         return result;
     }
 
-    /**
-     * Method that generates the ClassDatabase which Story.java will use to
-     * translate plain text into java classes.
-     * 
-     * @param key
-     *            , the plain text given by the client
-     * @param value
-     *            , the java class to generate key's step
-     */
-    @SuppressWarnings("unchecked")
-    private void writeClassDatabase(String key, String value) {
-        XStream xstream = new XStream();
-        try {
-            File f = new File("ClassDatabase.xml");
-            // TODO change the name to BeastDB or something like that
-            // TODO review this delete because the size of this file could be
-            // really large
-            // f.delete();
-
-            if (!f.exists()) {
-                FileWriter w = null;
-                try {
-                    w = new FileWriter(f);
-                    w.write("<map>");
-                    w.write("</map>");
-                    w.flush();
-                    w.close();
-                    logger.fine("ClassDatabase.xml created.");
-                } catch (IOException e) {
-                    logger.severe("ClassDatabase.xml could not be created. Exception: "
-                            + e);
-                    e.printStackTrace();
-                }
-            }
-            HashMap<String, String> hm = (HashMap<String, String>) xstream
-                    .fromXML(new FileInputStream("ClassDatabase.xml"));
-            if (!hm.containsKey(key)) {
-                hm.put(key, value);
-            } else {
-                hm.remove(key);
-                hm.put(key, value);
-            }
-            xstream.toXML(hm, new FileOutputStream("ClassDatabase.xml", false));
-
-        } catch (FileNotFoundException e) {
-            logger.severe("ERROR: File ClassDatabase.xml can not be found. Exception: "
-                    + e);
-        } catch (Exception e) {
-            logger.severe("ERROR: writing ClassDataBase.xml -> Exception: " + e);
-        }
-    }
+//    /**
+//     * Method that generates the ClassDatabase which Story.java will use to
+//     * translate plain text into java classes.
+//     * 
+//     * @param key
+//     *            , the plain text given by the client
+//     * @param value
+//     *            , the java class to generate key's step
+//     */
+//    @SuppressWarnings("unchecked")
+//    private void writeClassDatabase(String key, String value) {
+//        XStream xstream = new XStream();
+//        try {
+//            File f = new File("ClassDatabase.xml");
+//            // TODO change the name to BeastDB or something like that
+//            // TODO review this delete because the size of this file could be
+//            // really large
+//            // f.delete();
+//
+//            if (!f.exists()) {
+//                FileWriter w = null;
+//                try {
+//                    w = new FileWriter(f);
+//                    w.write("<map>");
+//                    w.write("</map>");
+//                    w.flush();
+//                    w.close();
+//                    logger.fine("ClassDatabase.xml created.");
+//                } catch (IOException e) {
+//                    logger.severe("ClassDatabase.xml could not be created. Exception: "
+//                            + e);
+//                    e.printStackTrace();
+//                }
+//            }
+//            HashMap<String, String> hm = (HashMap<String, String>) xstream
+//                    .fromXML(new FileInputStream("ClassDatabase.xml"));
+//            if (!hm.containsKey(key)) {
+//                hm.put(key, value);
+//            } else {
+//                hm.remove(key);
+//                hm.put(key, value);
+//            }
+//            xstream.toXML(hm, new FileOutputStream("ClassDatabase.xml", false));
+//
+//        } catch (FileNotFoundException e) {
+//            logger.severe("ERROR: File ClassDatabase.xml can not be found. Exception: "
+//                    + e);
+//        } catch (Exception e) {
+//            logger.severe("ERROR: writing ClassDataBase.xml -> Exception: " + e);
+//        }
+//    }
 
     /**
      * This method returns the existing folder, and if it does not exist, the
