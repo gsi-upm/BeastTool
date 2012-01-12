@@ -5,10 +5,10 @@ package es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.phases;
  * It is related with the WHEN part.
  *  
  * In setStates method the following methods must be used
- *    super.setBeliefValue (agent_name, belief_name, new_value )
- *    super.sendMessageToAgent(agent_name, msgtype, message_content)
- *    super.getAgentPlans(agent_name)
- *    super.getAgentGoals(agent_name )
+ *    setBeliefValue (agent_name, belief_name, new_value )
+ *    sendMessageToAgent(agent_name, msgtype, message_content)
+ *    getAgentPlans(agent_name)
+ *    getAgentGoals(agent_name )
  * 
  * @author es.upm.dit.gsi.beast
  */
@@ -22,10 +22,7 @@ public class Setup extends es.upm.dit.gsi.beast.story.phases.Setup {
    * 
    */
     public void setStates() {
-    // TODO implement this method to represent the @When part of the test in Java code.
-    logger.warning("Implement setStates() method in es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.test.SetupGetBelievesFromAgent.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
-    
-    //EXAMPLE: setBeliefValue("Steve", "age", 21);
+        logger.info(">> setStates method is empty because there is nothing to do in this method for this test.");        
   }
 
 }

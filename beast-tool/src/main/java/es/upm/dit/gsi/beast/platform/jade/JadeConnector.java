@@ -1,5 +1,6 @@
 package es.upm.dit.gsi.beast.platform.jade;
 
+import jade.core.Agent;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
@@ -26,6 +27,8 @@ public class JadeConnector implements Connector {
 
     private HashMap<String, AgentController> createdAgents;
 
+    public final String BEAST_MESSENGER = "BeastMessenger";
+    
     public final String TRUE = "true";
     public final String PLATFORM_ID = "BEAST";
     public final String MAIN_HOST = "localhost";
@@ -53,7 +56,7 @@ public class JadeConnector implements Connector {
 
         this.runtime = Runtime.instance();
 
-        // TODO hacer que los profiles sean configurables
+        // TODO make this to be configurable
         Profile p = new ProfileImpl();
         p.setParameter(Profile.GUI, TRUE);
         p.setParameter(Profile.NO_MTP, TRUE);
@@ -70,7 +73,7 @@ public class JadeConnector implements Connector {
         this.platformContainers = new HashMap<String, ContainerController>();
         this.platformContainers.put("Main-Container", mainContainer);
 
-        logger.finer("Adding listener to the platform...");
+        this.createAgent(BEAST_MESSENGER, "es.upm.dit.gsi.beast.platform.jade.agent.MessengerAgent");
 
     }
 
@@ -161,7 +164,7 @@ public class JadeConnector implements Connector {
         ContainerController controller = this.platformContainers.get(container);
         if (controller == null) {
 
-            // TODO hacer que los profiles sean configurables
+            // TODO make this to be configurable
             Profile p = new ProfileImpl();
             p.setParameter(Profile.PLATFORM_ID, PLATFORM_ID);
             p.setParameter(Profile.MAIN_HOST, MAIN_HOST);
@@ -198,9 +201,8 @@ public class JadeConnector implements Connector {
      * @see es.upm.dit.gsi.beast.platform.Connector#getMessageService()
      */
     @Override
-    public Object getMessageService() {
-        // TODO Auto-generated method stub
-        return null;
+    public Agent getMessageService() {
+        return JadeAgentIntrospector.getInstance().getAgent(BEAST_MESSENGER);
     }
 
     /*

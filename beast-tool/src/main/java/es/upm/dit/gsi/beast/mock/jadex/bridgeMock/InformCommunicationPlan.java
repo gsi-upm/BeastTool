@@ -28,6 +28,12 @@ public class InformCommunicationPlan extends MockAgentPlan {
          * Retrieving information of sended message
          */
         IMessageEvent actReq = (IMessageEvent) getReason();
+        
+        int count = (Integer) getBeliefbase().getBelief("message_count")
+                .getFact();
+        count++;
+        getBeliefbase().getBelief("message_count").setFact(count);
+        
         String type = (String) actReq.getParameter("performative").getValue();
         String agent_name = null;
         try {

@@ -1,8 +1,5 @@
 package es.upm.dit.gsi.beast.story;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -11,8 +8,6 @@ import junit.framework.Assert;
 import org.jbehave.core.junit.JUnitStory;
 import org.jbehave.core.steps.CandidateSteps;
 import org.jbehave.core.steps.InstanceStepsFactory;
-
-import com.thoughtworks.xstream.XStream;
 
 import es.upm.dit.gsi.beast.story.phases.Evaluation;
 import es.upm.dit.gsi.beast.story.phases.Scenario;
@@ -41,17 +36,17 @@ public abstract class Story extends JUnitStory {
      * 
      * @param scenarioName
      */
-    public void createScenario(String scenarioName, String platform, Logger logger) {
+    public void createScenario(String scenarioPath, String platform, Logger logger) {
         this.logger = logger;
-        logger.fine("Creating Scenario... Given: " + scenarioName);
-        String path = getPath(scenarioName);
+        logger.fine("Creating Scenario... Given: " + scenarioPath);
+
         ClassLoader loader = ClassLoader.getSystemClassLoader();
 
         try {
-            Class<?> c = loader.loadClass(path);
+            Class<?> c = loader.loadClass(scenarioPath);
             scenario = (Scenario) c.newInstance();
         } catch (ClassNotFoundException e) {
-            logger.severe("Error loading " + path);
+            logger.severe("Error loading " + scenarioPath);
             Assert.fail();
         } catch (InstantiationException e) {
             logger.severe("Error InstantiationException " + e);
@@ -71,17 +66,15 @@ public abstract class Story extends JUnitStory {
      * 
      * @param setupName
      */
-    public void setup(String setupName) {
-
-        String path = getPath(setupName);
+    public void setup(String setupPath) {
 
         ClassLoader loader = ClassLoader.getSystemClassLoader();
         try {
             Thread.sleep(SLEEP_TIME);
-            Class<?> c = loader.loadClass(path);
+            Class<?> c = loader.loadClass(setupPath);
             setup = (Setup) c.newInstance();
         } catch (Exception e) {
-            logger.severe("Error loading the setup " + path);
+            logger.severe("Error loading the setup " + setupPath);
             Assert.fail();
         }
         setup.setScenario(this.scenario, this.logger);
@@ -92,45 +85,44 @@ public abstract class Story extends JUnitStory {
      * 
      * @param evaluationName
      */
-    public void executeEvaluation(String evaluationName) {
-        String path = getPath(evaluationName);
+    public void executeEvaluation(String evaluationPath) {
 
         ClassLoader loader = ClassLoader.getSystemClassLoader();
         try {
             Thread.sleep(SLEEP_TIME);
-            Class<?> c = loader.loadClass(path);
+            Class<?> c = loader.loadClass(evaluationPath);
             evaluation = (Evaluation) c.newInstance();
         } catch (Exception e) {
-            logger.severe("Error loading the evaluation " + path);
+            logger.severe("Error loading the evaluation " + evaluationPath);
             Assert.fail();
         }
         evaluation.setSetup(this.setup, this.logger);
     }
 
-    /**
-     * It assigns one direction to each Scenario, Setup and Evaluation given by
-     * the client in the plain text. This information is saved in
-     * Classdatabase.xml, which is typically located in the root of our project.
-     * 
-     * @param stepName
-     *            , the plain text written by the client.
-     * @return the path where the step is saved
-     */
-    @SuppressWarnings("unchecked")
-    private String getPath(String stepName) {
-        
-        //FIXME important!!! when there are two identical step names, there is conflict and it do not work properly. Return one of them... but not the correct one
-        XStream xstream = new XStream();
-        String answer = null;
-        try {
-            HashMap<String, String> hm = (HashMap<String, String>) xstream
-                    .fromXML(new FileInputStream("ClassDatabase.xml"));
-            answer = (String) hm.get(stepName);
-        } catch (FileNotFoundException e) {
-            logger.severe("Error loading from ClassDatabase.xml");
-        }
-        return answer;
-    }
+//    /**
+//     * It assigns one direction to each Scenario, Setup and Evaluation given by
+//     * the client in the plain text. This information is saved in
+//     * Classdatabase.xml, which is typically located in the root of our project.
+//     * 
+//     * @param stepName
+//     *            , the plain text written by the client.
+//     * @return the path where the step is saved
+//     */
+//    @SuppressWarnings("unchecked")
+//    private String getPath(String stepName) {
+//        
+//        //FIXME important!!! when there are two identical step names, there is conflict and it do not work properly. Return one of them... but not the correct one
+//        XStream xstream = new XStream();
+//        String answer = null;
+//        try {
+//            HashMap<String, String> hm = (HashMap<String, String>) xstream
+//                    .fromXML(new FileInputStream("ClassDatabase.xml"));
+//            answer = (String) hm.get(stepName);
+//        } catch (FileNotFoundException e) {
+//            logger.severe("Error loading from ClassDatabase.xml");
+//        }
+//        return answer;
+//    }
 
     @Override
     /**

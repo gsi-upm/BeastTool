@@ -1,5 +1,6 @@
 package es.upm.dit.gsi.beast.platform.jade;
 
+import jade.lang.acl.ACLMessage;
 import jade.wrapper.AgentController;
 
 import java.io.File;
@@ -8,9 +9,11 @@ import java.util.logging.Logger;
 
 import junit.framework.Assert;
 
+import org.junit.After;
 import org.junit.Test;
 
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
+import es.upm.dit.gsi.beast.platform.jade.agent.MessengerAgent;
 import es.upm.dit.gsi.beast.test.TestObject;
 import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
 
@@ -26,8 +29,10 @@ import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
  * 
  */
 public class JadePlatformBeastTest {
-    // FIXME si tira un agente una excepción, los tests no fallan :S deberían
-    // fallar
+    
+    //TODO include all the setups in a @Before/@BeforeTest method
+    //TODO delete all the //this.cleanUp();
+    
     /**
      * 
      */
@@ -420,7 +425,7 @@ public class JadePlatformBeastTest {
 
         // Assert
         Assert.assertNotNull(value);
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -439,7 +444,7 @@ public class JadePlatformBeastTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = (Integer) 1;
+        arguments[0] = (Integer) 0;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "Main-Container", arguments);
@@ -452,7 +457,7 @@ public class JadePlatformBeastTest {
         Assert.assertEquals(10.5 * 3, ((TestObject) value).getDoubleTest());
         Assert.assertEquals(true, ((TestObject) value).isBooleanTest());
         Assert.assertEquals("test1", ((TestObject) value).getStringTest());
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -489,7 +494,7 @@ public class JadePlatformBeastTest {
         Assert.assertEquals(false, ((TestObject) value).isBooleanTest());
         Assert.assertEquals("test2", ((TestObject) value).getStringTest());
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -528,7 +533,7 @@ public class JadePlatformBeastTest {
                 connector);
         Assert.assertEquals("status2", value);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -555,9 +560,6 @@ public class JadePlatformBeastTest {
         // Get
 
         // Assert
-        Assert.assertEquals("status1", (String) ((TesterAgent) introspector
-                .getAgent("TestAgent")).getStatus());
-
         while (((TesterAgent)introspector.getAgent("TestAgent")).isReadyToTest()==false) {
             // Wait...
         }
@@ -565,7 +567,7 @@ public class JadePlatformBeastTest {
         Assert.assertEquals("status2", (String) ((TesterAgent) introspector
                 .getAgent("TestAgent")).getStatus());
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -607,7 +609,7 @@ public class JadePlatformBeastTest {
                 connector);
         Assert.assertTrue(retrieved);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -647,7 +649,7 @@ public class JadePlatformBeastTest {
                 connector);
         Assert.assertTrue(retrieved);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -678,7 +680,7 @@ public class JadePlatformBeastTest {
         // Assert
         Assert.assertNotNull(value);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -697,7 +699,7 @@ public class JadePlatformBeastTest {
 
         // Set
         Object[] arguments = new Object[1];
-        arguments[0] = (Integer) 1;
+        arguments[0] = (Integer) 0;
         connector.createAgent("TestAgent",
                 "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
                 "MyContainer", arguments);
@@ -711,7 +713,7 @@ public class JadePlatformBeastTest {
         Assert.assertEquals(true, ((TestObject) value).isBooleanTest());
         Assert.assertEquals("test1", ((TestObject) value).getStringTest());
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -748,7 +750,7 @@ public class JadePlatformBeastTest {
         Assert.assertEquals(false, ((TestObject) value).isBooleanTest());
         Assert.assertEquals("test2", ((TestObject) value).getStringTest());
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -787,7 +789,7 @@ public class JadePlatformBeastTest {
                 connector);
         Assert.assertEquals("status2", value);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -824,7 +826,7 @@ public class JadePlatformBeastTest {
         Assert.assertEquals("status2", (String) ((TesterAgent) introspector
                 .getAgent("TestAgent")).getStatus());
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -866,7 +868,7 @@ public class JadePlatformBeastTest {
                 connector);
         Assert.assertTrue(retrieved);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
 
     /**
@@ -906,7 +908,7 @@ public class JadePlatformBeastTest {
                 connector);
         Assert.assertTrue(retrieved);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
     
     /**
@@ -942,10 +944,14 @@ public class JadePlatformBeastTest {
         }
 
         // Assert
-        Object retrieved = (Object) introspector.getAgentPlans("TestAgent", connector);
-        Assert.assertNull(retrieved);
+        try {
+            introspector.getAgentPlans("TestAgent", connector);
+            Assert.fail("A UnsupportedOperationException should be thrown.");  
+        } catch (UnsupportedOperationException e) {
+            logger.info("A UnsupportedOperationException was thrown as expected.");
+        }
         
-        this.cleanUp();
+//        this.cleanUp();
     }
     
 
@@ -982,11 +988,15 @@ public class JadePlatformBeastTest {
             // Wait...
         }
 
-        // Assert
-        Object retrieved = (Object) introspector.getAgentGoals("TestAgent", connector);
-        Assert.assertNull(retrieved);
+     // Assert
+        try {
+            introspector.getAgentGoals("TestAgent", connector);
+            Assert.fail("A UnsupportedOperationException should be thrown.");  
+        } catch (UnsupportedOperationException e) {
+            logger.info("A UnsupportedOperationException was thrown as expected.");
+        }
         
-        this.cleanUp();
+//        this.cleanUp();
     }
     
     /**
@@ -1010,7 +1020,7 @@ public class JadePlatformBeastTest {
         AgentController controller = connector.getAgentsExternalAccess("TestAgent");
         Assert.assertNotNull(controller);
         
-        this.cleanUp();
+//        this.cleanUp();
     }
     
     /**
@@ -1035,11 +1045,79 @@ public class JadePlatformBeastTest {
         AgentController controller = connector.getAgentID("TestAgent");
         Assert.assertNotNull(controller);
         
-        this.cleanUp();
+//        this.cleanUp();
+    }
+    
+    /**
+     * 
+     */
+    @Test
+    public void JadeMessengerStandardSendAMessage() {
+        // Setup
+        Logger logger = Logger.getLogger(JadePlatformBeastTest.class
+                .getName());
+        JadeConnector connector = (JadeConnector) PlatformSelector
+                .getConnector("jade", logger);
+        connector.launchPlatform();
+
+        // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = (Integer) 5;
+        connector.createAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "MyContainer", arguments);
+
+        ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+        msg.setContent("Hello My Friend!");
+        String[] agents = {"TestAgent"};
+        JadeMessenger.getInstance().sendMessageToAgents(agents, "INFORM", msg, connector);
+        // Assert
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
+        
+        while (((TesterAgent)introspector.getAgent("TestAgent")).isMessageReceived()==false) {
+            // Wait...
+        }
+        Assert.assertTrue(((TesterAgent)introspector.getAgent("TestAgent")).isMessageReceived());
+        
+//        this.cleanUp();
+    }
+    
+    /**
+     * 
+     */
+    @Test
+    public void JadeMessengerStandardReceiveAResponse() {
+     // Setup
+        Logger logger = Logger.getLogger(JadePlatformBeastTest.class
+                .getName());
+        JadeConnector connector = (JadeConnector) PlatformSelector
+                .getConnector("jade", logger);
+        connector.launchPlatform();
+
+        // Set
+        Object[] arguments = new Object[1];
+        arguments[0] = (Integer) 6;
+        connector.createAgent("TestAgent",
+                "es.upm.dit.gsi.beast.test.agent.jade.TesterAgent",
+                "MyContainer", arguments);
+
+        ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
+        msg.setContent("Do you want to be my friend?");
+        String[] agents = {"TestAgent"};
+        JadeMessenger.getInstance().sendMessageToAgents(agents, "REQUEST", msg, connector);
+        // Assert
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
+        
+        while (((MessengerAgent)introspector.getAgent(connector.BEAST_MESSENGER)).isReceived()==false) {
+            // Wait...
+        }
+        Assert.assertTrue(((MessengerAgent)introspector.getAgent(connector.BEAST_MESSENGER)).isReceived());
+        
+//        this.cleanUp();
     }
 
-    
-    private void cleanUp() {
+    @After
+    public void cleanUp() {
         this.deleteFile(new File ("APDescription.txt"));
         this.deleteFile(new File ("MTPs-Main-Container.txt"));
         this.deleteFile(new File ("MTPs-MyContainer.txt"));

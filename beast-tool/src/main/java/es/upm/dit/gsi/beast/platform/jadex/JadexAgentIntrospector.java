@@ -1,7 +1,5 @@
 package es.upm.dit.gsi.beast.platform.jadex;
 
-import java.util.logging.Logger;
-
 import jadex.bdi.runtime.IBDIInternalAccess;
 import jadex.bdi.runtime.IGoal;
 import jadex.bdi.runtime.IPlan;
@@ -21,10 +19,10 @@ import es.upm.dit.gsi.beast.platform.Connector;
  */
 public class JadexAgentIntrospector implements AgentIntrospector {
 
-    static Logger logger = Logger.getLogger("JadexAgentIntrospector");
-    private static Object belief_value;
-    private static IPlan[] plans;
-    private static IGoal[] goals;
+
+    private Object belief_value;
+    private IPlan[] plans;
+    private IGoal[] goals;
 
     private static JadexAgentIntrospector INSTANCE = new JadexAgentIntrospector();
 
@@ -103,7 +101,6 @@ public class JadexAgentIntrospector implements AgentIntrospector {
      *         look for information
      */
     public IPlan[] getAgentPlans(final String agent_name, Connector connector) {
-
         ((IExternalAccess) connector.getAgentsExternalAccess(agent_name))
                 .scheduleStep(new IComponentStep<Plan>() {
 
@@ -111,21 +108,6 @@ public class JadexAgentIntrospector implements AgentIntrospector {
 
                         IBDIInternalAccess bia = (IBDIInternalAccess) ia;
                         plans = bia.getPlanbase().getPlans();
-                        for (IPlan plan : plans) {
-                            /*
-                             * The following code its an example of what can be
-                             * retrieved using getAgentPlans
-                             */
-                            logger.info("\nActived Plans : "
-                                    + plan.getBody().toString());
-                            logger.info("Plan Life Cycle State: "
-                                    + plan.getLifecycleState());
-                            // System.out.println("Plan Reason: "+plan.getReason());
-                            logger.info("Plan Waitqueue.isEmpty: "
-                                    + plan.getWaitqueue().isEmpty());
-                            // System.out.println("Plan Body Class: " +
-                            // plan.PLANLIFECYCLESTATE_BODY);
-                        }
                         return null;
                     }
                 }).get(new ThreadSuspendable());
@@ -145,7 +127,6 @@ public class JadexAgentIntrospector implements AgentIntrospector {
      *         look for information
      */
     public IGoal[] getAgentGoals(final String agent_name, Connector connector) {
-
         ((IExternalAccess) connector.getAgentsExternalAccess(agent_name))
                 .scheduleStep(new IComponentStep<Plan>() {
 
@@ -153,20 +134,6 @@ public class JadexAgentIntrospector implements AgentIntrospector {
                         IBDIInternalAccess bia = (IBDIInternalAccess) ia;
 
                         goals = bia.getGoalbase().getGoals();
-                        for (IGoal goal : goals) {
-                            /*
-                             * The following code its an example of what can be
-                             * retrieved using getAgentGoals
-                             */
-                            logger.info("\nGoal Name: " + goal.getType());
-                            logger.info("Goal Life-Cycle State: "
-                                    + goal.getLifecycleState());
-                            logger.info("Goal.isActive: " + goal.isActive());
-                            logger.info("Goal.isSucceeded: "
-                                    + goal.isSucceeded());
-                            logger.info("Goal.isretry: " + goal.isRetry());
-                            logger.info("Goal.isFinished: " + goal.isFinished());
-                        }
                         return null;
                     }
                 }).get(new ThreadSuspendable());

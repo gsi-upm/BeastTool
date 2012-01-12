@@ -53,11 +53,11 @@ public class CreateSetup {
         classComment
                 .addLine("In setStates method the following methods must be used");
         classComment
-                .addLine("   super.setBeliefValue (agent_name, belief_name, new_value )");
+                .addLine("   setBeliefValue (agent_name, belief_name, new_value )");
         classComment
-                .addLine("   super.sendMessageToAgent(agent_name, msgtype, message_content)");
-        classComment.addLine("   super.getAgentPlans(agent_name)");
-        classComment.addLine("   super.getAgentGoals(agent_name )");
+                .addLine("   sendMessageToAgent(agent_name, msgtype, message_content)");
+        classComment.addLine("   getAgentPlans(agent_name)");
+        classComment.addLine("   getAgentGoals(agent_name )");
 
         classComment.addAuthor("es.upm.dit.gsi.beast");
 
@@ -69,7 +69,6 @@ public class CreateSetup {
                 + scenario_name
                 + ".java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");");
         jm.addLine("\n    //EXAMPLE: setBeliefValue(\"Steve\", \"age\", 21);");
-        //TODO meter ejemplos de para jade
 
         
         jm.newComment();

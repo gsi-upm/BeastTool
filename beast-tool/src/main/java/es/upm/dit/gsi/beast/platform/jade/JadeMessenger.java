@@ -1,9 +1,14 @@
 package es.upm.dit.gsi.beast.platform.jade;
 
+import jade.core.AID;
+import jade.core.Agent;
+import jade.lang.acl.ACLMessage;
+
 import java.util.ArrayList;
 
 import es.upm.dit.gsi.beast.platform.Connector;
 import es.upm.dit.gsi.beast.platform.Messenger;
+import es.upm.dit.gsi.beast.platform.PlatformSelector;
 
 /**
  * @author a.carrera
@@ -35,8 +40,17 @@ public class JadeMessenger implements Messenger {
     @Override
     public void sendMessageToAgents(String[] agent_name, String msgtype,
             Object message_content, Connector connector) {
-        // TODO Auto-generated method stub
-
+        Agent messenger = (Agent) connector.getMessageService();
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
+        ACLMessage msg = (ACLMessage) message_content;
+        for (String name : agent_name) {
+            Agent agent = introspector.getAgent(name);
+            AID aid = agent.getAID();
+            msg.addReceiver(aid);
+            connector.getLogger().finer("Receiver added to the message...");
+        }
+        messenger.send(msg);
+        connector.getLogger().finer("Message sent...");
     }
 
     /* (non-Javadoc)
@@ -46,8 +60,8 @@ public class JadeMessenger implements Messenger {
     public void sendMessageToAgentsWithExtraProperties(String[] agent_name,
             String msgtype, Object message_content,
             ArrayList<Object> properties, Connector connector) {
-        // TODO Auto-generated method stub
-
+        connector.getLogger().warning("Non suported method for Jade Platform. There is no extra properties.");
+        throw new java.lang.UnsupportedOperationException("Non suported method for Jade Platform. There is no extra properties.");
     }
 
 }

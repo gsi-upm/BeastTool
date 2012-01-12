@@ -9,7 +9,7 @@ import es.upm.dit.gsi.beast.mock.jadex.common.AgentBehaviour;
 import es.upm.dit.gsi.beast.mock.jadex.common.MockAgentPlan;
 
 /**
- * Class to send a Request message.
+ * Class to send a message when it receives a SFipa.Request.
  * 
  * @author Jorge Solitario
  */
@@ -27,8 +27,16 @@ public class RequestCommunicationPlan extends MockAgentPlan {
      * Body of the plan.
      */
     public void body() {
+        /*
+         * Retrieving information of sended message
+         */
         IMessageEvent actReq = (IMessageEvent) getReason();
-
+        
+        int count = (Integer) getBeliefbase().getBelief("message_count")
+                .getFact();
+        count++;
+        getBeliefbase().getBelief("message_count").setFact(count);
+        
         String type = (String) actReq.getParameter("performative").getValue();
         String agent_name = null;
         try {
@@ -39,12 +47,16 @@ public class RequestCommunicationPlan extends MockAgentPlan {
             agent_name = "no-one";
         }
         Object in_content = actReq.getParameter(SFipa.CONTENT).getValue();
-        logger.info("Type: " + type + " ---- Sender_name: " + agent_name
+        logger.info("IN: Type " + type + " ---- Sender_name: " + agent_name
                 + " ---- Content: " + in_content);
-
+        
+        // The mock where the action to perform is saved
         AgentBehaviour behaviour = (AgentBehaviour) getBeliefbase().getBelief(
                 "agent_behaviour").getFact();
-
+        
+        /*
+         * Retrieving information of the messege to send
+         */
         String df_service;
         String msgType;
         Object out_content;
@@ -53,6 +65,7 @@ public class RequestCommunicationPlan extends MockAgentPlan {
             msgType = (String) behaviour.processMessage(type, in_content);
             out_content = behaviour.processMessage(type, in_content);
         } else {
+            System.out.println("hello2");
             df_service = (String) behaviour.processMessage(type, agent_name,
                     in_content);
             msgType = (String) behaviour.processMessage(type, agent_name,
@@ -60,15 +73,13 @@ public class RequestCommunicationPlan extends MockAgentPlan {
             out_content = behaviour
                     .processMessage(type, agent_name, in_content);
         }
-        logger.info("OUT: DF-Service " + df_service + "; MsgType " + msgType
-                + "; Content " + out_content);
-
-        if (msgType == "SFipa.REQUEST") {
+        logger.info("OUT: DF-Service " + df_service + " ---- MsgType "
+                + msgType + " ---- Content " + out_content);
+        
+        if (msgType == "SFipa.REQUEST")
             sendRequestToDF(df_service, out_content);
-        }
-        if (type == "SFipa.INFORM") {
+        if (msgType == "SFipa.INFORM")
             sendInformToDF(df_service, out_content);
-        }
     }
 
     // /**

@@ -56,7 +56,7 @@ public class CreateEvaluation {
         classComment
                 .addLine("In checkStates method the following method must be used");
         classComment
-                .addLine("   super.checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)");
+                .addLine("   checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)");
         classComment.addAuthor("es.upm.dit.gsi.beast");
 
         JavaMethod jm = js.newJavaMethod("checkStates", "void", "public");
@@ -68,7 +68,6 @@ public class CreateEvaluation {
                 + ".java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");");
         jm.addLine("Assert.fail(\"Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");");
         jm.addLine("\n    //EXAMPLE: checkAgentsBeliefEquealsTo(\"Steve\", \"age\", 21);");
-        //TODO meter ejemplos para jade
         
         jm.newComment();
         JavaComment methodComment = jm.getComment();

@@ -23,7 +23,10 @@ public class LogActivator {
             String parent = aux.getCanonicalPath();
             File f = new File(parent + File.separator + "log");
             if (!f.isDirectory()) {
-                f.mkdir();
+                boolean made = f.mkdir();
+                if (!made) {
+                    logger.warning("Impossible to create log directory");
+                }
             }
             String path = parent + File.separator + "log" + File.separator
                     + name + "%u.log";

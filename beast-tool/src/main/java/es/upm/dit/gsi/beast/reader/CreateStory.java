@@ -30,7 +30,8 @@ public class CreateStory {
      *            the main folder main (typically src/main/java)
      */
     public static void createStory(String scenario_name, String platform_name,
-            String package_path, String dest_dir, String loggingPropFile) {
+            String package_path, String dest_dir, String loggingPropFile, String scenarioComment,
+            String setupComment, String evaluationComment) {
 
         Logger logger = Logger.getLogger("CreateStory.java");
 
@@ -92,8 +93,12 @@ public class CreateStory {
             fw.write("	@Given(\"$scenarioName\")\n");
             fw.write("	public void createScenario(String scenarioName) {\n");
             fw.write("\n");
-            fw.write("		super.createScenario(scenarioName, " + platform_name
+            fw.write("      if (scenarioName.equals(\""+scenarioComment +"\")){\n");
+            fw.write("		    super.createScenario(\""+package_path+".phases.Scenario\", " + platform_name
                     + ", logger);\n");
+            fw.write("      } else {\n");
+            fw.write("          logger.severe(\"WARNING: \"+scenarioName+\" does not coincide with "+scenarioComment+"\" );\n");
+            fw.write("      }\n");
             fw.write("	}\n");
             fw.write("\n");
             fw.write("  /**\n");
@@ -102,7 +107,11 @@ public class CreateStory {
             fw.write("  @When(\"$setupName\")\n");
             fw.write("  public void configureScenario(String setupName) {\n");
             fw.write("\n");
-            fw.write("  super.setup(setupName);\n");
+            fw.write("      if (setupName.equals(\""+setupComment +"\")){\n");
+            fw.write("          super.setup(\""+package_path+".phases.Setup\");\n");
+            fw.write("      } else {\n");
+            fw.write("          logger.severe(\"WARNING: \"+setupName+\" does not coincide with "+setupComment+"\");\n");
+            fw.write("      }\n");
             fw.write("  }\n");
             fw.write("\n");
             fw.write("  /**\n");
@@ -111,7 +120,11 @@ public class CreateStory {
             fw.write("  @Then(\"$evaluationName\")\n");
             fw.write("  public void checkScenario(String evaluationName) {\n");
             fw.write("\n");
-            fw.write("    super.executeEvaluation(evaluationName);\n");
+            fw.write("      if (evaluationName.equals(\""+evaluationComment +"\")){\n");
+            fw.write("          super.executeEvaluation(\""+package_path+".phases.Evaluation\");\n");
+            fw.write("      } else {\n");
+            fw.write("          logger.severe(\"WARNING: \"+evaluationName+\" does not coincide with "+evaluationComment+"\");\n");
+            fw.write("      }\n");
             fw.write("  }\n");
             fw.write("\n");
             fw.write("}\n");

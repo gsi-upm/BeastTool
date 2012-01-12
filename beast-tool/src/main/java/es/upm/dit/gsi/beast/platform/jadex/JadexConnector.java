@@ -39,7 +39,7 @@ public class JadexConnector implements Connector {
      * the component management service (CMS) are saved
      */
     public void launchPlatform() {
-        logger.info("Launching Jade Platform...");
+        logger.info("Launching Jadex Platform...");
         platform = (IExternalAccess) Starter.createPlatform(null).get(
                 new ThreadSuspendable());
         IServiceProvider container = (IServiceProvider) platform

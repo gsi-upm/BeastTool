@@ -1,14 +1,12 @@
 package es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent.phases;
 
-import junit.framework.Assert;
-
 
 /**  
  * This is the class that must create the Evaluation.
  * It is related with the THEN part.
  *  
  * In checkStates method the following method must be used
- *    super.checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)
+ *    checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)
  * 
  * @author es.upm.dit.gsi.beast
  */
@@ -22,11 +20,9 @@ public class Evaluation extends es.upm.dit.gsi.beast.story.phases.Evaluation {
    * 
    */
     public void checkStates() {
-    // TODO implement this method to represent the @Then part of the test in Java code.
-    logger.warning("Implement checkStates() method in es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent.test.EvaluationSetBelievesInAgent.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
-    Assert.fail("Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
-    
-    //EXAMPLE: checkAgentsBeliefEquealsTo("Steve", "age", 21);
+   
+        checkAgentsBeliefEquealsTo("Tester", "message_count", 3);
+
   }
 
 }

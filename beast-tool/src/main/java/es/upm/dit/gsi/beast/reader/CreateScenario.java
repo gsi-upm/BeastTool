@@ -55,7 +55,7 @@ public class CreateScenario {
         classComment.addLine(" ");
         classComment
                 .addLine("In startAgents method the following method must be used");
-        classComment.addLine("   super.startAgent(agent_name,agent_path)");
+        classComment.addLine("   startAgent(agent_name,agent_path)");
         classComment.addAuthor("es.upm.dit.gsi.beast");
 
         JavaMethod jm = js.newJavaMethod("startAgents", "void", "public");
