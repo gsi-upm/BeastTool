@@ -35,4 +35,15 @@ public class MockManager {
         scenario.sendMessageToAgent(agent_name, SFipa.INFORM, configuration);
     }
 
+    
+    public static void startMockJadeAgent(String agent_name,
+            String agent_path, MockConfiguration configuration,
+            Scenario scenario) {
+
+//        scenario.startAgent(agent_name, agent_path);
+        Object [] arguments = new Object[1];
+        arguments[0] = configuration;
+        scenario.startAgent(agent_name, agent_path, "MockContainer", arguments);
+//        scenario.sendMessageToAgent(agent_name, SFipa.INFORM, configuration);
+    }
 }

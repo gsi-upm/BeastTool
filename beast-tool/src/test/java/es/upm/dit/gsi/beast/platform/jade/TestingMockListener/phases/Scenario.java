@@ -32,6 +32,12 @@ public class Scenario extends es.upm.dit.gsi.beast.story.phases.Scenario {
         mock_configuration.setBehaviour(myMockedBehaviour);
         MockManager.startMockJadeAgent("ListenerAgent",Definitions.listenerMockPath,mock_configuration,this);
         
+        AgentBehaviour myMockedBehaviour2 =   mock(AgentBehaviour.class);
+        MockConfiguration mock_configuration2 = new MockConfiguration();
+        mock_configuration2.setDFServiceName("adsfa");
+        mock_configuration2.setBehaviour(myMockedBehaviour2);
+        MockManager.startMockJadeAgent("ListenerAgent",Definitions.listenerMockPath,mock_configuration2,this);
+        
 //        startAgent("ListenerMock", "es.upm.dit.gsi.beast.mock.jade.listenerMock.ListenerMock");
 
        //EXAMPLE for Jadex: startAgent("Steve", "org.example.Steve.agent.xml"); // This xml file is the jadex agent description file (ADF)

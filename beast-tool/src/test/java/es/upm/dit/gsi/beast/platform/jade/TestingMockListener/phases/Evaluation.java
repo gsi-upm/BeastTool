@@ -1,8 +1,9 @@
 package es.upm.dit.gsi.beast.platform.jade.TestingMockListener.phases;
 
+import junit.framework.Assert;
+import es.upm.dit.gsi.beast.mock.jade.listenerMock.ListenerMock;
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
-import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
 
 
 
@@ -26,11 +27,15 @@ public class Evaluation extends es.upm.dit.gsi.beast.story.phases.Evaluation {
    */
     public void checkStates() {
         
-        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
-        
-        while (((TesterAgent)introspector.getAgent("ListenerAgent")).isReadyToTest()==false) {
-            // Wait...
-        }
+//        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
+//        
+////        while (((ListenerAgent)introspector.getAgent("ListenerAgent")).isReadyToTest()==false) {
+////            // Wait...
+////        }
+//        
+//        ListenerMock listener = (ListenerMock) introspector.getAgent("ListenerAgent");
+//        int num = listner.getMessagesCount();
+//        Assert.assertEquals(10, num);
         checkAgentsBeliefEquealsTo("ListenerAgent", "message_count", 10);
   }
 

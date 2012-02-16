@@ -1,23 +1,19 @@
 package es.upm.dit.gsi.beast.mock.jade.listenerMock;
 
+import jade.core.Agent;
+import jade.core.behaviours.CyclicBehaviour;
+import jade.domain.FIPAException;
+import jade.lang.acl.ACLMessage;
+import jade.util.Logger;
+
 import java.util.ArrayList;
-//import java.util.HashMap;
 import java.util.logging.Level;
 
 import es.upm.dit.gsi.beast.mock.jade.common.AgentRegistration;
+import es.upm.dit.gsi.beast.mock.jade.common.MockConfiguration;
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;
-//import jade.content.onto.Introspector;
-import jade.core.Agent;
-import jade.core.behaviours.CyclicBehaviour;
-import jade.domain.DFService;
-import jade.domain.FIPAException;
-import jade.domain.FIPAAgentManagement.DFAgentDescription;
-import jade.domain.FIPAAgentManagement.ServiceDescription;
-import jade.lang.acl.ACLMessage;
-//import jade.lang.acl.MessageTemplate;
-import jade.util.Logger;
 
 /**
  * Listens the received messages, and stores then for future study
@@ -57,6 +53,11 @@ public class ListenerMock extends Agent{
      * @see jade.core.Agent#setup()
      */
     public void setup(){
+        introspector = JadeAgentIntrospector.getMyInstance(this);
+
+        introspector.storeBeliefValue(this, "message_count", 0);
+        
+        MockConfiguration configuration = (MockConfiguration) this.getArguments()[0];
         
         LogActivator.logToFile(logger, this.getName(), Level.ALL);
         
@@ -170,6 +171,10 @@ public class ListenerMock extends Agent{
                
                // Stores the message
                ListenerMock.this.storeMessage(msg);
+//               Agent agent = introspector.getAgent("ListenerAgent");
+//               int numMsgs = (Integer) introspector.retrieveBelievesValue(agent).get("message_count");
+//               numMsgs+=1;
+//               introspector.storeBeliefValue(agent, "message_count", numMsgs);
            } else {
                block();
            }
