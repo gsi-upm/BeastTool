@@ -1,5 +1,6 @@
 package es.upm.dit.gsi.beast.mock.jade.repositoryMock;
 
+import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.domain.FIPAException;
@@ -42,6 +43,8 @@ public class RepositoryMockAgent extends Agent {
      */
     public void setup(){
         
+        //TODO add code to include the user AgentBehaviour
+        
         LogActivator.logToFile(logger, this.getName(), Level.ALL);
         MockConfiguration configuration = (MockConfiguration) this.getArguments()[0];
         
@@ -80,6 +83,12 @@ public class RepositoryMockAgent extends Agent {
             // Increases the stored count belief.
             this.increaseBeliefCount(Definitions.STORED_DATA_COUNT);
         }
+        //TODO Check the exceptions treatment.
+        // Confirm the correct sotre of the data. 
+        ACLMessage response = new ACLMessage(ACLMessage.INFORM); 
+        response.addReceiver(msg.getSender());
+        response.setContent(""+ACLMessage.CONFIRM);
+        this.send(response);
     }
     
     /**
@@ -146,7 +155,7 @@ public class RepositoryMockAgent extends Agent {
         
         /*
          * Retrieve the new message from the mail and consult his performative. 
-         * If the message is a Fipa.INFORM message then proceed to store his content and increase 
+         * If the message is a Fipa.REQUEST message then proceed to store his content and increase 
          * stored count belief. If not then just ignore the message.
          * 
          * In either case increase the received message count. 
@@ -158,7 +167,7 @@ public class RepositoryMockAgent extends Agent {
                myAgent.logger.info(myAgent.getLocalName()+": Message received.");
                myAgent.logger.finer("Message: " + msg.toString());
                
-               if (msg.getPerformative() == ACLMessage.INFORM){
+               if (msg.getPerformative() == ACLMessage.REQUEST){
                    // Store the message content and actualize the belief count
                    myAgent.store(msg);
                }
