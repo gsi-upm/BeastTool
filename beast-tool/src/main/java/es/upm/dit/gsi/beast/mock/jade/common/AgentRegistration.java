@@ -22,12 +22,19 @@ public class AgentRegistration {
      *          The agent to register.
      * @throws FIPAException 
      */
-    public static void registerAgent(Agent agent, String agentType) throws FIPAException{
+    public static void registerAgent(Agent agent, String serviceName, String serviceType) throws FIPAException{
         DFAgentDescription dfd = new DFAgentDescription();
         ServiceDescription sd = new ServiceDescription();
         
-        sd.setType(agentType);
-        sd.setName(agent.getLocalName());
+        sd.setType(serviceType);
+        sd.setName(serviceName);
+        
+        //NOTE El serviceType es un string que define el tipo de servicio publicado en el DF por el Agente X. 
+        //     He escogido crear nombres en clave en jade.common.Definitions para este campo. 
+        //NOTE El serviceName es el nombre efectivo del servicio. 
+        //     Esto es lo que el usuario va a definir en MockConfiguration.DFNameService y no el tipo como estaba puesto. 
+        //        sd.setType(agentType);
+        //        sd.setName(agent.getLocalName());
         
         //Add services??
         
