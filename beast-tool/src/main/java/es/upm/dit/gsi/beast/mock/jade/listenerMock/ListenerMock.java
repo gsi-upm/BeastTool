@@ -66,7 +66,7 @@ public class ListenerMock extends Agent{
         // Attemps to register the aggent.
         registered = false;
         try {
-            AgentRegistration.registerAgent(this, "ListenerMock");
+            AgentRegistration.registerAgent(this, configuration.getDFservice(), null);
         } catch(FIPAException e) {
             logger.warning("Exception while registring the ListenerMock");
             logger.warning(e.getCause().toString()); // Will this show anything useful?
@@ -147,8 +147,8 @@ public class ListenerMock extends Agent{
      *
      */
     private class MessageReceiver extends CyclicBehaviour {
-        
-        public static final long serialVersionUID = 0;
+
+        private static final long serialVersionUID = 8785592026926424080L;
         
         /**
          * Constructor
