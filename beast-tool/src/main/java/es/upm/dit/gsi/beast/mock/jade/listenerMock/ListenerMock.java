@@ -55,7 +55,7 @@ public class ListenerMock extends Agent{
     public void setup(){
         introspector = JadeAgentIntrospector.getMyInstance(this);
 
-        introspector.storeBeliefValue(this, "message_count", 0);
+        //introspector.storeBeliefValue(this, "message_count", 0);
         
         MockConfiguration configuration = (MockConfiguration) this.getArguments()[0];
         
@@ -67,9 +67,10 @@ public class ListenerMock extends Agent{
         registered = false;
         try {
             AgentRegistration.registerAgent(this, configuration.getDFservice(), null);
+            registered = true;
         } catch(FIPAException e) {
             logger.warning("Exception while registring the ListenerMock");
-            logger.warning(e.getCause().toString()); // Will this show anything useful?
+            logger.warning(e.getMessage()); // Will this show anything useful?
         }
         
         // Creates the instrospector

@@ -1,18 +1,21 @@
 package es.upm.dit.gsi.beast.mock.jade.bridgeMock;
 
-import jade.core.Agent;
-import jade.core.behaviours.CyclicBehaviour;
-import jade.domain.DFService;
-import jade.domain.FIPAAgentManagement.DFAgentDescription;
-import jade.domain.FIPAAgentManagement.ServiceDescription;
-import jade.lang.acl.ACLMessage;
-import jade.util.Logger;
-
 import java.util.logging.Level;
 
+//import es.upm.dit.gsi.beast.mock.jade.listenerMock.ListenerMock;
+import es.upm.dit.gsi.beast.mock.jade.common.AgentRegistration;
+import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;
+
+import jade.core.Agent;
+import jade.core.behaviours.CyclicBehaviour;
+import jade.domain.FIPAException;
+import jade.domain.FIPAAgentManagement.Envelope;
+import jade.lang.acl.ACLMessage;
+import jade.util.Logger;
+import jade.util.leap.Iterator;
 
 /**
  * 
@@ -38,6 +41,31 @@ public class BridgeMock extends Agent{
      */
     private JadeAgentIntrospector introspector;
     
+    /**
+     * Indicates if the agent have been registered
+     */
+    private boolean registered;
+    
+    /**
+     * Array with templates
+     */
+    // Deprecated
+    //private ArrayList<MessageTemplate> msgTemplates;
+    
+    /**
+     * List with the destinations
+     */
+    //Deprecated
+    //private ArrayList<String[]> destinations;
+    
+    /**
+     * IMPORTANT:
+     * The index for a template's destinations corresponds with its own index.
+     * Example:
+     * Template --> msgTemplates[3]
+     * Destinations --> destinations[3]
+     * 
+     */
     // TODO: Implement jade BridgeMock.
     
     /**
@@ -46,47 +74,43 @@ public class BridgeMock extends Agent{
      * @see jade.core.Agent#setup()
      */
     public void setup(){
+        introspector = JadeAgentIntrospector.getMyInstance(this);
+
+        introspector.storeBeliefValue(this, "message_count", 0);
+        
+        MockConfiguration configuration = (MockConfiguration) this.getArguments()[0];
+        
         LogActivator.logToFile(logger, this.getName(), Level.ALL);
-         
-        // Agent registration
-        DFAgentDescription dfd = new DFAgentDescription();
-        ServiceDescription sd = new ServiceDescription();
         
-        sd.setType("BridgeMock");
-        sd.setName(this.getLocalName());
-        
-        //Add services??
-        
-        // Sets the agent description
-        dfd.setName(this.getAID());
-        dfd.addServices(sd);
-        
-        // Register the agent
+        // Attemps to register the aggent.
+        registered = false;
         try {
-            DFService.register(this, dfd);
-        } catch (Exception e) {
-            logger.warning("Exception while registring the Bridge Jade Mock:");
-            logger.warning(e.getMessage());
-            logger.warning(e.getCause().toString());
-            // TODO: I should probably stop the setup, retry or something.
+            AgentRegistration.registerAgent(this,configuration.getDFservice(), null);
+            registered = true;
+        } catch(FIPAException e) {
+            logger.warning("Exception while registring the ListenerMock");
+            logger.warning(e.getMessage()); // Will this show anything useful?
         }
-        // Creates the instrospector
-        this.introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
         
-        /*
-         * Add a Behavior to receive and process the messages.
-         */
+        // Creates the instrospector
+        introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
+        // Adds the behavior to store the messages.
         addBehaviour(new MessageReceiver());
     }
     
     /**
      * 
-     * Sends a message to the agent with the given UID
+     * Sends a message to the agent with the given agent
      * 
-     * @param long - The serial UID of the agent
+     * @param String - The name of the destination
+     * @param string - The content of the message
+     * @param int - 
      */
-    public void sendMessage(long ReceiverUID){
-        //¿?¿?¿?
+    public void sendMessage(String agentName, String content, int perf){
+        ACLMessage msg = new ACLMessage(perf);
+        msg.addReceiver(introspector.getAgent(agentName).getAID());
+        msg.setContent(content);
+        send(msg);
     }
     
     /**
@@ -114,13 +138,33 @@ public class BridgeMock extends Agent{
          */
         public void action(){
            ACLMessage msg = BridgeMock.this.receive();
+           
            if(msg != null ){
-               //TODO: Implement MessageReceiver.action()
                BridgeMock.this.logger.info("Listener: Message receive.");
                BridgeMock.this.logger.finer("Message: " + msg.toString());
                
+               // Recover the envelope.
+               Envelope env = msg.getEnvelope();
+               
+               // Not really sure which way is better
+//               ACLMessage resend = new ACLMessage(msg.getPerformative());
+//               resend.setContent(msg.getContent());
+               ACLMessage resend = (ACLMessage) msg.clone();
+               resend.clearAllReceiver();
+               resend.clearAllReplyTo();
+               
+               // Iterate over the "intendedReceivers" and adds them to the resend message
+               Iterator iter = env.getAllIntendedReceiver();    
+               while(iter.hasNext()){
+                   // Adds the receivers.
+                   String receiver = (String) iter.next();
+                   if (receiver != null) {
+                       resend.addReceiver(BridgeMock.this.introspector.getAgent(receiver).getAID());
+                   }
+               }
+               send(resend);
            } else {
-               block();
+               block(); // No received messages.
            }
         }
     }
