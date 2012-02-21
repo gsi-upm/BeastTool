@@ -4,8 +4,11 @@ import jadex.bdi.runtime.IGoal;
 import jadex.bdi.runtime.IPlan;
 
 import java.util.logging.Logger;
+
 import junit.framework.Assert;
+
 import org.junit.Test;
+
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
 
 /**

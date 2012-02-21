@@ -4,9 +4,9 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import es.upm.dit.gsi.beast.mock.MockManager;
-import es.upm.dit.gsi.beast.mock.jadex.common.AgentBehaviour;
-import es.upm.dit.gsi.beast.mock.jadex.common.Definitions;
-import es.upm.dit.gsi.beast.mock.jadex.common.MockConfiguration;
+import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
+import es.upm.dit.gsi.beast.mock.common.Definitions;
+import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
 
 
 /**  
@@ -36,7 +36,7 @@ public class Scenario extends es.upm.dit.gsi.beast.story.phases.Scenario {
         MockConfiguration mock_configuration = new MockConfiguration();
         mock_configuration.setDFServiceName("repository_service");
         mock_configuration.setBehaviour(myMockedBehaviour);      
-        MockManager.startMockJadexAgent("RepositoryAgent",Definitions.repositoryMockPath,mock_configuration,this);
+        MockManager.startMockJadexAgent("RepositoryAgent",Definitions.JADEX_REPOSITORY_MOCK_PATH,mock_configuration,this);
         
         
         //BridgeAgent configuration
@@ -46,7 +46,7 @@ public class Scenario extends es.upm.dit.gsi.beast.story.phases.Scenario {
         MockConfiguration mock_configuration2 = new MockConfiguration();
         mock_configuration2.setDFServiceName("bridge_service");
         mock_configuration2.setBehaviour(myMockedBehaviour2);
-        MockManager.startMockJadexAgent("BridgeAgent",Definitions.bridgeMockPath,mock_configuration2,this);
+        MockManager.startMockJadexAgent("BridgeAgent",Definitions.JADEX_BRIDGE_MOCK_PATH,mock_configuration2,this);
   }
 
 }

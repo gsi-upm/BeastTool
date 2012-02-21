@@ -1,15 +1,17 @@
 package es.upm.dit.gsi.beast.mock.jadex.common;
 
-import java.util.logging.Logger;
-
 import jadex.base.fipa.DFServiceDescription;
 import jadex.base.fipa.IDFComponentDescription;
 import jadex.base.fipa.SFipa;
 import jadex.bdi.runtime.IGoal;
-import jadex.bdi.runtime.Plan;
-import jadex.standalone.service.DirectoryFacilitatorService;
 import jadex.bdi.runtime.IMessageEvent;
+import jadex.bdi.runtime.Plan;
 import jadex.bridge.service.IServiceProvider;
+import jadex.standalone.service.DirectoryFacilitatorService;
+
+import java.util.logging.Logger;
+
+import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
 
 /**
  * Plan to change the name of each mock agent and to save its behaviour for

@@ -1,4 +1,4 @@
-package es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseOne;
+package es.upm.dit.gsi.beast.platform.jade.TestingMockRepository;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,19 +23,19 @@ import es.upm.dit.gsi.beast.story.logging.LogActivator;
  * 
  * @author es.upm.dit.gsi.beast
  */
-  public class TestingMockBridgeCaseOne extends Story {
+  public class TestingMockRepository extends Story {
 
-     public Logger logger = Logger.getLogger(TestingMockBridgeCaseOne.class.getName());
+     public Logger logger = Logger.getLogger(TestingMockRepository.class.getName());
   /**
    * Constructor to configure logging
    */
-  public TestingMockBridgeCaseOne() {
+  public TestingMockRepository() {
      Properties preferences = new Properties();
      try {
-         FileInputStream configFile = new FileInputStream("src/test/java/es/upm/dit/gsi/beast/platform/jadex/jadexBeastLog.properties");
+         FileInputStream configFile = new FileInputStream("src/test/java/es/upm/dit/gsi/beast/platform/jade/jadeBeastLog.properties");
          preferences.load(configFile);
          LogManager.getLogManager().readConfiguration(configFile);
-         LogActivator.logToFile(logger, TestingMockBridgeCaseOne.class.getName(), Level.ALL);
+         LogActivator.logToFile(logger, TestingMockRepository.class.getName(), Level.ALL);
      } catch (IOException ex) {
          logger.severe("WARNING: Could not open configuration file");
      }
@@ -47,10 +47,10 @@ import es.upm.dit.gsi.beast.story.logging.LogActivator;
 	@Given("$scenarioName")
 	public void createScenario(String scenarioName) {
 
-      if (scenarioName.equals("one bridge mock and one listener mock in Jadex Platform")){
-		    super.createScenario("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseOne.phases.Scenario", "jadex", logger);
+      if (scenarioName.equals("one bridge mock and one repository mock in Jadex Platform")){
+		    super.createScenario("es.upm.dit.gsi.beast.platform.jade.TestingMockRepository.phases.Scenario", "jade", logger);
       } else {
-          logger.severe("WARNING: "+scenarioName+" does not coincide with one bridge mock and one listener mock in Jadex Platform" );
+          logger.severe("WARNING: "+scenarioName+" does not coincide with one bridge mock and one repository mock in Jadex Platform" );
       }
 	}
 
@@ -60,10 +60,10 @@ import es.upm.dit.gsi.beast.story.logging.LogActivator;
   @When("$setupName")
   public void configureScenario(String setupName) {
 
-      if (setupName.equals("bridge mocks has to send a message to listener")){
-          super.setup("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseOne.phases.Setup");
+      if (setupName.equals("bridge sends a message to repository")){
+          super.setup("es.upm.dit.gsi.beast.platform.jade.TestingMockRepository.phases.Setup");
       } else {
-          logger.severe("WARNING: "+setupName+" does not coincide with bridge mocks has to send a message to listener");
+          logger.severe("WARNING: "+setupName+" does not coincide with bridge sends a message to repository");
       }
   }
 
@@ -73,10 +73,10 @@ import es.upm.dit.gsi.beast.story.logging.LogActivator;
   @Then("$evaluationName")
   public void checkScenario(String evaluationName) {
 
-      if (evaluationName.equals("listener receives the message")){
-          super.executeEvaluation("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseOne.phases.Evaluation");
+      if (evaluationName.equals("repository answers with the correct message")){
+          super.executeEvaluation("es.upm.dit.gsi.beast.platform.jade.TestingMockRepository.phases.Evaluation");
       } else {
-          logger.severe("WARNING: "+evaluationName+" does not coincide with listener receives the message");
+          logger.severe("WARNING: "+evaluationName+" does not coincide with repository answers with the correct message");
       }
   }
 

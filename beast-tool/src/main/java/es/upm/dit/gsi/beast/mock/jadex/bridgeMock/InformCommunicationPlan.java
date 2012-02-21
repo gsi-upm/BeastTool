@@ -6,7 +6,7 @@ import jadex.bridge.IComponentIdentifier;
 
 import java.util.logging.Logger;
 
-import es.upm.dit.gsi.beast.mock.jadex.common.AgentBehaviour;
+import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
 import es.upm.dit.gsi.beast.mock.jadex.common.MockAgentPlan;
 
 /**

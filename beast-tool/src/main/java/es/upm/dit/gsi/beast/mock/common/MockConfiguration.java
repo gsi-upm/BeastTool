@@ -1,6 +1,5 @@
-package es.upm.dit.gsi.beast.mock.jade.common;
+package es.upm.dit.gsi.beast.mock.common;
 
-import es.upm.dit.gsi.beast.mock.jade.common.AgentBehaviour;
 
 /**
  * MockConfiguration, where it is saved the behaviour of the mock agents

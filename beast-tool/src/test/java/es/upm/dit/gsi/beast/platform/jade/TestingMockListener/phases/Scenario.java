@@ -2,9 +2,9 @@ package es.upm.dit.gsi.beast.platform.jade.TestingMockListener.phases;
 
 import static org.mockito.Mockito.mock;
 import es.upm.dit.gsi.beast.mock.MockManager;
-import es.upm.dit.gsi.beast.mock.jadex.common.AgentBehaviour;
-import es.upm.dit.gsi.beast.mock.jade.common.Definitions;
-import es.upm.dit.gsi.beast.mock.jadex.common.MockConfiguration;
+import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
+import es.upm.dit.gsi.beast.mock.common.Definitions;
+import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
 
 /**  
  * This is the class that must create the Scenario.
@@ -30,13 +30,13 @@ public class Scenario extends es.upm.dit.gsi.beast.story.phases.Scenario {
         MockConfiguration mock_configuration = new MockConfiguration();
         mock_configuration.setDFServiceName("listen_service");
         mock_configuration.setBehaviour(myMockedBehaviour);
-        MockManager.startMockJadeAgent("ListenerAgent",Definitions.listenerMockPath,mock_configuration,this);
+        MockManager.startMockJadeAgent("ListenerAgent",Definitions.JADE_LISTENER_MOCK_PATH,mock_configuration,this);
         
         AgentBehaviour myMockedBehaviour2 =   mock(AgentBehaviour.class);
         MockConfiguration mock_configuration2 = new MockConfiguration();
         mock_configuration2.setDFServiceName("adsfa");
         mock_configuration2.setBehaviour(myMockedBehaviour2);
-        MockManager.startMockJadeAgent("ListenerAgent",Definitions.listenerMockPath,mock_configuration2,this);
+        MockManager.startMockJadeAgent("ListenerAgent",Definitions.JADE_LISTENER_MOCK_PATH,mock_configuration2,this);
         
 //        startAgent("ListenerMock", "es.upm.dit.gsi.beast.mock.jade.listenerMock.ListenerMock");
 

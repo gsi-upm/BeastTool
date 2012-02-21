@@ -1,13 +1,13 @@
 package es.upm.dit.gsi.beast.mock.jadex.repositoryMock;
 
-import java.util.logging.Logger;
-
-import es.upm.dit.gsi.beast.mock.jadex.common.AgentBehaviour;
-
 import jadex.base.fipa.SFipa;
 import jadex.bdi.runtime.IMessageEvent;
 import jadex.bdi.runtime.Plan;
 import jadex.bridge.IComponentIdentifier;
+
+import java.util.logging.Logger;
+
+import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
 
 /**
  * Plan to answer arriving messages

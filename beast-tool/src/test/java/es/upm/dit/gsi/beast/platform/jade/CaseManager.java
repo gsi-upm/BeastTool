@@ -1,6 +1,7 @@
 package es.upm.dit.gsi.beast.platform.jade;
 
 import org.junit.Test;
+
 import es.upm.dit.gsi.beast.story.StoryRunner;
 
 /**
@@ -56,6 +57,18 @@ public class CaseManager {
   public void ScenarioMessengerAgentReceiveAResponse() {
   
 	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jade.MessengerAgentReceiveAResponse.MessengerAgentReceiveAResponse");
+  }
+
+  /**
+   * This is the scenario: TestingMockRepository,
+   * where the GIVEN is described as: one bridge mock and one repository mock in Jadex Platform,
+   * the WHEN is described as: bridge sends a message to repository
+   * and the THEN is described as: repository answers with the correct message
+   */
+  @Test
+  public void ScenarioTestingMockRepository() {
+  
+	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jade.TestingMockRepository.TestingMockRepository");
   }
 
 }

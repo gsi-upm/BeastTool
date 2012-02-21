@@ -1,6 +1,7 @@
 package es.upm.dit.gsi.beast.platform.jadex;
 
 import org.junit.Test;
+
 import es.upm.dit.gsi.beast.story.StoryRunner;
 
 /**

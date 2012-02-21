@@ -18,7 +18,7 @@ Given that TesterAgent is started in Jade Platform in Main-Container with Config
 When tester wants to send a message with MessageService to TesterAgent and to receive a response 
 Then the message is received by the tester through MessengerAgent
 
-Scenario: Testing Mock Repository 
-Given that 
-When  
-Then 
+Scenario: Testing mock repository
+Given one bridge mock and one repository mock in Jadex Platform
+When bridge sends a message to repository
+Then repository answers with the correct message 

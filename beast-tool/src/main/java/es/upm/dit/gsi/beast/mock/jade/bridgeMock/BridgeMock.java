@@ -1,19 +1,18 @@
 package es.upm.dit.gsi.beast.mock.jade.bridgeMock;
 
-import java.util.logging.Level;
-
-//import es.upm.dit.gsi.beast.mock.jade.listenerMock.ListenerMock;
-import es.upm.dit.gsi.beast.platform.PlatformSelector;
-import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
-import es.upm.dit.gsi.beast.story.logging.LogActivator;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
-import jade.lang.acl.MessageTemplate;
 import jade.util.Logger;
+
+import java.util.logging.Level;
+
+import es.upm.dit.gsi.beast.platform.PlatformSelector;
+import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
+import es.upm.dit.gsi.beast.story.logging.LogActivator;
 
 /**
  * 

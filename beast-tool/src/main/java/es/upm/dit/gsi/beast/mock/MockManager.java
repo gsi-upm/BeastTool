@@ -1,7 +1,7 @@
 package es.upm.dit.gsi.beast.mock;
 
 import jadex.base.fipa.SFipa;
-import es.upm.dit.gsi.beast.mock.jadex.common.MockConfiguration;
+import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
 import es.upm.dit.gsi.beast.story.phases.Scenario;
 
 /**
@@ -36,9 +36,9 @@ public class MockManager {
     }
 
     
-    public static void startMockJadeAgent(String agent_name,
-            String agent_path, MockConfiguration configuration,
-            Scenario scenario) {
+    public static void startMockJadeAgent(String agent_name, String agent_path, 
+                                            MockConfiguration configuration, 
+                                            Scenario scenario) {
 
 //        scenario.startAgent(agent_name, agent_path);
         Object [] arguments = new Object[1];

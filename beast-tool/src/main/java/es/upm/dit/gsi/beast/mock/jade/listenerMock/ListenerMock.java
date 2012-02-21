@@ -9,8 +9,8 @@ import jade.util.Logger;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
 import es.upm.dit.gsi.beast.mock.jade.common.AgentRegistration;
-import es.upm.dit.gsi.beast.mock.jade.common.MockConfiguration;
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;

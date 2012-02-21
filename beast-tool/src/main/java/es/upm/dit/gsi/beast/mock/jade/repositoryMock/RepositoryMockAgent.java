@@ -1,6 +1,5 @@
 package es.upm.dit.gsi.beast.mock.jade.repositoryMock;
 
-import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.domain.FIPAException;
@@ -10,9 +9,9 @@ import jade.util.Logger;
 import java.util.HashMap;
 import java.util.logging.Level;
 
+import es.upm.dit.gsi.beast.mock.common.Definitions;
+import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
 import es.upm.dit.gsi.beast.mock.jade.common.AgentRegistration;
-import es.upm.dit.gsi.beast.mock.jade.common.Definitions;
-import es.upm.dit.gsi.beast.mock.jade.common.MockConfiguration;
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;
 

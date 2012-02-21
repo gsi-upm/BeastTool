@@ -1,7 +1,5 @@
 package es.upm.dit.gsi.beast.mock.jadex.common;
 
-import java.util.logging.Logger;
-
 import jadex.base.fipa.IDF;
 import jadex.base.fipa.IDFComponentDescription;
 import jadex.base.fipa.IDFServiceDescription;
@@ -12,6 +10,8 @@ import jadex.bdi.runtime.Plan;
 import jadex.bridge.ISearchConstraints;
 import jadex.bridge.service.RequiredServiceInfo;
 import jadex.bridge.service.SServiceProvider;
+
+import java.util.logging.Logger;
 
 /**
  * MockAgentPlan is the class all Agents-plan must extend from.

@@ -1,9 +1,5 @@
 package es.upm.dit.gsi.beast.platform.jade.TestingMockListener.phases;
 
-import junit.framework.Assert;
-import es.upm.dit.gsi.beast.mock.jade.listenerMock.ListenerMock;
-import es.upm.dit.gsi.beast.platform.PlatformSelector;
-import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 
 
 
