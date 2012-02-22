@@ -47,10 +47,10 @@ import es.upm.dit.gsi.beast.story.logging.LogActivator;
 	@Given("$scenarioName")
 	public void createScenario(String scenarioName) {
 
-      if (scenarioName.equals("one bridge mock and one repository mock in Jadex Platform")){
+      if (scenarioName.equals("one bridge mock and one repository mock in Jade Platform")){
 		    super.createScenario("es.upm.dit.gsi.beast.platform.jade.TestingMockRepository.phases.Scenario", "jade", logger);
       } else {
-          logger.severe("WARNING: "+scenarioName+" does not coincide with one bridge mock and one repository mock in Jadex Platform" );
+          logger.severe("WARNING: "+scenarioName+" does not coincide with one bridge mock and one repository mock in Jade Platform" );
       }
 	}
 

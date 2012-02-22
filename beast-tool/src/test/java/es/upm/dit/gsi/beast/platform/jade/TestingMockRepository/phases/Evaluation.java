@@ -1,5 +1,6 @@
 package es.upm.dit.gsi.beast.platform.jade.TestingMockRepository.phases;
 
+import es.upm.dit.gsi.beast.mock.common.Definitions;
 import junit.framework.Assert;
 
 
@@ -22,10 +23,9 @@ public class Evaluation extends es.upm.dit.gsi.beast.story.phases.Evaluation {
    * 
    */
     public void checkStates() {
-    // TODO implement this method to represent the @Then part of the test in Java code.
-    logger.warning("Implement checkStates() method in es.upm.dit.gsi.beast.platform.jade.TestingMockRepository.phases.EvaluationTestingMockRepository.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
-    Assert.fail("Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
-    
+
+        checkAgentsBeliefEquealsTo(Definitions.REPOSITORY_AGENT_NAME, Definitions.RECEIVED_MESSAGE_COUNT, 1);
+        checkAgentsBeliefEquealsTo(Definitions.REPOSITORY_AGENT_NAME, Definitions.STORED_DATA_COUNT, 1);
     //EXAMPLE: checkAgentsBeliefEquealsTo("Steve", "age", 21);
   }
 

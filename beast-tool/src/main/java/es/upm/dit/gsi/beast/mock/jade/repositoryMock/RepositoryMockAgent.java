@@ -1,13 +1,11 @@
 package es.upm.dit.gsi.beast.mock.jade.repositoryMock;
 
-import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.domain.FIPAException;
 import jade.lang.acl.ACLMessage;
 import jade.util.Logger;
 
-import java.util.HashMap;
 import java.util.logging.Level;
 
 import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
@@ -17,17 +15,20 @@ import es.upm.dit.gsi.beast.mock.jade.common.AgentRegistration;
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;
 
+/**
+ * The implementation of a Mock Agent that perform the behavior 
+ * of an agent repository. This behaviour has to be personalized
+ * by the user moking the AgentBehaviour class on the Scenario. 
+ *   
+ * @author darofar
+ *
+ */
 public class RepositoryMockAgent extends Agent {
 
     /**
      * Logger
      */
     protected final Logger logger = Logger.getMyLogger(getClass().getName());
-
-    /**
-     * A proxy database that store the data received.
-     */
-    private HashMap<String, String> db;
 
     /**
      * The personalized information for the current mock agent.
@@ -47,15 +48,11 @@ public class RepositoryMockAgent extends Agent {
      */
     public void setup() {
 
-        // TODO add code to include the user AgentBehaviour
-
         LogActivator.logToFile(logger, this.getName(), Level.ALL);
 
-        // Add the agent to the introspector and obtain the introspector
-        // instance.
+        // Add the agent to the introspector and obtain the introspector instance.
         introspector = JadeAgentIntrospector.getMyInstance(this);
-        logger.fine("Agent " + this.getLocalName()
-                + " added to the Intrsopector");
+        logger.fine("Agent " + this.getLocalName()+ " added to the Intrsopector");
 
         try {
             this.myMockConfiguration = (MockConfiguration) this.getArguments()[0];
@@ -66,51 +63,32 @@ public class RepositoryMockAgent extends Agent {
             // throw new BadConfigurationException();
             throw new IllegalArgumentException(
                     "The mock agent didn't receive a configuration"
-                            + " object. The first argument have to be a MockConfiguration object");
+                  + " object. The first argument have to be a MockConfiguration object");
         }
 
         // Initialize the believes counts.
-        introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT,
-                0);
+        introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT, 0);
         introspector.storeBeliefValue(this, Definitions.STORED_DATA_COUNT, 0);
 
-        // Initialize de proxy database
-        db = new HashMap<String, String>();
-
         // Attemps to register the aggent.
-        try {
-            AgentRegistration.registerAgent(this,
-                    myMockConfiguration.getDFservice(),
-                    Definitions.REPOSITORY_SERVICE_TYPE);
-        } catch (FIPAException e) {
-            logger.warning("Exception while registering the RespositoryMockAgent");
-            logger.warning(e.getStackTrace().toString());
-        }
+        boolean register = false; 
+        for(int i=0; !register; i++) {
+            try {
+                AgentRegistration.registerAgent(this, myMockConfiguration.getDFservice(),
+                        Definitions.REPOSITORY_SERVICE_TYPE);
+                register = true;
+            } catch (FIPAException e) {
+                logger.warning("Exception while registering the RespositoryMockAgent");
+            }
+            if(i >= Definitions.REG_ATTEMPTS) {
+                break;
+                //TODO check if is necesary to implement this exception.
+                // throw new UnableToRegisterException(e.getStackTrace().toString());
+            }
+         }
 
-        // Adds the behavior to store the messages.
+        // Adds the behavior that listen for incomming messages.
         addBehaviour(new Listen(this));
-    }
-
-    /**
-     * Stores the content from the given message
-     * 
-     * @param ACLMessage
-     *            - The message with the content to store
-     */
-    public void store(ACLMessage msg) {
-        if (msg != null) {
-            int id = db.size();
-            db.put("" + id, msg.getContent());
-
-            // Increases the stored count belief.
-            this.increaseBeliefCount(Definitions.STORED_DATA_COUNT);
-        }
-        // TODO Check the exceptions treatment.
-        // Confirm the correct sotre of the data.
-        ACLMessage response = new ACLMessage(ACLMessage.INFORM);
-        response.addReceiver(msg.getSender());
-        response.setContent("" + ACLMessage.CONFIRM);
-        this.send(response);
     }
 
     /**
@@ -132,9 +110,8 @@ public class RepositoryMockAgent extends Agent {
      * @param value
      *            - the new value for the belief
      */
-    public void setBelief(String bName, Object value) {
-        introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT,
-                value);
+    private void setBelief(String bName, Object value) {
+        introspector.setBeliefValue(this.getLocalName(), bName, value, null);
     }
 
     /**
@@ -142,17 +119,15 @@ public class RepositoryMockAgent extends Agent {
      * 
      * @return bName - the name of the belief to consult.
      */
-    public Object getBelief(String bName) {
-        return introspector.retrieveBelievesValue(this).get(bName);
-        // if (count == null) count = 0; // Just in case, not really sure if
-        // this is necessary.
+    private Object getBelief(String bName) {
+        return introspector.getBeliefValue(this.getLocalName(),bName, null);
     }
 
     /**
      * This class define a listen behaviour that cyclically looks for incoming
      * messages.
      * 
-     * @author Danny
+     * @author darofar
      * 
      */
     private class Listen extends CyclicBehaviour {
@@ -178,52 +153,52 @@ public class RepositoryMockAgent extends Agent {
             super(a);
             this.myAgent = (RepositoryMockAgent) a;
         }
-
-        /*
-         * Retrieve the new message from the mail and consult his performative.
-         * If the message is a Fipa.REQUEST message then proceed to store his
-         * content and increase stored count belief. If not then just ignore the
-         * message.
-         * 
-         * In either case increase the received message count.
+        
+        
+        /* (non-Javadoc)
+         * @see jade.core.behaviours.Behaviour#action()
          */
-        public void action(){
-            
+        public void action() {
+
             ACLMessage msg = myAgent.receive();
-            
+
             if (msg != null) {
-                myAgent.logger.info(myAgent.getLocalName()
-                        + ": Message received.");
+                
+                myAgent.logger.info(myAgent.getLocalName()+ ": Message received.");
                 myAgent.logger.fine("Message: " + msg.toString());
                 
+                //We got a message. Increase the corresponding belief. 
+                myAgent.increaseBeliefCount(Definitions.RECEIVED_MESSAGE_COUNT);
                 
-                String type = null;
+                String answer = null;
+                // Obtain the information of the current message.                 
+                String type = ACLMessage.getPerformative(msg.getPerformative());
                 String sender = null;
-                Object content = null;
                 try {
-                    type = ACLMessage.getPerformative(msg.getPerformative());
                     sender = msg.getSender().getLocalName();
-                    content = msg.getContent();
-                } catch (Exception e){
-                    // FixMe there need to check the proper exceptions and then take the correct actions. 
+                } catch (Exception e) {
                     logger.info("Received message has no sender");
                     sender = "no-one";
                 }
+                Object content = msg.getContent();
+                //Check the behaviour response for the received message.  
+                answer = (String) (((AgentBehaviour) myAgent.myMockConfiguration
+                        .getBehaviour()).processMessage(type, sender,content));
                 
-                String answer = (String) ( ((AgentBehaviour)myAgent.myMockConfiguration
-                        .getBehaviour()).processMessage(type, sender, content));
-                
-                if (answer == null)
+                if (answer == null) {
+                    // The action has non be mocked.
                     answer = "Unknown required action";
+                } else if (answer.equals(Definitions.STORE_ATTEMPT_OK)){
+                    // All OK! The message has been stored. 
+                    myAgent.increaseBeliefCount(Definitions.STORED_DATA_COUNT);
+                }
                 logger.info("Answer: " + answer);
                 
-                if (msg.getPerformative() == ACLMessage.REQUEST) {
-                    // Store the message content and actualize the belief count
-                    myAgent.store(msg);
-                }
-
-                // Increase the message count belief.
-                myAgent.increaseBeliefCount(Definitions.STORED_DATA_COUNT);
+                //We respond to the sender with the answer from the mocked behaviour. 
+                ACLMessage response = msg.createReply();
+                response.setContent(answer);
+                response.setPerformative(ACLMessage.INFORM);
+                myAgent.send(response);
 
             } else {
                 block();
