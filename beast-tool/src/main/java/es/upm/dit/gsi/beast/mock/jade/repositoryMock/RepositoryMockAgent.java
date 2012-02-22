@@ -1,5 +1,6 @@
 package es.upm.dit.gsi.beast.mock.jade.repositoryMock;
 
+import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.domain.FIPAException;
@@ -9,6 +10,7 @@ import jade.util.Logger;
 import java.util.HashMap;
 import java.util.logging.Level;
 
+import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
 import es.upm.dit.gsi.beast.mock.common.Definitions;
 import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
 import es.upm.dit.gsi.beast.mock.jade.common.AgentRegistration;
@@ -30,7 +32,7 @@ public class RepositoryMockAgent extends Agent {
     /**
      * The personalized information for the current mock agent.
      */
-    private MockConfiguration configuration;
+    private MockConfiguration myMockConfiguration;
 
     /**
      * The introspector agent that allows the access to instances of agents of
@@ -56,7 +58,7 @@ public class RepositoryMockAgent extends Agent {
                 + " added to the Intrsopector");
 
         try {
-            this.configuration = (MockConfiguration) this.getArguments()[0];
+            this.myMockConfiguration = (MockConfiguration) this.getArguments()[0];
         } catch (Exception e) {
             logger.warning("There was an error reading the RepositoryMockAgent configuration.");
             logger.fine("The stack trace: \n" + e.getStackTrace());
@@ -68,7 +70,8 @@ public class RepositoryMockAgent extends Agent {
         }
 
         // Initialize the believes counts.
-        introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT, 0);
+        introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT,
+                0);
         introspector.storeBeliefValue(this, Definitions.STORED_DATA_COUNT, 0);
 
         // Initialize de proxy database
@@ -76,7 +79,8 @@ public class RepositoryMockAgent extends Agent {
 
         // Attemps to register the aggent.
         try {
-            AgentRegistration.registerAgent(this, configuration.getDFservice(),
+            AgentRegistration.registerAgent(this,
+                    myMockConfiguration.getDFservice(),
                     Definitions.REPOSITORY_SERVICE_TYPE);
         } catch (FIPAException e) {
             logger.warning("Exception while registering the RespositoryMockAgent");
@@ -183,13 +187,36 @@ public class RepositoryMockAgent extends Agent {
          * 
          * In either case increase the received message count.
          */
-        public void action() {
+        public void action(){
+            
             ACLMessage msg = myAgent.receive();
+            
             if (msg != null) {
                 myAgent.logger.info(myAgent.getLocalName()
                         + ": Message received.");
-                myAgent.logger.finer("Message: " + msg.toString());
-
+                myAgent.logger.fine("Message: " + msg.toString());
+                
+                
+                String type = null;
+                String sender = null;
+                Object content = null;
+                try {
+                    type = ACLMessage.getPerformative(msg.getPerformative());
+                    sender = msg.getSender().getLocalName();
+                    content = msg.getContent();
+                } catch (Exception e){
+                    // FixMe there need to check the proper exceptions and then take the correct actions. 
+                    logger.info("Received message has no sender");
+                    sender = "no-one";
+                }
+                
+                String answer = (String) ( ((AgentBehaviour)myAgent.myMockConfiguration
+                        .getBehaviour()).processMessage(type, sender, content));
+                
+                if (answer == null)
+                    answer = "Unknown required action";
+                logger.info("Answer: " + answer);
+                
                 if (msg.getPerformative() == ACLMessage.REQUEST) {
                     // Store the message content and actualize the belief count
                     myAgent.store(msg);
