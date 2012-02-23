@@ -4,6 +4,7 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import jade.core.behaviours.CyclicBehaviour;
+import jade.lang.acl.ACLMessage;
 import es.upm.dit.gsi.beast.mock.MockManager;
 import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
 import es.upm.dit.gsi.beast.mock.common.Definitions;
@@ -38,6 +39,9 @@ public class Scenario extends es.upm.dit.gsi.beast.story.phases.Scenario {
         
         //BridgeBehaviour configuration
         AgentBehaviour myMockedBehaviour2 =  mock(AgentBehaviour.class);
+        // In jade, the FIPA Inform is a constant in ACLMessage, but is stored as an int
+        when(myMockedBehaviour2.processMessage(eq(ACLMessage.getPerformative(ACLMessage.INFORM)),eq("BeastMessenger"),eq("send")))
+            .thenReturn("ListenerAgent", ACLMessage.getPerformative(ACLMessage.INFORM), "Message to the listener agent");
         MockConfiguration mock_configuration2 = new MockConfiguration();
         mock_configuration2.setDFServiceName("bridge_service");
         mock_configuration2.setBehaviour(myMockedBehaviour2);

@@ -66,7 +66,7 @@ public class ListenerMock extends Agent{
         // Attemps to register the aggent.
         registered = false;
         try {
-            AgentRegistration.registerAgent(this, configuration.getDFservice(), null);
+            AgentRegistration.registerAgent(this, configuration.getDFservice(), this.getLocalName());
             registered = true;
         } catch(FIPAException e) {
             logger.warning("Exception while registring the ListenerMock");

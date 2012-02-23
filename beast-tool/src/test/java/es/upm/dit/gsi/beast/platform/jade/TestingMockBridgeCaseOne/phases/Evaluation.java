@@ -36,12 +36,12 @@ public class Evaluation extends es.upm.dit.gsi.beast.story.phases.Evaluation {
         //}
         
         // Debug
-//        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
-//        ListenerMock listener = (ListenerMock) introspector.getAgent("ListenerAgent");
-//        ArrayList<ACLMessage> msgs = listener.getAllMessages(false);
-//        for (ACLMessage msg : msgs) {
-//            System.out.println(msg.getContent());
-//        }
+        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
+        ListenerMock listener = (ListenerMock) introspector.getAgent("ListenerAgent");
+        ArrayList<ACLMessage> msgs = listener.getAllMessages(false);
+        for (ACLMessage msg : msgs) {
+            System.out.println(msg.getContent());
+        }
         checkAgentsBeliefEquealsTo("ListenerAgent", "message_count", 1);
   }
 

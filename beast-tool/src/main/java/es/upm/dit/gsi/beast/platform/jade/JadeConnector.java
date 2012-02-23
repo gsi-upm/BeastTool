@@ -4,6 +4,9 @@ import jade.core.Agent;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
+import jade.domain.DFService;
+import jade.domain.FIPAAgentManagement.DFAgentDescription;
+import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
@@ -106,6 +109,7 @@ public class JadeConnector implements Connector {
             logger.warning("Exception creating or starting agent in MainContainer... "
                     + e);
         }
+        // Register the agent
     }
 
     /**

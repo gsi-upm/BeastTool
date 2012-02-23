@@ -5,7 +5,7 @@ import jade.core.AID;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.Envelope;
 import jade.lang.acl.ACLMessage;
-import jadex.base.fipa.SFipa;
+//import jadex.base.fipa.SFipa;
 
 /**  
  * This is the class that must create the Setup.
@@ -29,16 +29,11 @@ public class Setup extends es.upm.dit.gsi.beast.story.phases.Setup {
    * 
    */
     public void setStates() {
-        JadeAgentIntrospector introspector = JadeAgentIntrospector.getInstance();
-        Envelope env = new Envelope();
-        AID listen = introspector.getAgent("ListenerAgent").getAID();
-        env.addIntendedReceiver(listen); // Add Listener Agent as intended receiver
-        ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
-        msg.setEnvelope(env);
-        msg.setContent("send");
         // Debug
         //System.out.println("About to send the message");
-        sendMessageToAgent("BridgeAgent", SFipa.INFORM, msg);
+        ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+        msg.setContent("send");
+        sendMessageToAgent("BridgeAgent", ACLMessage.getPerformative(ACLMessage.INFORM), msg);
         // Debug
         //System.out.println("Message sent");
     }
