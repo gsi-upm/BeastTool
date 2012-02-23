@@ -4,6 +4,8 @@ import jade.core.AID;
 import jade.core.Agent;
 import jade.lang.acl.ACLMessage;
 
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import es.upm.dit.gsi.beast.platform.Connector;
@@ -42,7 +44,8 @@ public class JadeMessenger implements Messenger {
             Object message_content, Connector connector) {
         Agent messenger = (Agent) connector.getMessageService();
         JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
-        ACLMessage msg = (ACLMessage) message_content;
+        ACLMessage msg = new ACLMessage(ACLMessage.getInteger(msgtype)); 
+        msg.setContent( (String) message_content);
         for (String name : agent_name) {
             Agent agent = introspector.getAgent(name);
             AID aid = agent.getAID();

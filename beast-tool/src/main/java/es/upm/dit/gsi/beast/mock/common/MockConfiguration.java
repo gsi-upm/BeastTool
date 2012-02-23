@@ -10,6 +10,9 @@ package es.upm.dit.gsi.beast.mock.common;
  */
 public class MockConfiguration {
 
+    
+    //TODO Service_Type could be a custom field of MockCondiguration.
+    
     private String dfServiceName;
     private AgentBehaviour behaviour;
 

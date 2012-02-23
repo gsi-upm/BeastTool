@@ -1,7 +1,7 @@
 package es.upm.dit.gsi.beast.platform.jade.TestingMockListener.phases;
 
 import jade.lang.acl.ACLMessage;
-import jadex.base.fipa.SFipa;
+import es.upm.dit.gsi.beast.mock.common.Definitions;
 
 /**  
  * This is the class that must create the Setup.
@@ -28,20 +28,9 @@ public class Setup extends es.upm.dit.gsi.beast.story.phases.Setup {
         
         for (int i=0; i<10; i++) {
             ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
-            msg.setContent("MESSAGE#"+i);
-            sendMessageToAgent("ListenerAgent", SFipa.INFORM, msg);
+            msg.setContent("MESSAGE#00"+i);
+            sendMessageToAgent(Definitions.LISTENER_AGENT_NAME, ACLMessage.getPerformative(ACLMessage.INFORM), msg);
         }
-        
-        
-//        sendMessageToAgent("ListenerAgent", SFipa.INFORM, "2");
-//        sendMessageToAgent("ListenerAgent", SFipa.INFORM, "3");
-//        sendMessageToAgent("ListenerAgent", SFipa.INFORM, "4");
-//        sendMessageToAgent("ListenerAgent", SFipa.INFORM, "5");
-//        sendMessageToAgent("ListenerAgent", SFipa.INFORM, "6");
-//        sendMessageToAgent("ListenerAgent", SFipa.INFORM, "7");
-//        sendMessageToAgent("ListenerAgent", SFipa.INFORM, "8");
-//        sendMessageToAgent("ListenerAgent", SFipa.INFORM, "9");
-//        sendMessageToAgent("ListenerAgent", SFipa.INFORM, "10");
   }
 
 }

@@ -9,9 +9,9 @@ import jade.util.Logger;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+import es.upm.dit.gsi.beast.mock.common.Definitions;
 import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
 import es.upm.dit.gsi.beast.mock.jade.common.AgentRegistration;
-import es.upm.dit.gsi.beast.platform.PlatformSelector;
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;
 
@@ -53,14 +53,12 @@ public class ListenerMock extends Agent{
      * @see jade.core.Agent#setup()
      */
     public void setup(){
-        introspector = JadeAgentIntrospector.getMyInstance(this);
-
-        //introspector.storeBeliefValue(this, "message_count", 0);
-        
-        MockConfiguration configuration = (MockConfiguration) this.getArguments()[0];
-        
         LogActivator.logToFile(logger, this.getName(), Level.ALL);
         
+        introspector = JadeAgentIntrospector.getMyInstance(this);
+        introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT, 0);
+        MockConfiguration configuration = (MockConfiguration) this.getArguments()[0];
+
         messages = new ArrayList<ACLMessage>();
         
         // Attemps to register the aggent.
@@ -73,8 +71,11 @@ public class ListenerMock extends Agent{
             logger.warning(e.getMessage()); // Will this show anything useful?
         }
         
+        // TODO revisar estas lineas de codigo, yo creo que no es necesario obtener de nuevo el introspector. 
+        // ya se obtiene en la primera linea dle metodo. ¡El introspector es estatico!
         // Creates the instrospector
-        introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
+        // introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
+
         // Adds the behavior to store the messages.
         addBehaviour(new MessageReceiver());
     }
@@ -127,7 +128,7 @@ public class ListenerMock extends Agent{
      * @param int - the number to add or remove
      */
     private void modifyBeliefCount(int count){
-        introspector.storeBeliefValue(ListenerMock.this, "message_count", getBeliefCount() + count);
+        introspector.setBeliefValue(getLocalName(), Definitions.RECEIVED_MESSAGE_COUNT, getBeliefCount()+count, null);
     }
     
     /**
@@ -136,7 +137,7 @@ public class ListenerMock extends Agent{
      * @return int - the count
      */
     private int getBeliefCount(){
-        Integer count = (Integer)introspector.retrieveBelievesValue(ListenerMock.this).get("message_count");
+        Integer count = (Integer)introspector.retrieveBelievesValue(ListenerMock.this).get(Definitions.RECEIVED_MESSAGE_COUNT);
         if (count == null) count = 0; // Just in case, not really sure if this is necessary.
         return count;
     }
@@ -172,10 +173,6 @@ public class ListenerMock extends Agent{
                
                // Stores the message
                ListenerMock.this.storeMessage(msg);
-//               Agent agent = introspector.getAgent("ListenerAgent");
-//               int numMsgs = (Integer) introspector.retrieveBelievesValue(agent).get("message_count");
-//               numMsgs+=1;
-//               introspector.storeBeliefValue(agent, "message_count", numMsgs);
            } else {
                block();
            }

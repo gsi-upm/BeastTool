@@ -2,7 +2,6 @@ package es.upm.dit.gsi.beast.platform.jade.TestingMockRepository.phases;
 
 import jade.lang.acl.ACLMessage;
 import es.upm.dit.gsi.beast.mock.common.Definitions;
-import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 
 /**
  * This is the class that must create the Setup. It is related with the WHEN
@@ -24,13 +23,13 @@ public class Setup extends es.upm.dit.gsi.beast.story.phases.Setup {
      */
     public void setStates() {
 
-//        sendMessageToAgent(Definitions.BRIDGE_AGENT_NAME, SFipa.REQUEST, "send");
+        sendMessageToAgent(Definitions.BRIDGE_AGENT_NAME, ACLMessage.getPerformative(ACLMessage.REQUEST), "send");
         
-        ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
-        msg.addReceiver((JadeAgentIntrospector.getInstance().getAgent((Definitions.REPOSITORY_AGENT_NAME)).getAID()));
-        msg.setContent("hi");
-        msg.setSender(null);
-        (JadeAgentIntrospector.getInstance().getAgent(("BeastMessenger"))).send(msg);
+//        ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
+//        msg.addReceiver((JadeAgentIntrospector.getInstance().getAgent((Definitions.REPOSITORY_AGENT_NAME)).getAID()));
+//        msg.setContent("hi");
+//        msg.setSender(null);
+//        (JadeAgentIntrospector.getInstance().getAgent(("BeastMessenger"))).send(msg);
 
     }
 

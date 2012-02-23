@@ -10,6 +10,7 @@ public class Definitions {
 
     public static final String JADE_LISTENER_MOCK_PATH = "es.upm.dit.gsi.beast.mock.jade.listenerMock.ListenerMock";
     public static final String JADE_BRIDGE_MOCK_PATH = "es.upm.dit.gsi.beast.mock.jade.bridgeMock.BridgeMock";
+    public static final String JADE_DANNY_BRIDGE_MOCK_PATH = "es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent";
     public static final String JADE_REPOSITORY_MOCK_PATH = "es.upm.dit.gsi.beast.mock.jade.repositoryMock.RepositoryMockAgent";
 
     public static final String LISTENER_SERVICE_TYPE = "mock-listener-agent";
@@ -27,9 +28,11 @@ public class Definitions {
     public static final String STORE_ATTEMPT_NOK = "There was an error trying to proccess the request";
     
     public static final String RECEIVED_MESSAGE_COUNT = "received_count";
+    public static final String SENDED_MESSAGE_COUNT = "sended_count";
     public static final String STORED_DATA_COUNT = "stored_count";
     
     public static final int REG_ATTEMPTS = 3;
+
     
     
 }

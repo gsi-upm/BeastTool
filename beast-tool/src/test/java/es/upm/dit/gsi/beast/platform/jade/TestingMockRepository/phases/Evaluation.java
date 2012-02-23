@@ -1,7 +1,6 @@
 package es.upm.dit.gsi.beast.platform.jade.TestingMockRepository.phases;
 
 import es.upm.dit.gsi.beast.mock.common.Definitions;
-import junit.framework.Assert;
 
 
 /**  
@@ -26,7 +25,6 @@ public class Evaluation extends es.upm.dit.gsi.beast.story.phases.Evaluation {
 
         checkAgentsBeliefEquealsTo(Definitions.REPOSITORY_AGENT_NAME, Definitions.RECEIVED_MESSAGE_COUNT, 1);
         checkAgentsBeliefEquealsTo(Definitions.REPOSITORY_AGENT_NAME, Definitions.STORED_DATA_COUNT, 1);
-    //EXAMPLE: checkAgentsBeliefEquealsTo("Steve", "age", 21);
   }
 
 }

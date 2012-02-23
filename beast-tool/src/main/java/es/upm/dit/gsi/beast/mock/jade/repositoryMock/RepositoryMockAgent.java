@@ -6,6 +6,8 @@ import jade.domain.FIPAException;
 import jade.lang.acl.ACLMessage;
 import jade.util.Logger;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
@@ -42,6 +44,14 @@ public class RepositoryMockAgent extends Agent {
     private JadeAgentIntrospector introspector;
 
     /**
+     * All received message from the current simulation will be stored on this
+     * list. To make complex testing this list could be initialized to a custom
+     * value.
+     * 
+     */
+    private List<ACLMessage> mailbox;
+
+    /**
      * Initializes the Agent.
      * 
      * @see jade.core.Agent#setup()
@@ -66,11 +76,12 @@ public class RepositoryMockAgent extends Agent {
                   + " object. The first argument have to be a MockConfiguration object");
         }
 
-        // Initialize the believes counts.
+        // Initialize the believes counts and mailbox.
         introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT, 0);
         introspector.storeBeliefValue(this, Definitions.STORED_DATA_COUNT, 0);
-
-        // Attemps to register the aggent.
+        this.mailbox = new ArrayList<ACLMessage>();
+        
+        // Attempts to register the agent.
         boolean register = false; 
         for(int i=0; !register; i++) {
             try {
@@ -82,12 +93,12 @@ public class RepositoryMockAgent extends Agent {
             }
             if(i >= Definitions.REG_ATTEMPTS) {
                 break;
-                //TODO check if is necesary to implement this exception.
+                //TODO check if is necessary to implement this exception.
                 // throw new UnableToRegisterException(e.getStackTrace().toString());
             }
          }
 
-        // Adds the behavior that listen for incomming messages.
+        // Adds the behavior that listen for incoming messages.
         addBehaviour(new Listen(this));
     }
 
@@ -123,6 +134,31 @@ public class RepositoryMockAgent extends Agent {
         return introspector.getBeliefValue(this.getLocalName(),bName, null);
     }
 
+    /**
+     * @return the mailbox
+     */
+    public List<ACLMessage> getStoredMessages() {
+        return mailbox;
+    }
+
+    /**
+     * @param new_msg
+     */
+    public void addMessageToMailbox(ACLMessage new_msg) {
+        this.mailbox.add(new_msg);
+        this.increaseBeliefCount(Definitions.RECEIVED_MESSAGE_COUNT);
+    }
+
+    /**
+     * @param mailbox
+     *            the mailbox to set
+     */
+    public void setMailbox(List<ACLMessage> mailbox) {
+        this.mailbox = mailbox;
+        this.setBelief(Definitions.RECEIVED_MESSAGE_COUNT, mailbox.size());
+    }
+    
+    
     /**
      * This class define a listen behaviour that cyclically looks for incoming
      * messages.
@@ -168,7 +204,7 @@ public class RepositoryMockAgent extends Agent {
                 myAgent.logger.fine("Message: " + msg.toString());
                 
                 //We got a message. Increase the corresponding belief. 
-                myAgent.increaseBeliefCount(Definitions.RECEIVED_MESSAGE_COUNT);
+                myAgent.addMessageToMailbox(msg);
                 
                 String answer = null;
                 // Obtain the information of the current message.                 

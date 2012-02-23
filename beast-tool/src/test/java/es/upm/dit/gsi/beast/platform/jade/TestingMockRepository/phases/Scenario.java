@@ -3,6 +3,7 @@ package es.upm.dit.gsi.beast.platform.jade.TestingMockRepository.phases;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import jade.lang.acl.ACLMessage;
 import es.upm.dit.gsi.beast.mock.MockManager;
 import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
 import es.upm.dit.gsi.beast.mock.common.Definitions;
@@ -27,20 +28,27 @@ public class Scenario extends es.upm.dit.gsi.beast.story.phases.Scenario {
      */
     public void startAgents() {
 
-//        // Start and configure Bridge Agent
-//        MockConfiguration bridgeMockConfiguration = new MockConfiguration();
-//        
-//        //Add the personlized service name.  
-//        bridgeMockConfiguration.setDFServiceName(Definitions.BRIDGE_SERVICE_NAME);
-//        
-//        //Add a mocked AgentBehaviour. 
-//        AgentBehaviour bridgeMockedBehaviour = mock(AgentBehaviour.class);
+        // Start and configure Bridge Agent
+        MockConfiguration bridgeMockConfiguration = new MockConfiguration();
+        
+        //Add the personlized service name.  
+        bridgeMockConfiguration.setDFServiceName(Definitions.BRIDGE_SERVICE_NAME);
+        
+        //Add a mocked AgentBehaviour. 
+        AgentBehaviour bridgeMockedBehaviour = mock(AgentBehaviour.class);
 //        when(bridgeMockedBehaviour.processMessage(eq("inform"), eq("send")))
-//        .thenReturn("repository_service", "SFipa.REQUEST", "hi");   
-//        bridgeMockConfiguration.setBehaviour(bridgeMockedBehaviour);
-//        //Start the agent. 
-//        MockManager.startMockJadeAgent(Definitions.BRIDGE_AGENT_NAME, Definitions.JADE_BRIDGE_MOCK_PATH,
-//                                        bridgeMockConfiguration, this);
+//                    .thenReturn("repository_service", "SFipa.REQUEST", "hi");
+        when(bridgeMockedBehaviour.processMessage(
+                    eq(ACLMessage.getPerformative(ACLMessage.REQUEST)),
+                    eq("BeastMessenger"),
+                    eq("send")))
+                    .thenReturn(Definitions.REPOSITORY_AGENT_NAME, 
+                                ACLMessage.getPerformative(ACLMessage.REQUEST), 
+                                "hi");
+        bridgeMockConfiguration.setBehaviour(bridgeMockedBehaviour);
+        //Start the agent. 
+        MockManager.startMockJadeAgent(Definitions.BRIDGE_AGENT_NAME, Definitions.JADE_DANNY_BRIDGE_MOCK_PATH,
+                                        bridgeMockConfiguration, this);
  
         
         //Start and configure Bridge Agent
@@ -51,8 +59,9 @@ public class Scenario extends es.upm.dit.gsi.beast.story.phases.Scenario {
         
         //Add a mocked AgentBehaviour.
         AgentBehaviour repositoryMockBehaviour = mock(AgentBehaviour.class);
-        when(repositoryMockBehaviour.processMessage(eq("REQUEST"), eq("BeastMessenger"),eq("hi")))
-        .thenReturn(Definitions.STORE_ATTEMPT_OK);   
+        when(repositoryMockBehaviour.processMessage(eq(ACLMessage.getPerformative(ACLMessage.REQUEST)), 
+                eq(Definitions.BRIDGE_AGENT_NAME),eq("hi")))
+                .thenReturn(Definitions.STORE_ATTEMPT_OK);   
         repositoryMockConfiguration.setBehaviour(repositoryMockBehaviour);
         //Start the agent. 
         MockManager.startMockJadeAgent(Definitions.REPOSITORY_AGENT_NAME, Definitions.JADE_REPOSITORY_MOCK_PATH,
