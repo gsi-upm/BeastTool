@@ -3,6 +3,7 @@ package es.upm.dit.gsi.beast.platform.jade;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.lang.acl.ACLMessage;
+import jade.util.Logger;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -44,8 +45,16 @@ public class JadeMessenger implements Messenger {
             Object message_content, Connector connector) {
         Agent messenger = (Agent) connector.getMessageService();
         JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
-        ACLMessage msg = new ACLMessage(ACLMessage.getInteger(msgtype)); 
-        msg.setContent( (String) message_content);
+        ACLMessage msg = null;
+        if(message_content instanceof ACLMessage) {
+            msg = (ACLMessage) message_content;
+        } else if (message_content instanceof String) {
+            msg = new ACLMessage(ACLMessage.getInteger(msgtype)); 
+            msg.setContent( (String) message_content);            
+        } else {
+            connector.getLogger().warning("Incorrect message_content value. It should be a ACLMessage or a String.");
+        }
+        
         for (String name : agent_name) {
             Agent agent = introspector.getAgent(name);
             AID aid = agent.getAID();
