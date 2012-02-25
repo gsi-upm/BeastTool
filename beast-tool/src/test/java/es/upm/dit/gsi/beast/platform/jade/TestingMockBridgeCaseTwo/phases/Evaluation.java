@@ -1,16 +1,14 @@
-package es.upm.dit.gsi.beast.platform.jade.TestingMockBridgeCaseOne.phases;
+package es.upm.dit.gsi.beast.platform.jade.TestingMockBridgeCaseTwo.phases;
+
+import jade.lang.acl.ACLMessage;
 
 import java.util.ArrayList;
 
 import es.upm.dit.gsi.beast.mock.common.Definitions;
+import es.upm.dit.gsi.beast.mock.jade.bridgeMock.BridgeMockAgent;
 import es.upm.dit.gsi.beast.mock.jade.listenerMock.ListenerMockAgent;
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
-import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
-
-import jade.core.Agent;
-import jade.lang.acl.ACLMessage;
-//import junit.framework.Assert;
 
 
 /**  
@@ -28,22 +26,14 @@ public class Evaluation extends es.upm.dit.gsi.beast.story.phases.Evaluation {
    * Here the description given by the client must be written,
    * which is: 
    *  
-   *   listener receives the message
+   *   bridge receives the answer from repository
    * 
    */
     public void checkStates() {
-        //while (((TesterAgent)introspector.getAgent("ListenerAgent")).isReadyToTest()==false) {
-        //    // Wait...
-        //}
-        
-        // Debug
 //        JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
-//        ListenerMockAgent listener = (ListenerMockAgent) introspector.getAgent(Definitions.LISTENER_AGENT_NAME);
-//        ArrayList<ACLMessage> msgs = listener.getAllMessages(false);
-//        for (ACLMessage msg : msgs) {
-//            System.out.println(msg.getContent());
-//        }
-        checkAgentsBeliefEquealsTo(Definitions.LISTENER_AGENT_NAME, Definitions.RECEIVED_MESSAGE_COUNT, 1);
-  }
+//        BridgeMockAgent bridge = (BridgeMockAgent) introspector.getAgent(Definitions.BRIDGE_AGENT_NAME);
+//        System.out.println( bridge.getIntegerBelief(Definitions.RECEIVED_MESSAGE_COUNT));
+        checkAgentsBeliefEquealsTo(Definitions.BRIDGE_AGENT_NAME, Definitions.RECEIVED_MESSAGE_COUNT, 2);
+    }
 
 }

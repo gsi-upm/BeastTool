@@ -1,12 +1,7 @@
-package es.upm.dit.gsi.beast.platform.jade.TestingMockBridgeCaseOne.phases;
+package es.upm.dit.gsi.beast.platform.jade.TestingMockBridgeCaseTwo.phases;
 
 import es.upm.dit.gsi.beast.mock.common.Definitions;
-import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
-import jade.core.AID;
-import jade.domain.FIPAAgentManagement.DFAgentDescription;
-import jade.domain.FIPAAgentManagement.Envelope;
 import jade.lang.acl.ACLMessage;
-//import jadex.base.fipa.SFipa;
 
 /**  
  * This is the class that must create the Setup.
@@ -26,16 +21,15 @@ public class Setup extends es.upm.dit.gsi.beast.story.phases.Setup {
    * Here the description given by the client must be written,
    * which is: 
    *  
-   *   bridge mocks has to send a message to listener
+   *   bridge mocks has to send a message to repository
    * 
    */
     public void setStates() {
-        // Debug
-        //System.out.println("About to send the message");
         ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
-        msg.setContent("send");
+        msg.setContent("store");
+        System.out.println("About to send the message");
         sendMessageToAgent(Definitions.BRIDGE_AGENT_NAME, ACLMessage.getPerformative(ACLMessage.INFORM), msg);
-        // Debug
-        //System.out.println("Message sent");
+        System.out.println("Setup complete");
     }
+
 }

@@ -21,7 +21,7 @@ import es.upm.dit.gsi.beast.story.logging.LogActivator;
  * @author Alberto Mardomingo
  *
  */
-public class ListenerMock extends Agent{
+public class ListenerMockAgent extends Agent{
 
     /**
      * 
@@ -137,7 +137,7 @@ public class ListenerMock extends Agent{
      * @return int - the count
      */
     private int getBeliefCount(){
-        Integer count = (Integer)introspector.retrieveBelievesValue(ListenerMock.this).get(Definitions.RECEIVED_MESSAGE_COUNT);
+        Integer count = (Integer)introspector.retrieveBelievesValue(ListenerMockAgent.this).get(Definitions.RECEIVED_MESSAGE_COUNT);
         if (count == null) count = 0; // Just in case, not really sure if this is necessary.
         return count;
     }
@@ -158,7 +158,7 @@ public class ListenerMock extends Agent{
          * 
          */
         public MessageReceiver(){
-            super(ListenerMock.this);
+            super(ListenerMockAgent.this);
         }
         
         /*
@@ -166,13 +166,13 @@ public class ListenerMock extends Agent{
          * @see jade.core.CyclicBehaviour#action()
          */
         public void action(){
-           ACLMessage msg = ListenerMock.this.receive();
+           ACLMessage msg = ListenerMockAgent.this.receive();
            if(msg != null ){
-               ListenerMock.this.logger.info("Listener: Message received.");
-               ListenerMock.this.logger.finer("Message: " + msg.toString());
+               ListenerMockAgent.this.logger.info("Listener: Message received.");
+               ListenerMockAgent.this.logger.finer("Message: " + msg.toString());
                
                // Stores the message
-               ListenerMock.this.storeMessage(msg);
+               ListenerMockAgent.this.storeMessage(msg);
            } else {
                block();
            }

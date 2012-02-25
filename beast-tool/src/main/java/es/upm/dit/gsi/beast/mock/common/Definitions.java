@@ -8,8 +8,8 @@ public class Definitions {
     public static final String JADEX_BRIDGE_MOCK_PATH = "es/upm/dit/gsi/beast/mock/jadex/bridgeMock/BridgeMock.agent.xml";
     public static final String JADEX_REPOSITORY_MOCK_PATH = "es/upm/dit/gsi/beast/mock/jadex/repositoryMock/RepositoryMock.agent.xml";
 
-    public static final String JADE_LISTENER_MOCK_PATH = "es.upm.dit.gsi.beast.mock.jade.listenerMock.ListenerMock";
-    public static final String JADE_BRIDGE_MOCK_PATH = "es.upm.dit.gsi.beast.mock.jade.bridgeMock.BridgeMock";
+    public static final String JADE_LISTENER_MOCK_PATH = "es.upm.dit.gsi.beast.mock.jade.listenerMock.ListenerMockAgent";
+    public static final String JADE_BRIDGE_MOCK_PATH = "es.upm.dit.gsi.beast.mock.jade.bridgeMock.BridgeMockAgent";
     public static final String JADE_DANNY_BRIDGE_MOCK_PATH = "es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent";
     public static final String JADE_REPOSITORY_MOCK_PATH = "es.upm.dit.gsi.beast.mock.jade.repositoryMock.RepositoryMockAgent";
 

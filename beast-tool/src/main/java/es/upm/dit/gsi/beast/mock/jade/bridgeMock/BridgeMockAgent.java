@@ -2,14 +2,19 @@ package es.upm.dit.gsi.beast.mock.jade.bridgeMock;
 
 import es.upm.dit.gsi.beast.mock.jade.common.AgentRegistration;
 import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
+import es.upm.dit.gsi.beast.mock.common.Definitions;
 import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;
 
+import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import jade.domain.DFService;
 import jade.domain.FIPAException;
+import jade.domain.FIPAAgentManagement.DFAgentDescription;
+import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 import jade.util.Logger;
 
@@ -21,7 +26,7 @@ import java.util.logging.Level;
  * @author Alberto Mardomingo
  * 
  */
-public class BridgeMock extends Agent {
+public class BridgeMockAgent extends Agent {
 
     /**
      * Serial number for the agent
@@ -55,8 +60,10 @@ public class BridgeMock extends Agent {
      */
     public void setup() {
         introspector = JadeAgentIntrospector.getMyInstance(this);
-
-        introspector.storeBeliefValue(this, "message_count", 0);
+        
+        // Initializes the message count
+        introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT, 0);
+        introspector.storeBeliefValue(this, Definitions.SENDED_MESSAGE_COUNT, 0);
 
         MockConfiguration configuration = (MockConfiguration) this
                 .getArguments()[0];
@@ -64,7 +71,7 @@ public class BridgeMock extends Agent {
         LogActivator.logToFile(logger, this.getName(), Level.ALL);
 
         behaviour = configuration.getBehaviour();
-        // Attemps to register the aggent.
+        // Attempts to register the agent.
         registered = false;
         try {
             System.out.println(this.getLocalName());
@@ -79,8 +86,7 @@ public class BridgeMock extends Agent {
         }
 
         // Creates the instrospector
-        introspector = (JadeAgentIntrospector) PlatformSelector
-                .getAgentIntrospector("jade");
+        introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
 
         // Adds the behavior to store the messages.
         addBehaviour(new MessageReceiver());
@@ -96,7 +102,7 @@ public class BridgeMock extends Agent {
 
     /**
      * 
-     * Sends a message to the agent with the given agent
+     * Sends a message to the agent with the given name
      * 
      * @param String
      *            - The name of the destination
@@ -105,12 +111,51 @@ public class BridgeMock extends Agent {
      * @param int -
      */
     public void sendMessage(String agentName, String content, int perf) {
+        sendMessage(introspector.getAgent(agentName).getAID(), content, perf);
+//        ACLMessage msg = new ACLMessage(perf);
+//        msg.addReceiver(introspector.getAgent(agentName).getAID());
+//        msg.setContent(content);
+//        send(msg);
+//        updateIntegerBelief(Definitions.SENDED_MESSAGE_COUNT, 1);
+    }
+    
+    /**
+     * 
+     * Sends a message to the agent with the given AID
+     * 
+     * @param String
+     *            - The AID of the destination
+     * @param string
+     *            - The content of the message
+     * @param int -
+     */
+    public void sendMessage(AID agentAID, String content, int perf) {
         ACLMessage msg = new ACLMessage(perf);
-        msg.addReceiver(introspector.getAgent(agentName).getAID());
+        msg.addReceiver(agentAID);
         msg.setContent(content);
         send(msg);
+        updateIntegerBelief(Definitions.SENDED_MESSAGE_COUNT, 1);
     }
-
+    
+    /**
+     * Updates the given integer belief
+     * adding the given integer
+     * newBelief = previousBelief + givenValue
+     * 
+     * @param String - the belief name
+     * @param the value to add
+     */
+    public void updateIntegerBelief(String name, int value) {
+        introspector.storeBeliefValue(this, name, getIntegerBelief(name) + value);
+    }
+    
+    /**
+     * Returns the integer value o the given belief
+     */
+    public int getIntegerBelief(String name){
+        return (Integer) introspector.retrieveBelievesValue(this).get(name);
+    }
+    
     /**
      * Private class to receive the messages
      * 
@@ -122,11 +167,12 @@ public class BridgeMock extends Agent {
         public static final long serialVersionUID = 0;
 
         /**
-         * Constructor Creates the message receiver
+         * Constructor
+         * Creates the message receiver
          * 
          */
         public MessageReceiver() {
-            super(BridgeMock.this);
+            super(BridgeMockAgent.this);
         }
 
         /*
@@ -135,54 +181,62 @@ public class BridgeMock extends Agent {
          * @see jade.core.CyclicBehaviour#action()
          */
         public void action() {
-            ACLMessage msg = BridgeMock.this.receive();
+            ACLMessage msg = BridgeMockAgent.this.receive();
 
             if (msg != null) {
-                BridgeMock.this.logger.info("BridgeMock: Message receive.");
-                BridgeMock.this.logger.finer("Message: " + msg.toString());
-
+                BridgeMockAgent.this.logger.info("BridgeMock: Message receive.");
+                BridgeMockAgent.this.logger.finer("Message: " + msg.toString());
+                
+                BridgeMockAgent.this.updateIntegerBelief(Definitions.RECEIVED_MESSAGE_COUNT, 1);
                 // Recover the data to extract the message information
 
                 String type = ACLMessage.getPerformative(msg.getPerformative());
                 String sender_id = msg.getSender().getLocalName();
                 String content = msg.getContent();
 
-                if (sender_id.equals("BeastMessenger")) {
+               // if (sender_id != null) {
                     /*
-                     * The sender_id var is of no real use, because this will
-                     * crash if you call
+                     * The sender_id var is kinda a pain in the ass, because depending
+                     * on how the mock was created and configurated, doing
                      * 
-                     * BridgeMock.this.behaviour.processMessage(type, sender_id,
-                     * content)
+                     * BridgeMock.this.behaviour.processMessage(type, sender_id, content)
                      * 
-                     * So, I first try using sender_id. If it fails, I try
-                     * without it.
+                     * could crash.
+                     * 
+                     * So, I first try using sender_id. If it fails, I try without it.
                      */
+                    
                     // Intended destination
-                    String agentName;
+                    String agentName = null;
 
                     // Message Type
                     int msgType = -1;
 
                     // The content of the message
-                    String msgcontent;
+                    String msgcontent = null;
 
                     try {
-                        agentName = (String) BridgeMock.this.behaviour
+                        agentName = (String) BridgeMockAgent.this.behaviour
                                 .processMessage(type, sender_id, content);
-                        msgType = ACLMessage.getInteger((String) BridgeMock.this.behaviour
+                        msgType = ACLMessage.getInteger((String) BridgeMockAgent.this.behaviour
                                 .processMessage(type, sender_id, content));
-                        msgcontent = (String) BridgeMock.this.behaviour
+                        msgcontent = (String) BridgeMockAgent.this.behaviour
                                 .processMessage(type, sender_id, content);
                     } catch (Exception e) {
                         logger.fine("Exception while using sender_id. Attempting without it...");
-                        agentName = (String) BridgeMock.this.behaviour
-                                .processMessage(type, content);
-                        msgType = ACLMessage.getInteger((String) BridgeMock.this.behaviour
-                                .processMessage(type, content));
-                        msgcontent = (String) BridgeMock.this.behaviour
-                                .processMessage(type, content);
-                        logger.fine("Success");
+                        try {
+                            agentName = (String) BridgeMockAgent.this.behaviour
+                                    .processMessage(type, content);
+                            msgType = ACLMessage.getInteger((String) BridgeMockAgent.this.behaviour
+                                    .processMessage(type, content));
+                            msgcontent = (String) BridgeMockAgent.this.behaviour
+                                    .processMessage(type, content);
+                            logger.fine("Success");
+                        } catch (Exception e2) {
+                            logger.warning("Cannot recover the mock for this message");
+                            logger.warning(content);
+                            logger.warning(e.getStackTrace().toString());
+                        }
                     }
                     /*
                      * A. Mardomingo:
@@ -226,16 +280,44 @@ public class BridgeMock extends Agent {
                      * 
                      * FML
                      */
-
-                    // Send the new message
+                    
+                    // Given that I recover something...
                     if (agentName != null && msgcontent != null && msgType != -1) {
-                        sendMessage(agentName, msgcontent, msgType);
+                        // I first assume that the String "agentName contains the name of
+                        // the SERVICE, and therefore, attempt to find the intended receiver
+                        // using the DFService.
+                        DFAgentDescription agentDescription = new DFAgentDescription();
+                        ServiceDescription serviceDescription = new ServiceDescription();
+                        // The Service type is the Service Name,
+                        // so I set the service Name in the description
+                        serviceDescription.setName(agentName);
+                        agentDescription.addServices(serviceDescription);
+                        DFAgentDescription[] result = null;
+                        try {
+                            result = DFService.search(BridgeMockAgent.this, agentDescription);
+                        } catch (Exception e) {
+                            logger.warning("Something went wrong searching in the DFService");
+                            logger.warning(e.getMessage());
+                        }
+                        
+                        if (result != null && result.length > 0) {
+                            // It actually was the name of the service.
+                            for (DFAgentDescription dfad : result) {
+                                // The getName() method returns the AID of the agent, and not the name.
+                                // funny, huh?  
+                                sendMessage(dfad.getName(), msgcontent, msgType);
+                            }
+                        } else {
+                            // Then I am  assuming the String in agentName is the name of the agent,
+                            // and not the AID.
+                            sendMessage(agentName, msgcontent, msgType);
+                        }
                     } else {
                         block();
                     }
-                } else {
+                /*} else {
                     block();
-                }
+                }*/
             } else {
                 block(); // No received messages.
             }
