@@ -11,18 +11,6 @@ import es.upm.dit.gsi.beast.story.StoryRunner;
 public class CaseManager {
 
   /**
-   * This is the scenario: SetBelievesInAgent,
-   * where the GIVEN is described as: that TesterAgent is started in Jade Platform in Main-Container with Configuration 4,
-   * the WHEN is described as: tester wants to set a belief inside a Jade agent
-   * and the THEN is described as: the Jade belief is set
-   */
-  @Test
-  public void ScenarioSetBelievesInAgent() {
-  
-	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent.SetBelievesInAgent");
-  }
-
-  /**
    * This is the scenario: GetBelievesFromAgent,
    * where the GIVEN is described as: that TesterAgent is started in Jade Platform in Main-Container with Configuration 1,
    * the WHEN is described as: tester wants to get a belief from a Jade agent
@@ -32,6 +20,18 @@ public class CaseManager {
   public void ScenarioGetBelievesFromAgent() {
   
 	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jade.GetBelievesFromAgent.GetBelievesFromAgent");
+  }
+
+  /**
+   * This is the scenario: MessengerAgentReceiveAResponse,
+   * where the GIVEN is described as: that TesterAgent is started in Jade Platform in Main-Container with Configuration 6,
+   * the WHEN is described as: tester wants to send a message with MessageService to TesterAgent and to receive a response
+   * and the THEN is described as: the message is received by the tester through MessengerAgent
+   */
+  @Test
+  public void ScenarioMessengerAgentReceiveAResponse() {
+  
+	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jade.MessengerAgentReceiveAResponse.MessengerAgentReceiveAResponse");
   }
 
   /**
@@ -47,15 +47,15 @@ public class CaseManager {
   }
 
   /**
-   * This is the scenario: MessengerAgentReceiveAResponse,
-   * where the GIVEN is described as: that TesterAgent is started in Jade Platform in Main-Container with Configuration 6,
-   * the WHEN is described as: tester wants to send a message with MessageService to TesterAgent and to receive a response
-   * and the THEN is described as: the message is received by the tester through MessengerAgent
+   * This is the scenario: SetBelievesInAgent,
+   * where the GIVEN is described as: that TesterAgent is started in Jade Platform in Main-Container with Configuration 4,
+   * the WHEN is described as: tester wants to set a belief inside a Jade agent
+   * and the THEN is described as: the Jade belief is set
    */
   @Test
-  public void ScenarioMessengerAgentReceiveAResponse() {
+  public void ScenarioSetBelievesInAgent() {
   
-	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jade.MessengerAgentReceiveAResponse.MessengerAgentReceiveAResponse");
+	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jade.SetBelievesInAgent.SetBelievesInAgent");
   }
 
   /**
@@ -98,7 +98,7 @@ public class CaseManager {
    * This is the scenario: TestingMockRepository,
    * where the GIVEN is described as: one bridge mock and one repository mock in Jade Platform,
    * the WHEN is described as: bridge sends a message to repository
-   * and the THEN is described as: repository answers with the correct message=======
+   * and the THEN is described as: repository answers with the correct message
    */
   @Test
   public void ScenarioTestingMockRepository() {
