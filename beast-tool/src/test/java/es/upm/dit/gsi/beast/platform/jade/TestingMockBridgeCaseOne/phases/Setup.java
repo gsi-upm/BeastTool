@@ -1,12 +1,7 @@
 package es.upm.dit.gsi.beast.platform.jade.TestingMockBridgeCaseOne.phases;
 
-import es.upm.dit.gsi.beast.mock.common.Definitions;
-import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
-import jade.core.AID;
-import jade.domain.FIPAAgentManagement.DFAgentDescription;
-import jade.domain.FIPAAgentManagement.Envelope;
 import jade.lang.acl.ACLMessage;
-//import jadex.base.fipa.SFipa;
+import es.upm.dit.gsi.beast.mock.common.Definitions;
 
 /**  
  * This is the class that must create the Setup.

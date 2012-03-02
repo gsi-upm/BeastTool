@@ -47,6 +47,14 @@ public class ListenerMockAgent extends Agent{
      * Indicates if the agent have been registered
      */
     private boolean registered;
+    
+    /**
+     * @return if the agent is registered in DF service
+     */
+    public boolean isRegistered() {
+        return registered;
+    }
+    
     /**
      * Initializes the Agent.
      * 
@@ -70,11 +78,6 @@ public class ListenerMockAgent extends Agent{
             logger.warning("Exception while registring the ListenerMock");
             logger.warning(e.getMessage()); // Will this show anything useful?
         }
-        
-        // TODO revisar estas lineas de codigo, yo creo que no es necesario obtener de nuevo el introspector. 
-        // ya se obtiene en la primera linea dle metodo. ¡El introspector es estatico!
-        // Creates the instrospector
-        // introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
 
         // Adds the behavior to store the messages.
         addBehaviour(new MessageReceiver());
@@ -106,20 +109,11 @@ public class ListenerMockAgent extends Agent{
     
     /**
      * Returns all the stored messages.
-     * If the given argument is true, also deletes the list
-     * 
-     * @param boolean - If true, deletes the list of messages
+     *  
      * @return ArrayList<ACLMessage> - the list of messages
      */
-    public ArrayList<ACLMessage> getAllMessages(boolean delete) {
-        ArrayList<ACLMessage> toReturn = (ArrayList<ACLMessage>)messages.clone();
-        // Deletes everything
-        if (delete){
-            messages.clear();
-            modifyBeliefCount(- getBeliefCount());
-        }
-        return toReturn;
-        // Not really sure if this is the best way...
+    public ArrayList<ACLMessage> getAllMessages() {
+        return this.messages;
     }
     
     /**

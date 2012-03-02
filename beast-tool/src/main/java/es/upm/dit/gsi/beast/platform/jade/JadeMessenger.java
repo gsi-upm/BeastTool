@@ -3,10 +3,7 @@ package es.upm.dit.gsi.beast.platform.jade;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.lang.acl.ACLMessage;
-import jade.util.Logger;
 
-import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import es.upm.dit.gsi.beast.platform.Connector;

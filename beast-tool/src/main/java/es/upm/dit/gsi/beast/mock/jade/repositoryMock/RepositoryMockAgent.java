@@ -170,15 +170,15 @@ public class RepositoryMockAgent extends Agent {
 
         private RepositoryMockAgent myAgent;
 
-        /**
-         * Default Constructor Take the current instance of the
-         * RepositoryMockAgent as myAgent parameter.
-         * 
-         */
-        public Listen() {
-            super(RepositoryMockAgent.this);
-            this.myAgent = RepositoryMockAgent.this;
-        }
+//        /**
+//         * Default Constructor Take the current instance of the
+//         * RepositoryMockAgent as myAgent parameter.
+//         * 
+//         */
+//        public Listen() {
+//            super(RepositoryMockAgent.this);
+//            this.myAgent = RepositoryMockAgent.this;
+//        }
 
         /**
          * Constructor The target agent is passed as parameter.

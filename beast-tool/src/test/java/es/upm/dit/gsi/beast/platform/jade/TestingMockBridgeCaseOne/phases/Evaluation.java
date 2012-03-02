@@ -1,16 +1,6 @@
 package es.upm.dit.gsi.beast.platform.jade.TestingMockBridgeCaseOne.phases;
 
-import java.util.ArrayList;
-
 import es.upm.dit.gsi.beast.mock.common.Definitions;
-import es.upm.dit.gsi.beast.mock.jade.listenerMock.ListenerMockAgent;
-import es.upm.dit.gsi.beast.platform.PlatformSelector;
-import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
-import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
-
-import jade.core.Agent;
-import jade.lang.acl.ACLMessage;
-//import junit.framework.Assert;
 
 
 /**  

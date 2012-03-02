@@ -3,7 +3,6 @@ package es.upm.dit.gsi.beast.platform.jade.TestingMockBridgeCaseOne.phases;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import es.upm.dit.gsi.beast.mock.MockManager;
 import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
