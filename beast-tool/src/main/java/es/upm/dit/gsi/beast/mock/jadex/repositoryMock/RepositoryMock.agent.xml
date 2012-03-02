@@ -19,6 +19,7 @@
 		<import>jadex.commons.future.*</import>
 		<import>java.util.*</import>
 		<import>es.upm.dit.gsi.beast.mock.common.*</import>
+		<import>es.upm.dit.gsi.beast.mock.jadex.common.*</import>
 	</imports>
 
 	<capabilities>
