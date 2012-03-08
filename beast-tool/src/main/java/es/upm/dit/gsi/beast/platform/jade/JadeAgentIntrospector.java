@@ -66,7 +66,6 @@ public class JadeAgentIntrospector implements AgentIntrospector {
     @Override
     public void setBeliefValue(String agent_name, String belief_name,
             Object new_value, Connector connector) {
-        //TODO eliminate the argument connector. 
         JadeAgentIntrospector.getInstance().dataToTest.get(agent_name).put(belief_name, new_value);
     }
 

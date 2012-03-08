@@ -16,6 +16,8 @@ import es.upm.dit.gsi.beast.platform.jadex.JadexMessenger;
  */
 public class PlatformSelector {
 
+    //TODO create one constant -> public static final String PLATFORM_JADEX="jadex" for each platform and use them to avoid mistakes
+    
     /**
      * @param platform
      * @return the connector to the platform
