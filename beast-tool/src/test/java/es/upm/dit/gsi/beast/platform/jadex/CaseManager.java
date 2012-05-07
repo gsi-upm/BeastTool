@@ -1,7 +1,7 @@
 package es.upm.dit.gsi.beast.platform.jadex;
 
 import org.junit.Test;
-import es.upm.dit.gsi.beast.story.StoryRunner;
+import es.upm.dit.gsi.beast.story.BeastTestCaseRunner;
 
 /**
  * Main class to launch all tests in a single run
@@ -19,7 +19,7 @@ public class CaseManager {
   @Test
   public void ScenarioSetBelievesInAgent() {
   
-	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent.SetBelievesInAgent");
+	  BeastTestCaseRunner.executeBeastTestCase("es.upm.dit.gsi.beast.platform.jadex.SetBelievesInAgent.SetBelievesInAgent");
   }
 
   /**
@@ -31,7 +31,7 @@ public class CaseManager {
   @Test
   public void ScenarioGetBelievesFromAgent() {
   
-	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.GetBelievesFromAgent");
+	  BeastTestCaseRunner.executeBeastTestCase("es.upm.dit.gsi.beast.platform.jadex.GetBelievesFromAgent.GetBelievesFromAgent");
   }
 
   /**
@@ -43,7 +43,7 @@ public class CaseManager {
   @Test
   public void ScenarioTestingMockBridgeCaseOne() {
   
-	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseOne.TestingMockBridgeCaseOne");
+	  BeastTestCaseRunner.executeBeastTestCase("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseOne.TestingMockBridgeCaseOne");
   }
 
   /**
@@ -55,7 +55,7 @@ public class CaseManager {
   @Test
   public void ScenarioTestingMockBridgeCaseTwo() {
   
-	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseTwo.TestingMockBridgeCaseTwo");
+	  BeastTestCaseRunner.executeBeastTestCase("es.upm.dit.gsi.beast.platform.jadex.TestingMockBridgeCaseTwo.TestingMockBridgeCaseTwo");
   }
 
   /**
@@ -67,7 +67,7 @@ public class CaseManager {
   @Test
   public void ScenarioTestingMockListener() {
   
-	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jadex.TestingMockListener.TestingMockListener");
+	  BeastTestCaseRunner.executeBeastTestCase("es.upm.dit.gsi.beast.platform.jadex.TestingMockListener.TestingMockListener");
   }
 
   /**
@@ -79,7 +79,7 @@ public class CaseManager {
   @Test
   public void ScenarioTestingMockRepository() {
   
-	  StoryRunner.executeStory("es.upm.dit.gsi.beast.platform.jadex.TestingMockRepository.TestingMockRepository");
+	  BeastTestCaseRunner.executeBeastTestCase("es.upm.dit.gsi.beast.platform.jadex.TestingMockRepository.TestingMockRepository");
   }
 
 }

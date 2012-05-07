@@ -167,6 +167,7 @@ public class ListenerMockAgent extends Agent{
                
                // Stores the message
                ListenerMockAgent.this.storeMessage(msg);
+               System.out.println("Message received");
            } else {
                block();
            }

@@ -2,7 +2,7 @@ package es.upm.dit.gsi.beast.mock;
 
 import jadex.base.fipa.SFipa;
 import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
-import es.upm.dit.gsi.beast.story.phases.Scenario;
+import es.upm.dit.gsi.beast.story.BeastTestCase;
 
 /**
  * This class creates mock agents on the Scenario
@@ -29,21 +29,21 @@ public class MockManager {
      */
     public static void startMockJadexAgent(String agent_name,
             String agent_path, MockConfiguration configuration,
-            Scenario scenario) {
+            BeastTestCase story) {
 
-        scenario.startAgent(agent_name, agent_path);
-        scenario.sendMessageToAgent(agent_name, SFipa.INFORM, configuration);
+        story.startAgent(agent_name, agent_path);
+        story.sendMessageToAgent(agent_name, SFipa.INFORM, configuration);
     }
 
     
     public static void startMockJadeAgent(String agent_name, String agent_path, 
                                             MockConfiguration configuration, 
-                                            Scenario scenario) {
+                                            BeastTestCase story) {
 
 //        scenario.startAgent(agent_name, agent_path);
         Object [] arguments = new Object[1];
         arguments[0] = configuration;
-        scenario.startAgent(agent_name, agent_path, "MockContainer", arguments);
+        story.startAgent(agent_name, agent_path, "MockContainer", arguments);
 //        scenario.sendMessageToAgent(agent_name, SFipa.INFORM, configuration);
     }
 }

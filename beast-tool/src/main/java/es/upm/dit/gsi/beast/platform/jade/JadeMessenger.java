@@ -42,6 +42,7 @@ public class JadeMessenger implements Messenger {
             Object message_content, Connector connector) {
         Agent messenger = (Agent) connector.getMessageService();
         JadeAgentIntrospector introspector = (JadeAgentIntrospector) PlatformSelector.getAgentIntrospector("jade");
+
         ACLMessage msg = null;
         if(message_content instanceof ACLMessage) {
             msg = (ACLMessage) message_content;
@@ -51,7 +52,7 @@ public class JadeMessenger implements Messenger {
         } else {
             connector.getLogger().warning("Incorrect message_content value. It should be a ACLMessage or a String.");
         }
-        
+
         for (String name : agent_name) {
             Agent agent = introspector.getAgent(name);
             AID aid = agent.getAID();

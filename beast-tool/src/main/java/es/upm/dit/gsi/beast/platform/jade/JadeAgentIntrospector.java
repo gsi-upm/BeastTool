@@ -4,6 +4,8 @@ import jade.core.Agent;
 
 import java.util.HashMap;
 
+import EDU.oswego.cs.dl.util.concurrent.ObservableSync.SyncObserver;
+
 import es.upm.dit.gsi.beast.platform.AgentIntrospector;
 import es.upm.dit.gsi.beast.platform.Connector;
 
@@ -55,7 +57,7 @@ public class JadeAgentIntrospector implements AgentIntrospector {
      * @see es.upm.dit.gsi.beast.platform.AgentIntrospector#getBeliefValue(java.lang.String, java.lang.String, es.upm.dit.gsi.beast.platform.Connector)
      */
     @Override
-    public Object getBeliefValue(String agent_name, String belief_name,
+    public synchronized Object getBeliefValue(String agent_name, String belief_name,
             Connector connector) {
         return JadeAgentIntrospector.getInstance().dataToTest.get(agent_name).get(belief_name);
     }
@@ -64,7 +66,7 @@ public class JadeAgentIntrospector implements AgentIntrospector {
      * @see es.upm.dit.gsi.beast.platform.AgentIntrospector#setBeliefValue(java.lang.String, java.lang.String, java.lang.Object, es.upm.dit.gsi.beast.platform.Connector)
      */
     @Override
-    public void setBeliefValue(String agent_name, String belief_name,
+    public synchronized void setBeliefValue(String agent_name, String belief_name,
             Object new_value, Connector connector) {
         JadeAgentIntrospector.getInstance().dataToTest.get(agent_name).put(belief_name, new_value);
     }

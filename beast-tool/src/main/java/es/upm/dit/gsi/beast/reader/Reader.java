@@ -109,10 +109,10 @@ public class Reader {
                             }
                             aux_package_path = tests_package_path + "."
                                     + scenarioJavaName;
-                            Reader.createFolder(aux_package_path, dest_dir);
-                            testCase_package_path = aux_package_path
-                                    + ".phases";
-                            Reader.createFolder(testCase_package_path, dest_dir);
+//                            Reader.createFolder(aux_package_path, dest_dir);
+//                            testCase_package_path = aux_package_path
+//                                    + ".phases";
+//                            Reader.createFolder(testCase_package_path, dest_dir);
                             
                             // Writes story_example.story
                             story_file_writer = createFileWriter(
@@ -126,12 +126,12 @@ public class Reader {
                                 givenDescription = givenDescription + " "
                                         + line_words.nextToken();
                             }
-                            if (fileDoesNotExist("Scenario.java",
-                                    testCase_package_path, dest_dir)) {
-                                CreateScenario.createScenario(scenarioJavaName,
-                                        testCase_package_path,
-                                        givenDescription, dest_dir);
-                            }
+//                            if (fileDoesNotExist("Scenario.java",
+//                                    testCase_package_path, dest_dir)) {
+//                                CreateScenario.createScenario(scenarioJavaName,
+//                                        testCase_package_path,
+//                                        givenDescription, dest_dir);
+//                            }
                             story_file_writer.write(nextLine + "\n");
 //                            writeClassDatabase(givenDescription,
 //                                    testCase_package_path + ".Scenario");
@@ -142,12 +142,12 @@ public class Reader {
                                 whenDescription = whenDescription + " "
                                         + line_words.nextToken();
                             }
-                            if (fileDoesNotExist("Setup.java",
-                                    testCase_package_path, dest_dir)) {
-                                CreateSetup.createSetup(scenarioJavaName,
-                                        testCase_package_path, whenDescription,
-                                        dest_dir);
-                            }
+//                            if (fileDoesNotExist("Setup.java",
+//                                    testCase_package_path, dest_dir)) {
+//                                CreateSetup.createSetup(scenarioJavaName,
+//                                        testCase_package_path, whenDescription,
+//                                        dest_dir);
+//                            }
                             story_file_writer.write(nextLine + "\n");
 //                            writeClassDatabase(whenDescription,
 //                                    testCase_package_path + ".Setup");
@@ -158,13 +158,13 @@ public class Reader {
                                 thenDescription = thenDescription + " "
                                         + line_words.nextToken();
                             }
-                            if (fileDoesNotExist("Evaluation.java",
-                                    testCase_package_path, dest_dir)) {
-                                CreateEvaluation.createEvaluation(
-                                        scenarioJavaName,
-                                        testCase_package_path, thenDescription,
-                                        dest_dir);
-                            }
+//                            if (fileDoesNotExist("Evaluation.java",
+//                                    testCase_package_path, dest_dir)) {
+//                                CreateEvaluation.createEvaluation(
+//                                        scenarioJavaName,
+//                                        testCase_package_path, thenDescription,
+//                                        dest_dir);
+//                            }
                             story_file_writer.write(nextLine + "\n");
 //                            writeClassDatabase(thenDescription,
 //                                    testCase_package_path + ".Evaluation");
@@ -184,7 +184,7 @@ public class Reader {
                                 // TODO if there is a complex word in the name
                                 // like MyAgent or MessengerAgent -> this is the cause of a
                                 // failure in the name of .story file and the test fails
-                                CreateStory.createStory(scenarioJavaName,
+                                CreateBeastTestCase.createBeastTestCase(scenarioJavaName,
                                         platformName, aux_package_path,
                                         dest_dir, loggingPropFile,givenDescription,
                                         whenDescription, thenDescription);

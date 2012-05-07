@@ -77,10 +77,11 @@ public class RequestCommunicationPlan extends MockAgentPlan {
         logger.info("OUT: DF-Service " + df_service + " ---- MsgType "
                 + msgType + " ---- Content " + out_content);
         
-        if (msgType == "SFipa.REQUEST")
+        if (msgType.equals(SFipa.REQUEST)) {
             sendRequestToDF(df_service, out_content);
-        if (msgType == "SFipa.INFORM")
+        } else if (msgType.equals(SFipa.INFORM)) {
             sendInformToDF(df_service, out_content);
+        }
     }
 
     // /**

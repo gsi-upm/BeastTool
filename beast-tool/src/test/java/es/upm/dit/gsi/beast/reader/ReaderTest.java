@@ -28,14 +28,8 @@ public class ReaderTest {
                 "src/test/java/es/upm/dit/gsi/beast/reader/test/ThisIsOtherScenario",
                 "ThisIsOtherScenario.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/SetBelievesInAgent/phases",
-                "Scenario.java").exists());
-        Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/SetBelievesInAgent/phases",
-                "Setup.java").exists());
-        Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/GetBelievesFromAgent/phases",
-                "Evaluation.java").exists());
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/SetBelievesInAgent",
+                "SetBelievesInAgent.java").exists());
 
         this.cleanUp();
     }
@@ -59,14 +53,8 @@ public class ReaderTest {
                 "src/test/java/es/upm/dit/gsi/beast/reader/test/ThisIsOtherScenario",
                 "ThisIsOtherScenario.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/SetBelievesInAgent/phases",
-                "Scenario.java").exists());
-        Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/SetBelievesInAgent/phases",
-                "Setup.java").exists());
-        Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/GetBelievesFromAgent/phases",
-                "Evaluation.java").exists());
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/SetBelievesInAgent",
+                "SetBelievesInAgent.java").exists());
 
         this.cleanUp();
     }

@@ -13,12 +13,12 @@ import org.jbehave.core.steps.SilentStepMonitor;
  *
  * @author Jorge Solitario
  */
-public class StoryRunner extends Embedder {
+public class BeastTestCaseRunner extends Embedder {
 
     /**
      * Internal method of JBehave.
      */
-    public StoryRunner() {
+    public BeastTestCaseRunner() {
         this.embedderControls().doGenerateViewAfterStories(false)
                 .doIgnoreFailureInStories(false).doIgnoreFailureInView(false);
     }
@@ -44,8 +44,8 @@ public class StoryRunner extends Embedder {
      * @param className
      *            the name of the class, inside its path: es/upm/...
      */
-    public static void executeStory(String className) {
-        Embedder embedder = new StoryRunner();
+    public static void executeBeastTestCase(String className) {
+        Embedder embedder = new BeastTestCaseRunner();
         embedder.runAsEmbeddables(asList(className));
     }
 }

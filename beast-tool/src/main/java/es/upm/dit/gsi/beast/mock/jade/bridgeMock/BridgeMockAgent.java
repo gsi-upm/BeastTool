@@ -112,6 +112,7 @@ public class BridgeMockAgent extends Agent {
      */
     public void sendMessage(String agentName, String content, int perf) {
         sendMessage(introspector.getAgent(agentName).getAID(), content, perf);
+        System.out.println("Bridge: message sent");
 //        ACLMessage msg = new ACLMessage(perf);
 //        msg.addReceiver(introspector.getAgent(agentName).getAID());
 //        msg.setContent(content);

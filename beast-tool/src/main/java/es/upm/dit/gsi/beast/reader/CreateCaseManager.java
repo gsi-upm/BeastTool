@@ -38,8 +38,8 @@ public class CreateCaseManager {
             caseManagerWriter.write("\n");
             caseManagerWriter.write("import org.junit.Test;\n");
             caseManagerWriter
-                    .write("import es.upm.dit.gsi.beast.story.StoryRunner;\n"); // import
-                                                                                // StoryRunner
+                    .write("import es.upm.dit.gsi.beast.story.BeastTestCaseRunner;\n"); // import
+                                                                                // BeastTestCase
             caseManagerWriter.write("\n");
             caseManagerWriter.write("/**\n");
             caseManagerWriter
@@ -99,7 +99,7 @@ public class CreateCaseManager {
             caseManagerWriter.write("  public void Scenario" + test_name
                     + "() {\n");
             caseManagerWriter.write("  \n");
-            caseManagerWriter.write("	  StoryRunner.executeStory(\""
+            caseManagerWriter.write("	  BeastTestCaseRunner.executeBeastTestCase(\""
                     + test_path + "\");\n");
             caseManagerWriter.write("  }\n");
             caseManagerWriter.write("\n");
