@@ -6,7 +6,7 @@
 	<packaging>jar</packaging>
 	<name>Beast Tool</name>
 	<description>Behavioural Agents Simple Testing Tool</description>
-	<url>http://www.gsi.dit.upm.es</url>
+	<url>http://www.gsi.dit.upm.es/index.php/es/software/149-beast-tool.html</url>
 	<licenses>
 		<license>
 			<name>GNU General Public License, version 2</name>
@@ -33,6 +33,11 @@
 		</developer>
 
 	</developers>
+
+	<issueManagement>
+		<system>Google Code</system>
+		<url>http://code.google.com/p/beast-tool/issues/list</url>
+	</issueManagement>
 
 	<distributionManagement>
 		<repository>
