@@ -2,8 +2,6 @@ package es.upm.dit.gsi.beast.mock.common;
 
 public class Definitions {
 
-  //TODO por convenio las constantes deben ser en mayusculas.
-    
     public static final String JADEX_LISTENER_MOCK_PATH = "es/upm/dit/gsi/beast/mock/jadex/listenerMock/ListenerMock.agent.xml";
     public static final String JADEX_BRIDGE_MOCK_PATH = "es/upm/dit/gsi/beast/mock/jadex/bridgeMock/BridgeMock.agent.xml";
     public static final String JADEX_REPOSITORY_MOCK_PATH = "es/upm/dit/gsi/beast/mock/jadex/repositoryMock/RepositoryMock.agent.xml";
