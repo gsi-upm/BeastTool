@@ -1,17 +1,20 @@
-package es.upm.dit.gsi.beast.reader;
+package es.upm.dit.gsi.beast.reader.mas;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * Main class that generates the CaseManager.java File to run all the test given
  * by our client.
  * 
+ * @author Alberto Mardomingo
  * @author Jorge Solitario
  */
-public class CreateCaseManager {
+public class CreateMASCaseManager {
 
     /**
      * This method creates CaseManager file and writes on it: the package, the
@@ -22,13 +25,13 @@ public class CreateCaseManager {
      * @param dest_dir
      *            as src/main/java
      * 
-     * @return the File the its first part written
+     * @return the File with its first part written
      */
-    public static File startCaseManager(String package_path, String dest_dir) {
+    public static File startMASCaseManager(String package_path, String dest_dir) {
 
-        Logger logger = Logger.getLogger("CreateCaseManager.startCaseManager");
+        Logger logger = Logger.getLogger("CreateMASCaseManager.startMASCaseManager");
 
-        File folder = Reader.createFolder(package_path, dest_dir);
+        File folder = MASReader.createFolder(package_path, dest_dir);
         File caseManager = new File(folder, "CaseManager.java");
         FileWriter caseManagerWriter;
 
@@ -37,9 +40,10 @@ public class CreateCaseManager {
             caseManagerWriter.write("package " + package_path + ";\n");
             caseManagerWriter.write("\n");
             caseManagerWriter.write("import org.junit.Test;\n");
+            caseManagerWriter.write("import org.junit.runner.JUnitCore;\n");
             caseManagerWriter
-                    .write("import es.upm.dit.gsi.beast.story.BeastTestCaseRunner;\n"); // import
-                                                                                // BeastTestCase
+                    .write("import es.upm.dit.gsi.beast.story.BeastTestCaseRunner;\n");
+                    // import BeastTestCase
             caseManagerWriter.write("\n");
             caseManagerWriter.write("/**\n");
             caseManagerWriter
@@ -96,7 +100,7 @@ public class CreateCaseManager {
                     + then + "\n");
             caseManagerWriter.write("   */\n");
             caseManagerWriter.write("  @Test\n");
-            caseManagerWriter.write("  public void Scenario" + test_name
+            caseManagerWriter.write("  public void Scenario" + MASReader.createFirstLowCaseName(test_name)
                     + "() {\n");
             caseManagerWriter.write("  \n");
             caseManagerWriter.write("	  BeastTestCaseRunner.executeBeastTestCase(\""
@@ -106,20 +110,69 @@ public class CreateCaseManager {
             caseManagerWriter.flush();
             caseManagerWriter.close();
         } catch (IOException e) {
-            Logger logger = Logger.getLogger("CreateCaseManager.createTest");
+            Logger logger = Logger.getLogger("CreateMASCaseManager.createTest");
             logger.info("ERROR writing the file");
         }
 
     }
 
+    
+    /**
+     * The third method to write caseManager. Its task is to write the call to 
+     * the story to be run.
+     * 
+     * @param caseManager
+     *            the file where the test must be written
+     * @param storyName
+     *            the name of the story
+     * @param test_path
+     *            the path where the story can be found
+     * @param user
+     *            the user requesting the story
+     * @param feature
+     *            the feature requested by the user
+     * @param benefit
+     *            the benefit provided by the feature
+     */
+    public static void addStory(File caseManager, String storyName,
+            String testPath, String user, String feature, String benefit) {
+        FileWriter caseManagerWriter;
+        try {
+            caseManagerWriter = new FileWriter(caseManager, true);
+            caseManagerWriter.write("  /**\n");
+            caseManagerWriter.write("   * This is the story: " + storyName
+                    + ",\n");
+            caseManagerWriter.write("   * requested by: "
+                    + user + ",\n");
+            caseManagerWriter.write("   * providing the feature: " + feature
+                    + "\n");
+            caseManagerWriter.write("   * so the user gets the benefit: "
+                    + benefit + "\n");
+            caseManagerWriter.write("   */\n");
+            caseManagerWriter.write("  @Test\n");
+            caseManagerWriter.write("  public void " + MASReader.createFirstLowCaseName(storyName)
+                    + "() {\n");
+            String storyClass =  MASReader.createClassName(storyName);
+            caseManagerWriter.write("      JUnitCore.main(\""
+                    + testPath  + "." + storyClass+ "\");\n");
+            caseManagerWriter.write("  }\n");
+            caseManagerWriter.write("\n");
+            caseManagerWriter.flush();
+            caseManagerWriter.close();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger("CreateMASCaseManager.createTest");
+            logger.info("ERROR writing the file");
+        }
+
+    }
+    
     /**
      * Method to close the file caseManager. It is called just one time, by
      * Reader.java.
      * 
      * @param caseManager
      */
-
-    public static void closeCaseManager(File caseManager) {
+    public static void closeMASCaseManager(File caseManager) {
 
         FileWriter caseManagerWriter;
         try {
@@ -129,7 +182,7 @@ public class CreateCaseManager {
             caseManagerWriter.close();
         } catch (IOException e) {
             Logger logger = Logger
-                    .getLogger("CreateCaseManager.closeCaseManager");
+                    .getLogger("CreateMASCaseManager.closeMASCaseManager");
             logger.info("ERROR: There is a mistake closing caseManager file.\n");
         }
 

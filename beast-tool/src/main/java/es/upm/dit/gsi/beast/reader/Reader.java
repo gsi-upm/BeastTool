@@ -12,6 +12,9 @@ import java.util.StringTokenizer;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
+import es.upm.dit.gsi.beast.reader.mas.MASReader;
+import es.upm.dit.gsi.beast.reader.system.SystemReader;
+
 /**
  * Main class to transform the plain text given by the client to the necessary
  * classes to run each Test. These classes are the Scenario, Setup and
@@ -24,23 +27,19 @@ import java.util.logging.Logger;
  */
 public class Reader {
 
-    private static Logger logger = Logger.getLogger(Reader.class.getName());
-    private String scenarioJavaName = null;
-    private String scenarioStoryName = null;
-    private String givenDescription = null;
-    private String whenDescription = null;
-    private String thenDescription = null;
-    private String aux_package_path = null;
-    private String testCase_package_path = null;
-    private FileWriter story_file_writer = null;
+    private static final String MAS = "MAS";
+    private static final String SYSTEM = "SYSTEM";
 
+    private static Logger logger = Logger.getLogger(Reader.class.getName());
+    
     /**
-     * 
-     * Constructor that calls to the main method of the class to create all java
-     * classes.
+     * Main method of the class, which handles all the process to create all
+     * tests.
      * 
      * @param ScenariosList
      *            , it the plain text given by the client
+     * @param platformName
+     *            , to choose the platform
      * @param dest_dir
      *            , the folder where our classes are created
      * @param tests_package_path
@@ -50,10 +49,11 @@ public class Reader {
      * @param loggingPropFile
      *            , properties file
      */
-    public Reader(String ScenariosList, String platformName, String dest_dir,
-            String tests_package_path, String casemanager_path,
-            String loggingPropFile) {
-        this.generateJavaFiles(ScenariosList, platformName, dest_dir,
+    public static void generateJavaFiles(String ScenariosList,
+            String platformName, String dest_dir, String tests_package_path,
+            String casemanager_path, String loggingPropFile) {
+        // By default, I use a MAS Reader.
+        MASReader.generateJavaFiles(ScenariosList, platformName, dest_dir,
                 tests_package_path, casemanager_path, loggingPropFile);
     }
 
@@ -74,134 +74,18 @@ public class Reader {
      * @param loggingPropFile
      *            , properties file
      */
-    private void generateJavaFiles(String ScenariosList, String platformName,
-            String dest_dir, String tests_package_path,
-            String casemanager_path, String loggingPropFile) {
-
-        BufferedReader fileReader = createFileReader(ScenariosList);
-        if (fileReader == null) {
-            logger.severe("ERROR Reading the file " + ScenariosList);
+    public static void generateJavaFiles(String ScenariosList,
+            String platformName, String dest_dir, String tests_package_path,
+            String casemanager_path, String loggingPropFile, String type) {
+        if (type.equalsIgnoreCase(MAS)) {
+            MASReader.generateJavaFiles(ScenariosList, platformName, dest_dir,
+                    tests_package_path, casemanager_path, loggingPropFile);
+        } else if (type.equalsIgnoreCase(SYSTEM)) {
+            SystemReader.generateJavaFiles(ScenariosList, platformName,
+                    dest_dir, tests_package_path, casemanager_path,
+                    loggingPropFile);
         } else {
-            // start generation of CaseManager
-            File caseManager = CreateCaseManager.startCaseManager(
-                    casemanager_path, dest_dir);
-            try {
-                String nextLine = null;
-                while ((nextLine = fileReader.readLine()) != null) {
-
-                    StringTokenizer line_words = new StringTokenizer(nextLine);
-                    if (line_words.hasMoreTokens()) {
-                        String next = line_words.nextToken();
-
-                        if (next.matches("Scenario:")) {
-                            scenarioJavaName = line_words.nextToken();
-                            scenarioStoryName = scenarioJavaName.toLowerCase();
-
-                            scenarioJavaName = changeFirstLetterToCapital(scenarioJavaName);
-
-                            while (line_words.hasMoreTokens()) {
-                                String newWord = line_words.nextToken();
-                                scenarioJavaName = scenarioJavaName
-                                        + changeFirstLetterToCapital(newWord
-                                                .toLowerCase());
-                                scenarioStoryName = scenarioStoryName + "_"
-                                        + newWord.toLowerCase();
-                            }
-                            aux_package_path = tests_package_path + "."
-                                    + scenarioJavaName;
-//                            Reader.createFolder(aux_package_path, dest_dir);
-//                            testCase_package_path = aux_package_path
-//                                    + ".phases";
-//                            Reader.createFolder(testCase_package_path, dest_dir);
-                            
-                            // Writes story_example.story
-                            story_file_writer = createFileWriter(
-                                    scenarioStoryName, aux_package_path,
-                                    dest_dir);
-                            story_file_writer.write(nextLine + "\n");
-
-                        } else if (next.matches("Given")) {
-                            givenDescription = line_words.nextToken();
-                            while (line_words.hasMoreTokens()) {
-                                givenDescription = givenDescription + " "
-                                        + line_words.nextToken();
-                            }
-//                            if (fileDoesNotExist("Scenario.java",
-//                                    testCase_package_path, dest_dir)) {
-//                                CreateScenario.createScenario(scenarioJavaName,
-//                                        testCase_package_path,
-//                                        givenDescription, dest_dir);
-//                            }
-                            story_file_writer.write(nextLine + "\n");
-//                            writeClassDatabase(givenDescription,
-//                                    testCase_package_path + ".Scenario");
-
-                        } else if (next.matches("When")) {
-                            whenDescription = line_words.nextToken();
-                            while (line_words.hasMoreTokens()) {
-                                whenDescription = whenDescription + " "
-                                        + line_words.nextToken();
-                            }
-//                            if (fileDoesNotExist("Setup.java",
-//                                    testCase_package_path, dest_dir)) {
-//                                CreateSetup.createSetup(scenarioJavaName,
-//                                        testCase_package_path, whenDescription,
-//                                        dest_dir);
-//                            }
-                            story_file_writer.write(nextLine + "\n");
-//                            writeClassDatabase(whenDescription,
-//                                    testCase_package_path + ".Setup");
-
-                        } else if (next.matches("Then")) {
-                            thenDescription = line_words.nextToken();
-                            while (line_words.hasMoreTokens()) {
-                                thenDescription = thenDescription + " "
-                                        + line_words.nextToken();
-                            }
-//                            if (fileDoesNotExist("Evaluation.java",
-//                                    testCase_package_path, dest_dir)) {
-//                                CreateEvaluation.createEvaluation(
-//                                        scenarioJavaName,
-//                                        testCase_package_path, thenDescription,
-//                                        dest_dir);
-//                            }
-                            story_file_writer.write(nextLine + "\n");
-//                            writeClassDatabase(thenDescription,
-//                                    testCase_package_path + ".Evaluation");
-
-                            story_file_writer.flush();
-                            story_file_writer.close();
-                            String test_path = createTestPath(aux_package_path,
-                                    scenarioJavaName);
-                            CreateCaseManager.createTest(caseManager,
-                                    scenarioJavaName, test_path,
-                                    scenarioJavaName, givenDescription,
-                                    whenDescription, thenDescription);
-                            
-                            if (fileDoesNotExist(scenarioJavaName + ".java",
-                                    aux_package_path, dest_dir)) {
-                                // Writes StoryExample.java
-                                // TODO if there is a complex word in the name
-                                // like MyAgent or MessengerAgent -> this is the cause of a
-                                // failure in the name of .story file and the test fails
-                                CreateBeastTestCase.createBeastTestCase(scenarioJavaName,
-                                        platformName, aux_package_path,
-                                        dest_dir, loggingPropFile,givenDescription,
-                                        whenDescription, thenDescription);
-                            }
-
-                        } else {
-                            logger.severe("ERROR: The test writen in the plain text can not be handed");
-                            logger.severe("Try again whit the following key-words: {Scenario:, Given, When, Then}");
-                        }
-                    }
-                }
-            } catch (IOException e) {
-                logger.severe("ERROR in Reader class");
-            }
-            CreateCaseManager.closeCaseManager(caseManager);
-            logger.info("Plain text has been read and test files are ready");
-
+            logger.severe("Cannot recognize System or MAS");
         }
     }
 
@@ -211,11 +95,58 @@ public class Reader {
      * @param word
      * @return the same word starting with capital letter
      */
-    private String changeFirstLetterToCapital(String word) {
+    public static String changeFirstLetterToCapital(String word) {
         char[] letras = word.toCharArray();
         char a = letras[0];
         letras[0] = Character.toUpperCase(a);
         return new String(letras);
+    }
+
+    /**
+     * Method used to write the name of the scenarios methods
+     * 
+     * @param word
+     * @return the same word starting with lower case
+     */
+    public static String changeFirstLetterToLowerCase(String word) {
+        char[] letras = word.toCharArray();
+        char a = letras[0];
+        letras[0] = Character.toLowerCase(a);
+        return new String(letras);
+    }
+
+    /**
+     * Given a string with the scenario or story name, creates a Class Name with
+     * no spaces and first letter capital
+     * 
+     * @param String
+     *            - The name of the scenario/story. It should be in lower case.
+     * @returns String - The class name
+     */
+    public static String createClassName(String scenarioDescription) {
+        String[] words = scenarioDescription.trim().split(" ");
+        String name = "";
+        for (int i = 0; i < words.length; i++) {
+            name += changeFirstLetterToCapital(words[i]);
+        }
+        return name;
+    }
+
+    /**
+     * Given a string with method or package name, creates a Class Name with no
+     * spaces and first letter lower case
+     * 
+     * @param String
+     *            - The name of the scenario/story. It should be in lower case.
+     * @returns String - The class name
+     */
+    public static String createFirstLowCaseName(String scenarioDescription) {
+        String[] words = scenarioDescription.trim().split(" ");
+        String name = "";
+        for (int i = 0; i < words.length; i++) {
+            name += changeFirstLetterToCapital(words[i]);
+        }
+        return changeFirstLetterToLowerCase(name);
     }
 
     /**
@@ -227,7 +158,8 @@ public class Reader {
      * @param dest_dir
      * @return true when the file does not exist
      */
-    private boolean fileDoesNotExist(String file, String path, String dest_dir) {
+    protected static boolean fileDoesNotExist(String file, String path,
+            String dest_dir) {
 
         File f = new File(dest_dir);
         if (!f.isDirectory())
@@ -243,59 +175,7 @@ public class Reader {
         boolean result = !javaFile.exists();
 
         return result;
-    }
-
-//    /**
-//     * Method that generates the ClassDatabase which Story.java will use to
-//     * translate plain text into java classes.
-//     * 
-//     * @param key
-//     *            , the plain text given by the client
-//     * @param value
-//     *            , the java class to generate key's step
-//     */
-//    @SuppressWarnings("unchecked")
-//    private void writeClassDatabase(String key, String value) {
-//        XStream xstream = new XStream();
-//        try {
-//            File f = new File("ClassDatabase.xml");
-//            // TODO change the name to BeastDB or something like that
-//            // TODO review this delete because the size of this file could be
-//            // really large
-//            // f.delete();
-//
-//            if (!f.exists()) {
-//                FileWriter w = null;
-//                try {
-//                    w = new FileWriter(f);
-//                    w.write("<map>");
-//                    w.write("</map>");
-//                    w.flush();
-//                    w.close();
-//                    logger.fine("ClassDatabase.xml created.");
-//                } catch (IOException e) {
-//                    logger.severe("ClassDatabase.xml could not be created. Exception: "
-//                            + e);
-//                    e.printStackTrace();
-//                }
-//            }
-//            HashMap<String, String> hm = (HashMap<String, String>) xstream
-//                    .fromXML(new FileInputStream("ClassDatabase.xml"));
-//            if (!hm.containsKey(key)) {
-//                hm.put(key, value);
-//            } else {
-//                hm.remove(key);
-//                hm.put(key, value);
-//            }
-//            xstream.toXML(hm, new FileOutputStream("ClassDatabase.xml", false));
-//
-//        } catch (FileNotFoundException e) {
-//            logger.severe("ERROR: File ClassDatabase.xml can not be found. Exception: "
-//                    + e);
-//        } catch (Exception e) {
-//            logger.severe("ERROR: writing ClassDataBase.xml -> Exception: " + e);
-//        }
-//    }
+    } // Excuse me, I'm gonna go cry in a corner calling for my mom.
 
     /**
      * This method returns the existing folder, and if it does not exist, the
@@ -346,7 +226,8 @@ public class Reader {
             if (path2.equals("")) {
                 path2 = part;
             } else {
-                path2 = path2 + File.separator + part;
+                path2 = path2 + File.separator
+                        + changeFirstLetterToLowerCase(createClassName(part));
             }
         }
 
@@ -362,7 +243,8 @@ public class Reader {
      * @param scenarioName
      * @return the new path, similar than es/upm/dit/gsi...
      */
-    private String createTestPath(String aux_package_path, String scenarioName) {
+    protected static String createTestPath(String aux_package_path,
+            String scenarioName) {
 
         return aux_package_path + "." + scenarioName;
     }
@@ -373,13 +255,45 @@ public class Reader {
      * @param file_name
      * @return the filereader to translate client's plain text into our files
      */
-    private BufferedReader createFileReader(String file_name) {
+    protected static BufferedReader createFileReader(String file_name) {
         try {
             return new BufferedReader(new FileReader(file_name));
         } catch (FileNotFoundException e) {
-            Logger logger = Logger.getLogger(Reader.class.getName());
+            Logger logger = Logger.getLogger(MASReader.class.getName());
             logger.severe("ERROR: " + e.toString());
             return null;
+        }
+    }
+
+    /**
+     * Creates the .story file necessary for every Beast Test Case.
+     * 
+     * @param scenarioName - The name of the scenario, with spaces
+     * @param packagePath - The package of the BeastTestCase
+     * @param scenarioDescription - the scenario name
+     * @param givenDescription - The given description
+     * @param whenDescription - The when description
+     * @param thenDescription - The then description
+     */
+    public static void createDotStoryFile(String scenarioName, String packagePath,
+            String givenDescription, String whenDescription, String thenDescription) {
+        String[] folders = packagePath.split(".");
+        String destDir = "src/test/java";
+        for (String folder : folders) {
+            destDir += "/" + folder;
+        }
+        System.out.println("scenarioName: " + scenarioName);
+        FileWriter writer = createFileWriter(createDotStoryName(scenarioName),
+                packagePath, destDir);
+        try {
+            writer.write("Scenario: " + scenarioName + "\n");
+            writer.write("Given " + givenDescription + "\n");
+            writer.write("When " + whenDescription + "\n");
+            writer.write("Then " + thenDescription + "\n");
+            writer.close();
+        } catch (Exception e) {
+            logger.severe("Unable to write the .story file for the scenario " + scenarioName);
+            logger.severe(e.getMessage());
         }
     }
 
@@ -391,7 +305,7 @@ public class Reader {
      * @param dest_dir
      * @return The file writer that generates the .story files for each test
      */
-    private FileWriter createFileWriter(String scenarioName,
+    protected static FileWriter createFileWriter(String scenarioName,
             String aux_package_path, String dest_dir) {
         try {
             return new FileWriter(new File(createFolder(aux_package_path,
@@ -401,6 +315,26 @@ public class Reader {
                     + e.toString());
             return null;
         }
+    }
+
+    /**
+     * Creates the name of the .story file to be wrote with the testcase. The
+     * name of the scenario must be given with spaces.
+     * 
+     * @param scenarioName
+     *            - The scenario name, with spaces
+     * @return the .story file name.
+     */
+    protected static String createDotStoryName(String scenarioName) {
+        String[] words = scenarioName.trim().split(" ");
+        String result = "";
+        for (int i = 0; i < words.length; i++) {
+            result += words[i].toLowerCase();
+            // I don't add the '_' to the last word.
+            if (!(i == words.length - 1))
+                result += "_";
+        }
+        return result;
     }
 
     /**
@@ -430,21 +364,43 @@ public class Reader {
                 preferences.load(configFile);
                 LogManager.getLogManager().readConfiguration(configFile);
 
-                new Reader(properties.getProperty("scenarioListPath"), "\""
-                        + properties.getProperty("platform") + "\"",
-                        properties.getProperty("mainDirectory"),
-                        properties.getProperty("testPath"),
-                        properties.getProperty("caseManagerPath"), args[1]);
+                if (properties.containsKey("type")) {
+                    Reader.generateJavaFiles(
+                            properties.getProperty("scenarioListPath"),
+                            "\"" + properties.getProperty("platform") + "\"",
+                            properties.getProperty("mainDirectory"),
+                            properties.getProperty("testPath"),
+                            properties.getProperty("caseManagerPath"), args[1],
+                            properties.getProperty("type"));
+                } else {
+                    Reader.generateJavaFiles(
+                            properties.getProperty("scenarioListPath"),
+                            "\"" + properties.getProperty("platform") + "\"",
+                            properties.getProperty("mainDirectory"),
+                            properties.getProperty("testPath"),
+                            properties.getProperty("caseManagerPath"), args[1]);
+                }
             } catch (IOException ex) {
                 logger.severe("WARNING: Could not open configuration file");
                 logger.severe("WARNING: Logging not configured (console output only)");
             }
         } else {
-            new Reader(properties.getProperty("scenarioListPath"), "\""
-                    + properties.getProperty("platform") + "\"",
-                    properties.getProperty("mainDirectory"),
-                    properties.getProperty("testPath"),
-                    properties.getProperty("caseManagerPath"), null);
+            if (properties.containsKey("type")) {
+                Reader.generateJavaFiles(
+                        properties.getProperty("scenarioListPath"), "\""
+                                + properties.getProperty("platform") + "\"",
+                        properties.getProperty("mainDirectory"),
+                        properties.getProperty("testPath"),
+                        properties.getProperty("caseManagerPath"), null,
+                        properties.getProperty("type"));
+            } else {
+                Reader.generateJavaFiles(
+                        properties.getProperty("scenarioListPath"), "\""
+                                + properties.getProperty("platform") + "\"",
+                        properties.getProperty("mainDirectory"),
+                        properties.getProperty("testPath"),
+                        properties.getProperty("caseManagerPath"), null);
+            }
             logger.warning("No logging properties file found. Set the path of properties file as argument.");
         }
 

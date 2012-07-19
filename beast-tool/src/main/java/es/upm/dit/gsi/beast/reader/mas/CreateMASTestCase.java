@@ -1,4 +1,4 @@
-package es.upm.dit.gsi.beast.reader;
+package es.upm.dit.gsi.beast.reader.mas;
 
 
 import java.io.File;
@@ -14,9 +14,10 @@ import es.upm.dit.gsi.beast.story.BeastTestCase;
  * check the EVALUATION. The code is the same for each TEST, but we must write
  * one for each .story due to our BDD Tool (JBehave).
  * 
+ * @author Alberto Mardomingo
  * @author Jorge Solitario
  */
-public class CreateBeastTestCase {
+public class CreateMASTestCase {
 
     /**
      * Method to create the java file that it's executed from caseManager. Its
@@ -36,9 +37,9 @@ public class CreateBeastTestCase {
             String package_path, String dest_dir, String loggingPropFile, String scenarioComment,
             String setupComment, String evaluationComment) {
 
-        Logger logger = Logger.getLogger("CreateStory.java");
+        Logger logger = Logger.getLogger(CreateMASTestCase.class.getName());
 
-        File f = Reader.createFolder(package_path, dest_dir);
+        File f = MASReader.createFolder(package_path, dest_dir);
 
         File javaFile = new File(f, scenario_name + ".java");
         
@@ -102,38 +103,32 @@ public class CreateBeastTestCase {
             }
             fw.write("    }\n");
             fw.write("\n");
-            
-            
-            // TODO: check the indentation.
-            
+
             //Creates the scenario
             fw.write("    /**\n");
-            fw.write("     * This is the mehtod that must create the Scenario.\n");
+            fw.write("     * This is the method that must create the Scenario.\n");
             fw.write("     * It is related with the GIVEN part.\n");
+            fw.write("     * \"GIVEN " + scenarioComment + "\".\n");
             fw.write("     * \n");
             fw.write("     * In setup method the following method must be used\n");
             fw.write("     * startAgent(agent_name,agent_path)\n");
             fw.write("     */\n");
             fw.write("    public void setup() {\n");
             fw.write("         // TODO: implement this method to represent the @Given part of the test in Java code.\n");
-            fw.write("         \n\n");
+            fw.write("         \n");
             fw.write("         logger.warning(\"Implement startAgents() method in " + package_path + 
                     ".java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");\n");
             fw.write("\n");
-            fw.write("            //EXAMPLE for Jadex: startAgent(\"Steve\", \"org.example.Steve.agent.xml\"); // This xml file is the jadex agent description file (ADF)\n");
-            fw.write("            //EXAMPLE for Jade: startAgent(\"Steve\", \"org.example.Steve\"); // This string is the agent class Steve.java that extends Jade Agent class\n");
+            fw.write("         //EXAMPLE for Jadex: startAgent(\"Steve\", \"org.example.Steve.agent.xml\"); // This xml file is the jadex agent description file (ADF)\n");
+            fw.write("         //EXAMPLE for Jade: startAgent(\"Steve\", \"org.example.Steve\"); // This string is the agent class Steve.java that extends Jade Agent class\n");
             fw.write("\n");
-            
-            fw.write("         // Here the description given by the client must be written,\n");
-            fw.write("         // which is:\n");
-            fw.write("         // " + scenarioComment + "\n");
-            
             fw.write("    }\n");
             
             // Creates the Setup
             fw.write("    /**\n");
             fw.write("     * This is the method that must create the Setup.\n");
             fw.write("     * It is related with the WHEN part.\n");
+            fw.write("     * \"WHEN " + setupComment + "\"\n");
             fw.write("     *  \n");
             fw.write("     * In launch method the following methods must be used\n");
             fw.write("     *   setBeliefValue (agent_name, belief_name, new_value )\n");
@@ -144,16 +139,14 @@ public class CreateBeastTestCase {
 
             fw.write("    public void launch(){\n");
             fw.write("         // TODO implement this method to represent the @When part of the test in Java code.\n");
+            fw.write("         \n");
             fw.write("         logger.warning(\"Implement setStates() method in "
                     + package_path
                     + ".Story"
                     + scenario_name
                     + ".java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");\n");
             fw.write("         \n             //EXAMPLE: setBeliefValue(\"Steve\", \"age\", 21);\n");
-            fw.write("         \n\n");
-            
-            fw.write("         // Here the description given by the client must be written,\n");
-            fw.write("         // which is: " + setupComment + "\n");
+            fw.write("         \n");
             
             fw.write("    }\n");
             
@@ -161,6 +154,7 @@ public class CreateBeastTestCase {
             fw.write("    /**\n");
             fw.write("     * This is the method that must create the Evaluation.\n");
             fw.write("     * It is related with the THEN part.\n");
+            fw.write("     * \"THEN " + evaluationComment +"\"\n");
             fw.write("     *  \n");
             fw.write("     * In verify method the following method must be used\n");
             fw.write("     * checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)\n");
@@ -168,15 +162,13 @@ public class CreateBeastTestCase {
 
             fw.write("    public void verify(){\n");
             fw.write("         // TODO implement this method to represent the @Then part of the test in Java code.\n");
-            fw.write("         \n\n");
+            fw.write("         \n");
             fw.write("         logger.warning(\"Implement checkStates() method in " + package_path
                      + ".java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");\n");
             fw.write("         Assert.fail(\"Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");\n");
             fw.write("\n        //EXAMPLE: checkAgentsBeliefEquealsTo(\"Steve\", \"age\", 21);\n");
-            fw.write("\n\n");
+            fw.write("\n");
             
-            fw.write("        // Here the description given by the client must be written,\n");
-            fw.write("        // which is:" + evaluationComment + "\n");
             fw.write("    }\n");
             
             // Writes the "Given something-and-something" part
