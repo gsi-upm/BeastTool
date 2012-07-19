@@ -12,7 +12,7 @@ public class ReaderTest {
     public void MainReaderTest() {
         this.cleanUp();
         try {
-            new Reader(
+            Reader.generateJavaFiles(
                     "src/test/java/es/upm/dit/gsi/beast/reader/ReaderTest.story",
                     "\"jade\"", "src/test/java",
                     "es.upm.dit.gsi.beast.reader.test",
@@ -38,7 +38,7 @@ public class ReaderTest {
     public void MainReaderWithoutLogPropTest() {
         this.cleanUp();
         try {
-            new Reader(
+            Reader.generateJavaFiles(
                     "src/test/java/es/upm/dit/gsi/beast/reader/ReaderTest.story",
                     "\"jade\"", "src/test/java",
                     "es.upm.dit.gsi.beast.reader.test",
@@ -56,7 +56,7 @@ public class ReaderTest {
                 "src/test/java/es/upm/dit/gsi/beast/reader/test/SetBelievesInAgent",
                 "SetBelievesInAgent.java").exists());
 
-        this.cleanUp();
+        //this.cleanUp();
     }
 
     private void cleanUp() {
