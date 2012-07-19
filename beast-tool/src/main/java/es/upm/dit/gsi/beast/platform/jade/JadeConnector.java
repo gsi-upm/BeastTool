@@ -56,7 +56,7 @@ public class JadeConnector implements Connector {
 
         this.runtime = Runtime.instance();
 
-        // TODO make this to be configurable
+        // TODO make this configurable
         Profile p = new ProfileImpl();
         p.setParameter(Profile.GUI, TRUE);
         p.setParameter(Profile.NO_MTP, TRUE);
@@ -165,7 +165,7 @@ public class JadeConnector implements Connector {
         ContainerController controller = this.platformContainers.get(container);
         if (controller == null) {
 
-            // TODO make this to be configurable
+            // TODO make this configurable
             Profile p = new ProfileImpl();
             p.setParameter(Profile.PLATFORM_ID, PLATFORM_ID);
             p.setParameter(Profile.MAIN_HOST, MAIN_HOST);
