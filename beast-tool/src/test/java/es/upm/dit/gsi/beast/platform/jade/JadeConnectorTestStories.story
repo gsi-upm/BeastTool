@@ -1,3 +1,9 @@
+Story - jade platform test
+As a developer
+I want to generate tests for the agent
+so that i save effort
+
+
 Scenario: Get believes from agent
 Given that TesterAgent is started in Jade Platform in Main-Container with Configuration 1
 When tester wants to get a belief from a Jade agent
