@@ -4,8 +4,6 @@ import jade.core.Agent;
 
 import java.util.HashMap;
 
-import EDU.oswego.cs.dl.util.concurrent.ObservableSync.SyncObserver;
-
 import es.upm.dit.gsi.beast.platform.AgentIntrospector;
 import es.upm.dit.gsi.beast.platform.Connector;
 

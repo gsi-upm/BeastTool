@@ -6,8 +6,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 /**
- * Main class that generates the CaseManager.java File to run all the test given
- * by our client.
+ * Main class that generates the CaseManager.java File to run the System Tests.
  * 
  * @author Jorge Solitario
  */
@@ -38,8 +37,7 @@ public class CreateSystemCaseManager {
             caseManagerWriter.write("\n");
             caseManagerWriter.write("import org.junit.Test;\n");
             caseManagerWriter
-                    .write("import es.upm.dit.gsi.beast.story.BeastTestCaseRunner;\n"); // import
-                                                                                // BeastTestCase
+                    .write("import es.upm.dit.gsi.beast.story.BeastTestCaseRunner;\n");
             caseManagerWriter.write("\n");
             caseManagerWriter.write("/**\n");
             caseManagerWriter

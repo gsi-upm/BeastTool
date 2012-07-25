@@ -3,21 +3,21 @@ package es.upm.dit.gsi.beast.reader.system;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 import java.util.logging.Logger;
 
-import es.upm.dit.gsi.beast.reader.system.SystemReader;
-import es.upm.dit.gsi.beast.story.BeastTestCaseRunner;
-
+/**
+ * Class to create the system test suite, where the developers must add the 
+ * necessary calls to the MAS test included in the feature required by the client
+ * 
+ * @author Alberto Mardomingo
+ *
+ */
 public class CreateSystemTestSuite {
 
     /**
-     * Method to create the java file that it's executed from caseManager. Its
-     * name comes from the Scenario that it's testing. Its behaviour is written
-     * in the .story file allocated in the same folder, which is the plain text
-     * given by the client.
+     * Method to create the java file that it's executed by the caseManager. Its
+     * name comes from the Story that it's testing.
      * 
      * @param story_name - the name of the Story
      * @param platform_name - the name of the platform
@@ -27,7 +27,7 @@ public class CreateSystemTestSuite {
      * @param storyUser - The user launching the Story
      * @param userFeature - The feature requested by the user
      * @param userBenefit - The benefit the feature will provide
-     * @param testList - A list with the tests to launch in the testSuite.
+     * @param scenarios - A list with the tests to launch in the testSuite.
      */
     public static void createSystemTestSuite(String story_name,
             String platform_name, String package_path, String dest_dir,
@@ -100,7 +100,7 @@ public class CreateSystemTestSuite {
             fw.write("\n");
             
             // Run each test
-            // Remenber; scenarios:
+            // Remenber, scenarios:
             // { scenarioID1 => ["Given", "When", "then"], 
             // scenarioID2 => ["Given", "When", "then"], ...}
             for(String scenario : scenarios.keySet()){
@@ -125,9 +125,6 @@ public class CreateSystemTestSuite {
                 
                 fw.write("    }\n");
             }
-            // This is how I can launch the jbehave test from a TestSuite,
-            // since they are not junit TestCases.
-            // This is not my fault, don't kill me, please.
            
             // Ends the class.
             // You don't say.

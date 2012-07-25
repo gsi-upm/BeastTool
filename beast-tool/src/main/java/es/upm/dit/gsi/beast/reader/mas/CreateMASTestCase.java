@@ -6,13 +6,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import es.upm.dit.gsi.beast.story.BeastTestCase;
-
 /**
  * Main class to create the java file that controls each Test. First it will
- * launch its SCENARIO, then it will perform the SETUP, and FINALLY it will
- * check the EVALUATION. The code is the same for each TEST, but we must write
- * one for each .story due to our BDD Tool (JBehave).
+ * SETUP the scenario, then it will perform LAUNCH anything needed, and finally
+ * it will VERIFY the result. The code is the same for each TEST, but we must 
+ * write one for each .story due to our BDD Tool (JBehave).
  * 
  * @author Alberto Mardomingo
  * @author Jorge Solitario
@@ -28,14 +26,23 @@ public class CreateMASTestCase {
      * @param scenario_name
      *            the name of the Scenario
      * @param platform_name
+     *            the agent platform in usage (i.e. jade or jadex)
      * @param package_path
-     *            the package
+     *            the package containing the tests
      * @param dest_dir
      *            the main folder main (typically src/main/java)
+     * @param logginfPropFile
+     *            the path to the logging properties file
+     * @param givenComment
+     *            the GIVEN part of the scenario
+     * @param whenComment
+     *            the WHEN part of the scenario
+     * @param thenComment
+     *            the THEN part of the scenario
      */
     public static void createBeastTestCase(String scenario_name, String platform_name,
-            String package_path, String dest_dir, String loggingPropFile, String scenarioComment,
-            String setupComment, String evaluationComment) {
+            String package_path, String dest_dir, String loggingPropFile, String givenComment,
+            String whenComment, String thenComment) {
 
         Logger logger = Logger.getLogger(CreateMASTestCase.class.getName());
 
@@ -108,7 +115,7 @@ public class CreateMASTestCase {
             fw.write("    /**\n");
             fw.write("     * This is the method that must create the Scenario.\n");
             fw.write("     * It is related with the GIVEN part.\n");
-            fw.write("     * \"GIVEN " + scenarioComment + "\".\n");
+            fw.write("     * \"GIVEN " + givenComment + "\".\n");
             fw.write("     * \n");
             fw.write("     * In setup method the following method must be used\n");
             fw.write("     * startAgent(agent_name,agent_path)\n");
@@ -128,7 +135,7 @@ public class CreateMASTestCase {
             fw.write("    /**\n");
             fw.write("     * This is the method that must create the Setup.\n");
             fw.write("     * It is related with the WHEN part.\n");
-            fw.write("     * \"WHEN " + setupComment + "\"\n");
+            fw.write("     * \"WHEN " + whenComment + "\"\n");
             fw.write("     *  \n");
             fw.write("     * In launch method the following methods must be used\n");
             fw.write("     *   setBeliefValue (agent_name, belief_name, new_value )\n");
@@ -154,7 +161,7 @@ public class CreateMASTestCase {
             fw.write("    /**\n");
             fw.write("     * This is the method that must create the Evaluation.\n");
             fw.write("     * It is related with the THEN part.\n");
-            fw.write("     * \"THEN " + evaluationComment +"\"\n");
+            fw.write("     * \"THEN " + thenComment +"\"\n");
             fw.write("     *  \n");
             fw.write("     * In verify method the following method must be used\n");
             fw.write("     * checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)\n");
@@ -178,10 +185,10 @@ public class CreateMASTestCase {
             fw.write("    @Given(\"$scenarioName\")\n");
             fw.write("    public void createScenario(String scenarioName) {\n");
             fw.write("\n");
-            fw.write("         if (scenarioName.equals(\""+scenarioComment +"\")){\n");
+            fw.write("         if (scenarioName.equals(\""+givenComment +"\")){\n");
             fw.write("              startPlatform(" + platform_name + ", logger);\n");
             fw.write("         } else {\n");
-            fw.write("              logger.severe(\"WARNING: \"+scenarioName+\" does not coincide with "+scenarioComment+"\" );\n");
+            fw.write("              logger.severe(\"WARNING: \"+scenarioName+\" does not coincide with "+givenComment+"\" );\n");
             fw.write("         }\n");
             fw.write("    }\n");
             fw.write("\n");
@@ -193,10 +200,10 @@ public class CreateMASTestCase {
             fw.write("    @When(\"$setupName\")\n");
             fw.write("    public void configureScenario(String setupName) {\n");
             fw.write("\n");
-            fw.write("         if (setupName.equals(\""+setupComment +"\")){\n");
+            fw.write("         if (setupName.equals(\""+whenComment +"\")){\n");
             fw.write("              setScenario();\n");
             fw.write("         } else {\n");
-            fw.write("              logger.severe(\"WARNING: \"+setupName+\" does not coincide with "+setupComment+"\");\n");
+            fw.write("              logger.severe(\"WARNING: \"+setupName+\" does not coincide with "+whenComment+"\");\n");
             fw.write("         }\n");
             fw.write("    }\n");
             fw.write("\n");
@@ -208,11 +215,11 @@ public class CreateMASTestCase {
             fw.write("    @Then(\"$evaluationName\")\n");
             fw.write("    public void checkScenario(String evaluationName) {\n");
             fw.write("\n");
-            fw.write("        if (evaluationName.equals(\""+evaluationComment +"\")){\n");
+            fw.write("        if (evaluationName.equals(\""+thenComment +"\")){\n");
             fw.write("            this.setExecutionTime(BeastTestCase.SLEEP_TIME);\n");
             fw.write("            verify();\n");
             fw.write("        } else {\n");
-            fw.write("            logger.severe(\"WARNING: \"+evaluationName+\" does not coincide with "+evaluationComment+"\");\n");
+            fw.write("            logger.severe(\"WARNING: \"+evaluationName+\" does not coincide with "+thenComment+"\");\n");
             fw.write("        }\n");
             fw.write("    }\n");
             // Ends the class.

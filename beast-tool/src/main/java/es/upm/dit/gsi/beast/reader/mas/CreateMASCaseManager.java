@@ -5,11 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import org.junit.runner.JUnitCore;
-
 /**
- * Main class that generates the CaseManager.java File to run all the test given
- * by our client.
+ * Main class that generates the CaseManager.java File to run the MAS tests.
  * 
  * @author Alberto Mardomingo
  * @author Jorge Solitario
@@ -66,12 +63,12 @@ public class CreateMASCaseManager {
     /**
      * The second method to write caseManager. Its task is to write the Tests to
      * run in our platform, so this method is called once for each Test by
-     * Reader.java.
+     * MasReader.java when there is no story Name.
      * 
      * @param caseManager
-     *            the file where the test must de written
+     *            the file where the test must be added
      * @param test_name
-     *            the name of its test
+     *            the name of the test to be written
      * @param test_path
      *            the path where the test can be founded
      * @param scenario
@@ -168,7 +165,7 @@ public class CreateMASCaseManager {
     
     /**
      * Method to close the file caseManager. It is called just one time, by
-     * Reader.java.
+     * the MASReader, once every test and stroy have been added.
      * 
      * @param caseManager
      */

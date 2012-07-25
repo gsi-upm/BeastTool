@@ -3,13 +3,8 @@ package es.upm.dit.gsi.beast.reader.mas;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 import java.util.logging.Logger;
-
-import es.upm.dit.gsi.beast.reader.system.SystemReader;
-import es.upm.dit.gsi.beast.story.BeastTestCaseRunner;
 
 public class CreateMASTestStory {
 
@@ -27,7 +22,7 @@ public class CreateMASTestStory {
      * @param storyUser - The user launching the Story
      * @param userFeature - The feature requested by the user
      * @param userBenefit - The benefit the feature will provide
-     * @param testList - A list with the tests to launch in the testSuite.
+     * @param scenarios - A list with the tests to launch in the testSuite.
      */
     public static void createMASTestStory(String story_name,
             String platform_name, String package_path, String dest_dir,

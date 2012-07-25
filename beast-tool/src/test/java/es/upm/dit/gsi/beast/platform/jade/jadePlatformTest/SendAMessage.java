@@ -1,9 +1,15 @@
 package es.upm.dit.gsi.beast.platform.jade.jadePlatformTest;
 
+import jade.lang.acl.ACLMessage;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+
 import org.jbehave.core.annotations.Given;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
@@ -12,16 +18,6 @@ import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.story.BeastTestCase;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;
 import es.upm.dit.gsi.beast.test.agent.jade.TesterAgent;
-import jade.lang.acl.ACLMessage;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.logging.Logger;
-import java.util.logging.Level;
-import java.util.logging.LogManager;
-import java.util.Properties;
-
-import junit.framework.Assert;
 /**
  * Main class to translate plain text into code, following the Given-When-Then
  * language. In the GIVEN part it launchs the platform In the WHEN part it

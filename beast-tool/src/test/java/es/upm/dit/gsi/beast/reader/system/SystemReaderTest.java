@@ -6,12 +6,12 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
-import es.upm.dit.gsi.beast.reader.system.SystemReader;
+import es.upm.dit.gsi.beast.reader.Reader;
 
 public class SystemReaderTest {
 
     @Test
-    public void MainReaderTest() {
+    public void MainSystemReaderTest() {
         this.cleanUp();
         try {
             SystemReader.generateJavaFiles(
@@ -51,6 +51,29 @@ public class SystemReaderTest {
                 "src/test/java/es/upm/dit/gsi/beast/reader/system/test",
                 "SystemStory.java").exists());
 
+        this.cleanUp();
+    }
+    
+    @Test
+    public void MainReaderTest() {
+        this.cleanUp();
+        try {
+            Reader.generateJavaFiles(
+                    "src/test/java/es/upm/dit/gsi/beast/reader/system/SystemReaderTest.story",
+                    "\"jade\"", "src/test/java",
+                    "es.upm.dit.gsi.beast.reader.system.test",
+                    "es.upm.dit.gsi.beast.reader.system.test",
+                    "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties",
+                    Reader.SYSTEM);
+        } catch (Exception e) {
+            Assert.fail();
+        }
+        Assert.assertTrue(new File(
+                "src/test/java/es/upm/dit/gsi/beast/reader/system/test",
+                "CaseManager.java").exists());
+        Assert.assertTrue(new File(
+                "src/test/java/es/upm/dit/gsi/beast/reader/system/test",
+                "SystemStory.java").exists());
         this.cleanUp();
     }
 

@@ -3,17 +3,14 @@ package es.upm.dit.gsi.beast.reader.mas;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Properties;
-//import java.util.StringTokenizer;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 import es.upm.dit.gsi.beast.reader.Reader;
+//import java.util.StringTokenizer;
 
 // FIXME: Update javadoc
 
@@ -21,8 +18,8 @@ import es.upm.dit.gsi.beast.reader.Reader;
  * Main class to transform the plain text given by the designer to the necessary
  * classes to run each Test. These classes are the Scenario, Setup and
  * Evaluation, which emulate the GIVEN, WHEN and THEN parts of the plain text;
- * the .story file whit the plain text of the test and the its .java class with
- * the same name to interpret it. Furthermore, one casemanager must be created,
+ * the .story file with the plain text of the test and the java class with
+ * the same name to interpret it. Furthermore, one caseManager must be created,
  * which will run all the tests.
  * 
  * @author Alberto Mardomingo
@@ -33,8 +30,7 @@ public class MASReader extends Reader{
     private static Logger logger = Logger.getLogger(MASReader.class.getName());
 
     /**
-     * Main method of the class, which handles all the process to create all
-     * tests.
+     * Main method of the class, which handles the process of creating the tests
      * 
      * @param ScenariosList
      *            , it the plain text given by the client
@@ -123,10 +119,12 @@ public class MASReader extends Reader{
                 
                 if (storyName != null ) {
                     // I have a story, so...
-                    if (fileDoesNotExist(createClassName(storyName) + ".java", tests_package_path , dest_dir)) 
+                    if (fileDoesNotExist(createClassName(storyName) +
+                            ".java", tests_package_path , dest_dir)) {
                         CreateMASTestStory.createMASTestStory(storyName, platformName,
                             tests_package_path, dest_dir, loggingPropFile, story_user,
                             user_feature, user_benefit, scenarios);
+                    }
                     
                     // I create the testCases.
                     for(String entry : scenarios.keySet()) {

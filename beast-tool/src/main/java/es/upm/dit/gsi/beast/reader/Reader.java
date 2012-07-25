@@ -8,7 +8,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.StringTokenizer;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
@@ -24,17 +23,24 @@ import es.upm.dit.gsi.beast.reader.system.SystemReader;
  * which will run all the tests.
  * 
  * @author Jorge Solitario
+ * @autho Alberto Mardomingo
  */
 public class Reader {
 
-    private static final String MAS = "MAS";
-    private static final String SYSTEM = "SYSTEM";
+    /**
+     * Multi Agent System Test Reader
+     */
+    public static final String MAS = "MAS";
+    /**
+     * System Test Reader
+     */
+    public static final String SYSTEM = "SYSTEM";
 
     private static Logger logger = Logger.getLogger(Reader.class.getName());
     
     /**
      * Main method of the class, which handles all the process to create all
-     * tests.
+     * tests. As no type is specified, it uses a MASReader.
      * 
      * @param ScenariosList
      *            , it the plain text given by the client
@@ -73,11 +79,14 @@ public class Reader {
      *            , the path where casemanager must be created
      * @param loggingPropFile
      *            , properties file
+     * @param type
+     *            the Type of reader (MAS or SYSTEM). By default, uses a MAS Reader
      */
     public static void generateJavaFiles(String ScenariosList,
             String platformName, String dest_dir, String tests_package_path,
             String casemanager_path, String loggingPropFile, String type) {
-        if (type.equalsIgnoreCase(MAS)) {
+        // Again, if type is null I use a MAS Reader
+        if (type == null || type.equalsIgnoreCase(MAS)) {
             MASReader.generateJavaFiles(ScenariosList, platformName, dest_dir,
                     tests_package_path, casemanager_path, loggingPropFile);
         } else if (type.equalsIgnoreCase(SYSTEM)) {
@@ -166,16 +175,16 @@ public class Reader {
             return false;
 
         String folderPath = createFolderPath(path);
-
+       
         f = new File(f, folderPath);
-        if (!f.isDirectory())
-            return false;
+//        if (!f.isDirectory())
+//            return false;
 
         File javaFile = new File(f, file);
         boolean result = !javaFile.exists();
 
         return result;
-    } // Excuse me, I'm gonna go cry in a corner calling for my mom.
+    }
 
     /**
      * This method returns the existing folder, and if it does not exist, the
@@ -282,7 +291,7 @@ public class Reader {
         for (String folder : folders) {
             destDir += "/" + folder;
         }
-        System.out.println("scenarioName: " + scenarioName);
+
         FileWriter writer = createFileWriter(createDotStoryName(scenarioName),
                 packagePath, destDir);
         try {
