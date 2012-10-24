@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * Main class that generates the CaseManager.java File to run the MAS tests.
  * 
@@ -150,8 +152,8 @@ public class CreateMASCaseManager {
             caseManagerWriter.write("  public void " + MASReader.createFirstLowCaseName(storyName)
                     + "() {\n");
             String storyClass =  MASReader.createClassName(storyName);
-            caseManagerWriter.write("      JUnitCore.main(\""
-                    + testPath  + "." + storyClass+ "\");\n");
+            caseManagerWriter.write("      JUnitCore.runClasses("
+                    + testPath  + "." + storyClass+ ".class);\n");
             caseManagerWriter.write("  }\n");
             caseManagerWriter.write("\n");
             caseManagerWriter.flush();

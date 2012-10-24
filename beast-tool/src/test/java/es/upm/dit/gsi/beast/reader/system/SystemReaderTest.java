@@ -29,7 +29,7 @@ public class SystemReaderTest {
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/system/test",
                 "SystemStory.java").exists());
-        this.cleanUp();
+            this.cleanUp();
     }
 
     @Test

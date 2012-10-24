@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * Main class that generates the CaseManager.java File to run the System Tests.
  * 
@@ -37,7 +39,7 @@ public class CreateSystemCaseManager {
             caseManagerWriter.write("\n");
             caseManagerWriter.write("import org.junit.Test;\n");
             caseManagerWriter
-                    .write("import es.upm.dit.gsi.beast.story.BeastTestCaseRunner;\n");
+                    .write("import org.junit.runner.JUnitCore;\n");
             caseManagerWriter.write("\n");
             caseManagerWriter.write("/**\n");
             caseManagerWriter
@@ -94,9 +96,8 @@ public class CreateSystemCaseManager {
             String storyClass = SystemReader.createClassName(storyName);
             caseManagerWriter.write("  public void " + storyClass
                     + "() {\n");
-            caseManagerWriter.write("     BeastTestCaseRunner.executeBeastTestCase(\""
-                    + testPath + "." + SystemReader.changeFirstLetterToLowerCase(storyClass)
-                    + "." + storyClass + "\");\n");
+            caseManagerWriter.write("     JUnitCore.runClasses("
+                    + testPath + "." + storyClass + ".class);\n");
             caseManagerWriter.write("  }\n");
             caseManagerWriter.write("\n");
             caseManagerWriter.flush();

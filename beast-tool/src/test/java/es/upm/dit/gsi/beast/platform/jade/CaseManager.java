@@ -2,6 +2,7 @@ package es.upm.dit.gsi.beast.platform.jade;
 
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
+import es.upm.dit.gsi.beast.story.BeastTestCaseRunner;
 
 /**
  * Main class to launch all tests in a single run
@@ -18,7 +19,7 @@ public class CaseManager {
    */
   @Test
   public void jadePlatformTest() {
-      JUnitCore.main("es.upm.dit.gsi.beast.platform.jade.JadePlatformTest");
+      JUnitCore.runClasses(es.upm.dit.gsi.beast.platform.jade.JadePlatformTest.class);
   }
 
 }

@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * Class to create the system test suite, where the developers must add the 
  * necessary calls to the MAS test included in the feature required by the client
@@ -120,8 +122,11 @@ public class CreateSystemTestSuite {
                 //		"\"es.upm.dit.gsi.beast.reader.system.test." + story_name + "." + scenario + "\");\n");
                 
                 fw.write("        // Here you must call the MAS tests for this scenario\n");
-                fw.write("        // EXAMPLE: BeastTestCaseRunner.executeBeastTestCase(" +
-                      "\"es.upm.dit.gsi.beast.reader.mas.test.MASTestStory\");\n");
+                fw.write("        // or the scenarios themselves\n");
+                fw.write("        // EXAMPLE:\n");
+                fw.write("        // BeastTestCaseRunner.executeBeastTestCase(" +
+                      "\"es.upm.dit.gsi.beast.reader.mas.test.MASTestScenario\");\n");
+                fw.write("        // JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.MASTestStory.class\n");
                 
                 fw.write("    }\n");
             }
