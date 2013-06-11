@@ -6,7 +6,11 @@
 	<packaging>jar</packaging>
 	<name>Beast Tool</name>
 	<description>Behavioural Agents Simple Testing Tool</description>
-	<url>http://www.gsi.dit.upm.es/index.php/es/software/149-beast-tool.html</url>
+	<url>http://www.gsi.dit.upm.es/index.php/es/software/details/1/4/software-beast-tool.html</url>
+	<organization>
+		<name>Grupo de Sistemas Inteligentes - Universidad Politécnica de Madrid</name>
+		<url>http://www.gsi.dit.upm.es</url>
+	</organization>
 	<licenses>
 		<license>
 			<name>GNU General Public License, version 2</name>
@@ -14,9 +18,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<connection>scm:svn:http://beast-tool.googlecode.com/svn/trunk/</connection>
-		<developerConnection>scm:svn:https://beast-tool.googlecode.com/svn/trunk/</developerConnection>
-		<url>http://beast-tool.googlecode.com/svn/trunk/</url>
+		<connection>scm:git:git://github.com/gsi-upm/BeastTool.git</connection>
+		<developerConnection>scm:git:git://github.com/gsi-upm/BeastTool.git</developerConnection>
+		<url>https://github.com/gsi-upm/BeastTool</url>
 	</scm>
 	<developers>
 
@@ -35,8 +39,8 @@
 	</developers>
 
 	<issueManagement>
-		<system>Google Code</system>
-		<url>http://code.google.com/p/beast-tool/issues/list</url>
+		<system>GitHub Issues</system>
+		<url>https://github.com/gsi-upm/BeastTool/issues</url>
 	</issueManagement>
 
 	<distributionManagement>
@@ -744,5 +748,4 @@
 			</build>
 		</profile>
 	</profiles>
-
 </project>
