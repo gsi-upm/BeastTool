@@ -1,6 +1,8 @@
 BeastTool
 =========
 
+Note: This project is being migrated from Google-Code. If any problem is found, please open an issue.
+
 The aim of this project is the development of a system which allows Behavior Driven Development (BDD)
 in Multi-Agent Systems (MAS), to make testing practices more accessible and intuitive to everybody.
 
