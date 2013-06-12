@@ -20,3 +20,6 @@ Therefore another objective of our systems is to include a mocking tool which pe
 Definitively, our tool allows the testing of any MAS in the development process, increasing its modularity 
 and decreasing its elaboration and testing cost. These tests will be written in plain text so that anyone 
 would be able to understand them. 
+
+For further reading, a paper published in ITMAS2012 workshop can be found in: 
+http://scholar.google.es/citations?view_op=view_citation&hl=es&user=mT3KgXUAAAAJ&citation_for_view=mT3KgXUAAAAJ:Tyk-4Ss8FVUC
