@@ -20,7 +20,7 @@
 	<scm>
 		<connection>scm:git:git://github.com/gsi-upm/BeastTool.git</connection>
 		<developerConnection>scm:git:git://github.com/gsi-upm/BeastTool.git</developerConnection>
-		<url>https://github.com/gsi-upm/BeastTool</url>
+		<url>http://github.com/gsi-upm/BeastTool</url>
 	</scm>
 	<developers>
 
@@ -186,6 +186,10 @@
 						<include>es/upm/dit/gsi/beast/platform/jade/CaseManager.java</include>
 						<include>es/upm/dit/gsi/beast/platform/jadex/CaseManager.java</include>
 					</includes>
+					<excludes>
+						<exclude>es/upm/dit/gsi/beast/platform/jade/JadePlatformTest.java</exclude>
+						<exclude>es/upm/dit/gsi/beast/platform/jadex/JadexPlatformTest.java</exclude>
+					</excludes>
 					<parallel>false</parallel>
 					<threadCount>1</threadCount>
 					<perCoreThreadCount>false</perCoreThreadCount>
@@ -299,14 +303,14 @@
 				</configuration>
 			</plugin>
 
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-site-plugin</artifactId> -->
-<!-- 				<version>3.0</version> -->
-<!-- 				<configuration> -->
-<!-- 					<locales>en</locales> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.maven.plugins</groupId> -->
+			<!-- <artifactId>maven-site-plugin</artifactId> -->
+			<!-- <version>3.0</version> -->
+			<!-- <configuration> -->
+			<!-- <locales>en</locales> -->
+			<!-- </configuration> -->
+			<!-- </plugin> -->
 
 		</plugins>
 

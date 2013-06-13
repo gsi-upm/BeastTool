@@ -6,13 +6,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
-import org.junit.runner.JUnitCore;
-
 /**
  * Class to create the system test suite, where the developers must add the 
  * necessary calls to the MAS test included in the feature required by the client
  * 
  * @author Alberto Mardomingo
+ * @author Alvaro Carrera
  *
  */
 public class CreateSystemTestSuite {

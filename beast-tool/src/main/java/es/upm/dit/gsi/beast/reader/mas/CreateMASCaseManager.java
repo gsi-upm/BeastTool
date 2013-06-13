@@ -5,13 +5,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import org.junit.runner.JUnitCore;
-
 /**
  * Main class that generates the CaseManager.java File to run the MAS tests.
  * 
  * @author Alberto Mardomingo
  * @author Jorge Solitario
+ * @author Alvaro Carrera
  */
 public class CreateMASCaseManager {
 
@@ -40,9 +39,9 @@ public class CreateMASCaseManager {
             caseManagerWriter.write("\n");
             caseManagerWriter.write("import org.junit.Test;\n");
             caseManagerWriter.write("import org.junit.runner.JUnitCore;\n");
-            caseManagerWriter
-                    .write("import es.upm.dit.gsi.beast.story.BeastTestCaseRunner;\n");
-                    // import BeastTestCase
+//            caseManagerWriter
+//                    .write("import es.upm.dit.gsi.beast.story.BeastTestCaseRunner;\n");
+//                    // import BeastTestCase
             caseManagerWriter.write("\n");
             caseManagerWriter.write("/**\n");
             caseManagerWriter

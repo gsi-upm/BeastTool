@@ -5,12 +5,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import org.junit.runner.JUnitCore;
-
 /**
  * Main class that generates the CaseManager.java File to run the System Tests.
  * 
  * @author Jorge Solitario
+ * @author Alvaro Carrera
  */
 public class CreateSystemCaseManager {
 
