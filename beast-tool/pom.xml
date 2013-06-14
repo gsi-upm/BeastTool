@@ -6,7 +6,19 @@
 	<version>0.9.8-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Beast Tool</name>
-	<description>Behavioural Agents Simple Testing Tool</description>
+	<description>BEhavioural Agents Simple Testing Tool - BEAST Tool
+
+The aim of this project is the development of a system which allows Behavior Driven Development (BDD) in Multi-Agent Systems (MAS), to make testing practices more accessible and intuitive to everybody.
+
+In one hand, in order to let tests be writable by newcomers and experts alike, system must allow the redaction of tests in plain text, because client does not need to have knowledge of our code. This plain text will be traduced to software later.
+
+The definition of test will be realized with the terminology Given-When-Then, which allows trace an easy guide of the behavior of a given scenario when something happened.
+
+In the other hand, due to the complexity of MAS, making unit testing of an agent that needs the interaction with others is almost impossible until the whole system is finished. This implies to leave testing issues to the end of the project, generating big troubles in case of malfunction. Consequently, its necessary to carry out a tool to allow the creation of mock agents and to perform tests during the whole development process. Therefore another objective of our systems is to include a mocking tool which permits testing continuously.
+
+Definitively, our tool allows the testing of any MAS in the development process, increasing its modularity and decreasing its elaboration and testing cost. These tests will be written in plain text so that anyone would be able to understand them.
+
+For further reading, a paper published in ITMAS2012 workshop can be found in: http://scholar.google.es/citations?view_op=view_citation&amp;hl=es&amp;user=mT3KgXUAAAAJ&amp;citation_for_view=mT3KgXUAAAAJ:Tyk-4Ss8FVUC</description>
 	<url>http://www.gsi.dit.upm.es/index.php/es/software/details/1/4/software-beast-tool.html</url>
 	<organization>
 		<name>Grupo de Sistemas Inteligentes - Universidad Politécnica de Madrid</name>
@@ -64,7 +76,7 @@
 		<!-- <url>scp://minsky.gsi.dit.upm.es/home/a.carrera/public_html/beast/site</url> -->
 		<!-- </site> -->
 		<site>
-			<id>beast-site-github-web</id>
+			<id>site-github-web</id>
 			<url>scm:git:https://github.com/gsi-upm/BeastTool.git</url>
 		</site>
 	</distributionManagement>
