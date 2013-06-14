@@ -1,0 +1,13 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./Connector.html" title="es.upm.dit.gsi.beast.platform.Connector" alt="" coords="972,139,1052,178"/>
+<area shape="rect" id="node3_1" href="./jade/JadeConnector.html" title="es.upm.dit.gsi.beast.platform.jade.JadeConnector" alt="" coords="491,237,695,307"/>
+<area shape="rect" id="node6_2" href="./jadex/JadexConnector.html" title="es.upm.dit.gsi.beast.platform.jadex.JadexConnector" alt="" coords="741,237,950,307"/>
+<area shape="rect" id="node12_3" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Logger.html" title="java.util.logging.Logger" alt="" coords="739,468,952,537"/>
+<area shape="rect" id="node14_4" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html" title="java.lang.String" alt="" coords="231,365,553,640"/>
+<area shape="rect" id="node23_5" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Object.html" title="java.lang.Object" alt="" coords="1276,468,1348,537"/>
+<area shape="rect" id="node2_6" href="./jade/JadeMessenger.html" title="es.upm.dit.gsi.beast.platform.jade.JadeMessenger" alt="" coords="15,33,123,57"/>
+<area shape="rect" id="node4_7" href="./jade/JadeAgentIntrospector.html" title="es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector" alt="" coords="1225,33,1367,57"/>
+<area shape="rect" id="node5_8" href="./jadex/JadexMessenger.html" title="es.upm.dit.gsi.beast.platform.jadex.JadexMessenger" alt="" coords="169,33,282,57"/>
+<area shape="rect" id="node7_9" href="./jadex/JadexAgentIntrospector.html" title="es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector" alt="" coords="1412,33,1559,57"/>
+<area shape="rect" id="node8_10" href="../story/BeastTestCase.html" title="es.upm.dit.gsi.beast.story.BeastTestCase" alt="" coords="951,11,1073,80"/>
+</map>

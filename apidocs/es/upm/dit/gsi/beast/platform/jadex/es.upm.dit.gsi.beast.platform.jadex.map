@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./JadexMessenger.html" title="es.upm.dit.gsi.beast.platform.jadex.JadexMessenger" alt="" coords="15,33,129,57"/>
+<area shape="rect" id="node2_1" href="./JadexConnector.html" title="es.upm.dit.gsi.beast.platform.jadex.JadexConnector" alt="" coords="174,11,383,80"/>
+<area shape="rect" id="node3_2" href="./JadexAgentIntrospector.html" title="es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector" alt="" coords="429,33,576,57"/>
+</map>

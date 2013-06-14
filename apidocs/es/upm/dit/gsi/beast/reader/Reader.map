@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./mas/MASReader.html" title="es.upm.dit.gsi.beast.reader.mas.MASReader" alt="" coords="16,168,117,237"/>
+<area shape="rect" id="node7_1" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html" title="java.lang.String" alt="" coords="62,325,383,600"/>
+<area shape="rect" id="node2_2" href="./Reader.html" title="es.upm.dit.gsi.beast.reader.Reader" alt="" coords="304,11,381,80"/>
+<area shape="rect" id="node3_3" href="./system/SystemReader.html" title="es.upm.dit.gsi.beast.reader.system.SystemReader" alt="" coords="163,168,282,237"/>
+<area shape="rect" id="node10_4" href="http://java.sun.com/j2se/1.4.2/docs/api/java/io/FileWriter.html" title="java.io.FileWriter" alt="" coords="403,139,643,267"/>
+<area shape="rect" id="node13_5" href="http://java.sun.com/j2se/1.4.2/docs/api/java/io/File.html" title="java.io.File" alt="" coords="688,146,883,259"/>
+<area shape="rect" id="node16_6" href="http://java.sun.com/j2se/1.4.2/docs/api/java/io/BufferedReader.html" title="java.io.BufferedReader" alt="" coords="929,161,1181,245"/>
+</map>

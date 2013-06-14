@@ -1,0 +1,13 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="../../mock/jade/bridgeMock/DannyBridgeMockAgent.html" title="es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent" alt="" coords="202,11,369,80"/>
+<area shape="rect" id="node7_1" href="./JadeAgentIntrospector.html" title="es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector" alt="" coords="432,145,573,169"/>
+<area shape="rect" id="node22_2" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Object.html" title="java.lang.Object" alt="" coords="848,639,920,708"/>
+<area shape="rect" id="node24_3" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html" title="java.lang.String" alt="" coords="15,536,337,811"/>
+<area shape="rect" id="node2_4" href="../../mock/jade/bridgeMock/BridgeMockAgent.html" title="es.upm.dit.gsi.beast.mock.jade.bridgeMock.BridgeMockAgent" alt="" coords="167,408,299,477"/>
+<area shape="rect" id="node3_5" href="../../mock/jade/listenerMock/ListenerMockAgent.html" title="es.upm.dit.gsi.beast.mock.jade.listenerMock.ListenerMockAgent" alt="" coords="545,408,687,477"/>
+<area shape="rect" id="node4_6" href="../../mock/jade/repositoryMock/RepositoryMockAgent.html" title="es.upm.dit.gsi.beast.mock.jade.repositoryMock.RepositoryMockAgent" alt="" coords="345,408,500,477"/>
+<area shape="rect" id="node5_7" href="../Connector.html" title="es.upm.dit.gsi.beast.platform.Connector" alt="" coords="732,423,812,462"/>
+<area shape="rect" id="node6_8" href="../AgentIntrospector.html" title="es.upm.dit.gsi.beast.platform.AgentIntrospector" alt="" coords="976,26,1091,65"/>
+<area shape="rect" id="node8_9" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/core/Agent.html" title="jade.core.Agent" alt="" coords="289,257,357,327"/>
+<area shape="rect" id="node19_10" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/HashMap.html" title="java.util.HashMap" alt="" coords="403,235,603,349"/>
+</map>

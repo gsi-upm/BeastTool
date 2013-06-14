@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./TestingMockRepository.html" title="es.upm.dit.gsi.beast.platform.jadex.jadexPlatformTest.TestingMockRepository" alt="" coords="16,11,181,80"/>
+<area shape="rect" id="node2_1" href="./TestingMockListener.html" title="es.upm.dit.gsi.beast.platform.jadex.jadexPlatformTest.TestingMockListener" alt="" coords="227,11,378,80"/>
+<area shape="rect" id="node3_2" href="./TestingMockBridgeCaseTwo.html" title="es.upm.dit.gsi.beast.platform.jadex.jadexPlatformTest.TestingMockBridgeCaseTwo" alt="" coords="424,11,619,80"/>
+<area shape="rect" id="node4_3" href="./TestingMockBridgeCaseOne.html" title="es.upm.dit.gsi.beast.platform.jadex.jadexPlatformTest.TestingMockBridgeCaseOne" alt="" coords="664,11,859,80"/>
+<area shape="rect" id="node5_4" href="./SetBelievesInAgent.html" title="es.upm.dit.gsi.beast.platform.jadex.jadexPlatformTest.SetBelievesInAgent" alt="" coords="905,11,1047,80"/>
+<area shape="rect" id="node6_5" href="./GetBelievesFromAgent.html" title="es.upm.dit.gsi.beast.platform.jadex.jadexPlatformTest.GetBelievesFromAgent" alt="" coords="1093,11,1256,80"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./PlatformSelector.html" title="es.upm.dit.gsi.beast.platform.PlatformSelector" alt="" coords="16,11,144,80"/>
+<area shape="rect" id="node2_1" href="./Messenger.html" title="es.upm.dit.gsi.beast.platform.Messenger" alt="" coords="190,26,271,65"/>
+<area shape="rect" id="node3_2" href="./Connector.html" title="es.upm.dit.gsi.beast.platform.Connector" alt="" coords="317,26,397,65"/>
+<area shape="rect" id="node4_3" href="./AgentIntrospector.html" title="es.upm.dit.gsi.beast.platform.AgentIntrospector" alt="" coords="443,26,557,65"/>
+</map>

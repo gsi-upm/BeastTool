@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./MASReader.html" title="es.upm.dit.gsi.beast.reader.mas.MASReader" alt="" coords="16,11,117,80"/>
+<area shape="rect" id="node2_1" href="./CreateMASTestStory.html" title="es.upm.dit.gsi.beast.reader.mas.CreateMASTestStory" alt="" coords="163,11,312,80"/>
+<area shape="rect" id="node3_2" href="./CreateMASTestCase.html" title="es.upm.dit.gsi.beast.reader.mas.CreateMASTestCase" alt="" coords="357,11,509,80"/>
+<area shape="rect" id="node4_3" href="./CreateMASCaseManager.html" title="es.upm.dit.gsi.beast.reader.mas.CreateMASCaseManager" alt="" coords="555,11,731,80"/>
+</map>

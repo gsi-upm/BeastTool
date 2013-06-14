@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./MockConfiguration.html" title="es.upm.dit.gsi.beast.mock.common.MockConfiguration" alt="" coords="108,139,580,223"/>
+<area shape="rect" id="node2_1" href="./AgentBehaviour.html" title="es.upm.dit.gsi.beast.mock.common.AgentBehaviour" alt="" coords="221,283,344,352"/>
+<area shape="rect" id="node7_2" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html" title="java.lang.String" alt="" coords="243,411,565,685"/>
+<area shape="rect" id="node3_3" href="../jade/bridgeMock/DannyBridgeMockAgent.html" title="es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent" alt="" coords="15,11,182,80"/>
+<area shape="rect" id="node4_4" href="../jade/repositoryMock/RepositoryMockAgent.html" title="es.upm.dit.gsi.beast.mock.jade.repositoryMock.RepositoryMockAgent" alt="" coords="305,11,460,80"/>
+<area shape="rect" id="node5_5" href="../MockManager.html" title="es.upm.dit.gsi.beast.mock.MockManager" alt="" coords="583,11,697,80"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="../bridgeMock/RequestCommunicationPlan.html" title="es.upm.dit.gsi.beast.mock.jadex.bridgeMock.RequestCommunicationPlan" alt="" coords="16,369,213,439"/>
+<area shape="rect" id="node9_1" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Logger.html" title="java.util.logging.Logger" alt="" coords="197,600,411,669"/>
+<area shape="rect" id="node2_2" href="../bridgeMock/InformCommunicationPlan.html" title="es.upm.dit.gsi.beast.mock.jadex.bridgeMock.InformCommunicationPlan" alt="" coords="259,369,445,439"/>
+<area shape="rect" id="node3_3" href="./MockAgentPlan.html" title="es.upm.dit.gsi.beast.mock.jadex.common.MockAgentPlan" alt="" coords="498,139,619,208"/>
+<area shape="rect" id="node12_4" href="http://java.sun.com/j2se/1.4.2/docs/api/jadex/base/fipa/IDFComponentDescription.html" title="jadex.base.fipa.IDFComponentDescription" alt="" coords="541,385,707,423"/>
+<area shape="rect" id="node14_5" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Object.html" title="java.lang.Object" alt="" coords="752,369,824,439"/>
+<area shape="rect" id="node16_6" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html" title="java.lang.String" alt="" coords="870,267,1191,541"/>
+<area shape="rect" id="node6_7" href="http://java.sun.com/j2se/1.4.2/docs/api/jadex/bdi/runtime/Plan.html" title="jadex.bdi.runtime.Plan" alt="" coords="528,11,589,80"/>
+</map>

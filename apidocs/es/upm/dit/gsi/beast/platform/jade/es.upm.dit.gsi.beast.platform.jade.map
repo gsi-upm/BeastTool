@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./JadeMessenger.html" title="es.upm.dit.gsi.beast.platform.jade.JadeMessenger" alt="" coords="15,33,123,57"/>
+<area shape="rect" id="node2_1" href="./JadeConnector.html" title="es.upm.dit.gsi.beast.platform.jade.JadeConnector" alt="" coords="169,11,373,80"/>
+<area shape="rect" id="node3_2" href="./JadeAgentIntrospector.html" title="es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector" alt="" coords="419,33,560,57"/>
+</map>
