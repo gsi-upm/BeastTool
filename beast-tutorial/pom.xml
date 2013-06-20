@@ -1,8 +1,70 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>es.upm.dit.gsi</groupId>
-  <artifactId>beast-tutorial</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>Beast Tutorial</name>
-  <description>A brief tutorial to learn how to test agents using BeastMethodology</description>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>es.upm.dit.gsi</groupId>
+	<artifactId>beast-tutorial</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Beast Tutorial</name>
+	<description>A brief tutorial to learn how to test agents using BeastMethodology</description>
+	<url>http://www.gsi.dit.upm.es/index.php/es/software/details/1/4/software-beast-tool.html</url>
+	<organization>
+		<name>Grupo de Sistemas Inteligentes - Universidad Politécnica de Madrid</name>
+		<url>http://www.gsi.dit.upm.es</url>
+	</organization>
+	<inceptionYear>2013</inceptionYear>
+	<licenses>
+		<license>
+			<name>GNU General Public License, version 2</name>
+			<url>http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt</url>
+		</license>
+	</licenses>
+	<scm>
+		<connection>scm:git:https://github.com/gsi-upm/BeastTool.git</connection>
+		<developerConnection>scm:git:https://github.com/gsi-upm/BeastTool.git</developerConnection>
+		<url>http://github.com/gsi-upm/BeastTool</url>
+	</scm>
+	<developers>
+
+		<developer>
+			<id>a.carrera</id>
+			<name>Álvaro Carrera Barroso</name>
+			<email>carrerabarroso@gmail.com</email>
+		</developer>
+
+	</developers>
+
+	<dependencies>
+		<dependency>
+			<groupId>es.upm.dit.gsi</groupId>
+			<artifactId>beast-tool</artifactId>
+			<version>0.9.7</version>
+			<classifier>jar-with-dependencies</classifier>
+		</dependency>
+	</dependencies>
+
+	<build>		
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.1.1</version>
+				<executions>
+					<execution>
+						<id>Beast Reader</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass>
+							<arguments>
+								<argument>src/test/resources/beast-conf/beast.properties</argument>
+								<argument>src/test/resources/beast-conf/logger.properties</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
