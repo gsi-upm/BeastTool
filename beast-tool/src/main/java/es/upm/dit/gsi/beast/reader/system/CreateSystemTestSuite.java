@@ -125,7 +125,7 @@ public class CreateSystemTestSuite {
                 fw.write("        // EXAMPLE:\n");
                 fw.write("        // BeastTestCaseRunner.executeBeastTestCase(" +
                       "\"es.upm.dit.gsi.beast.reader.mas.test.MASTestScenario\");\n");
-                fw.write("        // JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.MASTestStory.class\n");
+                fw.write("        // JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.MASTestStory.class\");\n");
                 
                 fw.write("    }\n");
             }

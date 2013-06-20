@@ -48,6 +48,12 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 			<name>Álvaro Carrera Barroso</name>
 			<email>carrerabarroso@gmail.com</email>
 		</developer>
+		
+		<developer>
+			<id>amardomingo</id>
+			<name>Alberto Mardomingo Mardomingo</name>
+			<email>alberto.mardomingo@gmail.com</email>
+		</developer>
 
 	</developers>
 
