@@ -11,24 +11,19 @@ import java.util.logging.Logger;
 
 import es.upm.dit.gsi.beast.exception.BeastException;
 import es.upm.dit.gsi.beast.reader.Reader;
-//import java.util.StringTokenizer;
-
-// FIXME: Update javadoc
 
 /**
- * Project: beast
- * File: es.upm.dit.gsi.beast.reader.mas.MASReader.java
+ * Project: beast File: es.upm.dit.gsi.beast.reader.mas.MASReader.java
  * 
  * Main class to transform the plain text given by the designer to the necessary
  * classes to run each Test. These classes are the Scenario, Setup and
  * Evaluation, which emulate the GIVEN, WHEN and THEN parts of the plain text;
- * the .story file with the plain text of the test and the java class with
- * the same name to interpret it. Furthermore, one caseManager must be created,
+ * the .story file with the plain text of the test and the java class with the
+ * same name to interpret it. Furthermore, one caseManager must be created,
  * which will run all the tests.
  * 
- * Grupo de Sistemas Inteligentes
- * Departamento de Ingeniería de Sistemas Telemáticos
- * Universidad Politécnica de Madrid (UPM)
+ * Grupo de Sistemas Inteligentes Departamento de Ingeniería de Sistemas
+ * Telemáticos Universidad Politécnica de Madrid (UPM)
  * 
  * @author Alberto Mardomingo
  * @author Jorge Solitario
@@ -36,10 +31,11 @@ import es.upm.dit.gsi.beast.reader.Reader;
  * @author alvarocarrera
  * @email a.carrera@gsi.dit.upm.es
  * @twitter @alvarocarrera
- * @version 0.2
+ * @date 21/06/2013
+ * @version 0.3
  * 
  */
-public class MASReader extends Reader{
+public class MASReader extends Reader {
 
     private static Logger logger = Logger.getLogger(MASReader.class.getName());
 
@@ -62,143 +58,239 @@ public class MASReader extends Reader{
      * @throws BeastException
      *             , if any error is found in the configuration
      */
-    public static void generateJavaFiles(String requirementsFolder, String platformName,
-            String src_test_dir, String tests_package,
-            String casemanager_package, String loggingPropFile) throws BeastException {
+    public static void generateJavaFiles(String requirementsFolder,
+            String platformName, String src_test_dir, String tests_package,
+            String casemanager_package, String loggingPropFile)
+            throws BeastException {
 
-        HashMap<String, String[]>scenarios = new HashMap<String, String[]>();
+        File reqFolder = new File(requirementsFolder);
+        if (reqFolder.isDirectory()) {
+            for (File f : reqFolder.listFiles()) {
+                if (f.getName().endsWith(".story")) {
+                    try {
+                        MASReader.generateJavaFilesForOneStory(
+                                f.getCanonicalPath(), platformName,
+                                src_test_dir, tests_package,
+                                casemanager_package, loggingPropFile);
+                    } catch (IOException e) {
+                        String message = "ERROR: " + e.getMessage();
+                        logger.severe(message);
+                        throw new BeastException(message, e);
+                    }
+                }
+            }
+            for (File f: reqFolder.listFiles()) {
+                if (f.isDirectory()) {
+                    MASReader.generateJavaFiles(requirementsFolder+File.separator+f.getName(), platformName, src_test_dir, tests_package+"."+f.getName(), casemanager_package, loggingPropFile);
+                }
+            }
+        } else if (reqFolder.getName().endsWith(".story")) {
+            MASReader.generateJavaFilesForOneStory(requirementsFolder,
+                    platformName, src_test_dir, tests_package,
+                    casemanager_package, loggingPropFile);
+        } else {
+            String message = "No story file found in " + requirementsFolder;
+            logger.severe(message);
+            throw new BeastException(message);
+        }
+
+    }
+
+    /**
+     * 
+     * This method handles the process of creating the tests for one specific
+     * story
+     * 
+     * @param requirementsFolder
+     *            , it is the folder where the plain text given by the client is
+     *            stored
+     * @param platformName
+     *            , to choose the MAS platform (JADE, JADEX, etc.)
+     * @param src_test_dir
+     *            , the folder where our classes are created
+     * @param tests_package
+     *            , the name of the package where the stories are created
+     * @param casemanager_package
+     *            , the path where casemanager must be created
+     * @param loggingPropFile
+     *            , properties file
+     * @throws BeastException
+     *             , if any error is found in the configuration
+     */
+    public static void generateJavaFilesForOneStory(String storyFilePath,
+            String platformName, String src_test_dir, String tests_package,
+            String casemanager_package, String loggingPropFile)
+            throws BeastException {
+
+        HashMap<String, String[]> scenarios = new HashMap<String, String[]>();
         String storyName = null;
         String story_user = null;
         String user_feature = null;
         String user_benefit = null;
-        BufferedReader fileReader = createFileReader(requirementsFolder);
+
+        BufferedReader fileReader = createFileReader(storyFilePath);
         if (fileReader == null) {
-            logger.severe("ERROR Reading the file " + requirementsFolder);
-        } else {// if(fileDoesNotExist("CaseManager.java", casemanager_path, dest_dir)) {
-            
-            //Starting with the CaseManager
+            logger.severe("ERROR Reading the file " + storyFilePath);
+        } else {// if(fileDoesNotExist("CaseManager.java", casemanager_path,
+                // dest_dir)) {
+
+            // Starting with the CaseManager
             File caseManager = CreateMASCaseManager.startMASCaseManager(
-                  casemanager_package, src_test_dir);
+                    casemanager_package, src_test_dir);
             try {
                 String nextLine = null;
-                while((nextLine = fileReader.readLine()) != null){
-                    
+                while ((nextLine = fileReader.readLine()) != null) {
+
                     if (nextLine.startsWith("Story -")) {
                         storyName = nextLine.replaceFirst("Story -", "").trim();
                     } else if (nextLine.startsWith("As a")) {
                         story_user = nextLine.replaceFirst("As a", "").trim();
                     } else if (nextLine.startsWith("I want to")) {
-                        user_feature = nextLine.replaceFirst("I want to", "").trim();
+                        user_feature = nextLine.replaceFirst("I want to", "")
+                                .trim();
                     } else if (nextLine.startsWith("So that")) {
-                        user_benefit = nextLine.replaceFirst("So that", "").trim();
+                        user_benefit = nextLine.replaceFirst("So that", "")
+                                .trim();
                     } else if (nextLine.startsWith("Scenario:")) {
-                        
+
                         // I am assuming that the file is properly formated
                         // TODO: Check that it actually is properly formated.
-                        
-                        String scenarioID = nextLine.replaceFirst("Scenario:", "").toLowerCase();
+
+                        String scenarioID = nextLine.replaceFirst("Scenario:",
+                                "").toLowerCase();
                         while (!fileReader.ready()) {
                             Thread.yield();
                         }
                         nextLine = fileReader.readLine();
-                        String givenDescription = nextLine.replaceFirst("Given", "").trim();
+                        String givenDescription = nextLine.replaceFirst(
+                                "Given", "").trim();
 
                         while (!fileReader.ready()) {
                             Thread.yield();
                         }
                         nextLine = fileReader.readLine();
-                        String whenDescription = nextLine.replaceFirst("When", "").trim();
-                        
+                        String whenDescription = nextLine.replaceFirst("When",
+                                "").trim();
+
                         while (!fileReader.ready()) {
                             Thread.yield();
                         }
                         nextLine = fileReader.readLine();
-                        String thenDescription = nextLine.replaceFirst("Then", "").trim();
-                        
+                        String thenDescription = nextLine.replaceFirst("Then",
+                                "").trim();
+
                         String[] scenarioData = new String[3];
                         scenarioData[0] = givenDescription;
                         scenarioData[1] = whenDescription;
                         scenarioData[2] = thenDescription;
-                        
+
                         scenarios.put(scenarioID, scenarioData);
-                    } else if (!nextLine.trim().isEmpty()){
+                    } else if (!nextLine.trim().isEmpty()) {
                         // Is not an empty line, but has not been recognized.
                         logger.severe("ERROR: The test writen in the plain text can not be handed");
-                        logger.severe("Try again whit the following key-words: {Story -," +
-                        		" As a, I want to, So that, Scenario:, Given, When, Then}");
+                        logger.severe("Try again whit the following key-words: {Story -,"
+                                + " As a, I want to, So that, Scenario:, Given, When, Then}");
                     } // The only possibility here is to get an empty line,
                       // so I don't have to do anything.
                 }
 
                 fileReader.close();
-                
+
                 // Now, I should have all the variables set.
-                
-                if (storyName != null ) {
+
+                if (storyName != null) {
                     // I have a story, so...
-                    if (fileDoesNotExist(createClassName(storyName) +
-                            ".java", tests_package , src_test_dir)) {
-                        CreateMASTestStory.createMASTestStory(storyName, platformName,
-                            tests_package, src_test_dir, loggingPropFile, story_user,
-                            user_feature, user_benefit, scenarios);
+                    if (fileDoesNotExist(createClassName(storyName) + ".java",
+                            tests_package, src_test_dir)) {
+                        CreateMASTestStory.createMASTestStory(storyName,
+                                platformName, tests_package, src_test_dir,
+                                loggingPropFile, story_user, user_feature,
+                                user_benefit, scenarios);
                     }
-                    
+
                     // I create the testCases.
-                    for(String entry : scenarios.keySet()) {
+                    for (String entry : scenarios.keySet()) {
                         if (fileDoesNotExist(createClassName(entry + ".java"),
-                                tests_package + "." + createFirstLowCaseName(storyName), src_test_dir)) {
-                        CreateMASTestCase.createBeastTestCase(createClassName(entry), platformName,
-                                tests_package + "." + createFirstLowCaseName(storyName), src_test_dir, loggingPropFile,
-                                scenarios.get(entry)[0], scenarios.get(entry)[1],
-                                scenarios.get(entry)[2]);
-                        createDotStoryFile(entry, src_test_dir, tests_package + "." + 
-                                createFirstLowCaseName(createClassName(storyName)),
-                                scenarios.get(entry)[0], scenarios.get(entry)[1],
-                                scenarios.get(entry)[2]);
+                                tests_package + "."
+                                        + createFirstLowCaseName(storyName),
+                                src_test_dir)) {
+                            CreateMASTestCase
+                                    .createBeastTestCase(
+                                            createClassName(entry),
+                                            platformName,
+                                            tests_package
+                                                    + "."
+                                                    + createFirstLowCaseName(storyName),
+                                            src_test_dir, loggingPropFile,
+                                            scenarios.get(entry)[0],
+                                            scenarios.get(entry)[1],
+                                            scenarios.get(entry)[2]);
+                            createDotStoryFile(
+                                    entry,
+                                    src_test_dir,
+                                    tests_package
+                                            + "."
+                                            + createFirstLowCaseName(createClassName(storyName)),
+                                    scenarios.get(entry)[0],
+                                    scenarios.get(entry)[1],
+                                    scenarios.get(entry)[2]);
                         }
                     }
-                    
+
                     CreateMASCaseManager.addStory(caseManager, storyName,
-                            tests_package,
-                            story_user, user_feature, user_benefit);
+                            tests_package, story_user, user_feature,
+                            user_benefit);
                 } else {
-                    // There is no storyName, so I just create the scenarios, no story.
-                    for(String scenarioID : scenarios.keySet()){
-                        if (fileDoesNotExist(createClassName(scenarioID + ".java"),
-                                tests_package, src_test_dir)) {
-                        CreateMASTestCase.createBeastTestCase(createClassName(scenarioID), platformName,
-                                tests_package, src_test_dir, loggingPropFile,
-                                scenarios.get(scenarioID)[0], scenarios.get(scenarioID)[1],
-                                scenarios.get(scenarioID)[2]);
-                        createDotStoryFile(scenarioID, src_test_dir, tests_package, scenarios.get(scenarioID)[0], scenarios.get(scenarioID)[1],
-                                scenarios.get(scenarioID)[2]);
-                        CreateMASCaseManager.createTest(caseManager, createClassName(scenarioID),
-                                createTestPath(tests_package, createClassName(scenarioID)),
-                                changeFirstLetterToLowerCase(scenarioID), scenarios.get(scenarioID)[0],
-                                scenarios.get(scenarioID)[1], scenarios.get(scenarioID)[2]);
-                        // Simple, uh?
+                    // There is no storyName, so I just create the scenarios, no
+                    // story.
+                    for (String scenarioID : scenarios.keySet()) {
+                        if (fileDoesNotExist(createClassName(scenarioID
+                                + ".java"), tests_package, src_test_dir)) {
+                            CreateMASTestCase.createBeastTestCase(
+                                    createClassName(scenarioID), platformName,
+                                    tests_package, src_test_dir,
+                                    loggingPropFile,
+                                    scenarios.get(scenarioID)[0],
+                                    scenarios.get(scenarioID)[1],
+                                    scenarios.get(scenarioID)[2]);
+                            createDotStoryFile(scenarioID, src_test_dir,
+                                    tests_package,
+                                    scenarios.get(scenarioID)[0],
+                                    scenarios.get(scenarioID)[1],
+                                    scenarios.get(scenarioID)[2]);
+                            CreateMASCaseManager.createTest(
+                                    caseManager,
+                                    createClassName(scenarioID),
+                                    createTestPath(tests_package,
+                                            createClassName(scenarioID)),
+                                    changeFirstLetterToLowerCase(scenarioID),
+                                    scenarios.get(scenarioID)[0], scenarios
+                                            .get(scenarioID)[1], scenarios
+                                            .get(scenarioID)[2]);
+                            // Simple, uh?
                         }
                     }
                 }
-                
+
                 CreateMASCaseManager.closeMASCaseManager(caseManager);
-                
+
             } catch (Exception e) {
                 logger.severe("ERROR: ");
                 e.printStackTrace();
             }
-        /*} else {
-            // There already is a CaseManager
-            logger.info("CaseManager.java found in " + casemanager_path);*/
+            /*
+             * } else { // There already is a CaseManager
+             * logger.info("CaseManager.java found in " + casemanager_path);
+             */
         }
     }
-    
+
     /**
      * Main method to start reading the plain text given by the client
      * 
      * @param args
-     *            , where arg[0] is beast.properties and arg[1] is
-     *            beastLog.properties
+     *            , where arg[0] is Beast configuration file (beast.properties)
+     *            and arg[1] is Logger configuration file (logger.properties)
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {

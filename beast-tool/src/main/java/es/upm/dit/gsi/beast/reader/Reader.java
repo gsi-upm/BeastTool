@@ -82,6 +82,9 @@ public class Reader {
             String platformName, String src_test_dir, String tests_package,
             String casemanager_package, String loggingPropFile,
             String specificationPhase) throws BeastException {
+        if (specificationPhase==null || specificationPhase=="") {
+            throw new BeastException("Specification phase property not found. Check it in Beast properties configuration file. It should be SYSTEM or MAS.");
+        }
         if (specificationPhase.equalsIgnoreCase(MAS)) {
             MASReader.generateJavaFiles(requirementsFolder, platformName,
                     src_test_dir, tests_package, casemanager_package,

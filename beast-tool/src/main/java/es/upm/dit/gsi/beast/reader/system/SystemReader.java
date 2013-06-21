@@ -34,7 +34,7 @@ import es.upm.dit.gsi.beast.reader.Reader;
  * @email a.carrera@gsi.dit.upm.es
  * @twitter @alvarocarrera
  * @date 21/06/2013
- * @version 0.1
+ * @version 0.3
  * 
  */
 public class SystemReader extends Reader{
@@ -42,8 +42,7 @@ public class SystemReader extends Reader{
     private static Logger logger = Logger.getLogger(SystemReader.class.getName());
     
     /**
-     * Main method of the class, which handles all the process to create all
-     * tests.
+     * Main method of the class, which handles the process of creating the tests
      * 
      * @param requirementsFolder
      *            , it is the folder where the plain text given by the client is
@@ -61,7 +60,65 @@ public class SystemReader extends Reader{
      * @throws BeastException
      *             , if any error is found in the configuration
      */
-    public static void generateJavaFiles(String requirementsFolder, String platformName,
+    public static void generateJavaFiles(String requirementsFolder,
+            String platformName, String src_test_dir, String tests_package,
+            String casemanager_package, String loggingPropFile)
+            throws BeastException {
+
+        File reqFolder = new File(requirementsFolder);
+        if (reqFolder.isDirectory()) {
+            for (File f : reqFolder.listFiles()) {
+                if (f.getName().endsWith(".story")) {
+                    try {
+                        SystemReader.generateJavaFilesForOneStory(
+                                f.getCanonicalPath(), platformName,
+                                src_test_dir, tests_package,
+                                casemanager_package, loggingPropFile);
+                    } catch (IOException e) {
+                        String message = "ERROR: " + e.getMessage();
+                        logger.severe(message);
+                        throw new BeastException(message, e);
+                    }
+                }
+            }
+            for (File f: reqFolder.listFiles()) {
+                if (f.isDirectory()) {
+                    SystemReader.generateJavaFiles(requirementsFolder+File.separator+f.getName(), platformName, src_test_dir, tests_package+"."+f.getName(), casemanager_package, loggingPropFile);
+                }
+            }
+        } else if (reqFolder.getName().endsWith(".story")) {
+            SystemReader.generateJavaFilesForOneStory(requirementsFolder,
+                    platformName, src_test_dir, tests_package,
+                    casemanager_package, loggingPropFile);
+        } else {
+            String message = "No story file found in " + requirementsFolder;
+            logger.severe(message);
+            throw new BeastException(message);
+        }
+
+    }
+    
+    /**
+     * Main method of the class, which handles all the process to create all
+     * tests.
+     * 
+     * @param storyFilePath
+     *            , it is the folder where the plain text given by the client is
+     *            stored
+     * @param platformName
+     *            , to choose the MAS platform (JADE, JADEX, etc.)
+     * @param src_test_dir
+     *            , the folder where our classes are created
+     * @param tests_package
+     *            , the name of the package where the stories are created
+     * @param casemanager_package
+     *            , the path where casemanager must be created
+     * @param loggingPropFile
+     *            , properties file
+     * @throws BeastException
+     *             , if any error is found in the configuration
+     */
+    public static void generateJavaFilesForOneStory(String storyFilePath, String platformName,
             String src_test_dir, String tests_package,
             String casemanager_package, String loggingPropFile) throws BeastException {
 
@@ -76,9 +133,9 @@ public class SystemReader extends Reader{
         String story_user = null;
         String user_feature = null;
         String user_benefit = null;
-        BufferedReader fileReader = createFileReader(requirementsFolder);
+        BufferedReader fileReader = createFileReader(storyFilePath);
         if (fileReader == null) {
-            logger.severe("ERROR Reading the file " + requirementsFolder);
+            logger.severe("ERROR Reading the file " + storyFilePath);
         } else {
             // Starting with the CaseManager
             // Shall I perish, may $Deity have mercy on my soul, and on those
@@ -159,7 +216,7 @@ public class SystemReader extends Reader{
                     // This should not happen, since this class should only be used
                     // to create System tests, (i.e. "story" should never be null)
 
-                    logger.severe("ERROR: No Story found in :" + requirementsFolder);
+                    logger.severe("ERROR: No Story found in :" + storyFilePath);
                     
                 }
                 
@@ -176,64 +233,54 @@ public class SystemReader extends Reader{
      * Main method to start reading the plain text given by the client
      * 
      * @param args
-     *            , where arg[0] is beast.properties and arg[1] is
-     *            beastLog.properties
+     *            , where arg[0] is Beast configuration file (beast.properties)
+     *            and arg[1] is Logger configuration file (logger.properties)
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        Logger logger = Logger.getLogger("Reader.main");
+        Logger logger = Logger.getLogger("MASReader.main");
 
-        Properties properties = new Properties();
-        String propertiesFile = null;
+        Properties beastConfigProperties = new Properties();
+        String beastConfigPropertiesFile = null;
         if (args.length > 0) {
-            propertiesFile = args[0];
-            properties.load(new FileInputStream(propertiesFile));
-            logger.info("Properties file selected -> " + propertiesFile);
+            beastConfigPropertiesFile = args[0];
+            beastConfigProperties.load(new FileInputStream(
+                    beastConfigPropertiesFile));
+            logger.info("Properties file selected -> "
+                    + beastConfigPropertiesFile);
         } else {
             logger.severe("No properties file found. Set the path of properties file as argument.");
+            throw new BeastException(
+                    "No properties file found. Set the path of properties file as argument.");
         }
+        String loggerConfigPropertiesFile;
         if (args.length > 1) {
-            Properties preferences = new Properties();
+            Properties loggerConfigProperties = new Properties();
+            loggerConfigPropertiesFile = args[1];
             try {
-                FileInputStream configFile = new FileInputStream(args[1]);
-                preferences.load(configFile);
-                LogManager.getLogManager().readConfiguration(configFile);
-
-                if (properties.containsKey("type")) {
-                    SystemReader.generateJavaFiles(properties.getProperty("scenarioListPath"), "\""
-                            + properties.getProperty("platform") + "\"",
-                            properties.getProperty("mainDirectory"),
-                            properties.getProperty("testPath"),
-                            properties.getProperty("caseManagerPath"), args[1],
-                            properties.getProperty("type"));
-                } else {
-                    SystemReader.generateJavaFiles(properties.getProperty("scenarioListPath"), "\""
-                            + properties.getProperty("platform") + "\"",
-                            properties.getProperty("mainDirectory"),
-                            properties.getProperty("testPath"),
-                            properties.getProperty("caseManagerPath"), args[1]);
-                }
+                FileInputStream loggerConfigFile = new FileInputStream(
+                        loggerConfigPropertiesFile);
+                loggerConfigProperties.load(loggerConfigFile);
+                LogManager.getLogManager().readConfiguration(loggerConfigFile);
+                logger.info("Logging properties configured successfully. Logger config file: "
+                        + loggerConfigPropertiesFile);
             } catch (IOException ex) {
-                logger.severe("WARNING: Could not open configuration file");
-                logger.severe("WARNING: Logging not configured (console output only)");
+                logger.warning("WARNING: Could not open configuration file");
+                logger.warning("WARNING: Logging not configured (console output only)");
             }
         } else {
-            if (properties.containsKey("type")) {
-                SystemReader.generateJavaFiles(properties.getProperty("scenarioListPath"), "\""
-                        + properties.getProperty("platform") + "\"",
-                        properties.getProperty("mainDirectory"),
-                        properties.getProperty("testPath"),
-                        properties.getProperty("caseManagerPath"), null,
-                        properties.getProperty("type"));
-            } else {
-                SystemReader.generateJavaFiles(properties.getProperty("scenarioListPath"), "\""
-                        + properties.getProperty("platform") + "\"",
-                        properties.getProperty("mainDirectory"),
-                        properties.getProperty("testPath"),
-                        properties.getProperty("caseManagerPath"), null);
-            }
-            logger.warning("No logging properties file found. Set the path of properties file as argument.");
+            loggerConfigPropertiesFile = null;
         }
+
+        SystemReader.generateJavaFiles(
+                beastConfigProperties.getProperty("requirementsFolder"), "\""
+                        + beastConfigProperties.getProperty("MASPlatform")
+                        + "\"",
+                beastConfigProperties.getProperty("srcTestRootFolder"),
+                beastConfigProperties.getProperty("storiesPackage"),
+                beastConfigProperties.getProperty("caseManagerPackage"),
+                loggerConfigPropertiesFile,
+                beastConfigProperties.getProperty("specificationPhase"));
 
     }
 }

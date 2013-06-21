@@ -1,3 +1,9 @@
+Story - My test story
+As a developer,
+I want to check this features,
+So that I can ensure that Beast Reader package works.
+
+
 Scenario: Set believes in agent
 Given that TesterAgent is started in Jade Platform in Main-Container with Configuration 4
 When tester wants to set a belief inside a Jade agent

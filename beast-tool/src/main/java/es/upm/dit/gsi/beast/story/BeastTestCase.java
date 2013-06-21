@@ -92,6 +92,7 @@ public abstract class BeastTestCase extends JUnitStory {
     // private String getPath(String stepName) {
     //
     // //FIXME important!!! when there are two identical step names, there is
+    // TOTEST i dont know if this is still failing or not (i think is already solved)
     // conflict and it do not work properly. Return one of them... but not the
     // correct one
     // XStream xstream = new XStream();
