@@ -6,6 +6,25 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
+import es.upm.dit.gsi.beast.exception.BeastException;
+
+/**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.reader.mas.CreateMASTestStory.java
+ * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
+ * @author Alberto Mardomingo
+ * @author Jorge Solitario
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @version 0.1
+ * 
+ */
 public class CreateMASTestStory {
 
     /**
@@ -23,11 +42,12 @@ public class CreateMASTestStory {
      * @param userFeature - The feature requested by the user
      * @param userBenefit - The benefit the feature will provide
      * @param scenarios - A list with the tests to launch in the testSuite.
+     * @throws BeastException 
      */
     public static void createMASTestStory(String story_name,
             String platform_name, String package_path, String dest_dir,
             String loggingPropFile, String storyUser,
-            String userFeature, String userBenefit, HashMap<String, String[]> scenarios) {
+            String userFeature, String userBenefit, HashMap<String, String[]> scenarios) throws BeastException {
 
         Logger logger = Logger.getLogger(CreateMASTestStory.class.getName());
 

@@ -10,9 +10,20 @@ import es.upm.dit.gsi.beast.platform.jadex.JadexConnector;
 import es.upm.dit.gsi.beast.platform.jadex.JadexMessenger;
 
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.platform.PlatformSelector.java
+ * 
  * Class to select the type of platform our code is going to run
  * 
- * @author a.carrera
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @version 0.1
+ * 
  */
 public class PlatformSelector {
 

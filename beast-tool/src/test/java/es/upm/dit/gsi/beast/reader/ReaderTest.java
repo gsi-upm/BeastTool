@@ -17,7 +17,7 @@ public class ReaderTest {
                     "\"jade\"", "src/test/java",
                     "es.upm.dit.gsi.beast.reader.test",
                     "es.upm.dit.gsi.beast.reader.test",
-                    "src/test/java/es/upm/dit/gsi/beast/reader/log.properties");
+                    "src/test/java/es/upm/dit/gsi/beast/reader/log.properties","MAS");
         } catch (Exception e) {
             Assert.fail();
         }
@@ -45,7 +45,7 @@ public class ReaderTest {
                     "src/test/java/es/upm/dit/gsi/beast/reader/ReaderTest.story",
                     "\"jade\"", "src/test/java",
                     "es.upm.dit.gsi.beast.reader.test",
-                    "es.upm.dit.gsi.beast.reader.test", null);
+                    "es.upm.dit.gsi.beast.reader.test", null,"MAS");
         } catch (Exception e) {
             Assert.fail();
         }

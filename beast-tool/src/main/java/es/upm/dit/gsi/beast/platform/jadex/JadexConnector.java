@@ -15,10 +15,26 @@ import java.util.logging.Logger;
 import es.upm.dit.gsi.beast.platform.Connector;
 
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.platform.jadex.JadexConnector.java
+ * 
+ * 
  * To create our jadex Platform and create its agents, allowing the
- * communication between them
+ * communication among them
+ * 
+ * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
  * 
  * @author Jorge Solitario
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @version 0.1
+ * 
  */
 public class JadexConnector implements Connector {
 

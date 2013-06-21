@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import es.upm.dit.gsi.beast.exception.BeastException;
+
 /**
  * Main class to create the java file that controls each Test. First it will
  * SETUP the scenario, then it will perform LAUNCH anything needed, and finally
@@ -39,10 +41,11 @@ public class CreateMASTestCase {
      *            the WHEN part of the scenario
      * @param thenComment
      *            the THEN part of the scenario
+     * @throws BeastException 
      */
     public static void createBeastTestCase(String scenario_name, String platform_name,
             String package_path, String dest_dir, String loggingPropFile, String givenComment,
-            String whenComment, String thenComment) {
+            String whenComment, String thenComment) throws BeastException {
 
         Logger logger = Logger.getLogger(CreateMASTestCase.class.getName());
 

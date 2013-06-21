@@ -9,9 +9,13 @@ import java.util.Properties;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
+import es.upm.dit.gsi.beast.exception.BeastException;
 import es.upm.dit.gsi.beast.reader.Reader;
 
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.reader.system.SystemReader.java
+ * 
  * Main class to transform the plain text given by the client to the necessary
  * classes to run each Test. These classes are the Scenario, Setup and
  * Evaluation, which emulate the GIVEN, WHEN and THEN parts of the plain text;
@@ -19,8 +23,19 @@ import es.upm.dit.gsi.beast.reader.Reader;
  * the same name to interpret it. Furthermore, one casemanager must be created,
  * which will run all the tests.
  * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
  * @author Alberto Mardomingo
  * @author Jorge Solitario
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @date 21/06/2013
+ * @version 0.1
+ * 
  */
 public class SystemReader extends Reader{
 
@@ -30,22 +45,25 @@ public class SystemReader extends Reader{
      * Main method of the class, which handles all the process to create all
      * tests.
      * 
-     * @param ScenariosList
-     *            , it the plain text given by the client
+     * @param requirementsFolder
+     *            , it is the folder where the plain text given by the client is
+     *            stored
      * @param platformName
-     *            , to choose the platform
-     * @param dest_dir
+     *            , to choose the MAS platform (JADE, JADEX, etc.)
+     * @param src_test_dir
      *            , the folder where our classes are created
-     * @param tests_package_path
-     *            , the name of the package
-     * @param casemanager_path
+     * @param tests_package
+     *            , the name of the package where the stories are created
+     * @param casemanager_package
      *            , the path where casemanager must be created
      * @param loggingPropFile
      *            , properties file
+     * @throws BeastException
+     *             , if any error is found in the configuration
      */
-    public static void generateJavaFiles(String ScenariosList, String platformName,
-            String dest_dir, String tests_package_path,
-            String casemanager_path, String loggingPropFile) {
+    public static void generateJavaFiles(String requirementsFolder, String platformName,
+            String src_test_dir, String tests_package,
+            String casemanager_package, String loggingPropFile) throws BeastException {
 
         /*
          * This map has the following structure:
@@ -58,15 +76,15 @@ public class SystemReader extends Reader{
         String story_user = null;
         String user_feature = null;
         String user_benefit = null;
-        BufferedReader fileReader = createFileReader(ScenariosList);
+        BufferedReader fileReader = createFileReader(requirementsFolder);
         if (fileReader == null) {
-            logger.severe("ERROR Reading the file " + ScenariosList);
+            logger.severe("ERROR Reading the file " + requirementsFolder);
         } else {
             // Starting with the CaseManager
             // Shall I perish, may $Deity have mercy on my soul, and on those
             // who should finish this
             File caseManager = CreateSystemCaseManager.startSystemCaseManager(
-                  casemanager_path, dest_dir);
+                  casemanager_package, src_test_dir);
             try {
                 String nextLine = null;
                 while((nextLine = fileReader.readLine()) != null){
@@ -128,20 +146,20 @@ public class SystemReader extends Reader{
                 
                 if (storyName != null ) {
 //                    // I have a story, so...
-                    if (fileDoesNotExist(storyName + ".java", tests_package_path , dest_dir)) {
+                    if (fileDoesNotExist(storyName + ".java", tests_package , src_test_dir)) {
                     CreateSystemTestSuite.createSystemTestSuite(storyName,
-                            platformName, tests_package_path, dest_dir, loggingPropFile,
+                            platformName, tests_package, src_test_dir, loggingPropFile,
                             story_user, user_feature, user_benefit, scenarios);
                     }
                     CreateSystemCaseManager.addStory(caseManager, storyName,
-                            tests_package_path , story_user, user_feature, user_benefit);
+                            tests_package , story_user, user_feature, user_benefit);
                     
                 } else {
                 
                     // This should not happen, since this class should only be used
                     // to create System tests, (i.e. "story" should never be null)
 
-                    logger.severe("ERROR: No Story found in :" + ScenariosList);
+                    logger.severe("ERROR: No Story found in :" + requirementsFolder);
                     
                 }
                 

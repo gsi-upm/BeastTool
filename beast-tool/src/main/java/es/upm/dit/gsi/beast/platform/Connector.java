@@ -3,10 +3,22 @@ package es.upm.dit.gsi.beast.platform;
 import java.util.logging.Logger;
 
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.platform.Connector.java
+ * 
  * Abstract Class that defines method
  * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
  * @author jjsolitario
- * @author a.carrera
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @version 0.1
+ * 
  */
 public interface Connector {
 

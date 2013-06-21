@@ -19,7 +19,7 @@ public class MASReaderTest {
                     "\"jade\"", "src/test/java",
                     "es.upm.dit.gsi.beast.reader.mas.test",
                     "es.upm.dit.gsi.beast.reader.mas.test",
-                    "src/test/java/es/upm/dit/gsi/beast/reader/mas/log.properties");
+                    "src/test/java/es/upm/dit/gsi/beast/reader/mas/log.properties","MAS");
         } catch (Exception e) {
             Assert.fail();
         }
@@ -83,7 +83,7 @@ public class MASReaderTest {
                     "src/test/java/es/upm/dit/gsi/beast/reader/mas/ReaderTest.story",
                     "\"jade\"", "src/test/java",
                     "es.upm.dit.gsi.beast.reader.mas.test",
-                    "es.upm.dit.gsi.beast.reader.mas.test", null);
+                    "es.upm.dit.gsi.beast.reader.mas.test", null, "MAS");
         } catch (Exception e) {
             Assert.fail();
         }

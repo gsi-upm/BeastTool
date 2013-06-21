@@ -13,9 +13,23 @@ import es.upm.dit.gsi.beast.platform.AgentIntrospector;
 import es.upm.dit.gsi.beast.platform.Connector;
 
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector.java
+ * 
  * To get information about our jadex agents.
  * 
+ * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
  * @author Jorge Solitario
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @version 0.1
+ * 
  */
 public class JadexAgentIntrospector implements AgentIntrospector {
 

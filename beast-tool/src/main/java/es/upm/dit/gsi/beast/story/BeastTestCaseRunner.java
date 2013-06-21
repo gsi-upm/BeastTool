@@ -9,9 +9,23 @@ import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.steps.SilentStepMonitor;
 
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.story.BeastTestCaseRunner.java
+ * 
  * Class to run tests using JBehave.
  *
- * @author Jorge Solitario
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
+ * s@author Jorge Solitario
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @date 21/06/2013
+ * @version 0.1
+ * 
  */
 public class BeastTestCaseRunner extends Embedder {
 

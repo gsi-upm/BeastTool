@@ -5,9 +5,20 @@ import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
 import es.upm.dit.gsi.beast.story.BeastTestCase;
 
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.mock.MockManager.java
+ * 
  * This class creates mock agents on the Scenario
  * 
- * @author Álvaro Carrera Barroso
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @version 0.1
+ * 
  */
 public class MockManager {
 

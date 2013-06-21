@@ -8,8 +8,19 @@ import es.upm.dit.gsi.beast.platform.AgentIntrospector;
 import es.upm.dit.gsi.beast.platform.Connector;
 
 /**
- * @author a.carrera
- *
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector.java
+ * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @date 28/12/2011
+ * @version 0.1
+ * 
  */
 public class JadeAgentIntrospector implements AgentIntrospector {
 

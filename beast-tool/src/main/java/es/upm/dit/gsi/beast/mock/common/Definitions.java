@@ -1,5 +1,19 @@
 package es.upm.dit.gsi.beast.mock.common;
 
+/**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.mock.common.Definitions.java
+ * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @version 0.1
+ * 
+ */
 public class Definitions {
 
     public static final String JADEX_LISTENER_MOCK_PATH = "es/upm/dit/gsi/beast/mock/jadex/listenerMock/ListenerMock.agent.xml";

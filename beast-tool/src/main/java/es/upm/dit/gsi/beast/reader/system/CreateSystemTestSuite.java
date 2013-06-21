@@ -6,13 +6,26 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
+import es.upm.dit.gsi.beast.exception.BeastException;
+
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.reader.system.CreateSystemTestSuite.java
+ * 
  * Class to create the system test suite, where the developers must add the 
  * necessary calls to the MAS test included in the feature required by the client
  * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
  * @author Alberto Mardomingo
- * @author Alvaro Carrera
- *
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @version 0.1
+ * 
  */
 public class CreateSystemTestSuite {
 
@@ -29,11 +42,12 @@ public class CreateSystemTestSuite {
      * @param userFeature - The feature requested by the user
      * @param userBenefit - The benefit the feature will provide
      * @param scenarios - A list with the tests to launch in the testSuite.
+     * @throws BeastException 
      */
     public static void createSystemTestSuite(String story_name,
             String platform_name, String package_path, String dest_dir,
             String loggingPropFile, String storyUser,
-            String userFeature, String userBenefit, HashMap<String, String[]> scenarios) {
+            String userFeature, String userBenefit, HashMap<String, String[]> scenarios) throws BeastException {
 
         Logger logger = Logger.getLogger(CreateSystemTestSuite.class.getName());
 

@@ -1,12 +1,24 @@
 package es.upm.dit.gsi.beast.mock.common;
 
-
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.mock.common.MockConfiguration.java
+ * 
  * MockConfiguration, where it is saved the behaviour of the mock agents
  * dfServiceName is the name that the mock must publish in the DF behaviour is
  * where the information for answering messages is saved
  * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
  * @author Jorge Solitario
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @version 0.1
+ * 
  */
 public class MockConfiguration {
 

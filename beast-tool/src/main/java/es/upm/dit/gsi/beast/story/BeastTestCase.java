@@ -19,13 +19,26 @@ import es.upm.dit.gsi.beast.platform.Messenger;
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
 
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.story.BeastTestCase.java
+ * 
  * Main class to translate plain text into code, following the Given-When-Then
  * language In the GIVEN part it launches the platform In the WHEN part it
  * configures the state of its agents In the THEN part it checks the correct
  * behaviour The main purpose of it consists of knowing agents' state/properties
  * without changing its code.
  * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
  * @author Jorge Solitario
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @version 0.1
+ * 
  */
 public abstract class BeastTestCase extends JUnitStory {
 

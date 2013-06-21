@@ -5,11 +5,26 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import es.upm.dit.gsi.beast.exception.BeastException;
+
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.reader.system.CreateSystemCaseManager.java
+ * 
  * Main class that generates the CaseManager.java File to run the System Tests.
  * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
  * @author Jorge Solitario
- * @author Alvaro Carrera
+ * @author Alberto Mardomingo
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @version 0.1
+ * 
  */
 public class CreateSystemCaseManager {
 
@@ -23,8 +38,9 @@ public class CreateSystemCaseManager {
      *            as src/main/java
      * 
      * @return the File with its first part written
+     * @throws BeastException 
      */
-    public static File startSystemCaseManager(String package_path, String dest_dir) {
+    public static File startSystemCaseManager(String package_path, String dest_dir) throws BeastException {
 
         Logger logger = Logger.getLogger("CreateSystemCaseManager.startSystemCaseManager");
 
