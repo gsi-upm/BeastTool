@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// es.upm.dit.gsi.beast.reader.mas.MASReader
-	c1907 [label=<<table title="es.upm.dit.gsi.beast.reader.mas.MASReader" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./MASReader.html">
+	c2031 [label=<<table title="es.upm.dit.gsi.beast.reader.mas.MASReader" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./MASReader.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> MASReader </td></tr>
 		</table></td></tr>
@@ -22,7 +22,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.reader.Reader
-	c1911 [label=<<table title="es.upm.dit.gsi.beast.reader.Reader" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Reader.html">
+	c2035 [label=<<table title="es.upm.dit.gsi.beast.reader.Reader" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../Reader.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Reader </td></tr>
 		</table></td></tr>
@@ -34,17 +34,17 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	//es.upm.dit.gsi.beast.reader.mas.MASReader extends es.upm.dit.gsi.beast.reader.Reader
-	c1911:p -> c1907:p [dir=back,arrowtail=empty];
+	c2035:p -> c2031:p [dir=back,arrowtail=empty];
 	// es.upm.dit.gsi.beast.reader.mas.MASReader DEPEND java.lang.String
-	c1907:p -> c1918:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c2031:p -> c2042:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.reader.mas.MASReader DEPEND java.lang.String
-	c1907:p -> c1918:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c2031:p -> c2042:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.reader.Reader DEPEND java.lang.String
-	c1911:p -> c1918:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c2035:p -> c2042:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.reader.Reader DEPEND java.lang.String
-	c1911:p -> c1918:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c2035:p -> c2042:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// java.lang.String
-	c1918 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html">
+	c2042 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> String </td></tr>
 		</table></td></tr>

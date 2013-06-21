@@ -10,26 +10,26 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// es.upm.dit.gsi.beast.platform.Messenger
-	c1470 [label=<<table title="es.upm.dit.gsi.beast.platform.Messenger" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Messenger.html">
+	c1584 [label=<<table title="es.upm.dit.gsi.beast.platform.Messenger" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Messenger.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Messenger </td></tr>
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.platform.jade.JadeMessenger
-	c1474 [label=<<table title="es.upm.dit.gsi.beast.platform.jade.JadeMessenger" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./jade/JadeMessenger.html">
+	c1588 [label=<<table title="es.upm.dit.gsi.beast.platform.jade.JadeMessenger" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./jade/JadeMessenger.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> JadeMessenger </td></tr>
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexMessenger
-	c1477 [label=<<table title="es.upm.dit.gsi.beast.platform.jadex.JadexMessenger" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./jadex/JadexMessenger.html">
+	c1591 [label=<<table title="es.upm.dit.gsi.beast.platform.jadex.JadexMessenger" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./jadex/JadexMessenger.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> JadexMessenger </td></tr>
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.story.BeastTestCase
-	c1489 [label=<<table title="es.upm.dit.gsi.beast.story.BeastTestCase" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../story/BeastTestCase.html">
+	c1603 [label=<<table title="es.upm.dit.gsi.beast.story.BeastTestCase" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../story/BeastTestCase.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="ariali"> BeastTestCase </font></td></tr>
 		</table></td></tr>
@@ -41,57 +41,57 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	//es.upm.dit.gsi.beast.platform.jade.JadeMessenger implements es.upm.dit.gsi.beast.platform.Messenger
-	c1470:p -> c1474:p [dir=back,arrowtail=empty,style=dashed];
+	c1584:p -> c1588:p [dir=back,arrowtail=empty,style=dashed];
 	//es.upm.dit.gsi.beast.platform.jadex.JadexMessenger implements es.upm.dit.gsi.beast.platform.Messenger
-	c1470:p -> c1477:p [dir=back,arrowtail=empty,style=dashed];
+	c1584:p -> c1591:p [dir=back,arrowtail=empty,style=dashed];
 	// es.upm.dit.gsi.beast.story.BeastTestCase NAVASSOC java.lang.String
-	c1489:p -> c1491:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c1603:p -> c1605:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// es.upm.dit.gsi.beast.story.BeastTestCase NAVASSOC es.upm.dit.gsi.beast.platform.Messenger
-	c1489:p -> c1470:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c1603:p -> c1584:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// es.upm.dit.gsi.beast.platform.Messenger DEPEND java.lang.String
-	c1470:p -> c1491:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1584:p -> c1605:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.Messenger DEPEND java.lang.String
+	c1584:p -> c1605:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.Messenger DEPEND java.lang.Object
-	c1470:p -> c1492:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.Messenger DEPEND java.lang.String
-	c1470:p -> c1491:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.Messenger DEPEND java.lang.String
-	c1470:p -> c1491:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1584:p -> c1606:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.Messenger DEPEND java.util.ArrayList<E>
-	c1470:p -> c1493:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1584:p -> c1607:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.Messenger DEPEND java.lang.String
+	c1584:p -> c1605:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jade.JadeMessenger DEPEND java.lang.String
-	c1474:p -> c1491:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1588:p -> c1605:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jade.JadeMessenger DEPEND java.lang.String
-	c1474:p -> c1491:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.jade.JadeMessenger DEPEND java.util.ArrayList<E>
-	c1474:p -> c1493:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1588:p -> c1605:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jade.JadeMessenger DEPEND java.lang.String
+	c1588:p -> c1605:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jade.JadeMessenger DEPEND java.lang.Object
-	c1474:p -> c1492:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.jade.JadeMessenger DEPEND java.lang.String
-	c1474:p -> c1491:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.jadex.JadexMessenger DEPEND java.lang.Object
-	c1477:p -> c1492:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1588:p -> c1606:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jade.JadeMessenger DEPEND java.util.ArrayList<E>
+	c1588:p -> c1607:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexMessenger DEPEND java.lang.String
-	c1477:p -> c1491:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1591:p -> c1605:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexMessenger DEPEND java.util.ArrayList<E>
-	c1477:p -> c1493:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1591:p -> c1607:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jadex.JadexMessenger DEPEND java.lang.Object
+	c1591:p -> c1606:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexMessenger DEPEND java.lang.String
-	c1477:p -> c1491:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1591:p -> c1605:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexMessenger DEPEND java.lang.String
-	c1477:p -> c1491:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.Object
-	c1489:p -> c1492:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.util.ArrayList<E>
-	c1489:p -> c1493:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1591:p -> c1605:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.String
-	c1489:p -> c1491:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.Object
-	c1489:p -> c1492:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.String
-	c1489:p -> c1491:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1603:p -> c1605:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.util.ArrayList<E>
-	c1489:p -> c1493:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1603:p -> c1607:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.Object
+	c1603:p -> c1606:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.util.ArrayList<E>
+	c1603:p -> c1607:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.String
+	c1603:p -> c1605:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.Object
+	c1603:p -> c1606:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// java.util.ArrayList<E>
-	c1493 [label=<<table title="java.util.ArrayList" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/ArrayList.html">
+	c1607 [label=<<table title="java.util.ArrayList" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/ArrayList.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ArrayList&lt;E&gt; </td></tr>
 		</table></td></tr>
@@ -105,7 +105,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// java.lang.Object
-	c1492 [label=<<table title="java.lang.Object" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Object.html">
+	c1606 [label=<<table title="java.lang.Object" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Object.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Object </td></tr>
 		</table></td></tr>
@@ -117,7 +117,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// java.lang.String
-	c1491 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html">
+	c1605 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> String </td></tr>
 		</table></td></tr>

@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// es.upm.dit.gsi.beast.mock.jadex.common.SetupPlan
-	c1225 [label=<<table title="es.upm.dit.gsi.beast.mock.jadex.common.SetupPlan" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./SetupPlan.html">
+	c1334 [label=<<table title="es.upm.dit.gsi.beast.mock.jadex.common.SetupPlan" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./SetupPlan.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> SetupPlan </td></tr>
 		</table></td></tr>
@@ -22,9 +22,9 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	//es.upm.dit.gsi.beast.mock.jadex.common.SetupPlan extends jadex.bdi.runtime.Plan
-	c1252:p -> c1225:p [dir=back,arrowtail=empty];
+	c1361:p -> c1334:p [dir=back,arrowtail=empty];
 	// jadex.bdi.runtime.Plan
-	c1252 [label=<<table title="jadex.bdi.runtime.Plan" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/jadex/bdi/runtime/Plan.html">
+	c1361 [label=<<table title="jadex.bdi.runtime.Plan" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/jadex/bdi/runtime/Plan.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="ariali"> Plan </font></td></tr>
 		</table></td></tr>

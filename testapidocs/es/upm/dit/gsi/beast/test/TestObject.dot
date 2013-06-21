@@ -39,10 +39,10 @@ digraph G {
 	c1044:p -> c1046:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// es.upm.dit.gsi.beast.test.TestObject NAVASSOC java.lang.String
 	c1046:p -> c1047:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND es.upm.dit.gsi.beast.test.TestObject
-	c1044:p -> c1046:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND java.lang.String
 	c1044:p -> c1047:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND es.upm.dit.gsi.beast.test.TestObject
+	c1044:p -> c1046:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.test.TestObject DEPEND java.lang.String
 	c1046:p -> c1047:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// java.lang.String

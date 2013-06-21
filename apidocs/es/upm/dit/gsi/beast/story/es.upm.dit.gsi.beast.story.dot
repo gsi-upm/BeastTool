@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// es.upm.dit.gsi.beast.story.BeastTestCaseRunner
-	c663 [label=<<table title="es.upm.dit.gsi.beast.story.BeastTestCaseRunner" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./BeastTestCaseRunner.html">
+	c719 [label=<<table title="es.upm.dit.gsi.beast.story.BeastTestCaseRunner" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./BeastTestCaseRunner.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> BeastTestCaseRunner </td></tr>
 		</table></td></tr>
@@ -22,7 +22,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.story.BeastTestCase
-	c664 [label=<<table title="es.upm.dit.gsi.beast.story.BeastTestCase" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./BeastTestCase.html">
+	c720 [label=<<table title="es.upm.dit.gsi.beast.story.BeastTestCase" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./BeastTestCase.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="ariali"> BeastTestCase </font></td></tr>
 		</table></td></tr>

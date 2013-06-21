@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// es.upm.dit.gsi.beast.story.BeastTestCaseRunner
-	c2231 [label=<<table title="es.upm.dit.gsi.beast.story.BeastTestCaseRunner" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./BeastTestCaseRunner.html">
+	c2363 [label=<<table title="es.upm.dit.gsi.beast.story.BeastTestCaseRunner" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./BeastTestCaseRunner.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> BeastTestCaseRunner </td></tr>
 		</table></td></tr>
@@ -22,13 +22,13 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	//es.upm.dit.gsi.beast.story.BeastTestCaseRunner extends org.jbehave.core.embedder.Embedder
-	c2247:p -> c2231:p [dir=back,arrowtail=empty];
-	// es.upm.dit.gsi.beast.story.BeastTestCaseRunner DEPEND org.jbehave.core.configuration.Configuration
-	c2231:p -> c2267:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c2379:p -> c2363:p [dir=back,arrowtail=empty];
 	// es.upm.dit.gsi.beast.story.BeastTestCaseRunner DEPEND java.lang.String
-	c2231:p -> c2268:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c2363:p -> c2380:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.story.BeastTestCaseRunner DEPEND org.jbehave.core.configuration.Configuration
+	c2363:p -> c2400:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// org.jbehave.core.embedder.Embedder
-	c2247 [label=<<table title="org.jbehave.core.embedder.Embedder" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/org/jbehave/core/embedder/Embedder.html">
+	c2379 [label=<<table title="org.jbehave.core.embedder.Embedder" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/org/jbehave/core/embedder/Embedder.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Embedder </td></tr>
 		</table></td></tr>
@@ -41,7 +41,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// java.lang.String
-	c2268 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html">
+	c2380 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> String </td></tr>
 		</table></td></tr>
@@ -67,7 +67,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// org.jbehave.core.configuration.Configuration
-	c2267 [label=<<table title="org.jbehave.core.configuration.Configuration" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/org/jbehave/core/configuration/Configuration.html">
+	c2400 [label=<<table title="org.jbehave.core.configuration.Configuration" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/org/jbehave/core/configuration/Configuration.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="ariali"> Configuration </font></td></tr>
 		</table></td></tr>

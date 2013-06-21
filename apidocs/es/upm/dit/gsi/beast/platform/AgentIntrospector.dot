@@ -10,26 +10,26 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// es.upm.dit.gsi.beast.platform.AgentIntrospector
-	c1566 [label=<<table title="es.upm.dit.gsi.beast.platform.AgentIntrospector" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./AgentIntrospector.html">
+	c1682 [label=<<table title="es.upm.dit.gsi.beast.platform.AgentIntrospector" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./AgentIntrospector.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> AgentIntrospector </td></tr>
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector
-	c1570 [label=<<table title="es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./jade/JadeAgentIntrospector.html">
+	c1686 [label=<<table title="es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./jade/JadeAgentIntrospector.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> JadeAgentIntrospector </td></tr>
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector
-	c1573 [label=<<table title="es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./jadex/JadexAgentIntrospector.html">
+	c1689 [label=<<table title="es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./jadex/JadexAgentIntrospector.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> JadexAgentIntrospector </td></tr>
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.story.BeastTestCase
-	c1583 [label=<<table title="es.upm.dit.gsi.beast.story.BeastTestCase" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../story/BeastTestCase.html">
+	c1699 [label=<<table title="es.upm.dit.gsi.beast.story.BeastTestCase" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../story/BeastTestCase.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="ariali"> BeastTestCase </font></td></tr>
 		</table></td></tr>
@@ -41,45 +41,45 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	//es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector implements es.upm.dit.gsi.beast.platform.AgentIntrospector
-	c1566:p -> c1570:p [dir=back,arrowtail=empty,style=dashed];
+	c1682:p -> c1686:p [dir=back,arrowtail=empty,style=dashed];
 	//es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector implements es.upm.dit.gsi.beast.platform.AgentIntrospector
-	c1566:p -> c1573:p [dir=back,arrowtail=empty,style=dashed];
+	c1682:p -> c1689:p [dir=back,arrowtail=empty,style=dashed];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector NAVASSOC java.lang.Object
-	c1573:p -> c1585:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c1689:p -> c1701:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// es.upm.dit.gsi.beast.story.BeastTestCase NAVASSOC java.lang.String
-	c1583:p -> c1586:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c1699:p -> c1702:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// es.upm.dit.gsi.beast.story.BeastTestCase NAVASSOC es.upm.dit.gsi.beast.platform.AgentIntrospector
-	c1583:p -> c1566:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-	// es.upm.dit.gsi.beast.platform.AgentIntrospector DEPEND java.lang.Object
-	c1566:p -> c1585:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.AgentIntrospector DEPEND java.lang.Object
-	c1566:p -> c1585:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.AgentIntrospector DEPEND java.lang.Object
-	c1566:p -> c1585:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1699:p -> c1682:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// es.upm.dit.gsi.beast.platform.AgentIntrospector DEPEND java.lang.String
-	c1566:p -> c1586:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND java.lang.Object
-	c1570:p -> c1585:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND java.lang.Object
-	c1570:p -> c1585:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND java.lang.Object
-	c1570:p -> c1585:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1682:p -> c1702:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.AgentIntrospector DEPEND java.lang.Object
+	c1682:p -> c1701:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.AgentIntrospector DEPEND java.lang.Object
+	c1682:p -> c1701:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.AgentIntrospector DEPEND java.lang.Object
+	c1682:p -> c1701:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND java.lang.String
-	c1570:p -> c1586:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector DEPEND java.lang.Object
-	c1573:p -> c1585:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1686:p -> c1702:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND java.lang.Object
+	c1686:p -> c1701:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND java.lang.Object
+	c1686:p -> c1701:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND java.lang.Object
+	c1686:p -> c1701:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector DEPEND java.lang.String
-	c1573:p -> c1586:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1689:p -> c1702:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector DEPEND java.lang.Object
+	c1689:p -> c1701:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.Object
-	c1583:p -> c1585:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1699:p -> c1701:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.Object
-	c1583:p -> c1585:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1699:p -> c1701:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.String
-	c1583:p -> c1586:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1699:p -> c1702:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.String
-	c1583:p -> c1586:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1699:p -> c1702:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// java.lang.Object
-	c1585 [label=<<table title="java.lang.Object" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Object.html">
+	c1701 [label=<<table title="java.lang.Object" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Object.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Object </td></tr>
 		</table></td></tr>
@@ -91,7 +91,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// java.lang.String
-	c1586 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html">
+	c1702 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> String </td></tr>
 		</table></td></tr>

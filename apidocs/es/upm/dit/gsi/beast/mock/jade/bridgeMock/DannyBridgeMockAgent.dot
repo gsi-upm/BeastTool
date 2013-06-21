@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// es.upm.dit.gsi.beast.mock.common.MockConfiguration
-	c920 [label=<<table title="es.upm.dit.gsi.beast.mock.common.MockConfiguration" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../common/MockConfiguration.html">
+	c1023 [label=<<table title="es.upm.dit.gsi.beast.mock.common.MockConfiguration" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../common/MockConfiguration.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> MockConfiguration </td></tr>
 		</table></td></tr>
@@ -23,7 +23,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent
-	c923 [label=<<table title="es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./DannyBridgeMockAgent.html">
+	c1026 [label=<<table title="es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./DannyBridgeMockAgent.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> DannyBridgeMockAgent </td></tr>
 		</table></td></tr>
@@ -35,47 +35,47 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector
-	c942 [label=<<table title="es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../platform/jade/JadeAgentIntrospector.html">
+	c1045 [label=<<table title="es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../platform/jade/JadeAgentIntrospector.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> JadeAgentIntrospector </td></tr>
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	//es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent extends jade.core.Agent
-	c957:p -> c923:p [dir=back,arrowtail=empty];
+	c1060:p -> c1026:p [dir=back,arrowtail=empty];
 	// es.upm.dit.gsi.beast.mock.common.MockConfiguration NAVASSOC java.lang.String
-	c920:p -> c958:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c1023:p -> c1061:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent NAVASSOC jade.util.Logger
-	c923:p -> c959:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c1026:p -> c1062:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent NAVASSOC es.upm.dit.gsi.beast.mock.common.MockConfiguration
-	c923:p -> c920:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c1026:p -> c1023:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent NAVASSOC es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector
-	c923:p -> c942:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c1026:p -> c1045:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent NAVASSOC java.util.List<E>
-	c923:p -> c960:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c1026:p -> c1063:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// es.upm.dit.gsi.beast.mock.common.MockConfiguration DEPEND java.lang.String
-	c920:p -> c958:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent DEPEND java.util.List<E>
-	c923:p -> c960:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent DEPEND jade.lang.acl.ACLMessage
-	c923:p -> c964:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent DEPEND java.lang.Object
-	c923:p -> c965:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1023:p -> c1061:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent DEPEND java.lang.String
-	c923:p -> c958:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1026:p -> c1061:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent DEPEND jade.lang.acl.ACLMessage
+	c1026:p -> c1067:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent DEPEND java.lang.Object
+	c1026:p -> c1068:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent DEPEND java.util.List<E>
-	c923:p -> c960:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1026:p -> c1063:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent DEPEND java.util.List<E>
+	c1026:p -> c1063:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND java.lang.Object
-	c942:p -> c965:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND jade.core.Agent
-	c942:p -> c957:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND java.lang.Object
-	c942:p -> c965:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1045:p -> c1068:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND java.lang.String
-	c942:p -> c958:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1045:p -> c1061:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND jade.core.Agent
+	c1045:p -> c1060:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND java.lang.Object
-	c942:p -> c965:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1045:p -> c1068:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND java.lang.Object
+	c1045:p -> c1068:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// jade.lang.acl.ACLMessage
-	c964 [label=<<table title="jade.lang.acl.ACLMessage" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/lang/acl/ACLMessage.html">
+	c1067 [label=<<table title="jade.lang.acl.ACLMessage" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/lang/acl/ACLMessage.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ACLMessage </td></tr>
 		</table></td></tr>
@@ -88,7 +88,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// jade.core.Agent
-	c957 [label=<<table title="jade.core.Agent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/core/Agent.html">
+	c1060 [label=<<table title="jade.core.Agent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/core/Agent.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Agent </td></tr>
 		</table></td></tr>
@@ -100,7 +100,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// java.lang.Object
-	c965 [label=<<table title="java.lang.Object" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Object.html">
+	c1068 [label=<<table title="java.lang.Object" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Object.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Object </td></tr>
 		</table></td></tr>
@@ -112,14 +112,14 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// java.util.List<E>
-	c960 [label=<<table title="java.util.List" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/List.html">
+	c1063 [label=<<table title="java.util.List" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/List.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> List&lt;E&gt; </td></tr>
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// java.lang.String
-	c958 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html">
+	c1061 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> String </td></tr>
 		</table></td></tr>
@@ -145,7 +145,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// jade.util.Logger
-	c959 [label=<<table title="jade.util.Logger" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/util/Logger.html">
+	c1062 [label=<<table title="jade.util.Logger" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/util/Logger.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Logger </td></tr>
 		</table></td></tr>

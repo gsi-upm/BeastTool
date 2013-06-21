@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// es.upm.dit.gsi.beast.mock.jadex.bridgeMock.InformCommunicationPlan
-	c1187 [label=<<table title="es.upm.dit.gsi.beast.mock.jadex.bridgeMock.InformCommunicationPlan" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./InformCommunicationPlan.html">
+	c1295 [label=<<table title="es.upm.dit.gsi.beast.mock.jadex.bridgeMock.InformCommunicationPlan" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./InformCommunicationPlan.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> InformCommunicationPlan </td></tr>
 		</table></td></tr>
@@ -22,7 +22,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.mock.jadex.common.MockAgentPlan
-	c1189 [label=<<table title="es.upm.dit.gsi.beast.mock.jadex.common.MockAgentPlan" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../common/MockAgentPlan.html">
+	c1297 [label=<<table title="es.upm.dit.gsi.beast.mock.jadex.common.MockAgentPlan" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../common/MockAgentPlan.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="ariali"> MockAgentPlan </font></td></tr>
 		</table></td></tr>
@@ -34,6 +34,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	//es.upm.dit.gsi.beast.mock.jadex.bridgeMock.InformCommunicationPlan extends es.upm.dit.gsi.beast.mock.jadex.common.MockAgentPlan
-	c1189:p -> c1187:p [dir=back,arrowtail=empty];
+	c1297:p -> c1295:p [dir=back,arrowtail=empty];
 }
 

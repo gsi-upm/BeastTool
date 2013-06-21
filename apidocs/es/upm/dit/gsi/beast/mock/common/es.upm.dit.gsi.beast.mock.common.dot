@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// es.upm.dit.gsi.beast.mock.common.MockConfiguration
-	c0 [label=<<table title="es.upm.dit.gsi.beast.mock.common.MockConfiguration" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./MockConfiguration.html">
+	c39 [label=<<table title="es.upm.dit.gsi.beast.mock.common.MockConfiguration" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./MockConfiguration.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> MockConfiguration </td></tr>
 		</table></td></tr>
@@ -23,7 +23,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.mock.common.Definitions
-	c1 [label=<<table title="es.upm.dit.gsi.beast.mock.common.Definitions" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Definitions.html">
+	c40 [label=<<table title="es.upm.dit.gsi.beast.mock.common.Definitions" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Definitions.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Definitions </td></tr>
 		</table></td></tr>
@@ -35,7 +35,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.mock.common.AgentBehaviour
-	c2 [label=<<table title="es.upm.dit.gsi.beast.mock.common.AgentBehaviour" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AgentBehaviour.html">
+	c41 [label=<<table title="es.upm.dit.gsi.beast.mock.common.AgentBehaviour" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AgentBehaviour.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> AgentBehaviour </td></tr>
 		</table></td></tr>
@@ -47,6 +47,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.mock.common.MockConfiguration NAVASSOC es.upm.dit.gsi.beast.mock.common.AgentBehaviour
-	c0:p -> c2:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c39:p -> c41:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

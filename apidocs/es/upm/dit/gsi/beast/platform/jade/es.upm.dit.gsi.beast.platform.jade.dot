@@ -10,13 +10,13 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// es.upm.dit.gsi.beast.platform.jade.JadeMessenger
-	c464 [label=<<table title="es.upm.dit.gsi.beast.platform.jade.JadeMessenger" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./JadeMessenger.html">
+	c515 [label=<<table title="es.upm.dit.gsi.beast.platform.jade.JadeMessenger" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./JadeMessenger.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> JadeMessenger </td></tr>
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.platform.jade.JadeConnector
-	c465 [label=<<table title="es.upm.dit.gsi.beast.platform.jade.JadeConnector" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./JadeConnector.html">
+	c516 [label=<<table title="es.upm.dit.gsi.beast.platform.jade.JadeConnector" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./JadeConnector.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> JadeConnector </td></tr>
 		</table></td></tr>
@@ -28,7 +28,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector
-	c466 [label=<<table title="es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./JadeAgentIntrospector.html">
+	c517 [label=<<table title="es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./JadeAgentIntrospector.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> JadeAgentIntrospector </td></tr>
 		</table></td></tr>
