@@ -14,9 +14,18 @@ import jadex.bridge.service.SServiceProvider;
 import java.util.logging.Logger;
 
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.mock.jadex.common.MockAgentPlan.java
+ * 
  * MockAgentPlan is the class all Agents-plan must extend from.
  * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
  * @author Jorge Solitario
+ * @version 0.1
+ * 
  */
 public abstract class MockAgentPlan extends Plan {
     // -------- attributes --------

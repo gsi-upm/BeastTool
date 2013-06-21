@@ -18,7 +18,6 @@ package es.upm.dit.gsi.beast.mock.common;
  * @author alvarocarrera
  * @email a.carrera@gsi.dit.upm.es
  * @twitter @alvarocarrera
- * @date 21/06/2013
  * @version 0.1
  * 
  */

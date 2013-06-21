@@ -6,6 +6,20 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
+/**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.reader.ReaderTest.java
+ * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @version 0.1
+ * 
+ */
 public class ReaderTest {
 
     @Test

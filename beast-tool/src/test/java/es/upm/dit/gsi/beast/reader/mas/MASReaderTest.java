@@ -8,6 +8,20 @@ import org.junit.Test;
 
 import es.upm.dit.gsi.beast.reader.Reader;
 
+/**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.reader.mas.MASReaderTest.java
+ * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
+ * @author alvarocarrera
+ * @email a.carrera@gsi.dit.upm.es
+ * @twitter @alvarocarrera
+ * @version 0.1
+ * 
+ */
 public class MASReaderTest {
 
     @Test

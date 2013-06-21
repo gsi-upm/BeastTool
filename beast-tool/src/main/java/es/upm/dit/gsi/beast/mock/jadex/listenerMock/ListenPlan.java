@@ -7,10 +7,19 @@ import jadex.bdi.runtime.Plan;
 import java.util.logging.Logger;
 
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.mock.jadex.listenerMock.ListenPlan.java
+
  * Listener mock will not send any answer, it just print what it receives Other
  * options could be to ignore messages or to save them somewhere
  * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
  * @author Jorge Solitario
+ * @version 0.1
+ * 
  */
 public class ListenPlan extends Plan {
 

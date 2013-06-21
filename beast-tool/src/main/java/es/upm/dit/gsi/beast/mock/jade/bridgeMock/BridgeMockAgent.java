@@ -19,11 +19,19 @@ import jade.lang.acl.ACLMessage;
 import jade.util.Logger;
 
 import java.util.logging.Level;
+
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.mock.jade.bridgeMock.BridgeMockAgent.java
  * 
  * Allows communication between agents.
  * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
  * @author Alberto Mardomingo
+ * @version 0.1
  * 
  */
 public class BridgeMockAgent extends Agent {

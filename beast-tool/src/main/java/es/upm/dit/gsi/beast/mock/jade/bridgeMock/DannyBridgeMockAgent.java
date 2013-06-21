@@ -17,6 +17,18 @@ import es.upm.dit.gsi.beast.mock.jade.common.AgentRegistration;
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;
 
+/**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.mock.jade.bridgeMock.DannyBridgeMockAgent.java
+ * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
+ * @author darofar
+ * @version 0.1
+ * 
+ */
 public class DannyBridgeMockAgent extends Agent {
 
     /**

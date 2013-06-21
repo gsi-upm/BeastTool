@@ -18,12 +18,22 @@ import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;
 
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.mock.jade.repositoryMock.RepositoryMockAgent.java
+ *
+ *  
  * The implementation of a Mock Agent that perform the behavior 
  * of an agent repository. This behaviour has to be personalized
  * by the user moking the AgentBehaviour class on the Scenario. 
+ *  
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
  *   
  * @author darofar
  *
+ * @version 0.1
+ * 
  */
 public class RepositoryMockAgent extends Agent {
 

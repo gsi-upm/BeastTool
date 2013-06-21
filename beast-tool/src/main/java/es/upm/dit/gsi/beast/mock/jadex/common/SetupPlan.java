@@ -14,10 +14,20 @@ import java.util.logging.Logger;
 import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
 
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.mock.jadex.common.SetupPlan.java
+ * 
  * Plan to change the name of each mock agent and to save its behaviour for
  * future messages
  * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
+ * 
  * @author Jorge Solitario
+ * @version 0.1
+ * 
  */
 public class SetupPlan extends Plan {
 

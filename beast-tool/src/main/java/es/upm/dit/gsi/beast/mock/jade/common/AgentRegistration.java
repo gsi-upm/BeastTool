@@ -7,9 +7,18 @@ import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 
 /**
+ * Project: beast
+ * File: es.upm.dit.gsi.beast.mock.jade.common.AgentRegistration.java
+ * 
  * Class to register the agent in the DF Service.
  * 
+ * Grupo de Sistemas Inteligentes
+ * Departamento de Ingeniería de Sistemas Telemáticos
+ * Universidad Politécnica de Madrid (UPM)
+ * 
  * @author Alberto Mardomingo
+ * @version 0.1
+ * 
  */
 public class AgentRegistration {
 
