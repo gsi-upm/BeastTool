@@ -58,7 +58,24 @@ public class MASReaderTest {
 
         this.cleanUp();
     }
-    
+
+    @Test
+    public void MainReaderWithoutPlatformTest() {
+        this.cleanUp();
+        boolean catched = false;
+        try {
+            Reader.generateJavaFiles(
+                    "src/test/java/es/upm/dit/gsi/beast/reader/mas/ReaderTest.story",
+                    "", "src/test/java",
+                    "es.upm.dit.gsi.beast.reader.mas.test",
+                    "es.upm.dit.gsi.beast.reader.mas.test",
+                    "src/test/java/es/upm/dit/gsi/beast/reader/mas/log.properties","MAS");
+        } catch (Exception e) {
+            catched = true;
+        }
+        Assert.assertTrue(catched);
+        this.cleanUp();
+    }    
     @Test
     public void MainReaderTestWithType() {
         this.cleanUp();

@@ -16,8 +16,7 @@ import es.upm.dit.gsi.beast.reader.mas.MASReader;
 import es.upm.dit.gsi.beast.reader.system.SystemReader;
 
 /**
- * Project: beast
- * File: es.upm.dit.gsi.beast.reader.Reader.java
+ * Project: beast File: es.upm.dit.gsi.beast.reader.Reader.java
  * 
  * 
  * Main class to transform the plain text given by the client to the necessary
@@ -27,10 +26,9 @@ import es.upm.dit.gsi.beast.reader.system.SystemReader;
  * the same name to interpret it. Furthermore, one casemanager must be created,
  * which will run all the tests.
  * 
- * Grupo de Sistemas Inteligentes
- * Departamento de Ingeniería de Sistemas Telemáticos
- * Universidad Politécnica de Madrid (UPM)
- *  
+ * Grupo de Sistemas Inteligentes Departamento de Ingeniería de Sistemas
+ * Telemáticos Universidad Politécnica de Madrid (UPM)
+ * 
  * 
  * @author Jorge Solitario
  * @author Alberto Mardomingo
@@ -82,8 +80,14 @@ public class Reader {
             String platformName, String src_test_dir, String tests_package,
             String casemanager_package, String loggingPropFile,
             String specificationPhase) throws Exception {
-        if (specificationPhase==null || specificationPhase=="") {
-            throw new BeastException("Specification phase property not found. Check it in Beast properties configuration file. It should be SYSTEM or MAS.");
+        if (specificationPhase == null || specificationPhase == "") {
+            throw new BeastException(
+                    "Specification phase property not found. Check it in Beast properties configuration file. It should be SYSTEM or MAS.");
+        } else if (specificationPhase.equalsIgnoreCase(MAS)) {
+            if (platformName == null || platformName == "") {
+            throw new BeastException(
+                    "MASPlatform property not found. Check it in Beast properties configuration file. It should be, for example: JADEX or JADE");
+        }
         }
         if (specificationPhase.equalsIgnoreCase(MAS)) {
             MASReader.generateJavaFiles(requirementsFolder, platformName,
@@ -193,9 +197,10 @@ public class Reader {
      * @param path
      * @param dest_dir
      * @return the folder
-     * @throws BeastException 
+     * @throws BeastException
      */
-    public static File createFolder(String path, String dest_dir) throws BeastException {
+    public static File createFolder(String path, String dest_dir)
+            throws BeastException {
         File f = new File(dest_dir);
         if (!f.isDirectory()) {
             try {
@@ -213,10 +218,10 @@ public class Reader {
             try {
                 f.mkdirs();
             } catch (Exception e) {
-                String message= "Problem creating directory: " + path
+                String message = "Problem creating directory: " + path
                         + File.separator + dest_dir;
                 logger.severe(message);
-                throw new BeastException(message,e);
+                throw new BeastException(message, e);
             }
         }
 
@@ -266,9 +271,11 @@ public class Reader {
      * 
      * @param file_name
      * @return the filereader to translate client's plain text into our files
-     * @throws BeastException if any problem is found whit the file
+     * @throws BeastException
+     *             if any problem is found whit the file
      */
-    protected static BufferedReader createFileReader(String file_name) throws BeastException {
+    protected static BufferedReader createFileReader(String file_name)
+            throws BeastException {
         try {
             return new BufferedReader(new FileReader(file_name));
         } catch (FileNotFoundException e) {
@@ -295,7 +302,7 @@ public class Reader {
      *            - The when description
      * @param thenDescription
      *            - The then description
-     * @throws BeastException 
+     * @throws BeastException
      */
     public static void createDotStoryFile(String scenarioName,
             String srcTestRootFolder, String packagePath,
@@ -330,7 +337,7 @@ public class Reader {
      * @param aux_package_path
      * @param dest_dir
      * @return The file writer that generates the .story files for each test
-     * @throws BeastException 
+     * @throws BeastException
      */
     protected static FileWriter createFileWriter(String scenarioName,
             String aux_package_path, String dest_dir) throws BeastException {
@@ -338,8 +345,8 @@ public class Reader {
             return new FileWriter(new File(createFolder(aux_package_path,
                     dest_dir), scenarioName + ".story"));
         } catch (IOException e) {
-            String message = "ERROR writing the " + scenarioName + ".story file: "
-                    + e.toString(); 
+            String message = "ERROR writing the " + scenarioName
+                    + ".story file: " + e.toString();
             logger.severe(message);
             throw new BeastException(message, e);
         }
