@@ -20,5 +20,4 @@ public class CaseManager {
   public void InboxService() {
      JUnitCore.runClasses(beast.tutorial.stories.system.InboxService.class);
   }
-
 }

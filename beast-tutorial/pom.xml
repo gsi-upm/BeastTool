@@ -50,7 +50,7 @@
 				<version>1.1.1</version>
 				<executions>
 					<execution>
-						<id>Beast Test Resources Generation</id>
+						<id>Beast Test Resources Generation - System Phase</id>
 						<phase>generate-test-sources</phase>
 						<goals>
 							<goal>java</goal>
@@ -59,6 +59,20 @@
 							<mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass>
 							<arguments>
 								<argument>src/test/resources/beast-conf/system/beast-systemphase-conf.properties</argument>
+								<argument>src/test/resources/beast-conf/logger.properties</argument>
+							</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>Beast Test Resources Generation - MAS Phase</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass>
+							<arguments>
+								<argument>src/test/resources/beast-conf/mas/beast-masphase-conf.properties</argument>
 								<argument>src/test/resources/beast-conf/logger.properties</argument>
 							</arguments>
 						</configuration>
