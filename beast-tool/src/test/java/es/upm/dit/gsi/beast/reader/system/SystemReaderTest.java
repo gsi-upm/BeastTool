@@ -11,12 +11,10 @@ import org.junit.Test;
 import es.upm.dit.gsi.beast.reader.Reader;
 
 /**
- * Project: beast
- * File: es.upm.dit.gsi.beast.reader.system.SystemReaderTest.java
+ * Project: beast File: es.upm.dit.gsi.beast.reader.system.SystemReaderTest.java
  * 
- * Grupo de Sistemas Inteligentes
- * Departamento de Ingeniería de Sistemas Telemáticos
- * Universidad Politécnica de Madrid (UPM)
+ * Grupo de Sistemas Inteligentes Departamento de Ingeniería de Sistemas
+ * Telemáticos Universidad Politécnica de Madrid (UPM)
  * 
  * @author alvarocarrera
  * @email a.carrera@gsi.dit.upm.es
@@ -30,12 +28,13 @@ public class SystemReaderTest {
     public void MainSystemReaderTest() {
         this.cleanUp();
         try {
-            SystemReader.generateJavaFiles(
-                    "src/test/java/es/upm/dit/gsi/beast/reader/system/SystemReaderTest.story",
-                    "\"jade\"", "src/test/java",
-                    "es.upm.dit.gsi.beast.reader.system.test",
-                    "es.upm.dit.gsi.beast.reader.system.test",
-                    "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties");
+            SystemReader
+                    .generateJavaFiles(
+                            "src/test/java/es/upm/dit/gsi/beast/reader/system/SystemReaderTest.story",
+                            "\"jade\"", "src/test/java",
+                            "es.upm.dit.gsi.beast.reader.system.test",
+                            "es.upm.dit.gsi.beast.reader.system.test",
+                            "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties");
         } catch (Exception e) {
             Assert.fail();
         }
@@ -45,18 +44,19 @@ public class SystemReaderTest {
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/system/test",
                 "SystemStory.java").exists());
-            this.cleanUp();
+        this.cleanUp();
     }
 
     @Test
     public void MainReaderWithoutLogPropTest() {
         this.cleanUp();
         try {
-            SystemReader.generateJavaFiles(
-                    "src/test/java/es/upm/dit/gsi/beast/reader/system/SystemReaderTest.story",
-                    "\"jade\"", "src/test/java",
-                    "es.upm.dit.gsi.beast.reader.system.test",
-                    "es.upm.dit.gsi.beast.reader.system.test", null);
+            SystemReader
+                    .generateJavaFiles(
+                            "src/test/java/es/upm/dit/gsi/beast/reader/system/SystemReaderTest.story",
+                            "\"jade\"", "src/test/java",
+                            "es.upm.dit.gsi.beast.reader.system.test",
+                            "es.upm.dit.gsi.beast.reader.system.test", null);
         } catch (Exception e) {
             Assert.fail();
         }
@@ -69,14 +69,15 @@ public class SystemReaderTest {
 
         this.cleanUp();
     }
-    
+
     @Test
     public void MainReaderTest() {
         this.cleanUp();
         try {
             Reader.generateJavaFiles(
                     "src/test/java/es/upm/dit/gsi/beast/reader/system/SystemReaderTest.story",
-                    "\"jade\"", "src/test/java",
+                    "\"jade\"",
+                    "src/test/java",
                     "es.upm.dit.gsi.beast.reader.system.test",
                     "es.upm.dit.gsi.beast.reader.system.test",
                     "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties",
@@ -92,23 +93,25 @@ public class SystemReaderTest {
                 "SystemStory.java").exists());
         this.cleanUp();
     }
-    
+
     @Test
     public void CaseManagerDuplicatedMethodsTest() {
         this.cleanUp();
         boolean catched = false;
-        String message="";
+        String message = "";
         try {
             Reader.generateJavaFiles(
                     "src/test/java/es/upm/dit/gsi/beast/reader/system/SystemReaderTest.story",
-                    "\"jade\"", "src/test/java",
+                    "\"jade\"",
+                    "src/test/java",
                     "es.upm.dit.gsi.beast.reader.system.test",
                     "es.upm.dit.gsi.beast.reader.system.test",
                     "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties",
                     Reader.SYSTEM);
             Reader.generateJavaFiles(
                     "src/test/java/es/upm/dit/gsi/beast/reader/system/SystemReaderTest.story",
-                    "\"jade\"", "src/test/java",
+                    "\"jade\"",
+                    "src/test/java",
                     "es.upm.dit.gsi.beast.reader.system.test.algo",
                     "es.upm.dit.gsi.beast.reader.system.test",
                     "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties",
@@ -118,9 +121,10 @@ public class SystemReaderTest {
             catched = true;
         }
         Assert.assertTrue(catched);
-        Assert.assertTrue(message.startsWith("Two different stories with the same name (same method name) are being created in the same CaseManager file."));
+        Assert.assertTrue(message
+                .startsWith("Two different stories with the same name (same method name) are being created in the same CaseManager file."));
         this.cleanUp();
-        
+
     }
 
     @Test
@@ -142,9 +146,9 @@ public class SystemReaderTest {
         }
 
         try {
-            File folder = SystemReader
-                    .createFolder("es.upm.dit.gsi.beast.reader.system.test.manager",
-                            "src/test/java");
+            File folder = SystemReader.createFolder(
+                    "es.upm.dit.gsi.beast.reader.system.test.manager",
+                    "src/test/java");
             File caseManager = new File(folder, "CaseManager.java");
 
             String targetLine1 = "     JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.ExampleStories.A1.class);";
@@ -162,7 +166,67 @@ public class SystemReaderTest {
                     }
                 }
                 if (passed) {
-                    break;   
+                    break;
+                }
+            }
+            r.close();
+        } catch (Exception e) {
+            this.cleanUp();
+            throw e;
+        }
+        Assert.assertTrue(passed);
+        this.cleanUp();
+    }
+
+    @Test
+    public void AndLinesParsingInStoryFilesTest() throws Exception {
+        this.cleanUp();
+        boolean passed = false;
+        try {
+            SystemReader
+                    .generateJavaFiles(
+                            "src/test/java/es/upm/dit/gsi/beast/reader/system/AnotherSystemReaderTest.story",
+                            "\"jade\"", "src/test/java",
+                            "es.upm.dit.gsi.beast.reader.system.test",
+                            "es.upm.dit.gsi.beast.reader.system.test", null);
+        } catch (Exception e) {
+            Assert.fail();
+        }
+
+        try {
+            File folder = SystemReader.createFolder(
+                    "es.upm.dit.gsi.beast.reader.system.test",
+                    "src/test/java");
+            File file = new File(folder, "CaseManager.java");
+
+            String targetLine1 = "   * so the user gets the benefit: I have a benefit and I am sure that it works.";
+
+            BufferedReader r = new BufferedReader(new FileReader(file));
+            String in;
+            while ((in = r.readLine()) != null) {
+                if (targetLine1.equals(in)) {
+                    passed = true;
+                    break;
+                }
+            }
+            r.close();
+            if (passed==false) {
+                Assert.fail();
+            }
+            passed=false;
+            folder = SystemReader.createFolder(
+                    "es.upm.dit.gsi.beast.reader.system.test",
+                    "src/test/java");
+            file = new File(folder, "SystemStory.java");
+
+            targetLine1 = "   * and the THEN is described as: a proper response occurs and I want to test it and I want to test it again.";
+
+            r = new BufferedReader(new FileReader(file));
+            
+            while ((in = r.readLine()) != null) {
+                if (targetLine1.equals(in)) {
+                    passed = true;
+                    break;
                 }
             }
             r.close();

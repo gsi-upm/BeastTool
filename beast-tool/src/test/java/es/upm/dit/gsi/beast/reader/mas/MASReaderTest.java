@@ -201,6 +201,66 @@ public class MASReaderTest {
         this.cleanUp();
     }
 
+    @Test
+    public void AndLinesParsingInStoryFilesTest() throws Exception {
+        this.cleanUp();
+        boolean passed = false;
+        try {
+            SystemReader
+                    .generateJavaFiles(
+                            "src/test/java/es/upm/dit/gsi/beast/reader/system/AnotherSystemReaderTest.story",
+                            "\"jade\"", "src/test/java",
+                            "es.upm.dit.gsi.beast.reader.mas.test",
+                            "es.upm.dit.gsi.beast.reader.mas.test", null);
+        } catch (Exception e) {
+            Assert.fail();
+        }
+
+        try {
+            File folder = SystemReader.createFolder(
+                    "es.upm.dit.gsi.beast.reader.mas.test",
+                    "src/test/java");
+            File file = new File(folder, "CaseManager.java");
+
+            String targetLine1 = "   * providing the feature: have a system and test it, and test it again,";
+
+            BufferedReader r = new BufferedReader(new FileReader(file));
+            String in;
+            while ((in = r.readLine()) != null) {
+                if (targetLine1.equals(in)) {
+                    passed = true;
+                    break;
+                }
+            }
+            r.close();
+            if (passed==false) {
+                Assert.fail();
+            }
+            passed=false;
+            folder = SystemReader.createFolder(
+                    "es.upm.dit.gsi.beast.reader.mas.test",
+                    "src/test/java");
+            file = new File(folder, "SystemStory.java");
+
+            targetLine1 = "   * and the THEN is described as: a proper response occurs and I want to test it and I want to test it again.";
+
+            r = new BufferedReader(new FileReader(file));
+            
+            while ((in = r.readLine()) != null) {
+                if (targetLine1.equals(in)) {
+                    passed = true;
+                    break;
+                }
+            }
+            r.close();
+        } catch (Exception e) {
+            this.cleanUp();
+            throw e;
+        }
+        Assert.assertTrue(passed);
+        this.cleanUp();
+    }
+
     private void cleanUp() {
         this.deleteDirectory(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/mas/test"));

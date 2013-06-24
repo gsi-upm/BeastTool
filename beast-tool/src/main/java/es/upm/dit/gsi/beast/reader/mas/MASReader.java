@@ -139,18 +139,40 @@ public class MASReader extends Reader {
                     casemanager_package, src_test_dir);
             try {
                 String nextLine = null;
+                // TYPES:
+                // As a -> 1
+                // I want to -> 2
+                // So that -> 3
+                int lineType = 0;
                 while ((nextLine = fileReader.readLine()) != null) {
 
                     if (nextLine.startsWith("Story -")) {
                         storyName = nextLine.replaceFirst("Story -", "").trim();
                     } else if (nextLine.startsWith("As a")) {
                         story_user = nextLine.replaceFirst("As a", "").trim();
+                        lineType = 1;
                     } else if (nextLine.startsWith("I want to")) {
                         user_feature = nextLine.replaceFirst("I want to", "")
                                 .trim();
+                        lineType = 2;
                     } else if (nextLine.startsWith("So that")) {
                         user_benefit = nextLine.replaceFirst("So that", "")
                                 .trim();
+                        lineType = 3;
+                    } else if (nextLine.startsWith("And")) {
+                        switch (lineType) {
+                        case 1:
+                            story_user= story_user + " and " + nextLine.replaceFirst("And", "").trim();
+                            break;
+                        case 2:
+                            user_feature= user_feature + " and " + nextLine.replaceFirst("And", "").trim();                            
+                            break;
+                        case 3:
+                            user_benefit= user_benefit + " and " + nextLine.replaceFirst("And", "").trim();                            
+                            break;
+                        default:
+                            break;
+                        }
                     } else if (nextLine.startsWith("Scenario:")) {
 
                         // I am assuming that the file is properly formated
@@ -169,6 +191,13 @@ public class MASReader extends Reader {
                             Thread.yield();
                         }
                         nextLine = fileReader.readLine();
+                        while (nextLine.startsWith("And")) {
+                            givenDescription = givenDescription + " and " + nextLine.replaceFirst("And", "").trim();
+                            while (!fileReader.ready()) {
+                                Thread.yield();
+                            }
+                            nextLine = fileReader.readLine();
+                        }
                         String whenDescription = nextLine.replaceFirst("When",
                                 "").trim();
 
@@ -176,8 +205,25 @@ public class MASReader extends Reader {
                             Thread.yield();
                         }
                         nextLine = fileReader.readLine();
+                        while (nextLine.startsWith("And")) {
+                            whenDescription = whenDescription + " and " + nextLine.replaceFirst("And", "").trim();
+                            while (!fileReader.ready()) {
+                                Thread.yield();
+                            }
+                            nextLine = fileReader.readLine();
+                        }
                         String thenDescription = nextLine.replaceFirst("Then",
                                 "").trim();
+                        
+                        nextLine = fileReader.readLine();
+                        
+                        while (nextLine!=null && nextLine.startsWith("And")) {
+                            thenDescription = thenDescription +  " and " + nextLine.replaceFirst("And", "").trim();
+                            while (!fileReader.ready()) {
+                                Thread.yield();
+                            }
+                            nextLine = fileReader.readLine();
+                        }
 
                         String[] scenarioData = new String[3];
                         scenarioData[0] = givenDescription;
