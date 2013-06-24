@@ -261,6 +261,75 @@ public class MASReaderTest {
         this.cleanUp();
     }
 
+    @Test
+    public void MultipleFormatToInputStoriesAndScenariosParseTest() throws Exception {
+        //This test checks if the : and - symbols are properly handled by the reder. 
+        this.cleanUp();
+        boolean passed = false;
+        try {
+            SystemReader
+                    .generateJavaFiles(
+                            "src/test/java/es/upm/dit/gsi/beast/reader/mas/ReaderTest.story",
+                            "\"jade\"", "src/test/java",
+                            "es.upm.dit.gsi.beast.reader.mas.test",
+                            "es.upm.dit.gsi.beast.reader.mas.test", null);
+        } catch (Exception e) {
+            Assert.fail();
+        }
+
+        try {
+            File folder = SystemReader.createFolder(
+                    "es.upm.dit.gsi.beast.reader.mas.test",
+                    "src/test/java");
+            File file = new File(folder, "CaseManager.java");
+
+            String targetLine1 = "     JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.TestStory.class);";
+
+            BufferedReader r = new BufferedReader(new FileReader(file));
+            String in;
+            while ((in = r.readLine()) != null) {
+                if (targetLine1.equals(in)) {
+                    passed = true;
+                    break;
+                }
+            }
+            r.close();
+            if (passed==false) {
+                Assert.fail();
+            }
+            passed=false;
+            folder = SystemReader.createFolder(
+                    "es.upm.dit.gsi.beast.reader.mas.test",
+                    "src/test/java");
+            file = new File(folder, "TestStory.java");
+            
+            targetLine1 = "    public void getBelievesFromAgent(){";
+            String targetLine2 = "    public void setBelievesInAgent(){";
+
+            r = new BufferedReader(new FileReader(file));
+            
+            while ((in = r.readLine()) != null) {
+                if (targetLine1.equals(in)) {
+                    while ((in = r.readLine()) != null) {
+                        if (targetLine2.equals(in)) {
+                            passed = true;
+                            break;
+                        }
+                    }
+                }
+                if (passed) {
+                    break;
+                }
+            }
+            r.close();
+        } catch (Exception e) {
+            this.cleanUp();
+            throw e;
+        }
+        Assert.assertTrue(passed);
+        this.cleanUp();
+    }
+
     private void cleanUp() {
         this.deleteDirectory(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/mas/test"));

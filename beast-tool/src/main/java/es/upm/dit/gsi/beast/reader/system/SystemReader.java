@@ -156,8 +156,12 @@ public class SystemReader extends Reader {
                     // Again, why am I using class variables to store the data
                     // I only fucking use in this method?
 
-                    if (nextLine.startsWith("Story -")) {
-                        storyName = nextLine.replaceFirst("Story -", "").trim();
+                    if (nextLine.startsWith("Story")) {
+                        String aux = nextLine.replaceFirst("Story", "").trim();
+                        if (aux.startsWith(":") || aux.startsWith("-")) {
+                            aux = aux.substring(1).trim();
+                        }
+                        storyName = aux;
                     } else if (nextLine.startsWith("As a")) {
                         story_user = nextLine.replaceFirst("As a", "").trim();
                         lineType = 1;
@@ -183,13 +187,17 @@ public class SystemReader extends Reader {
                         default:
                             break;
                         }
-                    } else if (nextLine.startsWith("Scenario:")) {
+                    } else if (nextLine.startsWith("Scenario")) {
 
                         // I am assuming that the file is properly formated
                         // TODO: Check that it actually is properly formated.
 
-                        String scenarioID = createClassName(nextLine
-                                .replaceFirst("Scenario:", "").toLowerCase());
+                        String aux = nextLine.replaceFirst("Scenario", "").trim();
+                        if (aux.startsWith(":") || aux.startsWith("-")) {
+                            aux = aux.substring(1).trim();
+                        }
+                        aux.toLowerCase();
+                        String scenarioID = createClassName(aux);
                         while (!fileReader.ready()) {
                             Thread.yield();
                         }

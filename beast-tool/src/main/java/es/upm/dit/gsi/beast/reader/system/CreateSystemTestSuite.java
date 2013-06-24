@@ -142,11 +142,11 @@ public class CreateSystemTestSuite {
                 fw.write("        // JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.MASTestStory.class\");\n");
                 
                 fw.write("    }\n");
+                fw.write("\n");
             }
            
             // Ends the class.
             // You don't say.
-            fw.write("\n");
             fw.write("}\n");
             fw.write("\n");
             fw.flush();
