@@ -56,7 +56,7 @@ public class InboxService{
   /**
    * This is the scenario: ReportCreation,
    * where the GIVEN is described as: a customer has a problem,,
-   * the WHEN is described as: a phone call is received and the voice recognition system understands to the customer,,
+   * the WHEN is described as: a phone call is received and the voice recognition system understands to the customer,
    * and the THEN is described as: the system records the message and a new issue report is created.
    */
     @Test
