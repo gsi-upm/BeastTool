@@ -5,7 +5,7 @@
 	<artifactId>beast-tutorial</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Beast Tutorial</name>
-	<description>A brief tutorial to learn how to test agents using BeastMethodology</description>
+	<description>A brief tutorial to learn how to test agents using Beast Methodology</description>
 	<url>http://www.gsi.dit.upm.es/index.php/es/software/details/1/4/software-beast-tool.html</url>
 	<organization>
 		<name>Grupo de Sistemas Inteligentes - Universidad Politécnica de Madrid</name>
@@ -37,7 +37,7 @@
 		<dependency>
 			<groupId>es.upm.dit.gsi</groupId>
 			<artifactId>beast-tool</artifactId>
-			<version>0.9.7</version>
+			<version>0.9.8-SNAPSHOT</version>
 			<classifier>jar-with-dependencies</classifier>
 		</dependency>
 	</dependencies>
@@ -50,7 +50,7 @@
 				<version>1.1.1</version>
 				<executions>
 					<execution>
-						<id>Beast Reader</id>
+						<id>Beast Test Resources Generation</id>
 						<phase>generate-test-sources</phase>
 						<goals>
 							<goal>java</goal>
