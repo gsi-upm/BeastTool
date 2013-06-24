@@ -6,7 +6,7 @@ So that I save effort and time since less phone calls are received.
 Scenario - Report creation
 Given a customer has a problem,
 When a phone call is received
-And the voice recognition system understands to the customer,,
+And the voice recognition system understands to the customer,
 Then the system records the message
 And a new issue report is created.
 
