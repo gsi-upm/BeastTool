@@ -58,7 +58,7 @@
 						<configuration>
 							<mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass>
 							<arguments>
-								<argument>src/test/resources/beast-conf/beast.properties</argument>
+								<argument>src/test/resources/beast-conf/system/beast-systemphase-conf.properties</argument>
 								<argument>src/test/resources/beast-conf/logger.properties</argument>
 							</arguments>
 						</configuration>
