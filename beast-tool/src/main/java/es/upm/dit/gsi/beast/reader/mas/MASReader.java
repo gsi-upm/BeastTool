@@ -55,13 +55,13 @@ public class MASReader extends Reader {
      *            , the path where casemanager must be created
      * @param loggingPropFile
      *            , properties file
-     * @throws BeastException
+     * @throws Exception
      *             , if any error is found in the configuration
      */
     public static void generateJavaFiles(String requirementsFolder,
             String platformName, String src_test_dir, String tests_package,
             String casemanager_package, String loggingPropFile)
-            throws BeastException {
+            throws Exception {
 
         File reqFolder = new File(requirementsFolder);
         if (reqFolder.isDirectory()) {
@@ -114,13 +114,13 @@ public class MASReader extends Reader {
      *            , the path where casemanager must be created
      * @param loggingPropFile
      *            , properties file
-     * @throws BeastException
+     * @throws Exception
      *             , if any error is found in the configuration
      */
     public static void generateJavaFilesForOneStory(String storyFilePath,
             String platformName, String src_test_dir, String tests_package,
             String casemanager_package, String loggingPropFile)
-            throws BeastException {
+            throws Exception {
 
         HashMap<String, String[]> scenarios = new HashMap<String, String[]>();
         String storyName = null;
@@ -275,8 +275,8 @@ public class MASReader extends Reader {
                 CreateMASCaseManager.closeMASCaseManager(caseManager);
 
             } catch (Exception e) {
-                logger.severe("ERROR: ");
-                e.printStackTrace();
+                logger.severe("ERROR: " + e.getMessage());
+                throw e;
             }
             /*
              * } else { // There already is a CaseManager

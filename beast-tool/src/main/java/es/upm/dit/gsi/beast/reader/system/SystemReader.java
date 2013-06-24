@@ -57,13 +57,13 @@ public class SystemReader extends Reader{
      *            , the path where casemanager must be created
      * @param loggingPropFile
      *            , properties file
-     * @throws BeastException
+     * @throws Exception
      *             , if any error is found in the configuration
      */
     public static void generateJavaFiles(String requirementsFolder,
             String platformName, String src_test_dir, String tests_package,
             String casemanager_package, String loggingPropFile)
-            throws BeastException {
+            throws Exception {
 
         File reqFolder = new File(requirementsFolder);
         if (reqFolder.isDirectory()) {
@@ -115,12 +115,12 @@ public class SystemReader extends Reader{
      *            , the path where casemanager must be created
      * @param loggingPropFile
      *            , properties file
-     * @throws BeastException
+     * @throws Exception
      *             , if any error is found in the configuration
      */
     public static void generateJavaFilesForOneStory(String storyFilePath, String platformName,
             String src_test_dir, String tests_package,
-            String casemanager_package, String loggingPropFile) throws BeastException {
+            String casemanager_package, String loggingPropFile) throws Exception {
 
         /*
          * This map has the following structure:
@@ -223,8 +223,8 @@ public class SystemReader extends Reader{
                 CreateSystemCaseManager.closeSystemCaseManager(caseManager);
                 
             } catch (Exception e) {
-                logger.severe("ERROR: ");
-                e.printStackTrace();
+                logger.severe("ERROR: " + e.getMessage());
+                throw e;
             }
         }
     }

@@ -7,12 +7,10 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 /**
- * Project: beast
- * File: es.upm.dit.gsi.beast.reader.ReaderTest.java
+ * Project: beast File: es.upm.dit.gsi.beast.reader.ReaderTest.java
  * 
- * Grupo de Sistemas Inteligentes
- * Departamento de Ingeniería de Sistemas Telemáticos
- * Universidad Politécnica de Madrid (UPM)
+ * Grupo de Sistemas Inteligentes Departamento de Ingeniería de Sistemas
+ * Telemáticos Universidad Politécnica de Madrid (UPM)
  * 
  * @author alvarocarrera
  * @email a.carrera@gsi.dit.upm.es
@@ -28,10 +26,11 @@ public class ReaderTest {
         try {
             Reader.generateJavaFiles(
                     "src/test/java/es/upm/dit/gsi/beast/reader/ReaderTest.story",
-                    "jade", "src/test/java",
+                    "\"jade\"", "src/test/java",
                     "es.upm.dit.gsi.beast.reader.test",
                     "es.upm.dit.gsi.beast.reader.test",
-                    "src/test/java/es/upm/dit/gsi/beast/reader/log.properties","MAS");
+                    "src/test/java/es/upm/dit/gsi/beast/reader/log.properties",
+                    "MAS");
         } catch (Exception e) {
             Assert.fail();
         }
@@ -62,7 +61,7 @@ public class ReaderTest {
                     "src/test/java/es/upm/dit/gsi/beast/reader/ReaderTest.story",
                     "\"jade\"", "src/test/java",
                     "es.upm.dit.gsi.beast.reader.test",
-                    "es.upm.dit.gsi.beast.reader.test", null,"MAS");
+                    "es.upm.dit.gsi.beast.reader.test", null, "MAS");
         } catch (Exception e) {
             Assert.fail();
         }
@@ -84,7 +83,7 @@ public class ReaderTest {
 
         this.cleanUp();
     }
-    
+
     @Test
     public void NonSpecificationPhase1ReaderTest() {
         this.cleanUp();
@@ -94,13 +93,14 @@ public class ReaderTest {
                     "\"jade\"", "src/test/java",
                     "es.upm.dit.gsi.beast.reader.test",
                     "es.upm.dit.gsi.beast.reader.test",
-                    "src/test/java/es/upm/dit/gsi/beast/reader/log.properties",null);
+                    "src/test/java/es/upm/dit/gsi/beast/reader/log.properties",
+                    null);
         } catch (Exception e) {
-            Assert.assertTrue(e!=null);
+            Assert.assertTrue(e != null);
         }
         this.cleanUp();
     }
-    
+
     @Test
     public void NonSpecificationPhase2ReaderTest() {
         this.cleanUp();
@@ -110,13 +110,14 @@ public class ReaderTest {
                     "\"jade\"", "src/test/java",
                     "es.upm.dit.gsi.beast.reader.test",
                     "es.upm.dit.gsi.beast.reader.test",
-                    "src/test/java/es/upm/dit/gsi/beast/reader/log.properties","");
+                    "src/test/java/es/upm/dit/gsi/beast/reader/log.properties",
+                    "");
         } catch (Exception e) {
-            Assert.assertTrue(e!=null);
+            Assert.assertTrue(e != null);
         }
         this.cleanUp();
     }
-    
+
     @Test
     public void NonSpecificationPhase3ReaderTest() {
         this.cleanUp();
@@ -126,23 +127,24 @@ public class ReaderTest {
                     "\"jade\"", "src/test/java",
                     "es.upm.dit.gsi.beast.reader.test",
                     "es.upm.dit.gsi.beast.reader.test",
-                    "src/test/java/es/upm/dit/gsi/beast/reader/log.properties","Frasklin");
+                    "src/test/java/es/upm/dit/gsi/beast/reader/log.properties",
+                    "Frasklin");
         } catch (Exception e) {
-            Assert.assertTrue(e!=null);
+            Assert.assertTrue(e != null);
         }
         this.cleanUp();
     }
-    
+
     @Test
     public void RequirementsPathOneStoryMASReaderTest() {
         this.cleanUp();
         try {
             Reader.generateJavaFiles(
-                    "src/test/java/es/upm/dit/gsi/beast/reader",
-                    "\"jade\"", "src/test/java",
+                    "src/test/java/es/upm/dit/gsi/beast/reader", "\"jade\"",
+                    "src/test/java", "es.upm.dit.gsi.beast.reader.test",
                     "es.upm.dit.gsi.beast.reader.test",
-                    "es.upm.dit.gsi.beast.reader.test",
-                    "src/test/java/es/upm/dit/gsi/beast/reader/log.properties","MAS");
+                    "src/test/java/es/upm/dit/gsi/beast/reader/log.properties",
+                    "MAS");
         } catch (Exception e) {
             Assert.fail();
         }
@@ -171,10 +173,12 @@ public class ReaderTest {
         try {
             Reader.generateJavaFiles(
                     "src/test/java/es/upm/dit/gsi/beast/reader",
-                    "\"jade\"", "src/test/java",
+                    "\"jade\"",
+                    "src/test/java",
                     "es.upm.dit.gsi.beast.reader.test",
                     "es.upm.dit.gsi.beast.reader.test",
-                    "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties", "SYSTEM");
+                    "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties",
+                    "SYSTEM");
         } catch (Exception e) {
             Assert.fail();
         }
@@ -184,9 +188,8 @@ public class ReaderTest {
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test",
                 "MyTestStory.java").exists());
-            this.cleanUp();
+        this.cleanUp();
     }
-
 
     @Test
     public void RequirementsPathMultipleStorySystemReaderTest() {
@@ -194,10 +197,12 @@ public class ReaderTest {
         try {
             Reader.generateJavaFiles(
                     "src/test/resources/ExampleStories/",
-                    "\"jade\"", "src/test/java",
+                    "\"jade\"",
+                    "src/test/java",
                     "es.upm.dit.gsi.beast.reader.test",
                     "es.upm.dit.gsi.beast.reader.test",
-                    "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties", "SYSTEM");
+                    "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties",
+                    "SYSTEM");
         } catch (Exception e) {
             Assert.fail();
         }
@@ -205,12 +210,12 @@ public class ReaderTest {
                 "src/test/java/es/upm/dit/gsi/beast/reader/test",
                 "CaseManager.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test",
-                "A1.java").exists());
+                "src/test/java/es/upm/dit/gsi/beast/reader/test", "A1.java")
+                .exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test",
-                "A2.java").exists());
-            this.cleanUp();
+                "src/test/java/es/upm/dit/gsi/beast/reader/test", "A2.java")
+                .exists());
+        this.cleanUp();
     }
 
     @Test
@@ -219,10 +224,12 @@ public class ReaderTest {
         try {
             Reader.generateJavaFiles(
                     "src/test/resources/ExampleStories/",
-                    "\"jade\"", "src/test/java",
+                    "\"jade\"",
+                    "src/test/java",
                     "es.upm.dit.gsi.beast.reader.test",
                     "es.upm.dit.gsi.beast.reader.test.manager",
-                    "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties", "MAS");
+                    "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties",
+                    "MAS");
         } catch (Exception e) {
             Assert.fail();
         }
@@ -230,8 +237,8 @@ public class ReaderTest {
                 "src/test/java/es/upm/dit/gsi/beast/reader/test/manager",
                 "CaseManager.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test",
-                "A1.java").exists());
+                "src/test/java/es/upm/dit/gsi/beast/reader/test", "A1.java")
+                .exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test/A1",
                 "ThisIsOtherScenario.java").exists());
@@ -251,8 +258,8 @@ public class ReaderTest {
                 "src/test/java/es/upm/dit/gsi/beast/reader/test/A1",
                 "get_believes_from_agent.story").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test",
-                "A2.java").exists());
+                "src/test/java/es/upm/dit/gsi/beast/reader/test", "A2.java")
+                .exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test/A2",
                 "ThisIsOtherScenario.java").exists());
@@ -271,9 +278,8 @@ public class ReaderTest {
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test/A2",
                 "get_believes_from_agent.story").exists());
-            this.cleanUp();
+        this.cleanUp();
     }
-
 
     @Test
     public void RequirementsPathMultipleStoriesWithSubfolderSystemReaderTest() {
@@ -281,10 +287,12 @@ public class ReaderTest {
         try {
             Reader.generateJavaFiles(
                     "src/test/resources/",
-                    "\"jade\"", "src/test/java",
+                    "\"jade\"",
+                    "src/test/java",
                     "es.upm.dit.gsi.beast.reader.test",
                     "es.upm.dit.gsi.beast.reader.test",
-                    "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties", "SYSTEM");
+                    "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties",
+                    "SYSTEM");
         } catch (Exception e) {
             Assert.fail();
         }
@@ -297,11 +305,9 @@ public class ReaderTest {
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test/ExampleStories",
                 "A2.java").exists());
-            this.cleanUp();
-            this.cleanUp();
+        this.cleanUp();
+        this.cleanUp();
     }
-    
-
 
     @Test
     public void RequirementsPathMultipleStoriesWithSubfolderMASReaderTest() {
@@ -309,10 +315,12 @@ public class ReaderTest {
         try {
             Reader.generateJavaFiles(
                     "src/test/resources/",
-                    "\"jade\"", "src/test/java",
+                    "\"jade\"",
+                    "src/test/java",
                     "es.upm.dit.gsi.beast.reader.test",
                     "es.upm.dit.gsi.beast.reader.test.manager",
-                    "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties", "MAS");
+                    "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties",
+                    "MAS");
         } catch (Exception e) {
             Assert.fail();
         }
@@ -343,7 +351,7 @@ public class ReaderTest {
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test/ExampleStories/A2",
                 "GetBelievesFromAgent.java").exists());
-            this.cleanUp();
+        this.cleanUp();
     }
 
     private void cleanUp() {

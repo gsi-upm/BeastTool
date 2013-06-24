@@ -1,7 +1,7 @@
 Story - jadex platform test
 As a developer
 I want to generate tests for the agent
-so that i save effort
+So that i save effort
 
 Scenario: Set believes in agent
 Given that one agent is started in Jadex Platform

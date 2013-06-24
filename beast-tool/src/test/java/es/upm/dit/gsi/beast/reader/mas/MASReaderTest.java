@@ -1,12 +1,18 @@
 package es.upm.dit.gsi.beast.reader.mas;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
+import es.upm.dit.gsi.beast.exception.BeastException;
 import es.upm.dit.gsi.beast.reader.Reader;
+import es.upm.dit.gsi.beast.reader.system.SystemReader;
 
 /**
  * Project: beast
@@ -117,6 +123,86 @@ public class MASReaderTest {
                 "src/test/java/es/upm/dit/gsi/beast/reader/mas/test/testStory",
                 "GetBelievesFromAgent.java").exists());
 
+        this.cleanUp();
+    }
+    
+
+
+    @Test
+    public void CaseManagerDuplicatedMethodsTest() {
+        this.cleanUp();
+        boolean catched = false;
+        String message="";
+        try {
+            Reader.generateJavaFiles(
+                    "src/test/java/es/upm/dit/gsi/beast/reader/mas/ReaderTest.story",
+                    "\"jade\"", "src/test/java",
+                    "es.upm.dit.gsi.beast.reader.mas.test",
+                    "es.upm.dit.gsi.beast.reader.mas.test", null, "MAS");
+            Reader.generateJavaFiles(
+                    "src/test/java/es/upm/dit/gsi/beast/reader/mas/ReaderTest.story",
+                    "\"jade\"", "src/test/java",
+                    "es.upm.dit.gsi.beast.reader.mas.test.algo",
+                    "es.upm.dit.gsi.beast.reader.mas.test", null, "MAS");
+        } catch (Exception e) {
+            message = e.getMessage();
+            catched = true;
+        }
+        Assert.assertTrue(catched);
+        Assert.assertTrue(message.startsWith("Two different stories with the same name (same method name) are being created in the same CaseManager file."));
+        this.cleanUp();
+    }
+
+    @Test
+    public void CaseManagerNotDeletedMASTest() {
+        this.cleanUp();
+        boolean passed = false;
+        try {
+            Reader.generateJavaFiles(
+                    "src/test/resources/",
+                    "\"jade\"",
+                    "src/test/java",
+                    "es.upm.dit.gsi.beast.reader.test",
+                    "es.upm.dit.gsi.beast.reader.test.manager",
+                    "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties",
+                    "MAS");
+        } catch (Exception e) {
+            Assert.fail();
+        }
+
+        try {
+            File folder = SystemReader
+                    .createFolder("es.upm.dit.gsi.beast.reader.test.manager",
+                            "src/test/java");
+            File caseManager = new File(folder, "CaseManager.java");
+
+            String targetLine1 = "      JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.test.ExampleStories.A1.class);";
+            String targetLine2 = "      JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.test.ExampleStories.A2.class);";
+
+            BufferedReader r = new BufferedReader(new FileReader(caseManager));
+            String in;
+            while ((in = r.readLine()) != null) {
+                if (targetLine1.equals(in)) {
+                    while ((in = r.readLine()) != null) {
+                        if (targetLine2.equals(in)) {
+                            passed = true;
+                            break;
+                        }
+                    }
+                }
+                if (passed) {
+                    break;   
+                }
+            }
+            r.close();
+        } catch (BeastException e) {
+            Assert.fail();
+        } catch (FileNotFoundException e) {
+            Assert.fail();
+        } catch (IOException e) {
+            Assert.fail();
+        }
+        Assert.assertTrue(passed);
         this.cleanUp();
     }
 

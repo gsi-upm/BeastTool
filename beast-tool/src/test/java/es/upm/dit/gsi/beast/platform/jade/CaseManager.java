@@ -14,7 +14,7 @@ public class CaseManager {
    * This is the story: jade platform test,
    * requested by: developer,
    * providing the feature: generate tests for the agent
-   * so the user gets the benefit: null
+   * so the user gets the benefit: i save effort
    */
   @Test
   public void jadePlatformTest() {

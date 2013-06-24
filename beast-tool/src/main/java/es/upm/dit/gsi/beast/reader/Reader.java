@@ -75,13 +75,13 @@ public class Reader {
      * @param specificationPhase
      *            , the Type of reader (MAS or SYSTEM). By default, uses a MAS
      *            Reader
-     * @throws BeastException
+     * @throws Exception
      *             , if any error is found in the configuration
      */
     public static void generateJavaFiles(String requirementsFolder,
             String platformName, String src_test_dir, String tests_package,
             String casemanager_package, String loggingPropFile,
-            String specificationPhase) throws BeastException {
+            String specificationPhase) throws Exception {
         if (specificationPhase==null || specificationPhase=="") {
             throw new BeastException("Specification phase property not found. Check it in Beast properties configuration file. It should be SYSTEM or MAS.");
         }

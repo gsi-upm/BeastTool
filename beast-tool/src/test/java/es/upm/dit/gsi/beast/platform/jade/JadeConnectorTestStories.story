@@ -1,7 +1,7 @@
 Story - jade platform test
 As a developer
 I want to generate tests for the agent
-so that i save effort
+So that i save effort
 
 
 Scenario: Get believes from agent
