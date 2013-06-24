@@ -210,7 +210,7 @@ public class CreateMASCaseManager {
             caseManagerWriter.write("  /**\n");
             caseManagerWriter.write("   * This is the story: " + storyName
                     + ",\n");
-            caseManagerWriter.write("   * requested by: " + user + ",\n");
+            caseManagerWriter.write("   * requested by: " + user + "\n");
             caseManagerWriter.write("   * providing the feature: " + feature
                     + "\n");
             caseManagerWriter.write("   * so the user gets the benefit: "
