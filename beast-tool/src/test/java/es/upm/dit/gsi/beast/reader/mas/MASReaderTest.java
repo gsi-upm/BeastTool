@@ -2,15 +2,12 @@ package es.upm.dit.gsi.beast.reader.mas;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import es.upm.dit.gsi.beast.exception.BeastException;
 import es.upm.dit.gsi.beast.reader.Reader;
 import es.upm.dit.gsi.beast.reader.system.SystemReader;
 
@@ -154,7 +151,7 @@ public class MASReaderTest {
     }
 
     @Test
-    public void CaseManagerNotDeletedMASTest() {
+    public void CaseManagerNotDeletedMASTest() throws Exception {
         this.cleanUp();
         boolean passed = false;
         try {
@@ -162,22 +159,23 @@ public class MASReaderTest {
                     "src/test/resources/",
                     "\"jade\"",
                     "src/test/java",
-                    "es.upm.dit.gsi.beast.reader.test",
-                    "es.upm.dit.gsi.beast.reader.test.manager",
+                    "es.upm.dit.gsi.beast.reader.mas.test",
+                    "es.upm.dit.gsi.beast.reader.mas.test.manager",
                     "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties",
                     "MAS");
         } catch (Exception e) {
+            this.cleanUp();
             Assert.fail();
         }
 
         try {
             File folder = SystemReader
-                    .createFolder("es.upm.dit.gsi.beast.reader.test.manager",
+                    .createFolder("es.upm.dit.gsi.beast.reader.mas.test.manager",
                             "src/test/java");
             File caseManager = new File(folder, "CaseManager.java");
 
-            String targetLine1 = "      JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.test.ExampleStories.A1.class);";
-            String targetLine2 = "      JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.test.ExampleStories.A2.class);";
+            String targetLine1 = "      JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.ExampleStories.A1.class);";
+            String targetLine2 = "      JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.ExampleStories.A2.class);";
 
             BufferedReader r = new BufferedReader(new FileReader(caseManager));
             String in;
@@ -195,12 +193,9 @@ public class MASReaderTest {
                 }
             }
             r.close();
-        } catch (BeastException e) {
-            Assert.fail();
-        } catch (FileNotFoundException e) {
-            Assert.fail();
-        } catch (IOException e) {
-            Assert.fail();
+        } catch (Exception e) {
+            this.cleanUp();
+            throw e;
         }
         Assert.assertTrue(passed);
         this.cleanUp();
