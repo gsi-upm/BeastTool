@@ -23,5 +23,8 @@ Then is launched
 
 Scenario - This is other Scenario
 Given This is other Given
+And I want to test it
 When This is other When
+And I want to test it
 Then This is other Then
+And I want to test it

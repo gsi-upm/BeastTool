@@ -228,9 +228,6 @@ public class MASReader extends Reader {
                         
                         while (nextLine!=null && nextLine.startsWith("And")) {
                             thenDescription = thenDescription +  " and " + nextLine.replaceFirst("And", "").trim();
-                            while (!fileReader.ready()) {
-                                Thread.yield();
-                            }
                             nextLine = fileReader.readLine();
                         }
 
