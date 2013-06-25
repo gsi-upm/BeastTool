@@ -9,15 +9,15 @@ import java.util.logging.Logger;
 import es.upm.dit.gsi.beast.exception.BeastException;
 
 /**
- * Project: beast
- * File: es.upm.dit.gsi.beast.reader.system.CreateSystemTestSuite.java
+ * Project: beast File:
+ * es.upm.dit.gsi.beast.reader.system.CreateSystemTestSuite.java
  * 
- * Class to create the system test suite, where the developers must add the 
- * necessary calls to the MAS test included in the feature required by the client
+ * Class to create the system test suite, where the developers must add the
+ * necessary calls to the MAS test included in the feature required by the
+ * client
  * 
- * Grupo de Sistemas Inteligentes
- * Departamento de Ingeniería de Sistemas Telemáticos
- * Universidad Politécnica de Madrid (UPM)
+ * Grupo de Sistemas Inteligentes Departamento de Ingeniería de Sistemas
+ * Telemáticos Universidad Politécnica de Madrid (UPM)
  * 
  * @author Alberto Mardomingo
  * 
@@ -33,21 +33,30 @@ public class CreateSystemTestSuite {
      * Method to create the java file that it's executed by the caseManager. Its
      * name comes from the Story that it's testing.
      * 
-     * @param story_name - the name of the Story
-     * @param platform_name - the name of the platform
-     * @param package_path - the package path
-     * @param dest_dir the main folder (typically src/main/java)
+     * @param story_name
+     *            - the name of the Story
+     * @param platform_name
+     *            - the name of the platform
+     * @param package_path
+     *            - the package path
+     * @param dest_dir
+     *            the main folder (typically src/main/java)
      * @param loggingPropFile
-     * @param storyUser - The user launching the Story
-     * @param userFeature - The feature requested by the user
-     * @param userBenefit - The benefit the feature will provide
-     * @param scenarios - A list with the tests to launch in the testSuite.
-     * @throws BeastException 
+     * @param storyUser
+     *            - The user launching the Story
+     * @param userFeature
+     *            - The feature requested by the user
+     * @param userBenefit
+     *            - The benefit the feature will provide
+     * @param scenarios
+     *            - A list with the tests to launch in the testSuite.
+     * @throws BeastException
      */
     public static void createSystemTestSuite(String story_name,
             String platform_name, String package_path, String dest_dir,
-            String loggingPropFile, String storyUser,
-            String userFeature, String userBenefit, HashMap<String, String[]> scenarios) throws BeastException {
+            String loggingPropFile, String storyUser, String userFeature,
+            String userBenefit, HashMap<String, String[]> scenarios)
+            throws BeastException {
 
         Logger logger = Logger.getLogger(CreateSystemTestSuite.class.getName());
 
@@ -70,6 +79,7 @@ public class CreateSystemTestSuite {
             fw.write("import java.util.logging.Level;\n");
             fw.write("import java.util.logging.LogManager;\n");
             fw.write("import java.util.Properties;\n");
+            fw.write("import org.junit.Assert;\n");
             fw.write("import org.junit.Test;\n");
             fw.write("\n");
 
@@ -83,7 +93,7 @@ public class CreateSystemTestSuite {
             fw.write(" * \n");
             fw.write(" * @author es.upm.dit.gsi.beast\n");
             fw.write(" */\n");
-            fw.write("public class " + storyClass  + "{\n");
+            fw.write("public class " + storyClass + "{\n");
             fw.write("\n");
             fw.write("    public Logger logger = Logger.getLogger("
                     + storyClass + ".class.getName());\n");
@@ -113,41 +123,50 @@ public class CreateSystemTestSuite {
             }
             fw.write("    }\n");
             fw.write("\n");
-            
+
             // Run each test
             // Remenber, scenarios:
-            // { scenarioID1 => ["Given", "When", "then"], 
+            // { scenarioID1 => ["Given", "When", "then"],
             // scenarioID2 => ["Given", "When", "then"], ...}
-            for(String scenario : scenarios.keySet()){
+            for (String scenario : scenarios.keySet()) {
                 fw.write("  /**\n");
-                fw.write("   * This is the scenario: " + scenario
-                        + ",\n");
+                fw.write("   * This is the scenario: " + scenario + ",\n");
                 fw.write("   * where the GIVEN is described as: "
                         + scenarios.get(scenario)[0] + ",\n");
-                fw.write("   * the WHEN is described as: " + scenarios.get(scenario)[1]
-                        + "\n");
+                fw.write("   * the WHEN is described as: "
+                        + scenarios.get(scenario)[1] + "\n");
                 fw.write("   * and the THEN is described as: "
                         + scenarios.get(scenario)[2] + "\n");
                 fw.write("   */\n");
                 fw.write("    @Test\n");
-                fw.write("    public void " + SystemReader.changeFirstLetterToLowerCase(scenario) + "() {\n");
-                //fw.write("        BeastTestCaseRunner.executeBeastTestCase(" +
-                //		"\"es.upm.dit.gsi.beast.reader.system.test." + story_name + "." + scenario + "\");\n");
-                
+                fw.write("    public void "
+                        + SystemReader.changeFirstLetterToLowerCase(scenario)
+                        + "() {\n");
+                // fw.write("        BeastTestCaseRunner.executeBeastTestCase("
+                // +
+                // "\"es.upm.dit.gsi.beast.reader.system.test." + story_name +
+                // "." + scenario + "\");\n");
+
                 fw.write("        // Here you must call the MAS tests for this scenario\n");
                 fw.write("        // or the scenarios themselves\n");
                 fw.write("        // EXAMPLE 1:\n");
-                fw.write("        // BeastTestCaseRunner.executeBeastTestCase(" +
-                      "\"es.upm.dit.gsi.beast.reader.mas.test.MASTestScenario\");\n");
+                fw.write("        // BeastTestCaseRunner.executeBeastTestCase("
+                        + "\"es.upm.dit.gsi.beast.reader.mas.test.MASTestScenario\");\n");
                 fw.write("\n");
-                fw.write("        // EXAMPLE 2:\n ");
+                fw.write("        // EXAMPLE 2:\n");
                 fw.write("        // Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.MASTestStory.class\");\n");
                 fw.write("        // Assert.assertTrue(result.wasSuccessful());\n");
-                
+                fw.write("         logger.warning(\"Implement this method in "
+                        + package_path
+                        + scenario
+                        + ".java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");\n");
+                fw.write("         System.out.println(\"IMPORTANT!! -> Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool in class\"+ this.getClass().getName());\n");
+                fw.write("         Assert.fail(\"Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");\n");
+
                 fw.write("    }\n");
                 fw.write("\n");
             }
-           
+
             // Ends the class.
             // You don't say.
             fw.write("}\n");
@@ -162,5 +181,5 @@ public class CreateSystemTestSuite {
             logger.severe("ERROR: The file " + story_name
                     + ".java can not be writed");
         }
-    }   
+    }
 }

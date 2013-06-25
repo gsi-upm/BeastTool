@@ -165,7 +165,7 @@ public class CreateSystemCaseManager {
             caseManagerWriter.write("  public void " + storyClass + "() {\n");
             caseManagerWriter.write("     Result result = JUnitCore.runClasses(" + testPath
                     + "." + storyClass + ".class);\n");
-            caseManagerWriter.write("      Assert.assertTrue(result.wasSuccessful());\n");
+            caseManagerWriter.write("     Assert.assertTrue(result.wasSuccessful());\n");
             caseManagerWriter.write("  }\n");
             caseManagerWriter.write("\n");
             caseManagerWriter.flush();
