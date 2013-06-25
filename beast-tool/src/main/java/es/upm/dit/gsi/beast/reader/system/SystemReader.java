@@ -84,7 +84,7 @@ public class SystemReader extends Reader {
                 if (f.isDirectory()) {
                     SystemReader.generateJavaFiles(requirementsFolder
                             + File.separator + f.getName().toLowerCase(), platformName,
-                            src_test_dir, tests_package + "." + f.getName(),
+                            src_test_dir, tests_package + "." + f.getName().toLowerCase(),
                             casemanager_package, loggingPropFile);
                 }
             }

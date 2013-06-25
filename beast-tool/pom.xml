@@ -209,8 +209,8 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 					<phase>test</phase>
 					<includes>
 						<include>**/*Test.java</include>
-						<include>es/upm/dit/gsi/beast/platform/jade/CaseManager.java</include>
-						<include>es/upm/dit/gsi/beast/platform/jadex/CaseManager.java</include>
+						<include>es/upm/dit/gsi/beast/platform/jade/AgentStoriesManager.java</include>
+						<include>es/upm/dit/gsi/beast/platform/jadex/AgentStoriesManager.java</include>
 					</includes>
 					<parallel>false</parallel>
 					<threadCount>1</threadCount>

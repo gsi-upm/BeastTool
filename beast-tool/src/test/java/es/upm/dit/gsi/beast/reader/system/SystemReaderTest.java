@@ -40,7 +40,7 @@ public class SystemReaderTest {
         }
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/system/test",
-                "CaseManager.java").exists());
+                "UserStoriesManager.java").exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/system/test",
                 "SystemStory.java").exists());
@@ -62,7 +62,7 @@ public class SystemReaderTest {
         }
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/system/test",
-                "CaseManager.java").exists());
+                "UserStoriesManager.java").exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/system/test",
                 "SystemStory.java").exists());
@@ -87,7 +87,7 @@ public class SystemReaderTest {
         }
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/system/test",
-                "CaseManager.java").exists());
+                "UserStoriesManager.java").exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/system/test",
                 "SystemStory.java").exists());
@@ -95,7 +95,7 @@ public class SystemReaderTest {
     }
 
     @Test
-    public void CaseManagerDuplicatedMethodsTest() {
+    public void UserStoriesManagerDuplicatedMethodsTest() {
         this.cleanUp();
         boolean catched = false;
         String message = "";
@@ -128,7 +128,7 @@ public class SystemReaderTest {
     }
 
     @Test
-    public void CaseManagerNotDeletedSystemTest() throws Exception {
+    public void UserStoriesManagerNotDeletedSystemTest() throws Exception {
         this.cleanUp();
         boolean passed = false;
         try {
@@ -149,10 +149,10 @@ public class SystemReaderTest {
             File folder = SystemReader.createFolder(
                     "es.upm.dit.gsi.beast.reader.system.test.manager",
                     "src/test/java");
-            File caseManager = new File(folder, "CaseManager.java");
+            File caseManager = new File(folder, "UserStoriesManager.java");
 
-            String targetLine1 = "     Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.ExampleStories.A1.class);";
-            String targetLine2 = "     Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.ExampleStories.A2.class);";
+            String targetLine1 = "     Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.examplestories.A1.class);";
+            String targetLine2 = "     Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.examplestories.A2.class);";
 
             BufferedReader r = new BufferedReader(new FileReader(caseManager));
             String in;
@@ -197,7 +197,7 @@ public class SystemReaderTest {
             File folder = SystemReader.createFolder(
                     "es.upm.dit.gsi.beast.reader.system.test",
                     "src/test/java");
-            File file = new File(folder, "CaseManager.java");
+            File file = new File(folder, "UserStoriesManager.java");
 
             String targetLine1 = "   * so the user gets the benefit: I have a benefit and I am sure that it works.";
 
@@ -258,7 +258,7 @@ public class SystemReaderTest {
             File folder = SystemReader.createFolder(
                     "es.upm.dit.gsi.beast.reader.system.test",
                     "src/test/java");
-            File file = new File(folder, "CaseManager.java");
+            File file = new File(folder, "UserStoriesManager.java");
 
             String targetLine1 = "     Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.SystemStory.class);";
 

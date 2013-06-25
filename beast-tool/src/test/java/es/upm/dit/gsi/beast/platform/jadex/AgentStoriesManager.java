@@ -1,4 +1,4 @@
-package es.upm.dit.gsi.beast.platform.jade;
+package es.upm.dit.gsi.beast.platform.jadex;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,17 +10,17 @@ import org.junit.runner.Result;
  *
  * @author es.upm.dit.gsi.beast
  */
-public class CaseManager {
+public class AgentStoriesManager {
 
   /**
-   * This is the story: jade platform test,
+   * This is the story: jadex platform test,
    * requested by: developer
    * providing the feature: generate tests for the agent
    * so the user gets the benefit: i save effort
    */
   @Test
-  public void jadePlatformTest() {
-      Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.platform.jade.JadePlatformTest.class);
+  public void jadexPlatformTest() {
+      Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.platform.jadex.JadexPlatformTest.class);
       Assert.assertTrue(result.wasSuccessful());
   }
 

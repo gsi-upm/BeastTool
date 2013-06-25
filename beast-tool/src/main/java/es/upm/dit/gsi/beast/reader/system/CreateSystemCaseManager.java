@@ -51,7 +51,7 @@ public class CreateSystemCaseManager {
                 .getLogger("CreateSystemCaseManager.startSystemCaseManager");
 
         File folder = SystemReader.createFolder(package_path, dest_dir);
-        File caseManager = new File(folder, "CaseManager.java");
+        File caseManager = new File(folder, "UserStoriesManager.java");
         FileWriter caseManagerWriter;
         try {
             if (!caseManager.exists()) {
@@ -70,7 +70,7 @@ public class CreateSystemCaseManager {
                 caseManagerWriter.write(" *\n");
                 caseManagerWriter.write(" * @author es.upm.dit.gsi.beast\n");
                 caseManagerWriter.write(" */\n");
-                caseManagerWriter.write("public class CaseManager {\n");
+                caseManagerWriter.write("public class UserStoriesManager {\n");
                 caseManagerWriter.write("\n");
                 caseManagerWriter.flush();
                 caseManagerWriter.close();

@@ -36,7 +36,7 @@ public class ReaderTest {
         }
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test",
-                "CaseManager.java").exists());
+                "AgentStoriesManager.java").exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test",
                 "MyTestStory.java").exists());
@@ -67,7 +67,7 @@ public class ReaderTest {
         }
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test",
-                "CaseManager.java").exists());
+                "AgentStoriesManager.java").exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test",
                 "MyTestStory.java").exists());
@@ -150,7 +150,7 @@ public class ReaderTest {
         }
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test",
-                "CaseManager.java").exists());
+                "AgentStoriesManager.java").exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test",
                 "MyTestStory.java").exists());
@@ -184,7 +184,7 @@ public class ReaderTest {
         }
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test",
-                "CaseManager.java").exists());
+                "UserStoriesManager.java").exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test",
                 "MyTestStory.java").exists());
@@ -208,7 +208,7 @@ public class ReaderTest {
         }
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test",
-                "CaseManager.java").exists());
+                "UserStoriesManager.java").exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test", "A1.java")
                 .exists());
@@ -235,7 +235,7 @@ public class ReaderTest {
         }
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test/manager",
-                "CaseManager.java").exists());
+                "AgentStoriesManager.java").exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test", "A1.java")
                 .exists());
@@ -298,7 +298,7 @@ public class ReaderTest {
         }
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test",
-                "CaseManager.java").exists());
+                "UserStoriesManager.java").exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test/ExampleStories",
                 "A1.java").exists());
@@ -326,7 +326,7 @@ public class ReaderTest {
         }
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test/manager",
-                "CaseManager.java").exists());
+                "AgentStoriesManager.java").exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test/ExampleStories",
                 "A1.java").exists());

@@ -53,7 +53,7 @@ public class CreateMASCaseManager {
                 .getLogger("CreateMASCaseManager.startMASCaseManager");
 
         File folder = MASReader.createFolder(package_path, dest_dir);
-        File caseManager = new File(folder, "CaseManager.java");
+        File caseManager = new File(folder, "AgentStoriesManager.java");
         FileWriter caseManagerWriter;
 
         try {
@@ -75,7 +75,7 @@ public class CreateMASCaseManager {
                 caseManagerWriter.write(" *\n");
                 caseManagerWriter.write(" * @author es.upm.dit.gsi.beast\n");
                 caseManagerWriter.write(" */\n");
-                caseManagerWriter.write("public class CaseManager {\n");
+                caseManagerWriter.write("public class AgentStoriesManager {\n");
                 caseManagerWriter.write("\n");
                 caseManagerWriter.flush();
                 caseManagerWriter.close();

@@ -42,7 +42,7 @@ public class MASReaderTest {
         }
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/mas/test",
-                "CaseManager.java").exists());
+                "AgentStoriesManager.java").exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/mas/test",
                 "TestStory.java").exists());
@@ -92,7 +92,7 @@ public class MASReaderTest {
         }
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/mas/test",
-                "CaseManager.java").exists());
+                "AgentStoriesManager.java").exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/mas/test",
                 "TestStory.java").exists());
@@ -123,7 +123,7 @@ public class MASReaderTest {
         }
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/mas/test",
-                "CaseManager.java").exists());
+                "AgentStoriesManager.java").exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/mas/test",
                 "TestStory.java").exists());
@@ -143,7 +143,7 @@ public class MASReaderTest {
 
 
     @Test
-    public void CaseManagerDuplicatedMethodsTest() {
+    public void AgentStoriesManagerDuplicatedMethodsTest() {
         this.cleanUp();
         boolean catched = false;
         String message="";
@@ -168,7 +168,7 @@ public class MASReaderTest {
     }
 
     @Test
-    public void CaseManagerNotDeletedMASTest() throws Exception {
+    public void AgentStoriesManagerNotDeletedMASTest() throws Exception {
         this.cleanUp();
         boolean passed = false;
         try {
@@ -189,10 +189,10 @@ public class MASReaderTest {
             File folder = SystemReader
                     .createFolder("es.upm.dit.gsi.beast.reader.mas.test.manager",
                             "src/test/java");
-            File caseManager = new File(folder, "CaseManager.java");
+            File caseManager = new File(folder, "AgentStoriesManager.java");
 
-            String targetLine1 = "      Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.ExampleStories.A1.class);";
-            String targetLine2 = "      Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.ExampleStories.A2.class);";
+            String targetLine1 = "      Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.examplestories.A1.class);";
+            String targetLine2 = "      Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.examplestories.A2.class);";
 
             BufferedReader r = new BufferedReader(new FileReader(caseManager));
             String in;
@@ -223,7 +223,7 @@ public class MASReaderTest {
         this.cleanUp();
         boolean passed = false;
         try {
-            SystemReader
+            MASReader
                     .generateJavaFiles(
                             "src/test/java/es/upm/dit/gsi/beast/reader/system/AnotherSystemReaderTest.story",
                             "\"jade\"", "src/test/java",
@@ -237,7 +237,7 @@ public class MASReaderTest {
             File folder = SystemReader.createFolder(
                     "es.upm.dit.gsi.beast.reader.mas.test",
                     "src/test/java");
-            File file = new File(folder, "CaseManager.java");
+            File file = new File(folder, "AgentStoriesManager.java");
 
             String targetLine1 = "   * providing the feature: have a system and test it, and test it again,";
 
@@ -284,7 +284,7 @@ public class MASReaderTest {
         this.cleanUp();
         boolean passed = false;
         try {
-            SystemReader
+            MASReader
                     .generateJavaFiles(
                             "src/test/java/es/upm/dit/gsi/beast/reader/mas/ReaderTest.story",
                             "\"jade\"", "src/test/java",
@@ -298,9 +298,9 @@ public class MASReaderTest {
             File folder = SystemReader.createFolder(
                     "es.upm.dit.gsi.beast.reader.mas.test",
                     "src/test/java");
-            File file = new File(folder, "CaseManager.java");
+            File file = new File(folder, "AgentStoriesManager.java");
 
-            String targetLine1 = "     Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.TestStory.class);";
+            String targetLine1 = "      Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.TestStory.class);";
 
             BufferedReader r = new BufferedReader(new FileReader(file));
             String in;
