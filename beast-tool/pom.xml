@@ -48,7 +48,7 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 			<name>Álvaro Carrera Barroso</name>
 			<email>carrerabarroso@gmail.com</email>
 		</developer>
-		
+
 		<developer>
 			<id>amardomingo</id>
 			<name>Alberto Mardomingo Mardomingo</name>
@@ -77,10 +77,6 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
 			<layout>default</layout>
 		</snapshotRepository>
-		<!-- <site> -->
-		<!-- <id>beast-site-gsi-web</id> -->
-		<!-- <url>scp://minsky.gsi.dit.upm.es/home/a.carrera/public_html/beast/site</url> -->
-		<!-- </site> -->
 		<site>
 			<id>site-github-web</id>
 			<url>scm:git:https://github.com/gsi-upm/BeastTool.git</url>
@@ -93,13 +89,6 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 			<url>http://repository.codehaus.org/</url>
 		</pluginRepository>
 	</pluginRepositories>
-
-	<!-- <repositories> -->
-	<!-- <repository> -->
-	<!-- <id>Mvn repository</id> -->
-	<!-- <url>http://mvnrepository.com/artifact/</url> -->
-	<!-- </repository> -->
-	<!-- </repositories> -->
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -125,43 +114,31 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 			</testResource>
 		</testResources>
 
-<!-- 		<extensions> -->
-<!-- 			<extension> -->
-<!-- 				<groupId>org.apache.maven.wagon</groupId> -->
-<!-- 				<artifactId>wagon-scm</artifactId> -->
-<!-- 				<version>2.4</version> -->
-<!-- 			</extension> -->
-<!-- 			<extension> -->
-<!-- 				<groupId>org.apache.maven.scm</groupId> -->
-<!-- 				<artifactId>maven-scm-manager-plexus</artifactId> -->
-<!-- 				<version>1.8</version> -->
-<!-- 			</extension> -->
-<!-- 			<extension> -->
-<!-- 				<groupId>org.apache.maven.scm</groupId> -->
-<!-- 				<artifactId>maven-scm-provider-gitexe</artifactId> -->
-<!-- 				<version>1.8</version> -->
-<!-- 			</extension> -->
-<!-- 		</extensions> -->
-
 		<plugins>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.2.2</version>
-				<configuration>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-				</configuration>
-				<executions>
-					<execution>
-						<id>make-assembly</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			<!-- <plugin> -->
+			<!-- <artifactId>maven-assembly-plugin</artifactId> -->
+			<!-- <version>2.2.2</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>make-assembly</id> -->
+			<!-- <phase>package</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>single</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <descriptorRefs> -->
+			<!-- <descriptorRef>jar-with-dependencies</descriptorRef> -->
+			<!-- </descriptorRefs> -->
+			<!-- <descriptor>src/main/resources/assembly/assembly-descriptor.xml</descriptor> -->
+			<!-- <archive> -->
+			<!-- <manifest> -->
+			<!-- <mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass> -->
+			<!-- </manifest> -->
+			<!-- </archive> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -352,31 +329,10 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 				</configuration>
 			</plugin>
 
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.maven.plugins</groupId> -->
-			<!-- <artifactId>maven-site-plugin</artifactId> -->
-			<!-- <version>3.0</version> -->
-			<!-- <configuration> -->
-			<!-- <locales>en</locales> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
-
 		</plugins>
 
 		<pluginManagement>
 			<plugins>
-				<!-- <plugin> -->
-				<!-- <groupId>org.apache.maven.plugins</groupId> -->
-				<!-- <artifactId>maven-site-plugin</artifactId> -->
-				<!-- <version>3.0</version> -->
-				<!-- <dependencies> -->
-				<!-- <dependency>add support for ssh/scp -->
-				<!-- <groupId>org.apache.maven.wagon</groupId> -->
-				<!-- <artifactId>wagon-ssh</artifactId> -->
-				<!-- <version>1.0</version> -->
-				<!-- </dependency> -->
-				<!-- </dependencies> -->
-				<!-- </plugin> -->
 				<plugin>
 					<artifactId>maven-site-plugin</artifactId>
 					<version>3.1</version>
@@ -575,7 +531,6 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
-			<version>1.8.5</version>
 			<type>jar</type>
 
 		</dependency>
@@ -583,7 +538,6 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.2</version>
 			<type>jar</type>
 
 		</dependency>
@@ -591,7 +545,6 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-surefire-plugin</artifactId>
-			<version>2.8</version>
 			<type>maven-plugin</type>
 
 		</dependency>
@@ -599,8 +552,29 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 		<dependency>
 			<groupId>org.jbehave.web</groupId>
 			<artifactId>jbehave-web</artifactId>
-			<version>3.3.4</version>
 			<type>pom</type>
+
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>org.apache.ws.jaxme</groupId>
+			<artifactId>jaxme2</artifactId>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-core</artifactId>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
 
 		</dependency>
 
@@ -617,7 +591,6 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 			<artifactId>jadex-kernel-micro</artifactId>
 			<version>2.0</version>
 			<type>jar</type>
-
 		</dependency>
 
 		<dependency>
@@ -757,46 +730,75 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache.ws.jaxme</groupId>
-			<artifactId>jaxme2</artifactId>
-			<version>0.5.2</version>
-			<type>jar</type>
-
-		</dependency>
-
-		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-core</artifactId>
-			<version>3.5.3</version>
-			<type>jar</type>
-
-		</dependency>
-
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.12</version>
-
-		</dependency>
-
-		<!-- <dependency> -->
-		<!-- <groupId>com.tilab</groupId> -->
-		<!-- <artifactId>wade</artifactId> -->
-		<!-- <version>2.6</version> -->
-		<!-- <scope>system</scope> -->
-		<!-- <systemPath>${basedir}/lib/wade2.6/lib/wade.jar</systemPath> -->
-		<!-- </dependency> -->
-
-		<dependency>
 			<groupId>com.tilab</groupId>
 			<artifactId>jade</artifactId>
 			<version>4.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/jade4.0/jade.jar</systemPath>
 		</dependency>
 
 	</dependencies>
 
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>1.8.5</version>
+				<type>jar</type>
+
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.8.2</version>
+				<type>jar</type>
+
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.8</version>
+				<type>maven-plugin</type>
+
+			</dependency>
+
+			<dependency>
+				<groupId>org.jbehave.web</groupId>
+				<artifactId>jbehave-web</artifactId>
+				<version>3.3.4</version>
+				<type>pom</type>
+
+			</dependency>
+
+
+
+			<dependency>
+				<groupId>org.apache.ws.jaxme</groupId>
+				<artifactId>jaxme2</artifactId>
+				<version>0.5.2</version>
+				<type>jar</type>
+
+			</dependency>
+
+			<dependency>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-core</artifactId>
+				<version>3.5.3</version>
+				<type>jar</type>
+
+			</dependency>
+
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.12</version>
+
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
 
 	<profiles>
 		<profile>
