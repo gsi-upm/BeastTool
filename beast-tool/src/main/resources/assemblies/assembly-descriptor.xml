@@ -1,9 +1,0 @@
-<assembly>
-	<id>beast-release</id>
-	<formats>
-		<format>jar</format>
-	</formats>
-	<dependencySets>
-		<dependencySet/>
-	</dependencySets>
-</assembly>
