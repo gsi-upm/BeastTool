@@ -219,8 +219,9 @@ public class CreateMASCaseManager {
             caseManagerWriter.write("  @Test\n");
             caseManagerWriter.write("  public void "
                     + MASReader.createFirstLowCaseName(storyName) + "() {\n");
-            caseManagerWriter.write("      JUnitCore.runClasses(" + testPath
+            caseManagerWriter.write("      Result result = JUnitCore.runClasses(" + testPath
                     + "." + storyClass + ".class);\n");
+            caseManagerWriter.write("      Assert.assertTrue(result.wasSuccessful());\n");
             caseManagerWriter.write("  }\n");
             caseManagerWriter.write("\n");
             caseManagerWriter.flush();

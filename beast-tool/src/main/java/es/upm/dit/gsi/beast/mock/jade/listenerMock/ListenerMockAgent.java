@@ -68,7 +68,7 @@ public class ListenerMockAgent extends Agent{
      * 
      * @see jade.core.Agent#setup()
      */
-    public void setup(){
+    public void setup() {
         LogActivator.logToFile(logger, this.getName(), Level.ALL);
         
         introspector = JadeAgentIntrospector.getMyInstance(this);
@@ -109,7 +109,7 @@ public class ListenerMockAgent extends Agent{
      * 
      * @return ACLMessage - the first message stored
      */
-    public ACLMessage getFirstMessage(){
+    public ACLMessage getFirstMessage() {
         // Decreases the count.
         modifyBeliefCount(-1);
         return messages.remove(0);
@@ -138,7 +138,7 @@ public class ListenerMockAgent extends Agent{
      * 
      * @return int - the count
      */
-    private int getBeliefCount(){
+    private int getBeliefCount() {
         Integer count = (Integer)introspector.retrieveBelievesValue(ListenerMockAgent.this).get(Definitions.RECEIVED_MESSAGE_COUNT);
         if (count == null) count = 0; // Just in case, not really sure if this is necessary.
         return count;
@@ -159,7 +159,7 @@ public class ListenerMockAgent extends Agent{
          * Creates the message receiver
          * 
          */
-        public MessageReceiver(){
+        public MessageReceiver() {
             super(ListenerMockAgent.this);
         }
         
@@ -167,7 +167,7 @@ public class ListenerMockAgent extends Agent{
          * (non-javaDoc) 
          * @see jade.core.CyclicBehaviour#action()
          */
-        public void action(){
+        public void action() {
            ACLMessage msg = ListenerMockAgent.this.receive();
            if(msg != null ){
                ListenerMockAgent.this.logger.info("Listener: Message received.");

@@ -130,7 +130,7 @@ public class CreateSystemTestSuite {
                         + scenarios.get(scenario)[2] + "\n");
                 fw.write("   */\n");
                 fw.write("    @Test\n");
-                fw.write("    public void " + SystemReader.changeFirstLetterToLowerCase(scenario) + "(){\n");
+                fw.write("    public void " + SystemReader.changeFirstLetterToLowerCase(scenario) + "() {\n");
                 //fw.write("        BeastTestCaseRunner.executeBeastTestCase(" +
                 //		"\"es.upm.dit.gsi.beast.reader.system.test." + story_name + "." + scenario + "\");\n");
                 

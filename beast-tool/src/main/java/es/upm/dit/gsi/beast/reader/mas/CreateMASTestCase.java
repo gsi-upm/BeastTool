@@ -147,7 +147,7 @@ public class CreateMASTestCase {
             fw.write("     *   getAgentGoals(agent_name )\n");
             fw.write("     */\n"); 
 
-            fw.write("    public void launch(){\n");
+            fw.write("    public void launch() {\n");
             fw.write("         // TODO implement this method to represent the @When part of the test in Java code.\n");
             fw.write("         \n");
             fw.write("         logger.warning(\"Implement setStates() method in "
@@ -170,11 +170,12 @@ public class CreateMASTestCase {
             fw.write("     * checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)\n");
             fw.write("     */\n"); 
 
-            fw.write("    public void verify(){\n");
+            fw.write("    public void verify() {\n");
             fw.write("         // TODO implement this method to represent the @Then part of the test in Java code.\n");
             fw.write("         \n");
             fw.write("         logger.warning(\"Implement checkStates() method in " + package_path
                      + ".java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");\n");
+            fw.write("         System.out.println(\"IMPORTANT!! -> Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool in class\"+ this.getClass().getName()");
             fw.write("         Assert.fail(\"Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");\n");
             fw.write("\n        //EXAMPLE: checkAgentsBeliefEquealsTo(\"Steve\", \"age\", 21);\n");
             fw.write("\n");

@@ -133,7 +133,7 @@ public class CreateMASTestStory {
                 fw.write("   */\n");
                 fw.write("    @Test\n");
                 fw.write("    public void " + MASReader.changeFirstLetterToLowerCase(
-                        MASReader.createClassName(scenario)) + "(){\n");
+                        MASReader.createClassName(scenario)) + "() {\n");
                 fw.write("        BeastTestCaseRunner.executeBeastTestCase(\"" + 
                 		package_path + "." + MASReader.createFirstLowCaseName(story_name) +
                 		"." + MASReader.createClassName(scenario) + "\");\n");
