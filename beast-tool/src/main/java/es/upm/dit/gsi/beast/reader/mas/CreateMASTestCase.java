@@ -175,7 +175,7 @@ public class CreateMASTestCase {
             fw.write("         \n");
             fw.write("         logger.warning(\"Implement checkStates() method in " + package_path
                      + ".java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");\n");
-            fw.write("         System.out.println(\"IMPORTANT!! -> Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool in class\"+ this.getClass().getName()");
+            fw.write("         System.out.println(\"IMPORTANT!! -> Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool in class\"+ this.getClass().getName());\n");
             fw.write("         Assert.fail(\"Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool\");\n");
             fw.write("\n        //EXAMPLE: checkAgentsBeliefEquealsTo(\"Steve\", \"age\", 21);\n");
             fw.write("\n");

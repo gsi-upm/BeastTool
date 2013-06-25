@@ -191,8 +191,8 @@ public class MASReaderTest {
                             "src/test/java");
             File caseManager = new File(folder, "CaseManager.java");
 
-            String targetLine1 = "      JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.ExampleStories.A1.class);";
-            String targetLine2 = "      JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.ExampleStories.A2.class);";
+            String targetLine1 = "      Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.ExampleStories.A1.class);";
+            String targetLine2 = "      Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.ExampleStories.A2.class);";
 
             BufferedReader r = new BufferedReader(new FileReader(caseManager));
             String in;
@@ -300,7 +300,7 @@ public class MASReaderTest {
                     "src/test/java");
             File file = new File(folder, "CaseManager.java");
 
-            String targetLine1 = "     JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.TestStory.class);";
+            String targetLine1 = "     Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.TestStory.class);";
 
             BufferedReader r = new BufferedReader(new FileReader(file));
             String in;
@@ -320,8 +320,8 @@ public class MASReaderTest {
                     "src/test/java");
             file = new File(folder, "TestStory.java");
             
-            targetLine1 = "    public void getBelievesFromAgent(){";
-            String targetLine2 = "    public void setBelievesInAgent(){";
+            targetLine1 = "    public void getBelievesFromAgent() {";
+            String targetLine2 = "    public void setBelievesInAgent() {";
 
             r = new BufferedReader(new FileReader(file));
             

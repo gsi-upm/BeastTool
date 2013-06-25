@@ -81,7 +81,7 @@ public class MASReader extends Reader {
             }
             for (File f: reqFolder.listFiles()) {
                 if (f.isDirectory()) {
-                    MASReader.generateJavaFiles(requirementsFolder+File.separator+f.getName(), platformName, src_test_dir, tests_package+"."+f.getName(), casemanager_package, loggingPropFile);
+                    MASReader.generateJavaFiles(requirementsFolder+File.separator+f.getName().toLowerCase(), platformName, src_test_dir, tests_package+"."+f.getName(), casemanager_package, loggingPropFile);
                 }
             }
         } else if (reqFolder.getName().endsWith(".story")) {

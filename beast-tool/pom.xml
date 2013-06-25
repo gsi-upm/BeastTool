@@ -212,10 +212,6 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 						<include>es/upm/dit/gsi/beast/platform/jade/CaseManager.java</include>
 						<include>es/upm/dit/gsi/beast/platform/jadex/CaseManager.java</include>
 					</includes>
-					<excludes>
-						<exclude>es/upm/dit/gsi/beast/platform/jade/JadePlatformTest.java</exclude>
-						<exclude>es/upm/dit/gsi/beast/platform/jadex/JadexPlatformTest.java</exclude>
-					</excludes>
 					<parallel>false</parallel>
 					<threadCount>1</threadCount>
 					<perCoreThreadCount>false</perCoreThreadCount>

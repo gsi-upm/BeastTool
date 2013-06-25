@@ -151,8 +151,8 @@ public class SystemReaderTest {
                     "src/test/java");
             File caseManager = new File(folder, "CaseManager.java");
 
-            String targetLine1 = "     JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.ExampleStories.A1.class);";
-            String targetLine2 = "     JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.ExampleStories.A2.class);";
+            String targetLine1 = "     Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.ExampleStories.A1.class);";
+            String targetLine2 = "     Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.ExampleStories.A2.class);";
 
             BufferedReader r = new BufferedReader(new FileReader(caseManager));
             String in;
@@ -260,7 +260,7 @@ public class SystemReaderTest {
                     "src/test/java");
             File file = new File(folder, "CaseManager.java");
 
-            String targetLine1 = "     JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.SystemStory.class);";
+            String targetLine1 = "     Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.SystemStory.class);";
 
             BufferedReader r = new BufferedReader(new FileReader(file));
             String in;
@@ -280,8 +280,8 @@ public class SystemReaderTest {
                     "src/test/java");
             file = new File(folder, "SystemStory.java");
 
-            targetLine1 = "    public void secondSystemScenario(){";
-            String targetLine2 = "    public void thisIsOtherScenario(){";
+            targetLine1 = "    public void secondSystemScenario() {";
+            String targetLine2 = "    public void thisIsOtherScenario() {";
 
             r = new BufferedReader(new FileReader(file));
             

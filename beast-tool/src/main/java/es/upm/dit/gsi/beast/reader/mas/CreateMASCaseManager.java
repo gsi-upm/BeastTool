@@ -61,8 +61,10 @@ public class CreateMASCaseManager {
                 caseManagerWriter = new FileWriter(caseManager);
                 caseManagerWriter.write("package " + package_path + ";\n");
                 caseManagerWriter.write("\n");
+                caseManagerWriter.write("import org.junit.Assert;\n");
                 caseManagerWriter.write("import org.junit.Test;\n");
                 caseManagerWriter.write("import org.junit.runner.JUnitCore;\n");
+                caseManagerWriter.write("import org.junit.runner.Result;\n");
                 // caseManagerWriter
                 // .write("import es.upm.dit.gsi.beast.story.BeastTestCaseRunner;\n");
                 // // import BeastTestCase
@@ -188,7 +190,7 @@ public class CreateMASCaseManager {
                     caseManager));
             String targetLine1 = "  public void "
                     + MASReader.createFirstLowCaseName(storyName) + "() {";
-            String targetLine2 = "      JUnitCore.runClasses(" + testPath + "."
+            String targetLine2 = "      Result result = JUnitCore.runClasses(" + testPath + "."
                     + storyClass + ".class);";
             String in;
             while ((in = reader.readLine()) != null) {

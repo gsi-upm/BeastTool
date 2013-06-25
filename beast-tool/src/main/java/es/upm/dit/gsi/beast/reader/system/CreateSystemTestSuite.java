@@ -136,10 +136,13 @@ public class CreateSystemTestSuite {
                 
                 fw.write("        // Here you must call the MAS tests for this scenario\n");
                 fw.write("        // or the scenarios themselves\n");
-                fw.write("        // EXAMPLE:\n");
+                fw.write("        // EXAMPLE 1:\n");
                 fw.write("        // BeastTestCaseRunner.executeBeastTestCase(" +
                       "\"es.upm.dit.gsi.beast.reader.mas.test.MASTestScenario\");\n");
-                fw.write("        // JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.MASTestStory.class\");\n");
+                fw.write("\n");
+                fw.write("        // EXAMPLE 2:\n ");
+                fw.write("        // Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.MASTestStory.class\");\n");
+                fw.write("        // Assert.assertTrue(result.wasSuccessful());\n");
                 
                 fw.write("    }\n");
                 fw.write("\n");
