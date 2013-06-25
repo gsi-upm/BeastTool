@@ -10,6 +10,8 @@ import java.util.logging.LogManager;
 import java.util.Properties;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
 
 /**
  * Main class to translate plain text into code, following the Given-When-Then
@@ -47,17 +49,19 @@ public class InboxService{
    */
     @Test
     public void passingIncomingCall() {
-        // Here you must call the MAS tests for this scenario
-        // or the scenarios themselves
-        // EXAMPLE 1:
-        // BeastTestCaseRunner.executeBeastTestCase("es.upm.dit.gsi.beast.reader.mas.test.MASTestScenario");
+    	
+    	//JADE tests
+    	BeastTestCaseRunner.executeBeastTestCase("beast.tutorial.jade.stories.mas.recordAMessage.UnderstandingTheCustomer");
 
-        // EXAMPLE 2:
-        // Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.MASTestStory.class");
-        // Assert.assertTrue(result.wasSuccessful());
-         logger.warning("Implement this method in beast.tutorial.stories.systemPassingIncomingCall.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
-         System.out.println("IMPORTANT!! -> Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool in class"+ this.getClass().getName());
-         Assert.fail("Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
+        Result jadeResult = JUnitCore.runClasses(beast.tutorial.jade.stories.mas.PassingAnIncomingCall.class);
+        Assert.assertTrue(jadeResult.wasSuccessful());
+        
+        //JADEX tests
+    	BeastTestCaseRunner.executeBeastTestCase("beast.tutorial.jadex.stories.mas.recordAMessage.UnderstandingTheCustomer");
+        
+    	Result jadexResult = JUnitCore.runClasses(beast.tutorial.jadex.stories.mas.PassingAnIncomingCall.class);
+        Assert.assertTrue(jadexResult.wasSuccessful());
+        
     }
 
   /**
@@ -68,17 +72,19 @@ public class InboxService{
    */
     @Test
     public void reportCreation() {
-        // Here you must call the MAS tests for this scenario
-        // or the scenarios themselves
-        // EXAMPLE 1:
-        // BeastTestCaseRunner.executeBeastTestCase("es.upm.dit.gsi.beast.reader.mas.test.MASTestScenario");
+    	
+        // JADE tests
+    	BeastTestCaseRunner.executeBeastTestCase("beast.tutorial.jade.stories.mas.recordAMessage.MisunderstandingTheCustomer");
 
-        // EXAMPLE 2:
-        // Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.MASTestStory.class");
-        // Assert.assertTrue(result.wasSuccessful());
-         logger.warning("Implement this method in beast.tutorial.stories.systemReportCreation.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
-         System.out.println("IMPORTANT!! -> Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool in class"+ this.getClass().getName());
-         Assert.fail("Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
+        Result jadeResult = JUnitCore.runClasses(beast.tutorial.jade.stories.mas.ProcessingMessage.class);
+        Assert.assertTrue(jadeResult.wasSuccessful());
+
+        //JADEX tests
+    	BeastTestCaseRunner.executeBeastTestCase("beast.tutorial.jadex.stories.mas.recordAMessage.MisunderstandingTheCustomer");
+
+        Result jadexResult = JUnitCore.runClasses(beast.tutorial.jadex.stories.mas.ProcessingMessage.class);
+        Assert.assertTrue(jadexResult.wasSuccessful());
+        
     }
 
 }
