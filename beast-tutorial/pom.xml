@@ -222,9 +222,9 @@
 					<phase>test</phase>
 					<includes>
 						<include>**/*Test.java</include>
-						<include>beast/tutorial/manager/CaseManager.java</include>
-						<include>beast/tutorial/jadex/manager/mas/CaseManager.java</include>
-						<include>beast/tutorial/jade/manager/mas/CaseManager.java</include>
+						<include>beast/tutorial/manager/UserStoriesManager.java</include>
+						<include>beast/tutorial/jadex/manager/mas/AgentStoriesManager.java</include>
+						<include>beast/tutorial/jade/manager/mas/AgentStoriesManager.java</include>
 					</includes>
 					<parallel>false</parallel>
 					<threadCount>1</threadCount>

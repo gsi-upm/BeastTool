@@ -1,4 +1,4 @@
-package beast.tutorial.jade.manager.mas;
+package beast.tutorial.jadex.manager.mas;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,7 +10,7 @@ import org.junit.runner.Result;
  *
  * @author es.upm.dit.gsi.beast
  */
-public class CaseManager {
+public class AgentStoriesManager {
 
   /**
    * This is the story: Processing message,
@@ -20,7 +20,7 @@ public class CaseManager {
    */
   @Test
   public void processingMessage() {
-      Result result = JUnitCore.runClasses(beast.tutorial.jade.stories.mas.ProcessingMessage.class);
+      Result result = JUnitCore.runClasses(beast.tutorial.jadex.stories.mas.ProcessingMessage.class);
       Assert.assertTrue(result.wasSuccessful());
   }
 
@@ -32,7 +32,7 @@ public class CaseManager {
    */
   @Test
   public void recordAMessage() {
-      Result result = JUnitCore.runClasses(beast.tutorial.jade.stories.mas.RecordAMessage.class);
+      Result result = JUnitCore.runClasses(beast.tutorial.jadex.stories.mas.RecordAMessage.class);
       Assert.assertTrue(result.wasSuccessful());
   }
 
@@ -44,7 +44,7 @@ public class CaseManager {
    */
   @Test
   public void passingAnIncomingCall() {
-      Result result = JUnitCore.runClasses(beast.tutorial.jade.stories.mas.PassingAnIncomingCall.class);
+      Result result = JUnitCore.runClasses(beast.tutorial.jadex.stories.mas.PassingAnIncomingCall.class);
       Assert.assertTrue(result.wasSuccessful());
   }
 

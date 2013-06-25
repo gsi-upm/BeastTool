@@ -10,7 +10,7 @@ import org.junit.runner.Result;
  *
  * @author es.upm.dit.gsi.beast
  */
-public class CaseManager {
+public class UserStoriesManager {
 
   /**
    * This is the story: Inbox service,
