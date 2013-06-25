@@ -38,12 +38,201 @@
 			<groupId>es.upm.dit.gsi</groupId>
 			<artifactId>beast-tool</artifactId>
 			<version>0.9.8-SNAPSHOT</version>
-			<classifier>jar-with-dependencies</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>com.tilab</groupId>
+			<artifactId>jade</artifactId>
+			<version>4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-kernel-bdibpmn</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-kernel-micro</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-platform-standalone</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-runtimetools</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-applications-micro</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-bridge</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-kernel-base</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-kernel-extension-agr</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-tools-bdi</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-applib-bdi</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-kernel-application</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-applications-bdibpmn</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-applications-bpmn</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-applications-gpmn</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-kernel-gpmn</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-nuggets</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-rules-applications</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-tools-bpmn</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jadex</groupId>
+			<artifactId>jadex-tools-comanalyzer</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
+
 		</dependency>
 	</dependencies>
 
-	<build>		
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>es.upm.dit.gsi</groupId>
+				<artifactId>beast-tool</artifactId>
+				<version>0.9.8-SNAPSHOT</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
 		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.11</version>
+				<configuration>
+					<phase>test</phase>
+					<includes>
+						<include>**/*Test.java</include>
+						<include>beast/tutorial/manager/CaseManager.java</include>
+						<include>beast/tutorial/jadex/manager/mas/CaseManager.java</include>
+						<include>beast/tutorial/jade/manager/mas/CaseManager.java</include>
+					</includes>
+					<parallel>false</parallel>
+					<threadCount>1</threadCount>
+					<perCoreThreadCount>false</perCoreThreadCount>
+					<useUnlimitedThreads>false</useUnlimitedThreads>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -64,7 +253,7 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>Beast Test Resources Generation - MAS Phase</id>
+						<id>Beast Test Resources Generation - MAS Phase - JADEX</id>
 						<phase>generate-test-sources</phase>
 						<goals>
 							<goal>java</goal>
@@ -72,7 +261,21 @@
 						<configuration>
 							<mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass>
 							<arguments>
-								<argument>src/test/resources/beast-conf/mas/beast-masphase-conf.properties</argument>
+								<argument>src/test/resources/beast-conf/mas/jadex-beast-masphase-conf.properties</argument>
+								<argument>src/test/resources/beast-conf/logger.properties</argument>
+							</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>Beast Test Resources Generation - MAS Phase - JADE</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass>
+							<arguments>
+								<argument>src/test/resources/beast-conf/mas/jade-beast-masphase-conf.properties</argument>
 								<argument>src/test/resources/beast-conf/logger.properties</argument>
 							</arguments>
 						</configuration>

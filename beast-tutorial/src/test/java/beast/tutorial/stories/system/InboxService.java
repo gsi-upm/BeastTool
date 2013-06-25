@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.Properties;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -45,12 +46,18 @@ public class InboxService{
    * and the THEN is described as: the call is attended by a helpdesk operator.
    */
     @Test
-    public void passingIncomingCall(){
+    public void passingIncomingCall() {
         // Here you must call the MAS tests for this scenario
         // or the scenarios themselves
-        // EXAMPLE:
+        // EXAMPLE 1:
         // BeastTestCaseRunner.executeBeastTestCase("es.upm.dit.gsi.beast.reader.mas.test.MASTestScenario");
-        // JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.MASTestStory.class");
+
+        // EXAMPLE 2:
+        // Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.MASTestStory.class");
+        // Assert.assertTrue(result.wasSuccessful());
+         logger.warning("Implement this method in beast.tutorial.stories.systemPassingIncomingCall.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
+         System.out.println("IMPORTANT!! -> Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool in class"+ this.getClass().getName());
+         Assert.fail("Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
     }
 
   /**
@@ -60,12 +67,18 @@ public class InboxService{
    * and the THEN is described as: the system records the message and a new issue report is created.
    */
     @Test
-    public void reportCreation(){
+    public void reportCreation() {
         // Here you must call the MAS tests for this scenario
         // or the scenarios themselves
-        // EXAMPLE:
+        // EXAMPLE 1:
         // BeastTestCaseRunner.executeBeastTestCase("es.upm.dit.gsi.beast.reader.mas.test.MASTestScenario");
-        // JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.MASTestStory.class");
+
+        // EXAMPLE 2:
+        // Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.MASTestStory.class");
+        // Assert.assertTrue(result.wasSuccessful());
+         logger.warning("Implement this method in beast.tutorial.stories.systemReportCreation.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
+         System.out.println("IMPORTANT!! -> Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool in class"+ this.getClass().getName());
+         Assert.fail("Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
     }
 
 }
