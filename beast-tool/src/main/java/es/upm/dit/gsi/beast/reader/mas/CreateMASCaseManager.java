@@ -136,9 +136,9 @@ public class CreateMASCaseManager {
             caseManagerWriter = new FileWriter(caseManager, true);
             caseManagerWriter.write("  /**\n");
             caseManagerWriter.write("   * This is the scenario: " + scenario
-                    + ",\n");
+                    + "\n");
             caseManagerWriter.write("   * where the GIVEN is described as: "
-                    + given + ",\n");
+                    + given + "\n");
             caseManagerWriter.write("   * the WHEN is described as: " + when
                     + "\n");
             caseManagerWriter.write("   * and the THEN is described as: "
@@ -211,7 +211,7 @@ public class CreateMASCaseManager {
             caseManagerWriter = new FileWriter(caseManager, true);
             caseManagerWriter.write("  /**\n");
             caseManagerWriter.write("   * This is the story: " + storyName
-                    + ",\n");
+                    + "\n");
             caseManagerWriter.write("   * requested by: " + user + "\n");
             caseManagerWriter.write("   * providing the feature: " + feature
                     + "\n");

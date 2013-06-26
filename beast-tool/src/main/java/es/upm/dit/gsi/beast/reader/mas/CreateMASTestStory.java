@@ -81,6 +81,13 @@ public class CreateMASTestStory {
             fw.write(" * behaviour. The main purpose of it consists of knowing agents' state/properties\n");
             fw.write(" * without changing its code.\n");
             fw.write(" * \n");
+            fw.write(" * \n");
+            fw.write(" * This \"AgentStory\" is described as follows:\n");
+            fw.write(" * Story: " + story_name + "\n");
+            fw.write(" * As a " + storyUser + "\n");
+            fw.write(" * I want to " + userFeature + "\n");
+            fw.write(" * So that " + userBenefit + "\n");
+            fw.write(" * \n");
             fw.write(" * @author es.upm.dit.gsi.beast\n");
             fw.write(" */\n");
             fw.write("public class " + storyClass  + "{\n");
@@ -123,9 +130,9 @@ public class CreateMASTestStory {
             for(String scenario : scenarios.keySet()){
                 fw.write("  /**\n");
                 fw.write("   * This is the scenario: " + scenario
-                        + ",\n");
+                        + "\n");
                 fw.write("   * where the GIVEN is described as: "
-                        + scenarios.get(scenario)[0] + ",\n");
+                        + scenarios.get(scenario)[0] + "\n");
                 fw.write("   * the WHEN is described as: " + scenarios.get(scenario)[1]
                         + "\n");
                 fw.write("   * and the THEN is described as: "

@@ -45,7 +45,7 @@ public class CreateMASTestCase {
     public static void createBeastTestCase(String scenario_name,
             String platform_name, String package_path, String dest_dir,
             String loggingPropFile, String givenComment, String whenComment,
-            String thenComment) throws BeastException {
+            String thenComment, String storyName, String story_agent, String agent_feature, String agent_benefit) throws BeastException {
 
         Logger logger = Logger.getLogger(CreateMASTestCase.class.getName());
 
@@ -84,6 +84,19 @@ public class CreateMASTestCase {
             fw.write(" * configures the state of its agents. In the THEN part it checks the correct\n");
             fw.write(" * behaviour. The main purpose of it consists of knowing agents' state/properties\n");
             fw.write(" * without changing its code.\n");
+            fw.write(" * \n");
+            fw.write(" * \n");
+            fw.write(" * This \"AgentStory\" is described as follows:\n");
+            fw.write(" * Story: " + storyName + "\n");
+            fw.write(" * As a " + story_agent + "\n");
+            fw.write(" * I want to " + agent_feature + "\n");
+            fw.write(" * So that " + agent_benefit + "\n");
+            fw.write(" * \n");
+            fw.write(" * This specific scenario is described as follows:\n");
+            fw.write(" * Scenario: " + scenario_name+ "\n");
+            fw.write(" * Given " + givenComment + "\n");
+            fw.write(" * When " + whenComment + "\n");
+            fw.write(" * Then " + thenComment + "\n");
             fw.write(" * \n");
             fw.write(" * @author es.upm.dit.gsi.beast\n");
             fw.write(" */\n");
@@ -149,7 +162,7 @@ public class CreateMASTestCase {
             fw.write("     *  \n");
             fw.write("     * In launch method the following methods must be used\n");
             fw.write("     *   setBeliefValue (agent_name, belief_name, new_value )\n");
-            fw.write("     *   sendMessageToAgent(agent_name, msgtype, message_content)n");
+            fw.write("     *   sendMessageToAgent(agent_name, msgtype, message_content)\n");
             fw.write("     *   getAgentPlans(agent_name)\n");
             fw.write("     *   getAgentGoals(agent_name )\n");
             fw.write("     */\n");

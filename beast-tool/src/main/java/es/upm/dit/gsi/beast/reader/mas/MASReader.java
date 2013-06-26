@@ -79,9 +79,13 @@ public class MASReader extends Reader {
                     }
                 }
             }
-            for (File f: reqFolder.listFiles()) {
+            for (File f : reqFolder.listFiles()) {
                 if (f.isDirectory()) {
-                    MASReader.generateJavaFiles(requirementsFolder+File.separator+f.getName().toLowerCase(), platformName, src_test_dir, tests_package+"."+f.getName().toLowerCase(), casemanager_package, loggingPropFile);
+                    MASReader.generateJavaFiles(requirementsFolder
+                            + File.separator + f.getName().toLowerCase(),
+                            platformName, src_test_dir, tests_package + "."
+                                    + f.getName().toLowerCase(),
+                            casemanager_package, loggingPropFile);
                 }
             }
         } else if (reqFolder.getName().endsWith(".story")) {
@@ -147,11 +151,11 @@ public class MASReader extends Reader {
                 while ((nextLine = fileReader.readLine()) != null) {
 
                     if (nextLine.startsWith("Story")) {
-                         String aux = nextLine.replaceFirst("Story", "").trim();
-                         if (aux.startsWith(":") || aux.startsWith("-")) {
-                             aux = aux.substring(1).trim();
-                         }
-                         storyName = aux;
+                        String aux = nextLine.replaceFirst("Story", "").trim();
+                        if (aux.startsWith(":") || aux.startsWith("-")) {
+                            aux = aux.substring(1).trim();
+                        }
+                        storyName = aux;
                     } else if (nextLine.startsWith("As a")) {
                         story_user = nextLine.replaceFirst("As a", "").trim();
                         lineType = 1;
@@ -166,13 +170,16 @@ public class MASReader extends Reader {
                     } else if (nextLine.startsWith("And")) {
                         switch (lineType) {
                         case 1:
-                            story_user= story_user + " and " + nextLine.replaceFirst("And", "").trim();
+                            story_user = story_user + " and "
+                                    + nextLine.replaceFirst("And", "").trim();
                             break;
                         case 2:
-                            user_feature= user_feature + " and " + nextLine.replaceFirst("And", "").trim();                            
+                            user_feature = user_feature + " and "
+                                    + nextLine.replaceFirst("And", "").trim();
                             break;
                         case 3:
-                            user_benefit= user_benefit + " and " + nextLine.replaceFirst("And", "").trim();                            
+                            user_benefit = user_benefit + " and "
+                                    + nextLine.replaceFirst("And", "").trim();
                             break;
                         default:
                             break;
@@ -182,8 +189,8 @@ public class MASReader extends Reader {
                         // I am assuming that the file is properly formated
                         // TODO: Check that it actually is properly formated.
 
-
-                        String aux = nextLine.replaceFirst("Scenario", "").trim();
+                        String aux = nextLine.replaceFirst("Scenario", "")
+                                .trim();
                         if (aux.startsWith(":") || aux.startsWith("-")) {
                             aux = aux.substring(1).trim();
                         }
@@ -201,7 +208,8 @@ public class MASReader extends Reader {
                         }
                         nextLine = fileReader.readLine();
                         while (nextLine.startsWith("And")) {
-                            givenDescription = givenDescription + " and " + nextLine.replaceFirst("And", "").trim();
+                            givenDescription = givenDescription + " and "
+                                    + nextLine.replaceFirst("And", "").trim();
                             while (!fileReader.ready()) {
                                 Thread.yield();
                             }
@@ -215,7 +223,8 @@ public class MASReader extends Reader {
                         }
                         nextLine = fileReader.readLine();
                         while (nextLine.startsWith("And")) {
-                            whenDescription = whenDescription + " and " + nextLine.replaceFirst("And", "").trim();
+                            whenDescription = whenDescription + " and "
+                                    + nextLine.replaceFirst("And", "").trim();
                             while (!fileReader.ready()) {
                                 Thread.yield();
                             }
@@ -223,11 +232,12 @@ public class MASReader extends Reader {
                         }
                         String thenDescription = nextLine.replaceFirst("Then",
                                 "").trim();
-                        
+
                         nextLine = fileReader.readLine();
-                        
-                        while (nextLine!=null && nextLine.startsWith("And")) {
-                            thenDescription = thenDescription +  " and " + nextLine.replaceFirst("And", "").trim();
+
+                        while (nextLine != null && nextLine.startsWith("And")) {
+                            thenDescription = thenDescription + " and "
+                                    + nextLine.replaceFirst("And", "").trim();
                             nextLine = fileReader.readLine();
                         }
 
@@ -276,7 +286,9 @@ public class MASReader extends Reader {
                                             src_test_dir, loggingPropFile,
                                             scenarios.get(entry)[0],
                                             scenarios.get(entry)[1],
-                                            scenarios.get(entry)[2]);
+                                            scenarios.get(entry)[2], storyName,
+                                            story_user, user_feature,
+                                            user_benefit);
                             createDotStoryFile(
                                     entry,
                                     src_test_dir,
@@ -304,7 +316,8 @@ public class MASReader extends Reader {
                                     loggingPropFile,
                                     scenarios.get(scenarioID)[0],
                                     scenarios.get(scenarioID)[1],
-                                    scenarios.get(scenarioID)[2]);
+                                    scenarios.get(scenarioID)[2], storyName,
+                                    story_user, user_feature, user_benefit);
                             createDotStoryFile(scenarioID, src_test_dir,
                                     tests_package,
                                     scenarios.get(scenarioID)[0],
