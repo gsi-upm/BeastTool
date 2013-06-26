@@ -23,6 +23,19 @@ import java.util.Properties;
  * behaviour. The main purpose of it consists of knowing agents' state/properties
  * without changing its code.
  * 
+ * 
+ * This "AgentStory" is described as follows:
+ * Story: Record a message
+ * As a RecorderAgent,
+ * I want to record incoming calls,
+ * So that I can pass the message to a ReporterAgent.
+ * 
+ * This specific scenario is described as follows:
+ * Scenario: UnderstandingTheCustomer
+ * Given a phone call is received,
+ * When I understand the customer,
+ * Then I record his/her message and I send that FIPA-INFORM message to a ReporterAgent.
+ * 
  * @author es.upm.dit.gsi.beast
  */
 public class UnderstandingTheCustomer extends BeastTestCase {
@@ -53,6 +66,12 @@ public class UnderstandingTheCustomer extends BeastTestCase {
      * startAgent(agent_name,agent_path)
      */
     public void setup() {
+
+    	Object[] arguments = new Object[1];
+        arguments[0] = "NewIncomingCall";
+        startAgent("TestAgent",
+                "beast.tutorial.jade.agent.",
+                "MyContainer", arguments);
          // TODO: implement this method to represent the @Given part of the test in Java code.
          
          logger.warning("Implement setup() method in beast.tutorial.jade.stories.mas.recordAMessageUnderstandingTheCustomer.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
@@ -68,7 +87,8 @@ public class UnderstandingTheCustomer extends BeastTestCase {
      *  
      * In launch method the following methods must be used
      *   setBeliefValue (agent_name, belief_name, new_value )
-     *   sendMessageToAgent(agent_name, msgtype, message_content)n     *   getAgentPlans(agent_name)
+     *   sendMessageToAgent(agent_name, msgtype, message_content)
+     *   getAgentPlans(agent_name)
      *   getAgentGoals(agent_name )
      */
     public void launch() {

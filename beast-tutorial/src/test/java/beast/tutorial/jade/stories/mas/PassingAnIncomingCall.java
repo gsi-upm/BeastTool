@@ -17,6 +17,13 @@ import org.junit.Test;
  * behaviour. The main purpose of it consists of knowing agents' state/properties
  * without changing its code.
  * 
+ * 
+ * This "AgentStory" is described as follows:
+ * Story: Passing an incoming call
+ * As a HelpDeskAgent,
+ * I want to process a FIPA-REQUEST message from a RecorderAgent,
+ * So that I am able to pass an incoming call to a human operator.
+ * 
  * @author es.upm.dit.gsi.beast
  */
 public class PassingAnIncomingCall{
@@ -39,8 +46,8 @@ public class PassingAnIncomingCall{
     }
 
   /**
-   * This is the scenario: Pass a call,
-   * where the GIVEN is described as: a HelpDeskAgent has connection to the desktop of the operator computer,,
+   * This is the scenario: Pass a call
+   * where the GIVEN is described as: a HelpDeskAgent has connection to the desktop of the operator computer,
    * the WHEN is described as: that agent receives a FIPA-REQUEST message from a RecorderAgent,
    * and the THEN is described as: the request is accepted and the incoming call is transfered to the human operator.
    */

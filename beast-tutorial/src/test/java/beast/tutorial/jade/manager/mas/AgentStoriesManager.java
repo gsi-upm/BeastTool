@@ -13,7 +13,7 @@ import org.junit.runner.Result;
 public class AgentStoriesManager {
 
   /**
-   * This is the story: Processing message,
+   * This is the story: Processing message
    * requested by: ReporterAgent,
    * providing the feature: process any FIPA-INFORM message from a RecorderAgent which contains a recorded message,
    * so the user gets the benefit: I am able to generate an issue report based on that message content.
@@ -25,7 +25,7 @@ public class AgentStoriesManager {
   }
 
   /**
-   * This is the story: Record a message,
+   * This is the story: Record a message
    * requested by: RecorderAgent,
    * providing the feature: record incoming calls,
    * so the user gets the benefit: I can pass the message to a ReporterAgent.
@@ -37,7 +37,7 @@ public class AgentStoriesManager {
   }
 
   /**
-   * This is the story: Passing an incoming call,
+   * This is the story: Passing an incoming call
    * requested by: HelpDeskAgent,
    * providing the feature: process a FIPA-REQUEST message from a RecorderAgent,
    * so the user gets the benefit: I am able to pass an incoming call to a human operator.

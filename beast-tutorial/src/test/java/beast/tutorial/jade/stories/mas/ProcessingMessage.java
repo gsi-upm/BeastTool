@@ -17,6 +17,13 @@ import org.junit.Test;
  * behaviour. The main purpose of it consists of knowing agents' state/properties
  * without changing its code.
  * 
+ * 
+ * This "AgentStory" is described as follows:
+ * Story: Processing message
+ * As a ReporterAgent,
+ * I want to process any FIPA-INFORM message from a RecorderAgent which contains a recorded message,
+ * So that I am able to generate an issue report based on that message content.
+ * 
  * @author es.upm.dit.gsi.beast
  */
 public class ProcessingMessage{
@@ -39,8 +46,8 @@ public class ProcessingMessage{
     }
 
   /**
-   * This is the scenario: Create a report,
-   * where the GIVEN is described as: a ReporterAgent has access to the database,,
+   * This is the scenario: Create a report
+   * where the GIVEN is described as: a ReporterAgent has access to the database,
    * the WHEN is described as: that agent receives a FIPA-INFORM message from a recorder agent,
    * and the THEN is described as: the message is processed and a new issue report is created.
    */

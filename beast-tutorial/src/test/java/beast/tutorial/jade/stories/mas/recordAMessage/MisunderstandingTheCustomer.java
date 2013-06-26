@@ -23,6 +23,19 @@ import java.util.Properties;
  * behaviour. The main purpose of it consists of knowing agents' state/properties
  * without changing its code.
  * 
+ * 
+ * This "AgentStory" is described as follows:
+ * Story: Record a message
+ * As a RecorderAgent,
+ * I want to record incoming calls,
+ * So that I can pass the message to a ReporterAgent.
+ * 
+ * This specific scenario is described as follows:
+ * Scenario: MisunderstandingTheCustomer
+ * Given a phone call is received,
+ * When I do not understand the customer,
+ * Then I send a FIPA-REQUEST message to a HelpDeskAgent and I pass the incoming call to a HelpDeskAgent.
+ * 
  * @author es.upm.dit.gsi.beast
  */
 public class MisunderstandingTheCustomer extends BeastTestCase {
@@ -68,7 +81,8 @@ public class MisunderstandingTheCustomer extends BeastTestCase {
      *  
      * In launch method the following methods must be used
      *   setBeliefValue (agent_name, belief_name, new_value )
-     *   sendMessageToAgent(agent_name, msgtype, message_content)n     *   getAgentPlans(agent_name)
+     *   sendMessageToAgent(agent_name, msgtype, message_content)
+     *   getAgentPlans(agent_name)
      *   getAgentGoals(agent_name )
      */
     public void launch() {

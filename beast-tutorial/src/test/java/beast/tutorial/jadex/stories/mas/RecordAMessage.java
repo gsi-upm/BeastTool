@@ -17,6 +17,13 @@ import org.junit.Test;
  * behaviour. The main purpose of it consists of knowing agents' state/properties
  * without changing its code.
  * 
+ * 
+ * This "AgentStory" is described as follows:
+ * Story: Record a message
+ * As a RecorderAgent,
+ * I want to record incoming calls,
+ * So that I can pass the message to a ReporterAgent.
+ * 
  * @author es.upm.dit.gsi.beast
  */
 public class RecordAMessage{
@@ -39,8 +46,8 @@ public class RecordAMessage{
     }
 
   /**
-   * This is the scenario: Understanding the customer,
-   * where the GIVEN is described as: a phone call is received,,
+   * This is the scenario: Understanding the customer
+   * where the GIVEN is described as: a phone call is received,
    * the WHEN is described as: I understand the customer,
    * and the THEN is described as: I record his/her message and I send that FIPA-INFORM message to a ReporterAgent.
    */
@@ -49,8 +56,8 @@ public class RecordAMessage{
         BeastTestCaseRunner.executeBeastTestCase("beast.tutorial.jadex.stories.mas.recordAMessage.UnderstandingTheCustomer");
     }
   /**
-   * This is the scenario: Misunderstanding the customer,
-   * where the GIVEN is described as: a phone call is received,,
+   * This is the scenario: Misunderstanding the customer
+   * where the GIVEN is described as: a phone call is received,
    * the WHEN is described as: I do not understand the customer,
    * and the THEN is described as: I send a FIPA-REQUEST message to a HelpDeskAgent and I pass the incoming call to a HelpDeskAgent.
    */

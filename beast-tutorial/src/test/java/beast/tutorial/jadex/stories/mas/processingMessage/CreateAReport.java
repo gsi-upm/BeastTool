@@ -23,6 +23,19 @@ import java.util.Properties;
  * behaviour. The main purpose of it consists of knowing agents' state/properties
  * without changing its code.
  * 
+ * 
+ * This "AgentStory" is described as follows:
+ * Story: Processing message
+ * As a ReporterAgent,
+ * I want to process any FIPA-INFORM message from a RecorderAgent which contains a recorded message,
+ * So that I am able to generate an issue report based on that message content.
+ * 
+ * This specific scenario is described as follows:
+ * Scenario: CreateAReport
+ * Given a ReporterAgent has access to the database,
+ * When that agent receives a FIPA-INFORM message from a recorder agent,
+ * Then the message is processed and a new issue report is created.
+ * 
  * @author es.upm.dit.gsi.beast
  */
 public class CreateAReport extends BeastTestCase {
@@ -68,7 +81,8 @@ public class CreateAReport extends BeastTestCase {
      *  
      * In launch method the following methods must be used
      *   setBeliefValue (agent_name, belief_name, new_value )
-     *   sendMessageToAgent(agent_name, msgtype, message_content)n     *   getAgentPlans(agent_name)
+     *   sendMessageToAgent(agent_name, msgtype, message_content)
+     *   getAgentPlans(agent_name)
      *   getAgentGoals(agent_name )
      */
     public void launch() {
