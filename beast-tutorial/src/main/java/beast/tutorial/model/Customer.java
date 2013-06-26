@@ -1,11 +1,11 @@
 /**
- * beast.tutorial.tools.Report.java
+ * beast.tutorial.tools.Customer.java
  */
-package beast.tutorial.tools;
+package beast.tutorial.model;
 
 /**
  * Project: beast-tutorial
- * File: beast.tutorial.tools.Report.java
+ * File: beast.tutorial.tools.Customer.java
  * 
  * Grupo de Sistemas Inteligentes
  * Departamento de Ingeniería de Sistemas Telemáticos
@@ -18,14 +18,14 @@ package beast.tutorial.tools;
  * @version 0.1
  * 
  */
-public class Report {
+public class Customer {
 
 	/**
-	 * Constructor
-	 *
+	 * @return
 	 */
-	public Report() {
-		// TODO Auto-generated constructor stub
+	public String getLanguage() {
+		return null;
 	}
-
+	
+	
 }

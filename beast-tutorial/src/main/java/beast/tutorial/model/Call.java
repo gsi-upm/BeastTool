@@ -1,11 +1,11 @@
 /**
- * beast.tutorial.tools.Message.java
+ * beast.tutorial.tools.Call.java
  */
-package beast.tutorial.tools;
+package beast.tutorial.model;
 
 /**
  * Project: beast-tutorial
- * File: beast.tutorial.tools.Message.java
+ * File: beast.tutorial.tools.Call.java
  * 
  * Grupo de Sistemas Inteligentes
  * Departamento de Ingeniería de Sistemas Telemáticos
@@ -18,6 +18,21 @@ package beast.tutorial.tools;
  * @version 0.1
  * 
  */
-public class Message {
+public class Call {
+
+	/**
+	 * Constructor
+	 *
+	 */
+	public Call() {
+		
+	}
+	
+	/**
+	 * @return
+	 */
+	public Customer getCustormer() {
+		return null;
+	}
 
 }

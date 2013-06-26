@@ -1,11 +1,11 @@
 /**
- * beast.tutorial.tools.Call.java
+ * beast.tutorial.tools.Report.java
  */
-package beast.tutorial.tools;
+package beast.tutorial.model;
 
 /**
  * Project: beast-tutorial
- * File: beast.tutorial.tools.Call.java
+ * File: beast.tutorial.tools.Report.java
  * 
  * Grupo de Sistemas Inteligentes
  * Departamento de Ingeniería de Sistemas Telemáticos
@@ -18,21 +18,14 @@ package beast.tutorial.tools;
  * @version 0.1
  * 
  */
-public class Call {
+public class Report {
 
 	/**
 	 * Constructor
 	 *
 	 */
-	public Call() {
-		
-	}
-	
-	/**
-	 * @return
-	 */
-	public Customer getCustormer() {
-		return null;
+	public Report() {
+		// TODO Auto-generated constructor stub
 	}
 
 }

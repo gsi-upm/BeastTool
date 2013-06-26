@@ -1,11 +1,11 @@
 /**
- * beast.tutorial.tools.Customer.java
+ * beast.tutorial.tools.Message.java
  */
-package beast.tutorial.tools;
+package beast.tutorial.model;
 
 /**
  * Project: beast-tutorial
- * File: beast.tutorial.tools.Customer.java
+ * File: beast.tutorial.tools.Message.java
  * 
  * Grupo de Sistemas Inteligentes
  * Departamento de Ingeniería de Sistemas Telemáticos
@@ -18,14 +18,6 @@ package beast.tutorial.tools;
  * @version 0.1
  * 
  */
-public class Customer {
+public class Message {
 
-	/**
-	 * @return
-	 */
-	public String getLanguage() {
-		return null;
-	}
-	
-	
 }

@@ -1,7 +1,7 @@
 /**
  * beast.tutorial.tools.CallQueue.java
  */
-package beast.tutorial.tools;
+package beast.tutorial.model;
 
 /**
  * Project: beast-tutorial
