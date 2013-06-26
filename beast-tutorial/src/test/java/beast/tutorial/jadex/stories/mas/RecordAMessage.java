@@ -47,9 +47,9 @@ public class RecordAMessage{
 
   /**
    * This is the scenario: Understanding the customer
-   * where the GIVEN is described as: a phone call is received,
-   * the WHEN is described as: I understand the customer,
-   * and the THEN is described as: I record his/her message and I send that FIPA-INFORM message to a ReporterAgent.
+   * where the GIVEN is described as: a RecordAgent and a ReporterAgent can communicate between them,
+   * the WHEN is described as: a phone call is received and the RecordAgent understands the customer,
+   * and the THEN is described as: the RecordAgent records his/her message and the RecordAgent sends that FIPA-INFORM message to a ReporterAgent.
    */
     @Test
     public void understandingTheCustomer() {
@@ -57,9 +57,9 @@ public class RecordAMessage{
     }
   /**
    * This is the scenario: Misunderstanding the customer
-   * where the GIVEN is described as: a phone call is received,
-   * the WHEN is described as: I do not understand the customer,
-   * and the THEN is described as: I send a FIPA-REQUEST message to a HelpDeskAgent and I pass the incoming call to a HelpDeskAgent.
+   * where the GIVEN is described as: a RecordAgent and a HelpDeskAgent can communicate between them,
+   * the WHEN is described as: a phone call is received and the RecorderAgent does not understand the customer,
+   * and the THEN is described as: the RecorderAgent sends a FIPA-REQUEST message to a HelpDeskAgent and the RecorderAgent pass the incoming call to a HelpDeskAgent.
    */
     @Test
     public void misunderstandingTheCustomer() {

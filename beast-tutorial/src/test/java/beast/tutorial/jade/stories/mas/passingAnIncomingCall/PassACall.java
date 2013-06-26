@@ -32,8 +32,8 @@ import java.util.Properties;
  * 
  * This specific scenario is described as follows:
  * Scenario: PassACall
- * Given a HelpDeskAgent has connection to the desktop of the operator computer,
- * When that agent receives a FIPA-REQUEST message from a RecorderAgent,
+ * Given a HelpDeskAgent has connection to the desktop of the operator computer, and a RecorderAgent has received a call that cannot understand,
+ * When that HelpDeskAgent receives a FIPA-REQUEST message from that RecorderAgent,
  * Then the request is accepted and the incoming call is transfered to the human operator.
  * 
  * @author es.upm.dit.gsi.beast
@@ -60,7 +60,7 @@ public class PassACall extends BeastTestCase {
     /**
      * This is the method that must create the Scenario.
      * It is related with the GIVEN part.
-     * "GIVEN a HelpDeskAgent has connection to the desktop of the operator computer,".
+     * "GIVEN a HelpDeskAgent has connection to the desktop of the operator computer, and a RecorderAgent has received a call that cannot understand,".
      * 
      * In setup method the following method must be used
      * startAgent(agent_name,agent_path)
@@ -77,7 +77,7 @@ public class PassACall extends BeastTestCase {
     /**
      * This is the method that must create the Setup.
      * It is related with the WHEN part.
-     * "WHEN that agent receives a FIPA-REQUEST message from a RecorderAgent,"
+     * "WHEN that HelpDeskAgent receives a FIPA-REQUEST message from that RecorderAgent,"
      *  
      * In launch method the following methods must be used
      *   setBeliefValue (agent_name, belief_name, new_value )
@@ -117,10 +117,10 @@ public class PassACall extends BeastTestCase {
     @Given("$scenarioName")
     public void createScenario(String scenarioName) {
 
-         if (scenarioName.equals("a HelpDeskAgent has connection to the desktop of the operator computer,")){
+         if (scenarioName.equals("a HelpDeskAgent has connection to the desktop of the operator computer, and a RecorderAgent has received a call that cannot understand,")){
               startPlatform("jade", logger);
          } else {
-              logger.severe("WARNING: "+scenarioName+" does not coincide with a HelpDeskAgent has connection to the desktop of the operator computer," );
+              logger.severe("WARNING: "+scenarioName+" does not coincide with a HelpDeskAgent has connection to the desktop of the operator computer, and a RecorderAgent has received a call that cannot understand," );
          }
     }
 
@@ -130,10 +130,10 @@ public class PassACall extends BeastTestCase {
     @When("$setupName")
     public void configureScenario(String setupName) {
 
-         if (setupName.equals("that agent receives a FIPA-REQUEST message from a RecorderAgent,")){
+         if (setupName.equals("that HelpDeskAgent receives a FIPA-REQUEST message from that RecorderAgent,")){
               setScenario();
          } else {
-              logger.severe("WARNING: "+setupName+" does not coincide with that agent receives a FIPA-REQUEST message from a RecorderAgent,");
+              logger.severe("WARNING: "+setupName+" does not coincide with that HelpDeskAgent receives a FIPA-REQUEST message from that RecorderAgent,");
          }
     }
 

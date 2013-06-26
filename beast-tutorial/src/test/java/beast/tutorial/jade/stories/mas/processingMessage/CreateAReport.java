@@ -32,8 +32,8 @@ import java.util.Properties;
  * 
  * This specific scenario is described as follows:
  * Scenario: CreateAReport
- * Given a ReporterAgent has access to the database,
- * When that agent receives a FIPA-INFORM message from a recorder agent,
+ * Given a ReporterAgent has access to the database, and a RecorderAgent has received a call that can understand,
+ * When that ReporterAgent receives a FIPA-INFORM message from that RecorderAgent,
  * Then the message is processed and a new issue report is created.
  * 
  * @author es.upm.dit.gsi.beast
@@ -60,7 +60,7 @@ public class CreateAReport extends BeastTestCase {
     /**
      * This is the method that must create the Scenario.
      * It is related with the GIVEN part.
-     * "GIVEN a ReporterAgent has access to the database,".
+     * "GIVEN a ReporterAgent has access to the database, and a RecorderAgent has received a call that can understand,".
      * 
      * In setup method the following method must be used
      * startAgent(agent_name,agent_path)
@@ -77,7 +77,7 @@ public class CreateAReport extends BeastTestCase {
     /**
      * This is the method that must create the Setup.
      * It is related with the WHEN part.
-     * "WHEN that agent receives a FIPA-INFORM message from a recorder agent,"
+     * "WHEN that ReporterAgent receives a FIPA-INFORM message from that RecorderAgent,"
      *  
      * In launch method the following methods must be used
      *   setBeliefValue (agent_name, belief_name, new_value )
@@ -117,10 +117,10 @@ public class CreateAReport extends BeastTestCase {
     @Given("$scenarioName")
     public void createScenario(String scenarioName) {
 
-         if (scenarioName.equals("a ReporterAgent has access to the database,")){
+         if (scenarioName.equals("a ReporterAgent has access to the database, and a RecorderAgent has received a call that can understand,")){
               startPlatform("jade", logger);
          } else {
-              logger.severe("WARNING: "+scenarioName+" does not coincide with a ReporterAgent has access to the database," );
+              logger.severe("WARNING: "+scenarioName+" does not coincide with a ReporterAgent has access to the database, and a RecorderAgent has received a call that can understand," );
          }
     }
 
@@ -130,10 +130,10 @@ public class CreateAReport extends BeastTestCase {
     @When("$setupName")
     public void configureScenario(String setupName) {
 
-         if (setupName.equals("that agent receives a FIPA-INFORM message from a recorder agent,")){
+         if (setupName.equals("that ReporterAgent receives a FIPA-INFORM message from that RecorderAgent,")){
               setScenario();
          } else {
-              logger.severe("WARNING: "+setupName+" does not coincide with that agent receives a FIPA-INFORM message from a recorder agent,");
+              logger.severe("WARNING: "+setupName+" does not coincide with that ReporterAgent receives a FIPA-INFORM message from that RecorderAgent,");
          }
     }
 

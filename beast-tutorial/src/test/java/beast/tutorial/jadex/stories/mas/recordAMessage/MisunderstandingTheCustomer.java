@@ -32,9 +32,9 @@ import java.util.Properties;
  * 
  * This specific scenario is described as follows:
  * Scenario: MisunderstandingTheCustomer
- * Given a phone call is received,
- * When I do not understand the customer,
- * Then I send a FIPA-REQUEST message to a HelpDeskAgent and I pass the incoming call to a HelpDeskAgent.
+ * Given a RecordAgent and a HelpDeskAgent can communicate between them,
+ * When a phone call is received and the RecorderAgent does not understand the customer,
+ * Then the RecorderAgent sends a FIPA-REQUEST message to a HelpDeskAgent and the RecorderAgent pass the incoming call to a HelpDeskAgent.
  * 
  * @author es.upm.dit.gsi.beast
  */
@@ -60,7 +60,7 @@ public class MisunderstandingTheCustomer extends BeastTestCase {
     /**
      * This is the method that must create the Scenario.
      * It is related with the GIVEN part.
-     * "GIVEN a phone call is received,".
+     * "GIVEN a RecordAgent and a HelpDeskAgent can communicate between them,".
      * 
      * In setup method the following method must be used
      * startAgent(agent_name,agent_path)
@@ -77,7 +77,7 @@ public class MisunderstandingTheCustomer extends BeastTestCase {
     /**
      * This is the method that must create the Setup.
      * It is related with the WHEN part.
-     * "WHEN I do not understand the customer,"
+     * "WHEN a phone call is received and the RecorderAgent does not understand the customer,"
      *  
      * In launch method the following methods must be used
      *   setBeliefValue (agent_name, belief_name, new_value )
@@ -96,7 +96,7 @@ public class MisunderstandingTheCustomer extends BeastTestCase {
     /**
      * This is the method that must create the Evaluation.
      * It is related with the THEN part.
-     * "THEN I send a FIPA-REQUEST message to a HelpDeskAgent and I pass the incoming call to a HelpDeskAgent."
+     * "THEN the RecorderAgent sends a FIPA-REQUEST message to a HelpDeskAgent and the RecorderAgent pass the incoming call to a HelpDeskAgent."
      *  
      * In verify method the following method must be used
      * checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)
@@ -117,10 +117,10 @@ public class MisunderstandingTheCustomer extends BeastTestCase {
     @Given("$scenarioName")
     public void createScenario(String scenarioName) {
 
-         if (scenarioName.equals("a phone call is received,")){
+         if (scenarioName.equals("a RecordAgent and a HelpDeskAgent can communicate between them,")){
               startPlatform("jadex", logger);
          } else {
-              logger.severe("WARNING: "+scenarioName+" does not coincide with a phone call is received," );
+              logger.severe("WARNING: "+scenarioName+" does not coincide with a RecordAgent and a HelpDeskAgent can communicate between them," );
          }
     }
 
@@ -130,10 +130,10 @@ public class MisunderstandingTheCustomer extends BeastTestCase {
     @When("$setupName")
     public void configureScenario(String setupName) {
 
-         if (setupName.equals("I do not understand the customer,")){
+         if (setupName.equals("a phone call is received and the RecorderAgent does not understand the customer,")){
               setScenario();
          } else {
-              logger.severe("WARNING: "+setupName+" does not coincide with I do not understand the customer,");
+              logger.severe("WARNING: "+setupName+" does not coincide with a phone call is received and the RecorderAgent does not understand the customer,");
          }
     }
 
@@ -143,11 +143,11 @@ public class MisunderstandingTheCustomer extends BeastTestCase {
     @Then("$evaluationName")
     public void checkScenario(String evaluationName) {
 
-        if (evaluationName.equals("I send a FIPA-REQUEST message to a HelpDeskAgent and I pass the incoming call to a HelpDeskAgent.")){
+        if (evaluationName.equals("the RecorderAgent sends a FIPA-REQUEST message to a HelpDeskAgent and the RecorderAgent pass the incoming call to a HelpDeskAgent.")){
             this.setExecutionTime(BeastTestCase.SLEEP_TIME);
             verify();
         } else {
-            logger.severe("WARNING: "+evaluationName+" does not coincide with I send a FIPA-REQUEST message to a HelpDeskAgent and I pass the incoming call to a HelpDeskAgent.");
+            logger.severe("WARNING: "+evaluationName+" does not coincide with the RecorderAgent sends a FIPA-REQUEST message to a HelpDeskAgent and the RecorderAgent pass the incoming call to a HelpDeskAgent.");
         }
     }
 

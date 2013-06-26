@@ -47,8 +47,8 @@ public class ProcessingMessage{
 
   /**
    * This is the scenario: Create a report
-   * where the GIVEN is described as: a ReporterAgent has access to the database,
-   * the WHEN is described as: that agent receives a FIPA-INFORM message from a recorder agent,
+   * where the GIVEN is described as: a ReporterAgent has access to the database, and a RecorderAgent has received a call that can understand,
+   * the WHEN is described as: that ReporterAgent receives a FIPA-INFORM message from that RecorderAgent,
    * and the THEN is described as: the message is processed and a new issue report is created.
    */
     @Test

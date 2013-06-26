@@ -47,8 +47,8 @@ public class PassingAnIncomingCall{
 
   /**
    * This is the scenario: Pass a call
-   * where the GIVEN is described as: a HelpDeskAgent has connection to the desktop of the operator computer,
-   * the WHEN is described as: that agent receives a FIPA-REQUEST message from a RecorderAgent,
+   * where the GIVEN is described as: a HelpDeskAgent has connection to the desktop of the operator computer, and a RecorderAgent has received a call that cannot understand,
+   * the WHEN is described as: that HelpDeskAgent receives a FIPA-REQUEST message from that RecorderAgent,
    * and the THEN is described as: the request is accepted and the incoming call is transfered to the human operator.
    */
     @Test
