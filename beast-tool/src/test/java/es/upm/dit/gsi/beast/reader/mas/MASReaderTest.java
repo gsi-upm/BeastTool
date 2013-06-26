@@ -3,6 +3,7 @@ package es.upm.dit.gsi.beast.reader.mas;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 import junit.framework.Assert;
 
@@ -347,6 +348,66 @@ public class MASReaderTest {
         this.cleanUp();
     }
 
+
+    @Test
+    public void DontDeleteExistingStoriesTest() {
+        this.cleanUp();
+        boolean passed = false;
+        try {
+            MASReader
+            .generateJavaFiles(
+                    "src/test/java/es/upm/dit/gsi/beast/reader/mas/ReaderTest.story",
+                    "\"jade\"", "src/test/java",
+                    "es.upm.dit.gsi.beast.reader.mas.test",
+                    "es.upm.dit.gsi.beast.reader.mas.test", null);
+            File folder = SystemReader.createFolder(
+                    "es.upm.dit.gsi.beast.reader.mas.test", "src/test/java");
+            File file = new File(folder, "TestStory.java");
+            FileWriter fw = new FileWriter(file);
+            fw.append("MyTest");
+            fw.close();
+            MASReader
+            .generateJavaFiles(
+                    "src/test/java/es/upm/dit/gsi/beast/reader/mas/ReaderTest.story",
+                    "\"jade\"", "src/test/java",
+                    "es.upm.dit.gsi.beast.reader.mas.test",
+                    "es.upm.dit.gsi.beast.reader.mas.test", null);
+        } catch (Exception e) {
+            Assert.fail();
+        }
+        Assert.assertTrue(new File(
+                "src/test/java/es/upm/dit/gsi/beast/reader/mas/test",
+                "AgentStoriesManager.java").exists());
+        Assert.assertTrue(new File(
+                "src/test/java/es/upm/dit/gsi/beast/reader/mas/test",
+                "TestStory.java").exists());
+
+        try {
+            File folder = SystemReader.createFolder(
+                    "es.upm.dit.gsi.beast.reader.mas.test", "src/test/java");
+            File file = new File(folder, "TestStory.java");
+
+            String targetLine1 = "MyTest";
+
+            BufferedReader r = new BufferedReader(new FileReader(file));
+            String in;
+            while ((in = r.readLine()) != null) {
+                if (targetLine1.equals(in)) {
+                    passed = true;
+                    break;
+                }
+            }
+            r.close();
+            if (passed == false) {
+                Assert.fail();
+            }
+        } catch (Exception e) {
+            passed = false;
+        }
+        Assert.assertTrue(passed);
+        this.cleanUp();
+    }
+    
     private void cleanUp() {
         this.deleteDirectory(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/mas/test"));

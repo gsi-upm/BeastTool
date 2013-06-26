@@ -3,6 +3,7 @@ package es.upm.dit.gsi.beast.reader.system;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 import junit.framework.Assert;
 
@@ -195,8 +196,7 @@ public class SystemReaderTest {
 
         try {
             File folder = SystemReader.createFolder(
-                    "es.upm.dit.gsi.beast.reader.system.test",
-                    "src/test/java");
+                    "es.upm.dit.gsi.beast.reader.system.test", "src/test/java");
             File file = new File(folder, "UserStoriesManager.java");
 
             String targetLine1 = "   * so the user gets the benefit: I have a benefit and I am sure that it works.";
@@ -210,19 +210,18 @@ public class SystemReaderTest {
                 }
             }
             r.close();
-            if (passed==false) {
+            if (passed == false) {
                 Assert.fail();
             }
-            passed=false;
+            passed = false;
             folder = SystemReader.createFolder(
-                    "es.upm.dit.gsi.beast.reader.system.test",
-                    "src/test/java");
+                    "es.upm.dit.gsi.beast.reader.system.test", "src/test/java");
             file = new File(folder, "SystemStory.java");
 
             targetLine1 = "   * and the THEN is described as: a proper response occurs and I want to test it and I want to test it again.";
 
             r = new BufferedReader(new FileReader(file));
-            
+
             while ((in = r.readLine()) != null) {
                 if (targetLine1.equals(in)) {
                     passed = true;
@@ -239,8 +238,10 @@ public class SystemReaderTest {
     }
 
     @Test
-    public void MultipleFormatToInputStoriesAndScenariosParseTest() throws Exception {
-        //This test checks if the : and - symbols are properly handled by the reder. 
+    public void MultipleFormatToInputStoriesAndScenariosParseTest()
+            throws Exception {
+        // This test checks if the : and - symbols are properly handled by the
+        // reder.
         this.cleanUp();
         boolean passed = false;
         try {
@@ -256,8 +257,7 @@ public class SystemReaderTest {
 
         try {
             File folder = SystemReader.createFolder(
-                    "es.upm.dit.gsi.beast.reader.system.test",
-                    "src/test/java");
+                    "es.upm.dit.gsi.beast.reader.system.test", "src/test/java");
             File file = new File(folder, "UserStoriesManager.java");
 
             String targetLine1 = "     Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.SystemStory.class);";
@@ -271,20 +271,19 @@ public class SystemReaderTest {
                 }
             }
             r.close();
-            if (passed==false) {
+            if (passed == false) {
                 Assert.fail();
             }
-            passed=false;
+            passed = false;
             folder = SystemReader.createFolder(
-                    "es.upm.dit.gsi.beast.reader.system.test",
-                    "src/test/java");
+                    "es.upm.dit.gsi.beast.reader.system.test", "src/test/java");
             file = new File(folder, "SystemStory.java");
 
             targetLine1 = "    public void secondSystemScenario() {";
             String targetLine2 = "    public void thisIsOtherScenario() {";
 
             r = new BufferedReader(new FileReader(file));
-            
+
             while ((in = r.readLine()) != null) {
                 if (targetLine1.equals(in)) {
                     while ((in = r.readLine()) != null) {
@@ -302,6 +301,67 @@ public class SystemReaderTest {
         } catch (Exception e) {
             this.cleanUp();
             throw e;
+        }
+        Assert.assertTrue(passed);
+        this.cleanUp();
+    }
+
+    @Test
+    public void DontDeleteExistingStoriesTest() {
+        this.cleanUp();
+        boolean passed = false;
+        try {
+            SystemReader
+                    .generateJavaFiles(
+                            "src/test/java/es/upm/dit/gsi/beast/reader/system/SystemReaderTest.story",
+                            "\"jade\"", "src/test/java",
+                            "es.upm.dit.gsi.beast.reader.system.test",
+                            "es.upm.dit.gsi.beast.reader.system.test",
+                            "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties");
+            File folder = SystemReader.createFolder(
+                    "es.upm.dit.gsi.beast.reader.system.test", "src/test/java");
+            File file = new File(folder, "SystemStory.java");
+            FileWriter fw = new FileWriter(file);
+            fw.append("MyTest");
+            fw.close();
+            SystemReader
+                    .generateJavaFiles(
+                            "src/test/java/es/upm/dit/gsi/beast/reader/system/SystemReaderTest.story",
+                            "\"jade\"", "src/test/java",
+                            "es.upm.dit.gsi.beast.reader.system.test",
+                            "es.upm.dit.gsi.beast.reader.system.test",
+                            "src/test/java/es/upm/dit/gsi/beast/reader/system/log.properties");
+        } catch (Exception e) {
+            Assert.fail();
+        }
+        Assert.assertTrue(new File(
+                "src/test/java/es/upm/dit/gsi/beast/reader/system/test",
+                "UserStoriesManager.java").exists());
+        Assert.assertTrue(new File(
+                "src/test/java/es/upm/dit/gsi/beast/reader/system/test",
+                "SystemStory.java").exists());
+
+        try {
+            File folder = SystemReader.createFolder(
+                    "es.upm.dit.gsi.beast.reader.system.test", "src/test/java");
+            File file = new File(folder, "SystemStory.java");
+
+            String targetLine1 = "MyTest";
+
+            BufferedReader r = new BufferedReader(new FileReader(file));
+            String in;
+            while ((in = r.readLine()) != null) {
+                if (targetLine1.equals(in)) {
+                    passed = true;
+                    break;
+                }
+            }
+            r.close();
+            if (passed == false) {
+                Assert.fail();
+            }
+        } catch (Exception e) {
+            passed = false;
         }
         Assert.assertTrue(passed);
         this.cleanUp();

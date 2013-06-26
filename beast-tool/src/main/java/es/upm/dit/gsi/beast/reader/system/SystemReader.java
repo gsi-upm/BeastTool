@@ -261,7 +261,7 @@ public class SystemReader extends Reader {
 
                 if (storyName != null) {
                     // // I have a story, so...
-                    if (fileDoesNotExist(storyName + ".java", tests_package,
+                    if (fileDoesNotExist(createClassName(storyName) + ".java", tests_package,
                             src_test_dir)) {
                         CreateSystemTestSuite.createSystemTestSuite(storyName,
                                 platformName, tests_package, src_test_dir,
