@@ -14,9 +14,13 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import beast.tutorial.tools.Call;
-import beast.tutorial.tools.CallQueue;
-import beast.tutorial.tools.Customer;
+import beast.tutorial.model.Call;
+import beast.tutorial.model.CallQueue;
+import beast.tutorial.model.Customer;
+import es.upm.dit.gsi.beast.mock.MockManager;
+import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
+import es.upm.dit.gsi.beast.mock.common.Definitions;
+import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
 import es.upm.dit.gsi.beast.story.BeastTestCase;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;
 /**
@@ -75,7 +79,13 @@ public class UnderstandingTheCustomer extends BeastTestCase {
                 "beast.tutorial.jade.agent.RecordAgent",
                 "MyContainer", null);
         
-        //TODO start mock listener mock agent
+        // ReporterMockAgent configuration
+        AgentBehaviour myMockedBehaviour = mock(AgentBehaviour.class);
+        MockConfiguration mock_configuration = new MockConfiguration();
+        mock_configuration.setDFServiceName("reporter-service");
+        mock_configuration.setBehaviour(myMockedBehaviour);
+        MockManager.startMockJadeAgent("ReporterMockAgent",
+                Definitions.JADE_LISTENER_MOCK_PATH, mock_configuration, this);
 
     }
     /**
@@ -117,7 +127,7 @@ public class UnderstandingTheCustomer extends BeastTestCase {
      */
     public void verify() {
 
-        checkAgentsBeliefEquealsTo("ReporterMockAgent", "receivedMsgsCounter", 1);
+        checkAgentsBeliefEquealsTo("ReporterMockAgent", Definitions.RECEIVED_MESSAGE_COUNT, 1);
 
         //TODO check belief itself, not the counter
 

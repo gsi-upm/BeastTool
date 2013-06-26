@@ -57,56 +57,6 @@ public abstract class BeastTestCase extends JUnitStory {
     // From Setup
     protected AgentIntrospector introspector;
 
-    /**
-     * This method launches the setup, related with the WHEN part
-     * 
-     * @param setupName
-     * @deprecated
-     */
-    // public void setup() {
-    // setScenario();
-    // }
-
-    /**
-     * This method checks the THEN part
-     * 
-     * @param evaluationName
-     * @deprecated
-     */
-    // public void executeEvaluation() {
-    // verify();
-    // }
-
-    // /**
-    // * It assigns one direction to each Scenario, Setup and Evaluation given
-    // by
-    // * the client in the plain text. This information is saved in
-    // * Classdatabase.xml, which is typically located in the root of our
-    // project.
-    // *
-    // * @param stepName
-    // * , the plain text written by the client.
-    // * @return the path where the step is saved
-    // */
-    // @SuppressWarnings("unchecked")
-    // private String getPath(String stepName) {
-    //
-    // //FIXME important!!! when there are two identical step names, there is
-    // TOTEST i dont know if this is still failing or not (i think is already solved)
-    // conflict and it do not work properly. Return one of them... but not the
-    // correct one
-    // XStream xstream = new XStream();
-    // String answer = null;
-    // try {
-    // HashMap<String, String> hm = (HashMap<String, String>) xstream
-    // .fromXML(new FileInputStream("ClassDatabase.xml"));
-    // answer = (String) hm.get(stepName);
-    // } catch (FileNotFoundException e) {
-    // logger.severe("Error loading from ClassDatabase.xml");
-    // }
-    // return answer;
-    // }
-
     @Override
     /**
      * Internal method for jBehave
@@ -277,20 +227,6 @@ public abstract class BeastTestCase extends JUnitStory {
         Assert.assertEquals(realbeliefValue, belief_value);
         logger.finer("Assert passed");
     }
-
-    // I simply can't delete this.
-    // Not until I can submit it to The Daily WTF anyway...
-    // /**
-    // * This method takes the value of an agent's belief through its external
-    // * access
-    // *
-    // * @param agent_name
-    // * @param belief_name
-    // * @return the value of the belief
-    // */
-    // protected Object getBeliefValue(String agent_name, String belief_name) {
-    // return getBeliefValue(agent_name, belief_name);
-    // }
 
     /**
      * This method takes the value of an agent's belief through its external

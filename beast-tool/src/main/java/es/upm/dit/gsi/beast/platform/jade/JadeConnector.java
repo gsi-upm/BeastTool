@@ -135,18 +135,21 @@ public class JadeConnector implements Connector {
             this.createContainer(containerName);
             containerController = this.platformContainers.get(containerName);
         }
+        
+
+        Object[] aux = new Object[1];
         if (arguments == null) {
             logger.finest("No arguments for agent " + agentName
                     + " in container " + containerName);
-            Object reference = new Object();
-            arguments = new Object[1];
-            arguments[0] = reference;
+            aux[0] = (Integer) 0;
+        } else {
+            aux = arguments;
         }
         try {
             logger.fine("Creating agent " + agentName + " in container "
                     + containerName);
             AgentController agentController = containerController
-                    .createNewAgent(agentName, path, arguments);
+                    .createNewAgent(agentName, path, aux);
             this.createdAgents.put(agentName, agentController);
             agentController.start();
             logger.fine("Agent " + agentName

@@ -3,6 +3,8 @@
  */
 package beast.tutorial.model;
 
+import java.io.Serializable;
+
 /**
  * Project: beast-tutorial
  * File: beast.tutorial.tools.Message.java
@@ -18,6 +20,25 @@ package beast.tutorial.model;
  * @version 0.1
  * 
  */
-public class Message {
+public class Message implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4137178850404445565L;
+	
+	private Call call;
+	
+	public Message(Call call) {
+		this.setCall(call);
+	}
+
+	public Call getCall() {
+		return call;
+	}
+
+	public void setCall(Call call) {
+		this.call = call;
+	}
 
 }

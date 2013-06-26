@@ -115,30 +115,24 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 		</testResources>
 
 		<plugins>
-			<!-- <plugin> -->
-			<!-- <artifactId>maven-assembly-plugin</artifactId> -->
-			<!-- <version>2.2.2</version> -->
-			<!-- <executions> -->
-			<!-- <execution> -->
-			<!-- <id>make-assembly</id> -->
-			<!-- <phase>package</phase> -->
-			<!-- <goals> -->
-			<!-- <goal>single</goal> -->
-			<!-- </goals> -->
-			<!-- <configuration> -->
-			<!-- <descriptorRefs> -->
-			<!-- <descriptorRef>jar-with-dependencies</descriptorRef> -->
-			<!-- </descriptorRefs> -->
-			<!-- <descriptor>src/main/resources/assembly/assembly-descriptor.xml</descriptor> -->
-			<!-- <archive> -->
-			<!-- <manifest> -->
-			<!-- <mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass> -->
-			<!-- </manifest> -->
-			<!-- </archive> -->
-			<!-- </configuration> -->
-			<!-- </execution> -->
-			<!-- </executions> -->
-			<!-- </plugin> -->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2.2</version>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
