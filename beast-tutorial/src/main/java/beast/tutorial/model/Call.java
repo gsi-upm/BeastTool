@@ -3,6 +3,9 @@
  */
 package beast.tutorial.model;
 
+import java.io.Serializable;
+
+
 /**
  * Project: beast-tutorial
  * File: beast.tutorial.tools.Call.java
@@ -18,7 +21,12 @@ package beast.tutorial.model;
  * @version 0.1
  * 
  */
-public class Call {
+public class Call implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3685095693750125111L;
 
 	/**
 	 * Constructor

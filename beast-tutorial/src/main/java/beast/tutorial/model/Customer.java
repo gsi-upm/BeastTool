@@ -3,6 +3,8 @@
  */
 package beast.tutorial.model;
 
+import java.io.Serializable;
+
 /**
  * Project: beast-tutorial
  * File: beast.tutorial.tools.Customer.java
@@ -18,7 +20,12 @@ package beast.tutorial.model;
  * @version 0.1
  * 
  */
-public class Customer {
+public class Customer implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5007634153696293397L;
 
 	/**
 	 * @return

@@ -16,7 +16,6 @@ import java.util.logging.Level;
 
 import beast.tutorial.model.Call;
 import beast.tutorial.model.CallQueue;
-import beast.tutorial.model.Message;
 import es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;
 
@@ -55,9 +54,10 @@ public class RecorderAgent extends Agent {
 	}
 
 	protected void setup() {
-		myIntrospector = JadeAgentIntrospector.getMyInstance((Agent) this);
+		this.myIntrospector = JadeAgentIntrospector.getMyInstance((Agent) this);
 		LogActivator.logToFile(logger, this.getName(), Level.ALL);
 
+		this.queue = new CallQueue();
 		this.myIntrospector.storeBeliefValue(this, "queue", queue);
 		addBehaviour(new CheckQueue());
 	}
@@ -75,11 +75,16 @@ public class RecorderAgent extends Agent {
 		}
 
 		public void action() {
-			if (RecorderAgent.this.getQueue().getPendingCall() != null) {
+			RecorderAgent.this
+					.setQueue((CallQueue) RecorderAgent.this.myIntrospector
+							.retrieveBelievesValue(RecorderAgent.this).get(
+									"queue"));
+			CallQueue queue = RecorderAgent.this.getQueue();
+			Call pendingCall = queue.getPendingCall();
+			if (pendingCall != null) {
 				// Every time a new call is detected
-				Call call = RecorderAgent.this.getQueue().getPendingCall();
-				String customerLanguage = call.getCustormer().getLanguage();
-				
+				String customerLanguage = pendingCall.getCustormer().getLanguage();
+
 				// Detect language of the customer
 				if (customerLanguage.equalsIgnoreCase("English")) {
 					// Inform to ReporterAgent
@@ -94,7 +99,7 @@ public class RecorderAgent extends Agent {
 
 						ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
 						msg.setContent("NewRecordedCall");
-						msg.setContentObject(new Message(call));
+//						msg.setContentObject(new Message(call));
 						msg.addReceiver(agentid);
 
 						send(msg);
@@ -103,11 +108,11 @@ public class RecorderAgent extends Agent {
 								+ ": Impossible to connect with a ReporterAgent.");
 					}
 				} else {
-					// Request to HelpDeskAgent 
+					// Request to HelpDeskAgent
 
 				}
 			} else {
-				block();
+				this.block(50);
 			}
 		}
 	}

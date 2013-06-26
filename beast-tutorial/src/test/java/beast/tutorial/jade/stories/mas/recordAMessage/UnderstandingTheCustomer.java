@@ -75,8 +75,8 @@ public class UnderstandingTheCustomer extends BeastTestCase {
     public void setup() {
     	
     	// Launch RecordAgent
-        startAgent("RecordAgentUnderTesting",
-                "beast.tutorial.jade.agent.RecordAgent",
+        startAgent("RecorderAgentUnderTesting",
+                "beast.tutorial.jade.agent.RecorderAgent",
                 "MyContainer", null);
         
         // ReporterMockAgent configuration
@@ -109,13 +109,11 @@ public class UnderstandingTheCustomer extends BeastTestCase {
     	// Defining mock behaviours
     	when(customer.getLanguage()).thenReturn("English");
     	when(call.getCustormer()).thenReturn(customer);
-    	when(queue.getPendingCall()).thenReturn(call);
+    	when(queue.getPendingCall()).thenReturn(call).thenReturn(null);
         
-         
-        setBeliefValue("RecordAgentUnderTesting", "queue", queue);
-        
-        setExecutionTime(1000);
-         
+        setBeliefValue("RecorderAgentUnderTesting", "queue", queue);
+
+        setExecutionTime(2000);
     }
     /**
      * This is the method that must create the Evaluation.
@@ -128,9 +126,7 @@ public class UnderstandingTheCustomer extends BeastTestCase {
     public void verify() {
 
         checkAgentsBeliefEquealsTo("ReporterMockAgent", Definitions.RECEIVED_MESSAGE_COUNT, 1);
-
-        //TODO check belief itself, not the counter
-
+        
     }
     /**
      * The GIVEN part
