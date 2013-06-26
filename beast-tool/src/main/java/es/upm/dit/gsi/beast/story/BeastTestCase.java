@@ -194,16 +194,6 @@ public abstract class BeastTestCase extends JUnitStory {
     // From Evaluation
 
     /**
-     * Once given the setup, checkStates() will be run
-     * 
-     * @param setup
-     * @deprecated
-     */
-    // public void setSetup() {
-    // verify();
-    // }
-
-    /**
      * Checks the value of some agent's belief with the expected value
      * 
      * @param agent_name
