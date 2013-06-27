@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
+import org.jbehave.core.annotations.AfterScenario;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -131,6 +132,14 @@ public class SendAMessage extends BeastTestCase {
         } else {
             logger.severe("WARNING: "+evaluationName+" does not coincide with the message is received by TesterAgent");
         }
+    }
+    
+    /**
+     * Stop the agent platform.
+     */
+    @AfterScenario
+    public void cleanUp() {
+        super.getConnector().stopPlatform();
     }
 
 }

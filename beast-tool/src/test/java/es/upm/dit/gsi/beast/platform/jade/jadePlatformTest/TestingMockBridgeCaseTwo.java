@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 
 import junit.framework.Assert;
 
+import org.jbehave.core.annotations.AfterScenario;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -171,6 +172,14 @@ public class TestingMockBridgeCaseTwo extends BeastTestCase {
         } else {
             logger.severe("WARNING: "+evaluationName+" does not coincide with bridge receives the answer from repository");
         }
+    }
+    
+    /**
+     * Stop the agent platform.
+     */
+    @AfterScenario
+    public void cleanUp() {
+        super.getConnector().stopPlatform();
     }
 
 }

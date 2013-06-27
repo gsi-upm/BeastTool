@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import junit.framework.Assert;
 
+import org.jbehave.core.annotations.AfterScenario;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -147,6 +148,14 @@ public class TestingMockListener extends BeastTestCase {
         } else {
             logger.severe("WARNING: "+evaluationName+" does not coincide with listener receives all messages");
         }
+    }
+    
+    /**
+     * Stop the agent platform.
+     */
+    @AfterScenario
+    public void cleanUp() {
+        super.getConnector().stopPlatform();
     }
 
 }
