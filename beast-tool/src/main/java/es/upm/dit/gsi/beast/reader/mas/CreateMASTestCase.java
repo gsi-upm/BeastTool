@@ -74,7 +74,7 @@ public class CreateMASTestCase {
             fw.write("import java.util.logging.Level;\n");
             fw.write("import java.util.logging.LogManager;\n");
             fw.write("import java.util.Properties;\n");
-            fw.write("\n import junit.framework.Assert;");
+            fw.write("import junit.framework.Assert;\n");
             fw.write("\n");
 
             // Class header
