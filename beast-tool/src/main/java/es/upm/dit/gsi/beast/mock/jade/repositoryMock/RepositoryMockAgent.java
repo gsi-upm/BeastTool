@@ -87,8 +87,8 @@ public class RepositoryMockAgent extends Agent {
         }
 
         // Initialize the believes counts and mailbox.
-        introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT, 0);
-        introspector.storeBeliefValue(this, Definitions.STORED_DATA_COUNT, 0);
+//        introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT, 0);
+//        introspector.storeBeliefValue(this, Definitions.STORED_DATA_COUNT, 0);
         this.mailbox = new ArrayList<ACLMessage>();
         
         // Attempts to register the agent.
@@ -119,7 +119,11 @@ public class RepositoryMockAgent extends Agent {
      *            - the name of the belief count.
      */
     private void increaseBeliefCount(String bName) {
-        int count = (Integer) this.getBelief(bName);
+        Object belief = this.getBelief(bName);
+        int count = 0;
+        if (belief!=null) {
+            count = (Integer) belief;
+        }
         this.setBelief(bName, count + 1);
     }
 

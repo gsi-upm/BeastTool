@@ -70,8 +70,8 @@ public class BridgeMockAgent extends Agent {
         introspector = JadeAgentIntrospector.getMyInstance(this);
         
         // Initializes the message count
-        introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT, 0);
-        introspector.storeBeliefValue(this, Definitions.SENDED_MESSAGE_COUNT, 0);
+//        introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT, 0);
+//        introspector.storeBeliefValue(this, Definitions.SENDED_MESSAGE_COUNT, 0);
 
         MockConfiguration configuration = (MockConfiguration) this
                 .getArguments()[0];
@@ -162,7 +162,12 @@ public class BridgeMockAgent extends Agent {
      * Returns the integer value o the given belief
      */
     public int getIntegerBelief(String name){
-        return (Integer) introspector.retrieveBelievesValue(this).get(name);
+        Object belief = introspector.retrieveBelievesValue(this).get(name);
+        int count = 0;
+        if (belief!=null) {
+            count = (Integer) belief;
+        }
+        return (Integer) count;
     }
     
     /**

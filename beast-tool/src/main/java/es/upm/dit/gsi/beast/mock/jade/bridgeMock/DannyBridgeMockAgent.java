@@ -83,8 +83,8 @@ public class DannyBridgeMockAgent extends Agent {
         }
 
         // Initialize the believes counts and the mailbox list. 
-        introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT, 0);
-        introspector.storeBeliefValue(this, Definitions.SENDED_MESSAGE_COUNT, 0);
+//        introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT, 0);
+//        introspector.storeBeliefValue(this, Definitions.SENDED_MESSAGE_COUNT, 0);
         this.mailbox = new ArrayList<ACLMessage>();
 
         // Attemps to register the aggent.
@@ -119,7 +119,11 @@ public class DannyBridgeMockAgent extends Agent {
      *            - the name of the belief count.
      */
     private void increaseBeliefCount(String bName) {
-        int count = (Integer) this.getBelief(bName);
+        Object belief = this.getBelief(bName);
+        int count = 0;
+        if (belief!=null) {
+            count = (Integer) belief;
+        }
         this.setBelief(bName, count + 1);
     }
 

@@ -72,7 +72,7 @@ public class ListenerMockAgent extends Agent{
         LogActivator.logToFile(logger, this.getName(), Level.ALL);
         
         introspector = JadeAgentIntrospector.getMyInstance(this);
-        introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT, 0);
+//        introspector.storeBeliefValue(this, Definitions.RECEIVED_MESSAGE_COUNT, 0);
         MockConfiguration configuration = (MockConfiguration) this.getArguments()[0];
 
         messages = new ArrayList<ACLMessage>();
