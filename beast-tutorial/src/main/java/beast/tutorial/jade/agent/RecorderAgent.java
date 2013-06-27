@@ -10,6 +10,7 @@ import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
+import jade.lang.acl.MessageTemplate;
 import jade.util.Logger;
 
 import java.util.logging.Level;
@@ -80,36 +81,82 @@ public class RecorderAgent extends Agent {
 							.retrieveBelievesValue(RecorderAgent.this).get(
 									"queue"));
 			CallQueue queue = RecorderAgent.this.getQueue();
-			Call pendingCall = queue.getPendingCall();
-			if (pendingCall != null) {
-				// Every time a new call is detected
-				String customerLanguage = pendingCall.getCustormer().getLanguage();
+			if (queue != null) {
+				Call pendingCall = queue.getPendingCall();
+				if (pendingCall != null) {
+					// Every time a new call is detected
+					String customerLanguage = pendingCall.getCustormer()
+							.getLanguage();
 
-				// Detect language of the customer
-				if (customerLanguage.equalsIgnoreCase("English")) {
-					// Inform to ReporterAgent
-					try {
-						DFAgentDescription dfd = new DFAgentDescription();
-						ServiceDescription sd = new ServiceDescription();
-						sd.setName("reporter-service");
-						dfd.addServices(sd);
-						DFAgentDescription[] agdescriptions = DFService.search(
-								RecorderAgent.this, dfd);
-						AID agentid = agdescriptions[0].getName();
+					// Detect language of the customer
+					if (customerLanguage.equalsIgnoreCase("English")) {
+						// Inform to ReporterAgent
+						try {
+							DFAgentDescription dfd = new DFAgentDescription();
+							ServiceDescription sd = new ServiceDescription();
+							sd.setName("reporter-service");
+							dfd.addServices(sd);
+							DFAgentDescription[] agdescriptions = DFService
+									.search(RecorderAgent.this, dfd);
+							if (agdescriptions.length > 0) {
+								AID agentid = agdescriptions[0].getName();
 
-						ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
-						msg.setContent("NewRecordedCall");
-//						msg.setContentObject(new Message(call));
-						msg.addReceiver(agentid);
+								ACLMessage msg = new ACLMessage(
+										ACLMessage.INFORM);
+								msg.setContent("NewRecordedCall");
+								// msg.setContentObject(new
+								// Message(pendingCall));
+								msg.addReceiver(agentid);
 
-						send(msg);
-					} catch (Exception e) {
-						logger.severe(RecorderAgent.this.getLocalName()
-								+ ": Impossible to connect with a ReporterAgent.");
+								send(msg);
+							} else {
+								throw new Exception("ReporterAgent not found");
+							}
+						} catch (Exception e) {
+							logger.severe(RecorderAgent.this.getLocalName()
+									+ ": Impossible to connect with a ReporterAgent.");
+						}
+					} else {
+						try {
+							// Request to HelpDeskAgenttry {
+							DFAgentDescription dfd = new DFAgentDescription();
+							ServiceDescription sd = new ServiceDescription();
+							sd.setName("passcall-service");
+							dfd.addServices(sd);
+							DFAgentDescription[] agdescriptions = DFService
+									.search(RecorderAgent.this, dfd);
+							if (agdescriptions.length > 0) {
+								AID agentid = agdescriptions[0].getName();
+
+								ACLMessage msg = new ACLMessage(
+										ACLMessage.REQUEST);
+								msg.setContent("UnknownLanguageCall");
+								// msg.setContentObject(new
+								// Message(pendingCall));
+								msg.addReceiver(agentid);
+
+								send(msg);
+
+								MessageTemplate template = MessageTemplate
+										.MatchPerformative(ACLMessage.INFORM);
+								ACLMessage msg2 = RecorderAgent.this
+										.blockingReceive(template);
+								String content = msg2.getContent();
+								if (content.equalsIgnoreCase("Agree")) {
+									RecorderAgent.this.myIntrospector
+											.storeBeliefValue(
+													RecorderAgent.this,
+													"passedCall", true);
+								}
+							} else {
+								throw new Exception("HelpDeskAgent not found");
+							}
+
+						} catch (Exception e) {
+							logger.severe(RecorderAgent.this.getLocalName()
+									+ ": Exception -> " + e.getMessage());
+						}
 					}
-				} else {
-					// Request to HelpDeskAgent
-
 				}
 			} else {
 				this.block(50);
