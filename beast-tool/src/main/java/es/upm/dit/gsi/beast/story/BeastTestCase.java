@@ -19,8 +19,7 @@ import es.upm.dit.gsi.beast.platform.Messenger;
 import es.upm.dit.gsi.beast.platform.PlatformSelector;
 
 /**
- * Project: beast
- * File: es.upm.dit.gsi.beast.story.BeastTestCase.java
+ * Project: beast File: es.upm.dit.gsi.beast.story.BeastTestCase.java
  * 
  * Main class to translate plain text into code, following the Given-When-Then
  * language In the GIVEN part it launches the platform In the WHEN part it
@@ -28,9 +27,8 @@ import es.upm.dit.gsi.beast.platform.PlatformSelector;
  * behaviour The main purpose of it consists of knowing agents' state/properties
  * without changing its code.
  * 
- * Grupo de Sistemas Inteligentes
- * Departamento de Ingeniería de Sistemas Telemáticos
- * Universidad Politécnica de Madrid (UPM)
+ * Grupo de Sistemas Inteligentes Departamento de Ingeniería de Sistemas
+ * Telemáticos Universidad Politécnica de Madrid (UPM)
  * 
  * @author Jorge Solitario
  * 
@@ -77,6 +75,7 @@ public abstract class BeastTestCase extends JUnitStory {
      * Main constructor of the class, launches the platform
      */
     public void startPlatform(String platform, Logger logger) {
+        Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
         this.logger = logger;
         this.platform = platform;
 
@@ -92,7 +91,7 @@ public abstract class BeastTestCase extends JUnitStory {
         logger.info("Platform " + platform + " launched.");
 
         this.messenger = PlatformSelector.getMessenger(platform);
-
+        
         setup();
     }
 
@@ -194,7 +193,10 @@ public abstract class BeastTestCase extends JUnitStory {
     // From Evaluation
 
     /**
-     * Checks the value of some agent's belief with the expected value
+     * Checks the value of some agent's belief with the expected value. The
+     * belief must be initialised. It means, not null value. If a null value is
+     * found for a belief_name, this method will be blocked until the value
+     * would be not null.
      * 
      * @param agent_name
      * @param belief_name
@@ -206,7 +208,25 @@ public abstract class BeastTestCase extends JUnitStory {
         logger.finest("Agent name: " + agent_name);
         logger.finest("Belief name: " + belief_name);
         // System.out.print("Recovering value...");
+
         Object realbeliefValue = getBeliefValue(agent_name, belief_name);
+
+        Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
+        while (realbeliefValue == null) {
+            logger.warning("Belief: " + belief_name + " in agent: "
+                    + agent_name + " is null. Trying again.");
+            try {
+                Thread.yield();
+                realbeliefValue = getBeliefValue(agent_name, belief_name);
+
+                Thread.sleep(500);
+                
+            } catch (Exception e) {
+                logger.severe("Impossible to wait for updated belief value. Exception: "
+                        + e.getMessage());
+                e.printStackTrace();
+            }
+        }
         // System.out.println("done!");
         logger.finer("Asserting...");
         logger.finest("Agent name: " + agent_name);
@@ -370,8 +390,8 @@ public abstract class BeastTestCase extends JUnitStory {
      */
     public void setExecutionTime(long millis) {
         try {
-            Thread.sleep(millis);
             Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
+            Thread.sleep(millis);
         } catch (InterruptedException e) {
             logger.warning("Execution time aborted: " + e);
             logger.severe("It was not possible to wait the execution time to perform the test. Exception: "
