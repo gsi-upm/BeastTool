@@ -60,12 +60,12 @@ public class CreateMASTestCase {
 
             // Adds all the necessary imports.
             fw.write("import org.jbehave.core.annotations.Given;\n");
+            fw.write("import org.jbehave.core.annotations.Then;\n");
+            fw.write("import org.jbehave.core.annotations.When;\n");
+            fw.write("import org.jbehave.core.annotations.AfterScenario;\n");
             fw.write("import static org.mockito.Matchers.eq;\n");
             fw.write("import static org.mockito.Mockito.mock;\n");
             fw.write("import static org.mockito.Mockito.when;\n");
-
-            fw.write("import org.jbehave.core.annotations.Then;\n");
-            fw.write("import org.jbehave.core.annotations.When;\n");
             fw.write("import es.upm.dit.gsi.beast.story.BeastTestCase;\n");
             fw.write("import es.upm.dit.gsi.beast.story.logging.LogActivator;\n");
             fw.write("import java.io.FileInputStream;\n");
@@ -254,6 +254,15 @@ public class CreateMASTestCase {
                     + thenComment + "\");\n");
             fw.write("        }\n");
             fw.write("    }\n");
+            
+            fw.write("    /**\n");
+            fw.write("     * Stop the agent platform.\n");
+            fw.write("     */\n");
+            fw.write("    @AfterScenario\n");
+            fw.write("    public void cleanUp() {\n");
+            fw.write("      super.getConnector().stopPlatform();\n");
+            fw.write("    }\n");
+            fw.write("\n");
             // Ends the class.
             // You don't say.
             fw.write("\n");
