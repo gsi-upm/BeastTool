@@ -66,6 +66,13 @@ public class JadexConnector implements Connector {
                 IMessageService.class).get(new ThreadSuspendable());
         createdAgents = new HashMap<String, IComponentIdentifier>();
     }
+    
+    /* (non-Javadoc)
+     * @see es.upm.dit.gsi.beast.platform.Connector#stopPlatform()
+     */
+    public void stopPlatform() {
+        platform.killComponent();
+    }
 
     /**
      * This method gets the external access of the platform.

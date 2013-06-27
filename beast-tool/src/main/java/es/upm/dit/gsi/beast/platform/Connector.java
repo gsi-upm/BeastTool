@@ -28,6 +28,11 @@ public interface Connector {
     public void launchPlatform();
 
     /**
+     * It stops the execution of the platform
+     */
+    public void stopPlatform();
+    
+    /**
      * To create one agent in the platform
      * 
      * @param agent_name

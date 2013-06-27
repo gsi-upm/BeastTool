@@ -9,17 +9,16 @@ import jade.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.logging.Logger;
 
 import es.upm.dit.gsi.beast.platform.Connector;
 
 /**
- * Project: beast
- * File: es.upm.dit.gsi.beast.platform.jade.JadeConnector.java
+ * Project: beast File: es.upm.dit.gsi.beast.platform.jade.JadeConnector.java
  * 
- * Grupo de Sistemas Inteligentes
- * Departamento de Ingeniería de Sistemas Telemáticos
- * Universidad Politécnica de Madrid (UPM)
+ * Grupo de Sistemas Inteligentes Departamento de Ingeniería de Sistemas
+ * Telemáticos Universidad Politécnica de Madrid (UPM)
  * 
  * @author alvarocarrera
  * @email a.carrera@gsi.dit.upm.es
@@ -39,7 +38,7 @@ public class JadeConnector implements Connector {
     private HashMap<String, AgentController> createdAgents;
 
     public final String BEAST_MESSENGER = "BeastMessenger";
-    
+
     public final String TRUE = "true";
     public final String PLATFORM_ID = "BEAST";
     public final String MAIN_HOST = "localhost";
@@ -84,8 +83,33 @@ public class JadeConnector implements Connector {
         this.platformContainers = new HashMap<String, ContainerController>();
         this.platformContainers.put("Main-Container", mainContainer);
 
-        this.createAgent(BEAST_MESSENGER, "es.upm.dit.gsi.beast.platform.jade.agent.MessengerAgent");
+        this.createAgent(BEAST_MESSENGER,
+                "es.upm.dit.gsi.beast.platform.jade.agent.MessengerAgent");
 
+    }
+
+    /* (non-Javadoc)
+     * @see es.upm.dit.gsi.beast.platform.Connector#stopPlatform()
+     */
+    @Override
+    public void stopPlatform() {
+        try {
+            for (Entry<String, AgentController> e : this.createdAgents
+                    .entrySet()) {
+                AgentController ac = e.getValue();
+                ac.kill();
+            }
+            for (Entry<String, ContainerController> e : this.platformContainers
+                    .entrySet()) {
+                ContainerController cc = e.getValue();
+                cc.kill();
+            }
+            this.mainContainer.kill();
+            this.runtime.shutDown();
+        } catch (Exception e) {
+            logger.warning("Warning shuting down JADE platform: "
+                    + e.getMessage());
+        }
     }
 
     /*
