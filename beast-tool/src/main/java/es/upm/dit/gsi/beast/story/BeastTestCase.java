@@ -218,8 +218,6 @@ public abstract class BeastTestCase extends JUnitStory {
             try {
                 Thread.yield();
                 realbeliefValue = getBeliefValue(agent_name, belief_name);
-
-                Thread.sleep(500);
                 
             } catch (Exception e) {
                 logger.severe("Impossible to wait for updated belief value. Exception: "
