@@ -60,7 +60,7 @@ public class RecorderAgent extends Agent {
 
 		this.queue = new CallQueue();
 		this.myIntrospector.storeBeliefValue(this, "queue", queue);
-		addBehaviour(new CheckQueue());
+		addBehaviour(new CheckQueue(this));
 	}
 
 	/**
@@ -71,8 +71,8 @@ public class RecorderAgent extends Agent {
 
 		private static final long serialVersionUID = 286992171997750565L;
 
-		public CheckQueue() {
-			super(RecorderAgent.this);
+		public CheckQueue(Agent ag) {
+			super(ag);
 		}
 
 		public void action() {
@@ -118,15 +118,15 @@ public class RecorderAgent extends Agent {
 						}
 					} else {
 						try {
-							// Request to HelpDeskAgenttry {
+							// Request to HelpDeskAgenttry
 							DFAgentDescription dfd = new DFAgentDescription();
 							ServiceDescription sd = new ServiceDescription();
-							sd.setName("passcall-service");
+							sd.setName("helpdesk-service");
 							dfd.addServices(sd);
-							DFAgentDescription[] agdescriptions = DFService
-									.search(RecorderAgent.this, dfd);
-							if (agdescriptions.length > 0) {
-								AID agentid = agdescriptions[0].getName();
+							DFAgentDescription[] ags = DFService.search(
+									this.myAgent, dfd);
+							if (ags.length > 0) {
+								AID agentid = ags[0].getName();
 
 								ACLMessage msg = new ACLMessage(
 										ACLMessage.REQUEST);

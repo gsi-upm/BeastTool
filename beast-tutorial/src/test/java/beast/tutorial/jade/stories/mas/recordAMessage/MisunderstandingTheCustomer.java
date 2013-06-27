@@ -3,7 +3,6 @@ package beast.tutorial.jade.stories.mas.recordAMessage;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
 import jade.lang.acl.ACLMessage;
 
 import java.io.FileInputStream;
@@ -13,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
+import org.jbehave.core.annotations.AfterScenario;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -24,6 +24,7 @@ import es.upm.dit.gsi.beast.mock.MockManager;
 import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
 import es.upm.dit.gsi.beast.mock.common.Definitions;
 import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
+import es.upm.dit.gsi.beast.platform.jade.JadeConnector;
 import es.upm.dit.gsi.beast.story.BeastTestCase;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;
 
@@ -80,30 +81,27 @@ public class MisunderstandingTheCustomer extends BeastTestCase {
 	 */
 	public void setup() {
 
-        // HelpDeskMockAgent configuration
-        
-        MockConfiguration repositoryMockConfiguration = new MockConfiguration();
-        repositoryMockConfiguration
-                .setDFServiceName("passcall-service");
+		// HelpDeskMockAgent configuration
 
-        // Add a mocked AgentBehaviour.
-        AgentBehaviour repositoryMockBehaviour = mock(AgentBehaviour.class);
-        when(
-                repositoryMockBehaviour.processMessage(
-                        eq(ACLMessage.getPerformative(ACLMessage.REQUEST)),
-                        eq("RecorderAgentUnderTesting"), eq("UnknownLanguageCall")))
-                .thenReturn("Agree");
-        repositoryMockConfiguration.setBehaviour(repositoryMockBehaviour);
-        // Start the agent.
-        MockManager.startMockJadeAgent("HelpDeskMockAgent",
-                Definitions.JADE_REPOSITORY_MOCK_PATH,
-                repositoryMockConfiguration, this);
-        
+		MockConfiguration repositoryMockConfiguration = new MockConfiguration();
+		repositoryMockConfiguration.setDFServiceName("helpdesk-service");
 
-    	// Launch RecordAgent
-        startAgent("RecorderAgentUnderTesting",
-                "beast.tutorial.jade.agent.RecorderAgent",
-                "MyContainer", null);
+		// Add a mocked AgentBehaviour.
+		AgentBehaviour repositoryMockBehaviour = mock(AgentBehaviour.class);
+		when(
+				repositoryMockBehaviour.processMessage(
+						eq(ACLMessage.getPerformative(ACLMessage.REQUEST)),
+						eq("RecorderAgentUnderTesting"),
+						eq("UnknownLanguageCall"))).thenReturn("Agree");
+		repositoryMockConfiguration.setBehaviour(repositoryMockBehaviour);
+		// Start the agent.
+		MockManager.startMockJadeAgent("HelpDeskMockAgent",
+				Definitions.JADE_REPOSITORY_MOCK_PATH,
+				repositoryMockConfiguration, this);
+
+		// Launch RecordAgent
+		startAgent("RecorderAgentUnderTesting",
+				"beast.tutorial.jade.agent.RecorderAgent", "MyContainer", null);
 	}
 
 	/**
@@ -117,19 +115,18 @@ public class MisunderstandingTheCustomer extends BeastTestCase {
 	 * getAgentGoals(agent_name )
 	 */
 	public void launch() {
-    	
-    	// Creating mocks objects
-    	CallQueue queue = mock(CallQueue.class);
-    	Call call = mock(Call.class);
-    	Customer customer = mock(Customer.class);
 
-    	// Defining mock behaviours
-    	when(customer.getLanguage()).thenReturn("Spanish");
-    	when(call.getCustormer()).thenReturn(customer);
-    	when(queue.getPendingCall()).thenReturn(call).thenReturn(null);
-        
-        setBeliefValue("RecorderAgentUnderTesting", "queue", queue);
+		// Creating mocks objects
+		CallQueue queue = mock(CallQueue.class);
+		Call call = mock(Call.class);
+		Customer customer = mock(Customer.class);
 
+		// Defining mock behaviours
+		when(customer.getLanguage()).thenReturn("Spanish");
+		when(call.getCustormer()).thenReturn(customer);
+		when(queue.getPendingCall()).thenReturn(call).thenReturn(null);
+
+		setBeliefValue("RecorderAgentUnderTesting", "queue", queue);
 
 	}
 
@@ -143,10 +140,10 @@ public class MisunderstandingTheCustomer extends BeastTestCase {
 	 */
 	public void verify() {
 
-        setExecutionTime(2000);
-        
-        checkAgentsBeliefEquealsTo("RecorderAgentUnderTesting", "passedCall", true);
-        checkAgentsBeliefEquealsTo("HelpDeskMockAgent", Definitions.RECEIVED_MESSAGE_COUNT, 1);
+		setExecutionTime(2000);
+
+		checkAgentsBeliefEquealsTo("RecorderAgentUnderTesting", "passedCall", true);
+		checkAgentsBeliefEquealsTo("HelpDeskMockAgent", Definitions.RECEIVED_MESSAGE_COUNT, 1);
 
 	}
 
@@ -198,5 +195,13 @@ public class MisunderstandingTheCustomer extends BeastTestCase {
 					+ " does not coincide with the RecorderAgent sends a FIPA-REQUEST message to a HelpDeskAgent and the RecorderAgent pass the incoming call to a HelpDeskAgent.");
 		}
 	}
+    
+    /**
+     * Stop the agent platform.
+     */
+    @AfterScenario
+    public void cleanUp() {
+    	super.getConnector().stopPlatform();
+    }
 
 }

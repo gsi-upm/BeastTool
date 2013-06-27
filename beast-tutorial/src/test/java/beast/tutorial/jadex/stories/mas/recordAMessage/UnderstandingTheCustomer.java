@@ -1,11 +1,12 @@
 package beast.tutorial.jadex.stories.mas.recordAMessage;
 
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.AfterScenario;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
 import es.upm.dit.gsi.beast.story.BeastTestCase;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;
 import java.io.FileInputStream;
@@ -14,8 +15,8 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.Properties;
+import junit.framework.Assert;
 
- import junit.framework.Assert;
 /**
  * Main class to translate plain text into code, following the Given-When-Then
  * language. In the GIVEN part it launchs the platform In the WHEN part it
@@ -150,6 +151,16 @@ public class UnderstandingTheCustomer extends BeastTestCase {
             logger.severe("WARNING: "+evaluationName+" does not coincide with the RecordAgent records his/her message and the RecordAgent sends that FIPA-INFORM message to a ReporterAgent.");
         }
     }
+    /**
+     * Stop the agent platform.
+     */
+    @AfterScenario
+    public void cleanUp() {
+
+      super.getConnector().stopPlatform();
+
+    }
+
 
 }
 
