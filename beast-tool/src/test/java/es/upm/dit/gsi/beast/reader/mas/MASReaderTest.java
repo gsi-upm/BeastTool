@@ -140,6 +140,67 @@ public class MASReaderTest {
 
         this.cleanUp();
     }
+
+    @Test
+    public void MainReaderWithoutLogPropAndAfterScenarioTest() throws Exception {
+        this.cleanUp();
+        boolean passed = false;
+        try {
+            Reader.generateJavaFiles(
+                    "src/test/java/es/upm/dit/gsi/beast/reader/mas/ReaderTest.story",
+                    "\"jade\"", "src/test/java",
+                    "es.upm.dit.gsi.beast.reader.mas.test",
+                    "es.upm.dit.gsi.beast.reader.mas.test", null, "MAS");
+        } catch (Exception e) {
+            Assert.fail();
+        }
+        Assert.assertTrue(new File(
+                "src/test/java/es/upm/dit/gsi/beast/reader/mas/test",
+                "AgentStoriesManager.java").exists());
+        Assert.assertTrue(new File(
+                "src/test/java/es/upm/dit/gsi/beast/reader/mas/test",
+                "TestStory.java").exists());
+        Assert.assertTrue(new File(
+                "src/test/java/es/upm/dit/gsi/beast/reader/mas/test/testStory",
+                "ThisIsOtherScenario.java").exists());
+        Assert.assertTrue(new File(
+                "src/test/java/es/upm/dit/gsi/beast/reader/mas/test/testStory",
+                "SetBelievesInAgent.java").exists());
+        Assert.assertTrue(new File(
+                "src/test/java/es/upm/dit/gsi/beast/reader/mas/test/testStory",
+                "GetBelievesFromAgent.java").exists());
+        try {
+            File folder = SystemReader
+                    .createFolder("es.upm.dit.gsi.beast.reader.mas.test.testStory",
+                            "src/test/java");
+            File caseManager = new File(folder, "GetBelievesFromAgent.java");
+
+            String targetLine1 = "    @AfterScenario";
+            String targetLine2 = "      super.getConnector().stopPlatform();";
+
+            BufferedReader r = new BufferedReader(new FileReader(caseManager));
+            String in;
+            while ((in = r.readLine()) != null) {
+                if (targetLine1.equals(in)) {
+                    while ((in = r.readLine()) != null) {
+                        if (targetLine2.equals(in)) {
+                            passed = true;
+                            break;
+                        }
+                    }
+                }
+                if (passed) {
+                    break;   
+                }
+            }
+            r.close();
+        } catch (Exception e) {
+            this.cleanUp();
+            throw e;
+        }
+        Assert.assertTrue(passed);
+        this.cleanUp();
+    }
     
 
 
