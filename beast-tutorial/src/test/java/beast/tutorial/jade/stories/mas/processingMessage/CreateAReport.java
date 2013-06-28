@@ -1,21 +1,28 @@
 package beast.tutorial.jade.stories.mas.processingMessage;
 
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
-import org.jbehave.core.annotations.AfterScenario;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import es.upm.dit.gsi.beast.story.BeastTestCase;
-import es.upm.dit.gsi.beast.story.logging.LogActivator;
+import jade.lang.acl.ACLMessage;
+
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.logging.Logger;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
-import java.util.Properties;
-import junit.framework.Assert;
+import java.util.logging.Logger;
+
+import org.jbehave.core.annotations.AfterScenario;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
+
+import es.upm.dit.gsi.beast.mock.MockManager;
+import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
+import es.upm.dit.gsi.beast.mock.common.Definitions;
+import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
+import es.upm.dit.gsi.beast.story.BeastTestCase;
+import es.upm.dit.gsi.beast.story.logging.LogActivator;
 
 /**
  * Main class to translate plain text into code, following the Given-When-Then
@@ -67,13 +74,20 @@ public class CreateAReport extends BeastTestCase {
      * startAgent(agent_name,agent_path)
      */
     public void setup() {
-         // TODO: implement this method to represent the @Given part of the test in Java code.
-         
-         logger.warning("Implement setup() method in beast.tutorial.jade.stories.mas.processingMessageCreateAReport.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
-
-         //EXAMPLE for Jadex: startAgent("Steve", "org.example.Steve.agent.xml"); // This xml file is the jadex agent description file (ADF)
-         //EXAMPLE for Jade: startAgent("Steve", "org.example.Steve"); // This string is the agent class Steve.java that extends Jade Agent class
-
+    	
+        // ReporterAgent under testing
+        startAgent("ReporterAgentUnderTesting", "beast.tutorial.jade.agent.ReporterAgent");
+    	
+    	//RecorderMockAgent configuration
+        AgentBehaviour myMockedBehaviour =  mock(AgentBehaviour.class);
+        when(myMockedBehaviour.processMessage(eq(ACLMessage.getPerformative(ACLMessage.INFORM)),eq("sendMsg")))
+            .thenReturn("report-service", ACLMessage.getPerformative(ACLMessage.INFORM), "NewRecordedCall");
+        MockConfiguration mock_configuration = new MockConfiguration();
+        mock_configuration.setDFServiceName("record-service");
+        mock_configuration.setBehaviour(myMockedBehaviour);
+        MockManager.startMockJadeAgent("RecorderMockAgent",Definitions.JADE_BRIDGE_MOCK_PATH,mock_configuration,this);
+        
+    	
     }
     /**
      * This is the method that must create the Setup.
@@ -87,11 +101,11 @@ public class CreateAReport extends BeastTestCase {
      *   getAgentGoals(agent_name )
      */
     public void launch() {
-         // TODO implement this method to represent the @When part of the test in Java code.
-         
-         logger.warning("Implement launch() method in beast.tutorial.jade.stories.mas.processingMessageCreateAReport.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
-         
-             //EXAMPLE: setBeliefValue("Steve", "age", 21);
+    	
+
+        ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+        msg.setContent("sendMsg");
+        sendMessageToAgent("RecorderMockAgent", ACLMessage.getPerformative(ACLMessage.INFORM), msg);
          
     }
     /**
@@ -103,13 +117,8 @@ public class CreateAReport extends BeastTestCase {
      * checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)
      */
     public void verify() {
-         // TODO implement this method to represent the @Then part of the test in Java code.
-         
-         logger.warning("Implement verify() method in beast.tutorial.jade.stories.mas.processingMessageCreateAReport.java -> Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
-         System.out.println("IMPORTANT!! -> Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool in class"+ this.getClass().getName());
-         Assert.fail("Not implemented Test. Auto-generated stub by Beast -> es.upm.dit.gsi.beast-tool");
-
-        //EXAMPLE: checkAgentsBeliefEquealsTo("Steve", "age", 21);
+    	
+    	checkAgentsBeliefEquealsTo("ReporterAgentUnderTesting", "createdIssueReport", true);
 
     }
     /**

@@ -24,7 +24,6 @@ import es.upm.dit.gsi.beast.mock.MockManager;
 import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
 import es.upm.dit.gsi.beast.mock.common.Definitions;
 import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
-import es.upm.dit.gsi.beast.platform.jade.JadeConnector;
 import es.upm.dit.gsi.beast.story.BeastTestCase;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;
 
