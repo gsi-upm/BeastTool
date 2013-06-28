@@ -44,6 +44,7 @@ public class MockManager {
 
         story.startAgent(agent_name, agent_path);
         story.sendMessageToAgent(agent_name, SFipa.INFORM, configuration);
+        story.setExecutionTime(2000); // To get time to execute the DF rename goal
     }
 
     
