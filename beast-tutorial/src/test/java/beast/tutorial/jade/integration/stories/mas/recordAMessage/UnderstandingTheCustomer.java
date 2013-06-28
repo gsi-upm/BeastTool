@@ -1,4 +1,4 @@
-package beast.tutorial.jade.stories.mas.recordAMessage;
+package beast.tutorial.jade.integration.stories.mas.recordAMessage;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -18,12 +18,9 @@ import org.jbehave.core.annotations.When;
 import beast.tutorial.model.Call;
 import beast.tutorial.model.CallQueue;
 import beast.tutorial.model.Customer;
-import es.upm.dit.gsi.beast.mock.MockManager;
-import es.upm.dit.gsi.beast.mock.common.AgentBehaviour;
-import es.upm.dit.gsi.beast.mock.common.Definitions;
-import es.upm.dit.gsi.beast.mock.common.MockConfiguration;
 import es.upm.dit.gsi.beast.story.BeastTestCase;
 import es.upm.dit.gsi.beast.story.logging.LogActivator;
+
 /**
  * Main class to translate plain text into code, following the Given-When-Then
  * language. In the GIVEN part it launchs the platform In the WHEN part it
@@ -79,14 +76,10 @@ public class UnderstandingTheCustomer extends BeastTestCase {
         startAgent("RecorderAgentUnderTesting",
                 "beast.tutorial.jade.agent.RecorderAgent",
                 "MyContainer", null);
-        
-        // ReporterMockAgent configuration
-        AgentBehaviour myMockedBehaviour = mock(AgentBehaviour.class);
-        MockConfiguration mock_configuration = new MockConfiguration();
-        mock_configuration.setDFServiceName("report-service");
-        mock_configuration.setBehaviour(myMockedBehaviour);
-        MockManager.startMockJadeAgent("ReporterMockAgent",
-                Definitions.JADE_LISTENER_MOCK_PATH, mock_configuration, this);
+
+        startAgent("ReporterAgentUnderTesting",
+                "beast.tutorial.jade.agent.ReporterAgent",
+                "MyContainer", null);
 
     }
     /**
@@ -101,7 +94,6 @@ public class UnderstandingTheCustomer extends BeastTestCase {
      *   getAgentGoals(agent_name )
      */
     public void launch() {
-    	
     	// Creating mocks objects
     	CallQueue queue = mock(CallQueue.class);
     	Call call = mock(Call.class);
@@ -113,6 +105,7 @@ public class UnderstandingTheCustomer extends BeastTestCase {
     	when(queue.getPendingCall()).thenReturn(call).thenReturn(null);
         
         setBeliefValue("RecorderAgentUnderTesting", "queue", queue);
+         
     }
     /**
      * This is the method that must create the Evaluation.
@@ -123,8 +116,8 @@ public class UnderstandingTheCustomer extends BeastTestCase {
      * checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)
      */
     public void verify() {
-
-        checkAgentsBeliefEquealsTo("ReporterMockAgent", Definitions.RECEIVED_MESSAGE_COUNT, 1);
+    	
+        checkAgentsBeliefEquealsTo("ReporterAgentUnderTesting", "createdIssueReport", true);
 
     }
     /**
@@ -166,13 +159,14 @@ public class UnderstandingTheCustomer extends BeastTestCase {
             logger.severe("WARNING: "+evaluationName+" does not coincide with the RecordAgent records his/her message and the RecordAgent sends that FIPA-INFORM message to a ReporterAgent.");
         }
     }
-    
     /**
      * Stop the agent platform.
      */
     @AfterScenario
     public void cleanUp() {
-    	super.getConnector().stopPlatform();
+      super.getConnector().stopPlatform();
     }
+
+
 }
 

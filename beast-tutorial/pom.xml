@@ -280,6 +280,20 @@
 							</arguments>
 						</configuration>
 					</execution>
+					<execution>
+						<id>Beast Test Resources Generation - MAS Phase - JADE Integration</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>es.upm.dit.gsi.beast.reader.Reader</mainClass>
+							<arguments>
+								<argument>src/test/resources/beast-conf/mas/integration-jade-beast-masphase-conf.properties</argument>
+								<argument>src/test/resources/beast-conf/logger.properties</argument>
+							</arguments>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>

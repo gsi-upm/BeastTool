@@ -94,7 +94,7 @@ public class RecorderAgent extends Agent {
 						try {
 							DFAgentDescription dfd = new DFAgentDescription();
 							ServiceDescription sd = new ServiceDescription();
-							sd.setName("reporter-service");
+							sd.setName("report-service");
 							dfd.addServices(sd);
 							DFAgentDescription[] agdescriptions = DFService
 									.search(RecorderAgent.this, dfd);
