@@ -31,10 +31,10 @@ public class ListenPlan extends Plan {
     public void body() {
         IMessageEvent actReq = (IMessageEvent) getReason();
 
-        int count = (Integer) getBeliefbase().getBelief("message_count")
+        int count = (Integer) getBeliefbase().getBelief("received_count")
                 .getFact();
         count++;
-        getBeliefbase().getBelief("message_count").setFact(count);
+        getBeliefbase().getBelief("received_count").setFact(count);
 
         String type = (String) actReq.getParameter("performative").getValue();
         Object content = actReq.getParameter(SFipa.CONTENT).getValue();

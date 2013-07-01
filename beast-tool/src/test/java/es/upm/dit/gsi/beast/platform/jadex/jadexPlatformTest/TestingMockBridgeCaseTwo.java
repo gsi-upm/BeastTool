@@ -99,8 +99,7 @@ public class TestingMockBridgeCaseTwo extends BeastTestCase {
      * checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)
      */
     public void verify(){
-        System.out.println("RepositoryAgent message_count: " + getBeliefValue("RepositoryAgent", "message_count"));
-        checkAgentsBeliefEquealsTo("RepositoryAgent", "message_count", 1);
+        checkAgentsBeliefEquealsTo("RepositoryAgent", Definitions.RECEIVED_MESSAGE_COUNT, 1);
     }
     /**
      * The GIVEN part

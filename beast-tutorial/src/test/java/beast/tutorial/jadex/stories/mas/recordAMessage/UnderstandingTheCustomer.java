@@ -127,7 +127,7 @@ public class UnderstandingTheCustomer extends BeastTestCase {
 
 //        setExecutionTime(5000000);
 
-        checkAgentsBeliefEquealsTo("ReporterMockAgent", "message_count", 1);
+        checkAgentsBeliefEquealsTo("ReporterMockAgent", Definitions.RECEIVED_MESSAGE_COUNT, 1);
 	}
 
 	/**

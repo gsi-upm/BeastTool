@@ -105,7 +105,7 @@ public class TestingMockRepository extends BeastTestCase {
         System.out.println("Checking...");
 
         this.setExecutionTime(2000);
-        checkAgentsBeliefEquealsTo("RepositoryAgent", "message_count", 1);
+        checkAgentsBeliefEquealsTo("RepositoryAgent", Definitions.RECEIVED_MESSAGE_COUNT, 1);
     }
     
     /**

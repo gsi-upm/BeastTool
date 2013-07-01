@@ -100,7 +100,7 @@ public class TestingMockListener extends BeastTestCase {
         } catch (Exception e) {
             Assert.fail();
         }
-        checkAgentsBeliefEquealsTo("ListenerAgent", "message_count", 10);
+        checkAgentsBeliefEquealsTo("ListenerAgent", Definitions.RECEIVED_MESSAGE_COUNT, 10);
     }
     
     /**

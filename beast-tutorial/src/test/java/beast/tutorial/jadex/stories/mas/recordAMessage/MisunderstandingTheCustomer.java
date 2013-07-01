@@ -135,7 +135,7 @@ public class MisunderstandingTheCustomer extends BeastTestCase {
 	 */
 	public void verify() {
 
-		checkAgentsBeliefEquealsTo("HelpDeskMockAgent", "message_count", 1);
+		checkAgentsBeliefEquealsTo("HelpDeskMockAgent", Definitions.RECEIVED_MESSAGE_COUNT, 1);
 
 	}
 

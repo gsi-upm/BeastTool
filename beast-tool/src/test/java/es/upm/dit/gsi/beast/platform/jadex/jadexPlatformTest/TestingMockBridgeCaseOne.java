@@ -104,7 +104,7 @@ public class TestingMockBridgeCaseOne extends BeastTestCase {
         } catch (Exception e) {
             Assert.fail();
         }
-        checkAgentsBeliefEquealsTo("ListenerAgent", "message_count", 1);
+        checkAgentsBeliefEquealsTo("ListenerAgent", Definitions.RECEIVED_MESSAGE_COUNT, 1);
     }
     /**
      * The GIVEN part
