@@ -82,13 +82,13 @@
 			<parameter name="performative" class="String" direction="fixed">
 				<value>SFipa.INFORM</value>
 			</parameter>
-			<match>$content instanceof String &amp;&amp; ((String)$content).startsWith("send")</match>
+			<match>$content instanceof String</match>
 		</messageevent>	
 		<messageevent name="request_activation_message" type="fipa" direction="receive">
 			<parameter name="performative" class="String" direction="fixed">
 				<value>SFipa.REQUEST</value>
 			</parameter>
-			<match>$content instanceof String &amp;&amp; ((String)$content).startsWith("send")</match>
+			<match>$content instanceof String</match>
 		</messageevent>
 		
 		<!-- Events to start the sending of messages.-->
