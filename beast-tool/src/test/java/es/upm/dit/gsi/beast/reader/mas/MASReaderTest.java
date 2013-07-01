@@ -469,6 +469,38 @@ public class MASReaderTest {
         this.cleanUp();
     }
     
+
+
+
+    @Test
+    public void CamelCaseTest() {
+        this.cleanUp();
+        try {
+            MASReader
+            .generateJavaFiles(
+                    "src/test/resources/CamelCase.story",
+                    "\"jade\"", "src/test/java",
+                    "es.upm.dit.gsi.beast.reader.mas.test",
+                    "es.upm.dit.gsi.beast.reader.mas.test", null);
+        } catch (Exception e) {
+            Assert.fail();
+        }
+
+        try {
+            File folder = SystemReader.createFolder(
+                    "es.upm.dit.gsi.beast.reader.mas.test.passingAnCaseCamelTest", "src/test/java");
+            
+            File file = new File(folder, "pass_a_call_with_my_agent_in_test_camel_test.story");
+            Assert.assertTrue(file.exists());
+        } catch (Exception e) {
+            Assert.fail();
+        }
+        this.cleanUp();
+     
+    }
+    
+    
+    
     private void cleanUp() {
         this.deleteDirectory(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/mas/test"));

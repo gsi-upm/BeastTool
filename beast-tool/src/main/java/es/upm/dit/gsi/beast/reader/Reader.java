@@ -85,9 +85,9 @@ public class Reader {
                     "Specification phase property not found. Check it in Beast properties configuration file. It should be SYSTEM or MAS.");
         } else if (specificationPhase.equalsIgnoreCase(MAS)) {
             if (platformName == null || platformName == "") {
-            throw new BeastException(
-                    "MASPlatform property not found. Check it in Beast properties configuration file. It should be, for example: JADEX or JADE");
-        }
+                throw new BeastException(
+                        "MASPlatform property not found. Check it in Beast properties configuration file. It should be, for example: JADEX or JADE");
+            }
         }
         if (specificationPhase.equalsIgnoreCase(MAS)) {
             MASReader.generateJavaFiles(requirementsFolder, platformName,
@@ -364,7 +364,32 @@ public class Reader {
         String[] words = scenarioName.trim().split(" ");
         String result = "";
         for (int i = 0; i < words.length; i++) {
-            result += words[i].toLowerCase();
+            String word1 = words[i];
+            String word2 = word1.toLowerCase();
+            if (!word1.equals(word2)) {
+                String finalWord = "";
+                for (int j = 0; j < word1.length(); j++) {
+                    if (i != 0) {
+                        char c = word1.charAt(j);
+                        if (Character.isUpperCase(c)) {
+                            if (j==0) {
+                                finalWord += Character.toLowerCase(c);
+                            } else {
+                                finalWord += "_" + Character.toLowerCase(c);   
+                            }
+                        } else {
+                            finalWord += c;
+                        }
+                    } else {
+                        finalWord = word2;
+                        break;
+                    }
+                }
+
+                result += finalWord;
+            } else {
+                result += word2;
+            }
             // I don't add the '_' to the last word.
             if (!(i == words.length - 1))
                 result += "_";
