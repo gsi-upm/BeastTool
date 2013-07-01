@@ -94,7 +94,7 @@ public class ReceiveCallPlan extends Plan {
 
 			System.out.println("Language: " + call.getCustormer().getLanguage());
 			String target_service = "helpdesk-service";
-			String msgContent = "sendUnknownLanguageCall";
+			String msgContent = "UnknownLanguageCall";
 
 			// Looking for reporter agent
 			IDF df = (IDF) SServiceProvider.getService(getServiceContainer(),
