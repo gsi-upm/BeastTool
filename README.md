@@ -25,3 +25,11 @@ would be able to understand them.
 
 For further reading, a paper published in ITMAS2012 workshop can be found in: 
 http://scholar.google.es/citations?view_op=view_citation&hl=es&user=mT3KgXUAAAAJ&citation_for_view=mT3KgXUAAAAJ:Tyk-4Ss8FVUC
+
+## Wiki ##
+In the wiki project, you can find the following pages:
+
+- [[Beast in 5 minutes]]
+- [[Tutorial]]
+- [[User Manual]]
+- [[Developer Manual]]
