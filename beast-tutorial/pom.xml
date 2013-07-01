@@ -212,6 +212,23 @@
 	</dependencyManagement>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>${basedir}/src/test/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.story</include>
+				</includes>
+			</testResource>
+		</testResources>
 		<plugins>
 
 			<plugin>
