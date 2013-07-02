@@ -411,15 +411,18 @@ public class Reader {
         Properties beastConfigProperties = new Properties();
         String beastConfigPropertiesFile = null;
         if (args.length > 0) {
-            beastConfigPropertiesFile = args[0];
-            beastConfigProperties.load(new FileInputStream(
-                    beastConfigPropertiesFile));
-            logger.info("Properties file selected -> "
-                    + beastConfigPropertiesFile);
-        } else {
-            logger.severe("No properties file found. Set the path of properties file as argument.");
-            throw new BeastException(
-                    "No properties file found. Set the path of properties file as argument.");
+            
+            try {
+                beastConfigPropertiesFile = args[0];
+                beastConfigProperties.load(new FileInputStream(
+                        beastConfigPropertiesFile));
+                logger.info("Properties file selected -> "
+                        + beastConfigPropertiesFile);
+            } catch (Exception e) {
+                logger.severe("No properties file found to configure the execution of Beast Tool. Set the path of properties file as argument.");
+                throw new BeastException(
+                        "No properties file found to configure the execution of Beast Tool. Set the path of properties file as argument.", e);   
+            }
         }
         String loggerConfigPropertiesFile;
         if (args.length > 1) {
