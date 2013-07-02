@@ -143,7 +143,7 @@ public class BridgeMockAgent extends Agent {
         msg.addReceiver(agentAID);
         msg.setContent(content);
         send(msg);
-        updateIntegerBelief(Definitions.SENDED_MESSAGE_COUNT, 1);
+        updateIntegerBelief(Definitions.SENT_MESSAGE_COUNT, 1);
     }
     
     /**
@@ -162,7 +162,7 @@ public class BridgeMockAgent extends Agent {
      * Returns the integer value o the given belief
      */
     public int getIntegerBelief(String name){
-        Object belief = introspector.retrieveBelievesValue(this).get(name);
+        Object belief = introspector.getBeliefBase(this).get(name);
         int count = 0;
         if (belief!=null) {
             count = (Integer) belief;

@@ -40,7 +40,7 @@ public class Definitions {
     public static final String STORE_ATTEMPT_NOK = "There was an error trying to proccess the request";
     
     public static final String RECEIVED_MESSAGE_COUNT = "received_count";
-    public static final String SENDED_MESSAGE_COUNT = "sended_count";
+    public static final String SENT_MESSAGE_COUNT = "sent_count";
     public static final String STORED_DATA_COUNT = "stored_count";
     
     public static final int REG_ATTEMPTS = 3;

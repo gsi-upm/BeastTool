@@ -101,7 +101,7 @@ public class TestingMockRepository extends BeastTestCase {
      * checkAgentsBeliefEquealsTo(agent_name,belief_name,expected_belief_value)
      */
     public void verify(){
-        System.out.println("Rcvd msgs by bridge: " + getBeliefValue("BridgeAgent", "message_count"));
+        System.out.println("Rcvd msgs by bridge: " + getBeliefValue("BridgeAgent", Definitions.RECEIVED_MESSAGE_COUNT));
         System.out.println("Checking...");
 
         this.setExecutionTime(2000);

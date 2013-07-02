@@ -84,7 +84,7 @@ public class JadeAgentIntrospector implements AgentIntrospector {
      * @param agent The agent
      * @return Return the data to test for the agent
      */
-    public HashMap<String, Object> retrieveBelievesValue(Agent agent) {
+    public HashMap<String, Object> getBeliefBase(Agent agent) {
         return JadeAgentIntrospector.getInstance().dataToTest.get(agent.getLocalName()); 
     }
 
@@ -108,8 +108,9 @@ public class JadeAgentIntrospector implements AgentIntrospector {
         return JadeAgentIntrospector.getInstance().agents.get(agentName);
     }
 
-    /* (non-Javadoc)
-     * @see es.upm.dit.gsi.beast.platform.AgentIntrospector#getAgentPlans(java.lang.String, es.upm.dit.gsi.beast.platform.Connector)
+
+    /**
+     * Non-supported in JadeAgentIntrospector
      */
     @Override
     public Object[] getAgentPlans(String agent_name, Connector connector) {
@@ -118,8 +119,9 @@ public class JadeAgentIntrospector implements AgentIntrospector {
         throw new java.lang.UnsupportedOperationException("Non suported method for Jade Platform. There is no extra properties.");
     }
 
-    /* (non-Javadoc)
-     * @see es.upm.dit.gsi.beast.platform.AgentIntrospector#getAgentGoals(java.lang.String, es.upm.dit.gsi.beast.platform.Connector)
+    
+    /**
+     * Non-supported in JadeAgentIntrospector
      */
     @Override
     public Object[] getAgentGoals(String agent_name, Connector connector) {

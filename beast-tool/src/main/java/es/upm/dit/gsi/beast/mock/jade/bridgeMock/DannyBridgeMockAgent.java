@@ -298,7 +298,7 @@ public class DannyBridgeMockAgent extends Agent {
             new_msg.setContent(targetContent);
             new_msg.addReceiver(introspector.getAgent(targetService).getAID());
             myAgent.send(new_msg);
-            myAgent.increaseBeliefCount(Definitions.SENDED_MESSAGE_COUNT);
+            myAgent.increaseBeliefCount(Definitions.SENT_MESSAGE_COUNT);
         }
 
         private static final long serialVersionUID = -5643599458512659962L;

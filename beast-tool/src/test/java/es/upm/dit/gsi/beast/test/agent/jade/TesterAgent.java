@@ -182,7 +182,7 @@ public class TesterAgent extends Agent {
             logger.severe(this.getName() + " could not wait " + timeToWait
                     + " milliseconds. Exception: " + e);
         }
-        this.obj = (TestObject) this.myIntrospector.retrieveBelievesValue(this).get("testObject");
+        this.obj = (TestObject) this.myIntrospector.getBeliefBase(this).get("testObject");
         logger.info("TestObject data ->");
         logger.info("Double: " + obj.getDoubleTest());
         logger.info("String: " + obj.getStringTest());
@@ -235,7 +235,7 @@ public class TesterAgent extends Agent {
             logger.severe(this.getName() + " could not wait " + timeToWait
                     + " milliseconds. Exception: " + e);
         }
-        String aux = (String) this.myIntrospector.retrieveBelievesValue(this).get("testStatus");
+        String aux = (String) this.myIntrospector.getBeliefBase(this).get("testStatus");
         this.status = aux;
         logger.fine("Retrieved Belief testStatus: " + aux);
         boolean retrieved = false;

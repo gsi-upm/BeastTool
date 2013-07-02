@@ -139,7 +139,7 @@ public class ListenerMockAgent extends Agent{
      * @return int - the count
      */
     private int getBeliefCount() {
-        Integer count = (Integer)introspector.retrieveBelievesValue(ListenerMockAgent.this).get(Definitions.RECEIVED_MESSAGE_COUNT);
+        Integer count = (Integer)introspector.getBeliefBase(ListenerMockAgent.this).get(Definitions.RECEIVED_MESSAGE_COUNT);
         if (count == null) count = 0; // Just in case, not really sure if this is necessary.
         return count;
     }

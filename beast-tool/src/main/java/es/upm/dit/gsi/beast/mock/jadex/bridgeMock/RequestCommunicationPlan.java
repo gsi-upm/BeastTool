@@ -44,10 +44,10 @@ public class RequestCommunicationPlan extends MockAgentPlan {
          */
         IMessageEvent actReq = (IMessageEvent) getReason();
         
-        int count = (Integer) getBeliefbase().getBelief("message_count")
+        int count = (Integer) getBeliefbase().getBelief("received_count")
                 .getFact();
         count++;
-        getBeliefbase().getBelief("message_count").setFact(count);
+        getBeliefbase().getBelief("received_count").setFact(count);
         
         String type = (String) actReq.getParameter("performative").getValue();
         String agent_name = null;

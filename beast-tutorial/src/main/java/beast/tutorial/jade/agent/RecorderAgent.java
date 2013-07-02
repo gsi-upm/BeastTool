@@ -78,7 +78,7 @@ public class RecorderAgent extends Agent {
 		public void action() {
 			RecorderAgent.this
 					.setQueue((CallQueue) RecorderAgent.this.myIntrospector
-							.retrieveBelievesValue(RecorderAgent.this).get(
+							.getBeliefBase(RecorderAgent.this).get(
 									"queue"));
 			CallQueue queue = RecorderAgent.this.getQueue();
 			if (queue != null) {
