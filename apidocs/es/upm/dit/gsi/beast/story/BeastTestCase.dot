@@ -70,22 +70,22 @@ digraph G {
 	c2416:p -> c2441:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.mock.MockManager DEPEND es.upm.dit.gsi.beast.story.BeastTestCase
 	c2416:p -> c2437:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.Messenger DEPEND java.lang.String
-	c2418:p -> c2441:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.Messenger DEPEND java.lang.String
-	c2418:p -> c2441:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.Messenger DEPEND java.util.ArrayList<E>
 	c2418:p -> c2442:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.Messenger DEPEND java.lang.String
+	c2418:p -> c2441:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.Messenger DEPEND java.lang.String
+	c2418:p -> c2441:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.Messenger DEPEND java.lang.Object
 	c2418:p -> c2443:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.Messenger DEPEND java.lang.String
 	c2418:p -> c2441:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.Connector DEPEND java.lang.String
 	c2419:p -> c2441:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.Connector DEPEND java.lang.Object
-	c2419:p -> c2443:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.Connector DEPEND java.util.logging.Logger
 	c2419:p -> c2440:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.Connector DEPEND java.lang.Object
+	c2419:p -> c2443:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.Connector DEPEND java.lang.Object
 	c2419:p -> c2443:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.AgentIntrospector DEPEND java.lang.Object
@@ -98,26 +98,26 @@ digraph G {
 	c2420:p -> c2443:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.util.ArrayList<E>
 	c2437:p -> c2442:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.util.logging.Logger
-	c2437:p -> c2440:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.Object
 	c2437:p -> c2443:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND es.upm.dit.gsi.beast.platform.Connector
-	c2437:p -> c2419:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.util.ArrayList<E>
-	c2437:p -> c2442:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.String
-	c2437:p -> c2441:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND jadex.bdi.runtime.IGoal
 	c2437:p -> c2444:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.String
 	c2437:p -> c2441:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.util.ArrayList<E>
+	c2437:p -> c2442:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.String
+	c2437:p -> c2441:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND jadex.bdi.runtime.IPlan
+	c2437:p -> c2445:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.util.logging.Logger
+	c2437:p -> c2440:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.Object
 	c2437:p -> c2443:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.util.List<E>
-	c2437:p -> c2445:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND jadex.bdi.runtime.IPlan
 	c2437:p -> c2446:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND es.upm.dit.gsi.beast.platform.Connector
+	c2437:p -> c2419:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// jadex.bdi.runtime.IGoal
 	c2444 [label=<<table title="jadex.bdi.runtime.IGoal" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/jadex/bdi/runtime/IGoal.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
@@ -126,7 +126,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// jadex.bdi.runtime.IPlan
-	c2446 [label=<<table title="jadex.bdi.runtime.IPlan" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/jadex/bdi/runtime/IPlan.html">
+	c2445 [label=<<table title="jadex.bdi.runtime.IPlan" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/jadex/bdi/runtime/IPlan.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> IPlan </td></tr>
@@ -159,7 +159,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// java.util.List<E>
-	c2445 [label=<<table title="java.util.List" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/List.html">
+	c2446 [label=<<table title="java.util.List" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/List.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> List&lt;E&gt; </td></tr>

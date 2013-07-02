@@ -49,10 +49,10 @@ digraph G {
 	c1074:p -> c1072:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// es.upm.dit.gsi.beast.mock.common.AgentBehaviour DEPEND java.lang.String
 	c1072:p -> c1109:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.BridgeMockAgent DEPEND java.lang.String
-	c1074:p -> c1109:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.BridgeMockAgent DEPEND jade.core.AID
 	c1074:p -> c1110:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.mock.jade.bridgeMock.BridgeMockAgent DEPEND java.lang.String
+	c1074:p -> c1109:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND java.lang.String
 	c1092:p -> c1109:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jade.JadeAgentIntrospector DEPEND jade.core.Agent

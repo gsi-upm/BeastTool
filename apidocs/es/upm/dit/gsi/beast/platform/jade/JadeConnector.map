@@ -3,10 +3,10 @@
 <area shape="rect" id="node2_1" href="./JadeConnector.html" title="es.upm.dit.gsi.beast.platform.jade.JadeConnector" alt="" coords="1458,109,1662,179"/>
 <area shape="rect" id="node5_2" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Logger.html" title="java.util.logging.Logger" alt="" coords="16,340,229,409"/>
 <area shape="rect" id="node14_3" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html" title="java.lang.String" alt="" coords="1399,237,1721,512"/>
-<area shape="rect" id="node22_4" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Object.html" title="java.lang.Object" alt="" coords="1767,340,1839,409"/>
-<area shape="rect" id="node7_5" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/core/Runtime.html" title="jade.core.Runtime" alt="" coords="425,363,490,387"/>
-<area shape="rect" id="node9_6" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/wrapper/ContainerController.html" title="jade.wrapper.ContainerController" alt="" coords="536,340,995,409"/>
-<area shape="rect" id="node11_7" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/HashMap.html" title="java.util.HashMap" alt="" coords="1040,318,1240,431"/>
-<area shape="rect" id="node28_8" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/core/Agent.html" title="jade.core.Agent" alt="" coords="1286,340,1354,409"/>
-<area shape="rect" id="node32_9" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/wrapper/AgentController.html" title="jade.wrapper.AgentController" alt="" coords="275,355,379,394"/>
+<area shape="rect" id="node24_4" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Object.html" title="java.lang.Object" alt="" coords="1767,340,1839,409"/>
+<area shape="rect" id="node7_5" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/core/Runtime.html" title="jade.core.Runtime" alt="" coords="389,363,454,387"/>
+<area shape="rect" id="node9_6" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/wrapper/ContainerController.html" title="jade.wrapper.ContainerController" alt="" coords="500,340,959,409"/>
+<area shape="rect" id="node11_7" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/HashMap.html" title="java.util.HashMap" alt="" coords="1004,318,1204,431"/>
+<area shape="rect" id="node30_8" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/wrapper/AgentController.html" title="jade.wrapper.AgentController" alt="" coords="1249,355,1353,394"/>
+<area shape="rect" id="node32_9" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/core/Agent.html" title="jade.core.Agent" alt="" coords="275,340,343,409"/>
 </map>

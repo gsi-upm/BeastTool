@@ -47,14 +47,8 @@ digraph G {
 	c950:p -> c990:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// es.upm.dit.gsi.beast.test.TestObject NAVASSOC java.lang.String
 	c952:p -> c982:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND java.lang.Object
-	c950:p -> c991:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND java.lang.Object
-	c950:p -> c991:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND java.lang.Object
-	c950:p -> c991:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND java.lang.Object
-	c950:p -> c991:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND es.upm.dit.gsi.beast.test.TestObject
+	c950:p -> c952:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND java.lang.Object
 	c950:p -> c991:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND java.lang.String
@@ -65,8 +59,14 @@ digraph G {
 	c950:p -> c990:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND java.lang.Object
 	c950:p -> c991:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND es.upm.dit.gsi.beast.test.TestObject
-	c950:p -> c952:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND java.lang.Object
+	c950:p -> c991:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND java.lang.Object
+	c950:p -> c991:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND java.lang.Object
+	c950:p -> c991:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.test.agent.jade.TesterAgent DEPEND java.lang.Object
+	c950:p -> c991:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.test.TestObject DEPEND java.lang.String
 	c952:p -> c982:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// jade.lang.acl.ACLMessage
