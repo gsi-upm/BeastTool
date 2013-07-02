@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>es.upm.dit.gsi</groupId>
 	<artifactId>beast-tool</artifactId>
-	<version>0.9.8</version>
+	<version>0.9.8-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Beast Tool</name>
 	<description>BEhavioural Agents Simple Testing Tool - BEAST Tool
