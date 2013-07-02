@@ -21,12 +21,12 @@ digraph G {
 <tr><td align="left" balign="left"> + PlatformSelector() </td></tr>
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
-	// es.upm.dit.gsi.beast.platform.PlatformSelector DEPEND java.util.logging.Logger
-	c1543:p -> c1565:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.PlatformSelector DEPEND java.lang.String
+	c1543:p -> c1565:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.PlatformSelector DEPEND java.util.logging.Logger
 	c1543:p -> c1566:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// java.lang.String
-	c1566 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html">
+	c1565 [label=<<table title="java.lang.String" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> String </td></tr>
 		</table></td></tr>
@@ -52,7 +52,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// java.util.logging.Logger
-	c1565 [label=<<table title="java.util.logging.Logger" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Logger.html">
+	c1566 [label=<<table title="java.util.logging.Logger" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Logger.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Logger </td></tr>
 		</table></td></tr>

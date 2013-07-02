@@ -55,20 +55,20 @@ digraph G {
 	c2194:p -> c2205:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.reader.Reader DEPEND java.io.FileWriter
 	c2198:p -> c2206:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.reader.Reader DEPEND java.io.File
+	// es.upm.dit.gsi.beast.reader.Reader DEPEND java.io.BufferedReader
 	c2198:p -> c2207:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.reader.Reader DEPEND java.lang.String
 	c2198:p -> c2205:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.reader.Reader DEPEND java.lang.String
 	c2198:p -> c2205:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.reader.Reader DEPEND java.io.BufferedReader
+	// es.upm.dit.gsi.beast.reader.Reader DEPEND java.io.File
 	c2198:p -> c2208:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.reader.system.SystemReader DEPEND java.lang.String
 	c2199:p -> c2205:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.reader.system.SystemReader DEPEND java.lang.String
 	c2199:p -> c2205:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// java.io.BufferedReader
-	c2208 [label=<<table title="java.io.BufferedReader" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/io/BufferedReader.html">
+	c2207 [label=<<table title="java.io.BufferedReader" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/io/BufferedReader.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> BufferedReader </td></tr>
 		</table></td></tr>
@@ -123,7 +123,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 	// java.io.File
-	c2207 [label=<<table title="java.io.File" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/io/File.html">
+	c2208 [label=<<table title="java.io.File" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/java/io/File.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> File </td></tr>
 		</table></td></tr>

@@ -21,16 +21,16 @@ digraph G {
 <tr><td align="left" balign="left"> + JadexPlatformTest() </td></tr>
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
-	// es.upm.dit.gsi.beast.platform.jadex.CaseManager
-	c61 [label=<<table title="es.upm.dit.gsi.beast.platform.jadex.CaseManager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CaseManager.html">
+	// es.upm.dit.gsi.beast.platform.jadex.AgentStoriesManager
+	c61 [label=<<table title="es.upm.dit.gsi.beast.platform.jadex.AgentStoriesManager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AgentStoriesManager.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> CaseManager </td></tr>
+<tr><td align="center" balign="center"> AgentStoriesManager </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left">  </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left"> + CaseManager() </td></tr>
+<tr><td align="left" balign="left"> + AgentStoriesManager() </td></tr>
 		</table></td></tr>
 		</table>>, fontname="arial", fontcolor="black", fontsize=9.0];
 }

@@ -43,22 +43,22 @@ digraph G {
 	c1980:p -> c2000:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.Connector DEPEND java.lang.Object
 	c1980:p -> c2000:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.AgentIntrospector DEPEND java.lang.Object
+	c1981:p -> c2000:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.AgentIntrospector DEPEND java.lang.String
 	c1981:p -> c2003:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.AgentIntrospector DEPEND java.lang.Object
 	c1981:p -> c2000:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.AgentIntrospector DEPEND java.lang.Object
 	c1981:p -> c2000:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.AgentIntrospector DEPEND java.lang.Object
-	c1981:p -> c2000:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector DEPEND java.lang.String
 	c1988:p -> c2003:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector DEPEND jadex.bdi.runtime.IGoal
-	c1988:p -> c2002:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector DEPEND java.lang.Object
-	c1988:p -> c2000:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector DEPEND jadex.bdi.runtime.IPlan
 	c1988:p -> c2001:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector DEPEND java.lang.Object
+	c1988:p -> c2000:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector DEPEND jadex.bdi.runtime.IGoal
+	c1988:p -> c2002:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector DEPEND es.upm.dit.gsi.beast.platform.Connector
 	c1988:p -> c1980:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// jadex.bdi.runtime.IGoal

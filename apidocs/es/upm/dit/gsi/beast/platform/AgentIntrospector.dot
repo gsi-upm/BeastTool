@@ -70,12 +70,12 @@ digraph G {
 	c1689:p -> c1702:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexAgentIntrospector DEPEND java.lang.Object
 	c1689:p -> c1701:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.Object
-	c1699:p -> c1701:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.Object
-	c1699:p -> c1701:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.String
 	c1699:p -> c1702:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.Object
+	c1699:p -> c1701:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.Object
+	c1699:p -> c1701:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.story.BeastTestCase DEPEND java.lang.String
 	c1699:p -> c1702:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// java.lang.Object

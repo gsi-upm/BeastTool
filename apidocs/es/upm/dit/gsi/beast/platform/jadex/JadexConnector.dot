@@ -40,28 +40,28 @@ digraph G {
 	c1941:p -> c1957:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexConnector NAVASSOC java.util.HashMap<K, V>
 	c1941:p -> c1958:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-	// es.upm.dit.gsi.beast.platform.Connector DEPEND java.util.logging.Logger
-	c1934:p -> c1954:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.Connector DEPEND java.lang.String
 	c1934:p -> c1959:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.Connector DEPEND java.lang.Object
 	c1934:p -> c1960:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.Connector DEPEND java.util.logging.Logger
+	c1934:p -> c1954:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.Connector DEPEND java.lang.Object
 	c1934:p -> c1960:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.jadex.JadexConnector DEPEND java.util.logging.Logger
-	c1941:p -> c1954:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.jadex.JadexConnector DEPEND java.lang.String
-	c1941:p -> c1959:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexConnector DEPEND jadex.bridge.IComponentIdentifier
 	c1941:p -> c1961:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.jadex.JadexConnector DEPEND java.lang.Object
-	c1941:p -> c1960:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// es.upm.dit.gsi.beast.platform.jadex.JadexConnector DEPEND jadex.bridge.IComponentManagementService
-	c1941:p -> c1956:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jadex.JadexConnector DEPEND java.lang.String
+	c1941:p -> c1959:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexConnector DEPEND jadex.bridge.IMessageService
 	c1941:p -> c1957:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jadex.JadexConnector DEPEND java.util.logging.Logger
+	c1941:p -> c1954:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jadex.JadexConnector DEPEND java.lang.Object
+	c1941:p -> c1960:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jadex.JadexConnector DEPEND jadex.bridge.IExternalAccess
 	c1941:p -> c1955:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jadex.JadexConnector DEPEND jadex.bridge.IComponentManagementService
+	c1941:p -> c1956:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// jadex.bridge.IComponentManagementService
 	c1956 [label=<<table title="jadex.bridge.IComponentManagementService" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/jadex/bridge/IComponentManagementService.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">

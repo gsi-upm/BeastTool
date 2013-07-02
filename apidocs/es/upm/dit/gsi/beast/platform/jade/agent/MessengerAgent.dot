@@ -29,10 +29,10 @@ digraph G {
 	c1723:p -> c1744:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// es.upm.dit.gsi.beast.platform.jade.agent.MessengerAgent NAVASSOC jade.lang.acl.ACLMessage
 	c1723:p -> c1745:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-	// es.upm.dit.gsi.beast.platform.jade.agent.MessengerAgent DEPEND jade.lang.acl.ACLMessage
-	c1723:p -> c1745:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// es.upm.dit.gsi.beast.platform.jade.agent.MessengerAgent DEPEND jade.lang.acl.MessageTemplate
 	c1723:p -> c1744:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// es.upm.dit.gsi.beast.platform.jade.agent.MessengerAgent DEPEND jade.lang.acl.ACLMessage
+	c1723:p -> c1745:p [taillabel="", label="", headlabel="", fontname="arial", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// jade.lang.acl.ACLMessage
 	c1745 [label=<<table title="jade.lang.acl.ACLMessage" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/jade/lang/acl/ACLMessage.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
