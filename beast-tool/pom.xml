@@ -216,6 +216,9 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.2.1</version>
+				<configuration>
+					<arguments>-DskipTests</arguments>
+				</configuration>
 			</plugin>
 
 			<plugin>
