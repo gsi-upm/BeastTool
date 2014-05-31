@@ -152,12 +152,12 @@ public class SystemReaderTest {
                     "src/test/java");
             File caseManager = new File(folder, "UserStoriesManager.java");
 
-            String targetLine1 = "     Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.examplestories.A1.class);";
-            String targetLine2 = "     Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.examplestories.A2.class);";
+            String targetLine1 = "     Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.ExampleStories.A1.class);";
+            String targetLine2 = "     Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.system.test.ExampleStories.A2.class);";
 
             BufferedReader r = new BufferedReader(new FileReader(caseManager));
             String in;
-            while ((in = r.readLine()) != null) {
+            while ((in = r.readLine()) != null) { 
                 if (targetLine1.equals(in)) {
                     while ((in = r.readLine()) != null) {
                         if (targetLine2.equals(in)) {

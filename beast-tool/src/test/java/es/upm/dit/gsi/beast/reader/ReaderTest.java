@@ -240,43 +240,43 @@ public class ReaderTest {
                 "src/test/java/es/upm/dit/gsi/beast/reader/test", "A1.java")
                 .exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/A1",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/a1",
                 "ThisIsOtherScenario.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/A1",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/a1",
                 "this_is_other_scenario.story").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/A1",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/a1",
                 "SetBelievesInAgent.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/A1",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/a1",
                 "set_believes_in_agent.story").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/A1",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/a1",
                 "GetBelievesFromAgent.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/A1",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/a1",
                 "get_believes_from_agent.story").exists());
         Assert.assertTrue(new File(
                 "src/test/java/es/upm/dit/gsi/beast/reader/test", "A2.java")
                 .exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/A2",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/a2",
                 "ThisIsOtherScenario.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/A2",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/a2",
                 "this_is_other_scenario.story").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/A2",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/a2",
                 "SetBelievesInAgent.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/A2",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/a2",
                 "set_believes_in_agent.story").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/A2",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/a2",
                 "GetBelievesFromAgent.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/A2",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/a2",
                 "get_believes_from_agent.story").exists());
         this.cleanUp();
     }
@@ -300,10 +300,10 @@ public class ReaderTest {
                 "src/test/java/es/upm/dit/gsi/beast/reader/test",
                 "UserStoriesManager.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/ExampleStories",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/exampleStories",
                 "A1.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/ExampleStories",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/exampleStories",
                 "A2.java").exists());
         this.cleanUp();
         this.cleanUp();
@@ -328,28 +328,28 @@ public class ReaderTest {
                 "src/test/java/es/upm/dit/gsi/beast/reader/test/manager",
                 "AgentStoriesManager.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/ExampleStories",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/exampleStories",
                 "A1.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/ExampleStories/A1",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/exampleStories/a1",
                 "ThisIsOtherScenario.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/ExampleStories/A1",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/exampleStories/a1",
                 "SetBelievesInAgent.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/ExampleStories/A1",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/exampleStories/a1",
                 "GetBelievesFromAgent.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/ExampleStories",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/exampleStories",
                 "A2.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/ExampleStories/A2",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/exampleStories/a2",
                 "ThisIsOtherScenario.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/ExampleStories/A2",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/exampleStories/a2",
                 "SetBelievesInAgent.java").exists());
         Assert.assertTrue(new File(
-                "src/test/java/es/upm/dit/gsi/beast/reader/test/ExampleStories/A2",
+                "src/test/java/es/upm/dit/gsi/beast/reader/test/exampleStories/a2",
                 "GetBelievesFromAgent.java").exists());
         this.cleanUp();
     }

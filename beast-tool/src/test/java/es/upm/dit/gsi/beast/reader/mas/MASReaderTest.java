@@ -253,8 +253,8 @@ public class MASReaderTest {
                             "src/test/java");
             File caseManager = new File(folder, "AgentStoriesManager.java");
 
-            String targetLine1 = "      Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.examplestories.A1.class);";
-            String targetLine2 = "      Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.examplestories.A2.class);";
+            String targetLine1 = "      Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.ExampleStories.A1.class);";
+            String targetLine2 = "      Result result = JUnitCore.runClasses(es.upm.dit.gsi.beast.reader.mas.test.ExampleStories.A2.class);";
 
             BufferedReader r = new BufferedReader(new FileReader(caseManager));
             String in;
