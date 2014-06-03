@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>es.upm.dit.gsi</groupId>
 	<artifactId>beast-tool</artifactId>
-	<version>0.9.9-SNAPSHOT</version>
+	<version>0.9.9</version>
 	<packaging>jar</packaging>
 	<name>Beast Tool</name>
 	<description>BEhavioural Agents Simple Testing Tool - BEAST Tool
@@ -32,7 +32,6 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 		<connection>scm:git:https://github.com/gsi-upm/BeastTool.git</connection>
 		<developerConnection>scm:git:https://github.com/gsi-upm/BeastTool.git</developerConnection>
 		<url>http://github.com/gsi-upm/BeastTool</url>
-		<tag>HEAD</tag>
 	</scm>
 	<developers>
 
