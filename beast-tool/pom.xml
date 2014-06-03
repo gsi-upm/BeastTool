@@ -241,8 +241,6 @@ For further reading, a paper published in ITMAS2012 workshop can be found in: ht
 				<version>2.5</version>
 				<configuration>
 					<arguments>-DskipTests</arguments>
-					<releaseProfiles>release</releaseProfiles>
-					<goals>deploy assembly:single</goals>
 				</configuration>
 			</plugin>
 
