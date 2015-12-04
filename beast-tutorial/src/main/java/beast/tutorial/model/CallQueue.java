@@ -8,8 +8,8 @@ package beast.tutorial.model;
  * File: beast.tutorial.tools.CallQueue.java
  * 
  * Grupo de Sistemas Inteligentes
- * Departamento de IngenierÌa de Sistemas Telem·ticos
- * Universidad PolitÈcnica de Madrid (UPM)
+ * Departamento de Ingenier√≠a de Sistemas Telem√°ticos
+ * Universidad Polit√©cnica de Madrid (UPM)
  * 
  * @author alvarocarrera
  * @email a.carrera@gsi.dit.upm.es

@@ -12,8 +12,9 @@ import jadex.bridge.IComponentIdentifier;
 /**
  * Project: beast-tutorial File: beast.tutorial.jadex.agent.PassCallPlan.java
  * 
- * Grupo de Sistemas Inteligentes Departamento de IngenierÌa de Sistemas
- * Telem·ticos Universidad PolitÈcnica de Madrid (UPM)
+ * Grupo de Sistemas Inteligentes 
+ * Departamento de Ingenier√≠a de Sistemas Telem√°ticos
+ * Universidad Polit√©cnica de Madrid (UPM)
  * 
  * @author alvarocarrera
  * @email a.carrera@gsi.dit.upm.es
